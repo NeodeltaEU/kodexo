@@ -1,0 +1,23 @@
+import { Server } from 'http'
+import * as request from 'supertest'
+import { App } from '../src/App'
+
+let server: Server
+
+describe('App', () => {
+  beforeAll(async done => {
+    server = await App.buildSingleRawApp()
+    done()
+  })
+
+  it('should start a new app', async () => {
+    const result = await request(server).get('/').expect(404)
+  })
+
+  it('should have one controller', async () => {
+    const { body }: any = await request(server).get('/cars').expect(200)
+
+    expect(body).toHaveLength(1)
+    expect(body[0]).toMatchObject({ model: 'Mégane', id: 1, registration: '11-111-111' })
+  })
+})
