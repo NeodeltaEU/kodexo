@@ -1,6 +1,6 @@
 {
   "name": "@uminily/mikro-orm",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "src/index.ts",
   "license": "MIT",
   "repository": "https://github.com/Uminily/uminily",
@@ -54,9 +54,9 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
-    "@uminily/common": "^0.0.3",
-    "@uminily/config": "^0.0.3",
-    "@uminily/injection": "^0.0.3",
+    "@uminily/common": "^0.0.4",
+    "@uminily/config": "^0.0.4",
+    "@uminily/injection": "^0.0.4",
     "type-fest": "^1.2.1"
   },
   "gitHead": "16dc64aefa2bdeab76e5e912711dde8789e69b31"
