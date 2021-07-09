@@ -1,4 +1,4 @@
-import { Store } from '@kodexo/injection'
+import { Store } from '@uminily/injection'
 
 export function Status(statusCode: number) {
   return function (target: any, propertyKey: string, descriptor: any) {

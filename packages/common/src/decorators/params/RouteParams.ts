@@ -1,4 +1,4 @@
-import { Store } from '@kodexo/injection'
+import { Store } from '@uminily/injection'
 
 export function RouteParams(paramName?: string): Function {
   return (target: any, propertyKey: string, paramaterIndex: number) => {

@@ -1,4 +1,4 @@
-import { Request, URLParams } from '@kodexo/app'
+import { Request, URLParams } from '@uminily/app'
 import { plainToClass } from 'class-transformer'
 import { ConnectionDatabase } from '../../mikro-orm/src'
 import { REQUEST_CONTEXT } from './constants'

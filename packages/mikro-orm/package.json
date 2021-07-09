@@ -1,5 +1,5 @@
 {
-  "name": "@kodexo/mikro-orm",
+  "name": "@uminily/mikro-orm",
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
@@ -53,9 +53,9 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
-    "@kodexo/common": "^0.0.1",
-    "@kodexo/config": "^0.0.1",
-    "@kodexo/injection": "^0.0.1",
+    "@uminily/common": "^0.0.1",
+    "@uminily/config": "^0.0.1",
+    "@uminily/injection": "^0.0.1",
     "type-fest": "^1.2.1"
   }
 }

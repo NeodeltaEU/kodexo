@@ -1,8 +1,9 @@
 {
-  "name": "@kodexo/entities",
+  "name": "@uminily/entities",
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
+  "repository": "https://github.com/Uminily/uminily",
   "scripts": {
     "test": "jest --coverage --runInBand --colors"
   },
@@ -52,7 +53,7 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@kodexo/injection": "^0.0.1",
+    "@uminily/injection": "^0.0.1",
     "type-fest": "^0.20.2"
   }
 }

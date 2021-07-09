@@ -1,4 +1,4 @@
-import { providerRegistry } from '@kodexo/injection'
+import { providerRegistry } from '@uminily/injection'
 import { Controller } from '..'
 import { ControllerProvider } from '../../main'
 

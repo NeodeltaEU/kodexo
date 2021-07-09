@@ -1,5 +1,5 @@
 {
-  "name": "@kodexo/app",
+  "name": "@uminily/app",
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
@@ -52,10 +52,10 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@kodexo/common": "^0.0.1",
-    "@kodexo/config": "^0.0.1",
-    "@kodexo/errors": "^0.0.1",
-    "@kodexo/injection": "^0.0.1",
+    "@uminily/common": "^0.0.1",
+    "@uminily/config": "^0.0.1",
+    "@uminily/errors": "^0.0.1",
+    "@uminily/injection": "^0.0.1",
     "@tinyhttp/app": "^1.3.11",
     "@tinyhttp/cors": "^1.1.7",
     "body-parser": "^1.19.0",

@@ -1,7 +1,7 @@
 import { EntityRepository } from '@mikro-orm/core'
-import { isObject } from '@kodexo/common'
-import { Inject } from '@kodexo/injection'
-import { ConnectionDatabase } from '@kodexo/mikro-orm'
+import { isObject } from '@uminily/common'
+import { Inject } from '@uminily/injection'
+import { ConnectionDatabase } from '@uminily/mikro-orm'
 import {
   registerDecorator,
   ValidationArguments,

@@ -8,7 +8,7 @@ import {
   ValidationError
 } from '@mikro-orm/core'
 import { NonFunctionPropertyNames } from '@mikro-orm/core/typings'
-import { HttpError } from '@kodexo/errors'
+import { HttpError } from '@uminily/errors'
 import pMap from 'p-map'
 import { Class } from 'type-fest'
 import { ConnectionDatabase, RepositoryBuilder } from '../../mikro-orm/src'

@@ -1,6 +1,6 @@
-import { Service } from '@kodexo/common'
-import { Inject } from '@kodexo/injection'
-import { ConnectionDatabase, RepositoryBuilder } from '@kodexo/mikro-orm'
+import { Service } from '@uminily/common'
+import { Inject } from '@uminily/injection'
+import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
 
 import { CrudService } from '../../../../src/CrudService'
 import { Car } from './entities/car.entity'

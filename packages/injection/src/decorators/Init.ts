@@ -1,4 +1,4 @@
-import { getClass } from '@kodexo/common'
+import { getClass } from '@uminily/common'
 import { Store } from '../main'
 
 export function Init() {

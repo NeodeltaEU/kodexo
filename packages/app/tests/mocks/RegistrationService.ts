@@ -1,4 +1,4 @@
-import { Service } from '@kodexo/common'
+import { Service } from '@uminily/common'
 
 @Service()
 export class RegistrationService {

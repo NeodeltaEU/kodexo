@@ -1,4 +1,4 @@
-import { Store } from '@kodexo/injection'
+import { Store } from '@uminily/injection'
 import { Class } from 'type-fest'
 import { RouteMethods } from '../methods'
 

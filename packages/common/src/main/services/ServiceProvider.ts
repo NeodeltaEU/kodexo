@@ -1,4 +1,4 @@
-import { Provider } from '@kodexo/injection'
+import { Provider } from '@uminily/injection'
 import { Class } from 'type-fest'
 
 import { Endpoint } from '../metadata'

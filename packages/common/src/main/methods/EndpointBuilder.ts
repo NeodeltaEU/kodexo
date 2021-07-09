@@ -1,4 +1,4 @@
-import { Store } from '@kodexo/injection'
+import { Store } from '@uminily/injection'
 import { RouteMethods, Endpoint } from '..'
 import { getClass } from '../../utils/class'
 import { isFunction } from '../../utils/functions/isFunction'

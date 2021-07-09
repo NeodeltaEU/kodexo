@@ -1,8 +1,8 @@
 import { EntityMetadata, MikroORM } from '@mikro-orm/core'
 import { PostgreSqlDriver } from '@mikro-orm/postgresql'
-import { Service } from '@kodexo/common'
-import { Init, Inject } from '@kodexo/injection'
-import { ConfigurationService } from '@kodexo/config'
+import { Service } from '@uminily/common'
+import { Init, Inject } from '@uminily/injection'
+import { ConfigurationService } from '@uminily/config'
 
 @Service()
 export class ConnectionDatabase {

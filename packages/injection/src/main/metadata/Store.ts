@@ -29,20 +29,20 @@ export class Store {
       case DecoratorTypes.CONSTRUCTOR_PARAMETER:
       case DecoratorTypes.STATIC_PARAMETER:
       case DecoratorTypes.PARAMETER:
-        const store = getMetadata('kodexo:parameters')
+        const store = getMetadata('uminily:parameters')
         if (!store.has(descriptorOrIndex)) store.set(descriptorOrIndex, new Map<string, any>())
         return store.get(descriptorOrIndex)
 
       case DecoratorTypes.PROPERTY:
       case DecoratorTypes.STATIC_PROPERTY:
-        return getMetadata('kodexo:properties')
+        return getMetadata('uminily:properties')
 
       case DecoratorTypes.METHOD:
       case DecoratorTypes.STATIC_METHOD:
-        return getMetadata('kodexo:methods')
+        return getMetadata('uminily:methods')
 
       case DecoratorTypes.CLASS:
-        return getMetadata('kodexo:class')
+        return getMetadata('uminily:class')
 
       default:
         throw new Error('An error occured when getting metadata from decorators arguments')

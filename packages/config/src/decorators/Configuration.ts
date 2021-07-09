@@ -1,4 +1,4 @@
-import { Store } from '@kodexo/injection'
+import { Store } from '@uminily/injection'
 
 export function Configuration(configuration: Partial<Kodexo.Configuration>) {
   return function (target: any) {

@@ -1,5 +1,5 @@
-import { Service } from '@kodexo/common'
-import { Inject } from '@kodexo/injection'
+import { Service } from '@uminily/common'
+import { Inject } from '@uminily/injection'
 import { CarFactory } from './CarFactory'
 import { RegistrationService } from './RegistrationService'
 

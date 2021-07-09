@@ -1,5 +1,5 @@
 {
-  "name": "@kodexo/config",
+  "name": "@uminily/config",
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
@@ -51,7 +51,7 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@kodexo/common": "^0.0.1",
-    "@kodexo/injection": "^0.0.1"
+    "@uminily/common": "^0.0.1",
+    "@uminily/injection": "^0.0.1"
   }
 }
