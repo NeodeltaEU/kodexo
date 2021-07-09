@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "main": "src/index.ts",
   "license": "MIT",
-  "repository": "https://github.com/Uminily/uminily",
+  "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
     "test": "jest --coverage --runInBand --colors"
   },
@@ -55,5 +55,5 @@
     "@uminily/common": "^0.0.4",
     "@uminily/injection": "^0.0.4"
   },
-  "gitHead": "16dc64aefa2bdeab76e5e912711dde8789e69b31"
+  "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
 }
