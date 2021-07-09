@@ -9,8 +9,5 @@
   },
   "devDependencies": {
     "lerna": "^3.22.1"
-  },
-  "dependencies": {
-    "milliparsec": "^2.1.1"
   }
 }
