@@ -58,5 +58,6 @@
     "@uminily/config": "^0.0.3",
     "@uminily/injection": "^0.0.3",
     "type-fest": "^1.2.1"
-  }
+  },
+  "gitHead": "16dc64aefa2bdeab76e5e912711dde8789e69b31"
 }
