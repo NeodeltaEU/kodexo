@@ -1,6 +1,6 @@
 {
   "name": "@uminily/common",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.ts",
   "license": "MIT",
   "repository": "https://github.com/Uminily/uminily",
@@ -51,7 +51,7 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/injection": "^0.0.2",
+    "@uminily/injection": "^0.0.3",
     "type-fest": "^0.20.2"
   }
 }
