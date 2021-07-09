@@ -8,7 +8,7 @@ import {
 } from 'class-validator'
 import { Class } from 'type-fest'
 import { Inject } from '../../../injection/src'
-import { ConnectionDatabase } from '@neatsio/mikro-orm'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
 import { REQUEST_CONTEXT } from '../constants'
 
 interface UniqueValidationArguments<E> extends ValidationArguments {

@@ -1,4 +1,4 @@
-import { Store } from '@neatsio/injection'
+import { Store } from '@kodexo/injection'
 
 export function BodyParams(paramName?: string): Function {
   return (target: any, propertyKey: string, paramaterIndex: number) => {

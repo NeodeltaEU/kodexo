@@ -1,5 +1,5 @@
-import { BodyParams, Controller, Get, Post, RouteParams } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
+import { BodyParams, Controller, Get, Post, RouteParams } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { Crud } from '../../../../src/decorators'
 import { CrudControllerInterface } from '../../../../src/interfaces/CrudControllerInterface'
 import { Car } from './entities/car.entity'

@@ -1,5 +1,5 @@
-import { Factory } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
+import { Factory } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { RegistrationService } from './RegistrationService'
 
 @Factory()

@@ -1,4 +1,4 @@
-import { Store } from '@neatsio/injection'
+import { Store } from '@kodexo/injection'
 import { RouteMethods, Endpoint } from '..'
 import { getClass } from '../../utils/class'
 import { isFunction } from '../../utils/functions/isFunction'

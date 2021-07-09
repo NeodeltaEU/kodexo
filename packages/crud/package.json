@@ -1,5 +1,5 @@
 {
-  "name": "@neatsio/crud",
+  "name": "@kodexo/crud",
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
@@ -38,8 +38,8 @@
     ]
   },
   "devDependencies": {
-    "@neatsio/app": "^0.0.1",
-    "@neatsio/common": "^0.0.1",
+    "@kodexo/app": "^0.0.1",
+    "@kodexo/common": "^0.0.1",
     "@types/faker": "^5.5.7",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
@@ -61,8 +61,8 @@
     "@mikro-orm/cli": "^4.5.7",
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
-    "@neatsio/errors": "^0.0.1",
-    "@neatsio/mikro-orm": "^0.0.1",
+    "@kodexo/errors": "^0.0.1",
+    "@kodexo/mikro-orm": "^0.0.1",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "p-map": "^5.0.0",

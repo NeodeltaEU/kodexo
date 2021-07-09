@@ -1,6 +1,6 @@
-import { Service } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
-import { ConnectionDatabase, RepositoryBuilder } from '@neatsio/mikro-orm'
+import { Service } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
+import { ConnectionDatabase, RepositoryBuilder } from '@kodexo/mikro-orm'
 
 import { CrudService } from '../../../../src/CrudService'
 import { Car } from './entities/car.entity'

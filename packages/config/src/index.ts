@@ -4,7 +4,7 @@ export * from './decorators'
 export * from './main'
 
 declare global {
-  namespace Neatsio {
+  namespace Kodexo {
     interface Configuration {
       port: string | number
 

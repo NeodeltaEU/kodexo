@@ -1,5 +1,5 @@
-import { Controller, Get } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
+import { Controller, Get } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import e = require('express')
 import { CarService } from './CarService'
 

@@ -1,4 +1,4 @@
-import { Store } from '@neatsio/injection'
+import { Store } from '@kodexo/injection'
 
 export abstract class Entity<T extends {} = any, U extends {} = T, V extends {} = T> {
   //[key: string]: any

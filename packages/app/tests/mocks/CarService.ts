@@ -1,5 +1,5 @@
-import { Service } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
+import { Service } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { CarFactory } from './CarFactory'
 import { RegistrationService } from './RegistrationService'
 

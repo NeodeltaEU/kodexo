@@ -29,20 +29,20 @@ export class Store {
       case DecoratorTypes.CONSTRUCTOR_PARAMETER:
       case DecoratorTypes.STATIC_PARAMETER:
       case DecoratorTypes.PARAMETER:
-        const store = getMetadata('neatsio:parameters')
+        const store = getMetadata('kodexo:parameters')
         if (!store.has(descriptorOrIndex)) store.set(descriptorOrIndex, new Map<string, any>())
         return store.get(descriptorOrIndex)
 
       case DecoratorTypes.PROPERTY:
       case DecoratorTypes.STATIC_PROPERTY:
-        return getMetadata('neatsio:properties')
+        return getMetadata('kodexo:properties')
 
       case DecoratorTypes.METHOD:
       case DecoratorTypes.STATIC_METHOD:
-        return getMetadata('neatsio:methods')
+        return getMetadata('kodexo:methods')
 
       case DecoratorTypes.CLASS:
-        return getMetadata('neatsio:class')
+        return getMetadata('kodexo:class')
 
       default:
         throw new Error('An error occured when getting metadata from decorators arguments')

@@ -1,5 +1,5 @@
 {
-  "name": "@neatsio/common",
+  "name": "@kodexo/common",
   "version": "0.0.1",
   "main": "src/index.ts",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@neatsio/injection": "^0.0.1",
+    "@kodexo/injection": "^0.0.1",
     "type-fest": "^0.20.2"
   }
 }

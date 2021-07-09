@@ -1,4 +1,4 @@
-import { Service } from '@neatsio/common'
+import { Service } from '@kodexo/common'
 
 @Service()
 export class RegistrationService {

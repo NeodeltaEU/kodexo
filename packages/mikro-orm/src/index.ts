@@ -5,7 +5,7 @@ export * from './RepositoryBuilder'
 export * from './RequestContextMiddleware'
 
 declare global {
-  namespace Neatsio {
+  namespace Kodexo {
     interface Configuration {
       mikroORM: MikroOptions | MikroConfiguration
     }

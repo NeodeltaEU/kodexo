@@ -1,7 +1,7 @@
 import { Server as HttpServer } from 'http'
-import { ConnectionDatabase } from '@neatsio/mikro-orm'
-import { App } from '@neatsio/app'
-import { providerRegistry } from '@neatsio/injection'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
+import { App } from '@kodexo/app'
+import { providerRegistry } from '@kodexo/injection'
 import { makeFetch, FetchFunction } from 'supertest-fetch'
 import * as faker from 'faker'
 

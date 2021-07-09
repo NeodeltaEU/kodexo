@@ -1,5 +1,5 @@
-import { Controller } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
+import { Controller } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 
 import { Crud } from '../../../../src/decorators'
 import { CrudControllerInterface } from '../../../../src/interfaces/CrudControllerInterface'

@@ -1,10 +1,10 @@
-import { Service } from '@neatsio/common'
+import { Service } from '@kodexo/common'
 
 @Service()
 export class ConfigurationService {
   protected storage: Map<string, any> = new Map()
 
-  applyConfig(configuration: Neatsio.Configuration) {
+  applyConfig(configuration: Kodexo.Configuration) {
     Object.entries(configuration).forEach(([key, value]) => {
       this.set(key, value)
     })

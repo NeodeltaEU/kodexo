@@ -1,7 +1,7 @@
 import { EntityRepository } from '@mikro-orm/core'
-import { isObject } from '@neatsio/common'
-import { Inject } from '@neatsio/injection'
-import { ConnectionDatabase } from '@neatsio/mikro-orm'
+import { isObject } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
 import {
   registerDecorator,
   ValidationArguments,

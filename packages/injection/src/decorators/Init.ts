@@ -1,4 +1,4 @@
-import { getClass } from '@neatsio/common'
+import { getClass } from '@kodexo/common'
 import { Store } from '../main'
 
 export function Init() {

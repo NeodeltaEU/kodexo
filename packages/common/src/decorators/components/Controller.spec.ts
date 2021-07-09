@@ -1,4 +1,4 @@
-import { providerRegistry } from '@neatsio/injection'
+import { providerRegistry } from '@kodexo/injection'
 import { Controller } from '..'
 import { ControllerProvider } from '../../main'
 

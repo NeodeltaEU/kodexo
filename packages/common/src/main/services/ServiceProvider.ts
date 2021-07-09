@@ -1,4 +1,4 @@
-import { Provider } from '@neatsio/injection'
+import { Provider } from '@kodexo/injection'
 import { Class } from 'type-fest'
 
 import { Endpoint } from '../metadata'

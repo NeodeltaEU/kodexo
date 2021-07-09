@@ -1,8 +1,8 @@
 import { EntityMetadata, MikroORM } from '@mikro-orm/core'
 import { PostgreSqlDriver } from '@mikro-orm/postgresql'
-import { Service } from '@neatsio/common'
-import { Init, Inject } from '@neatsio/injection'
-import { ConfigurationService } from '@neatsio/config'
+import { Service } from '@kodexo/common'
+import { Init, Inject } from '@kodexo/injection'
+import { ConfigurationService } from '@kodexo/config'
 
 @Service()
 export class ConnectionDatabase {

@@ -2,10 +2,10 @@ import { Server } from 'http'
 import { App as TinyApp, Handler, Request, Response } from '@tinyhttp/app'
 import { cors } from '@tinyhttp/cors'
 import { json } from 'body-parser'
-import { Inject, providerRegistry, Store } from '@neatsio/injection'
-import { ControllerProvider, RouteMethods } from '@neatsio/common'
-import { ConfigurationService } from '@neatsio/config'
-import { HttpError } from '@neatsio/errors'
+import { Inject, providerRegistry, Store } from '@kodexo/injection'
+import { ControllerProvider, RouteMethods } from '@kodexo/common'
+import { ConfigurationService } from '@kodexo/config'
+import { HttpError } from '@kodexo/errors'
 
 import { importFiles } from './utils/importFiles'
 import { Class } from 'type-fest'
@@ -169,7 +169,7 @@ export class App {
    * @param tokenServer
    */
   static async bootstrap(tokenServer: Class): Promise<Server> {
-    const config = Store.from(tokenServer).get('configuration') as Neatsio.Configuration
+    const config = Store.from(tokenServer).get('configuration') as Kodexo.Configuration
 
     providerRegistry
       .resolve<ConfigurationService>(ConfigurationService)

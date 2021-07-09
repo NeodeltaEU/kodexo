@@ -1,4 +1,4 @@
-import { Store } from '@neatsio/injection'
+import { Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 import { RouteMethods } from '../methods'
 

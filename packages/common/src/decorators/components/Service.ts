@@ -1,4 +1,4 @@
-import { providerRegistry, Registries } from '@neatsio/injection'
+import { providerRegistry, Registries } from '@kodexo/injection'
 import { ServiceProvider } from '../../main'
 
 /**
