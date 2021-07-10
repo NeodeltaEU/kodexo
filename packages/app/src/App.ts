@@ -1,14 +1,13 @@
-import { Server } from 'http'
 import { App as TinyApp, Handler, Request, Response } from '@tinyhttp/app'
 import { cors } from '@tinyhttp/cors'
-import { json } from 'body-parser'
-import { Inject, providerRegistry, Store } from '@uminily/injection'
 import { ControllerProvider, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
 import { HttpError } from '@uminily/errors'
-
-import { importFiles } from './utils/importFiles'
+import { Inject, providerRegistry, Store } from '@uminily/injection'
+import { json } from 'body-parser'
+import { Server } from 'http'
 import { Class } from 'type-fest'
+import { importFiles } from './utils/importFiles'
 
 /**
  *
