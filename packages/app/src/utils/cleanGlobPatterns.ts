@@ -1,4 +1,4 @@
-import { resolve, join } from 'path'
+import { join, resolve } from 'path'
 const fixPath = require('normalize-path')
 
 export function isArray<T = any>(target: unknown): target is T[] {
