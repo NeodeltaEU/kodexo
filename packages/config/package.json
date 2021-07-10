@@ -1,6 +1,6 @@
 {
   "name": "@uminily/config",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "main": "src/index.ts",
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
@@ -52,8 +52,8 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/common": "^0.0.5",
-    "@uminily/injection": "^0.0.5"
+    "@uminily/common": "^0.0.6",
+    "@uminily/injection": "^0.0.6"
   },
   "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
 }
