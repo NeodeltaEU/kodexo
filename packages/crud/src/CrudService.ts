@@ -7,12 +7,10 @@ import {
   ReferenceType,
   ValidationError
 } from '@mikro-orm/core'
-import { NonFunctionPropertyNames } from '@mikro-orm/core/typings'
 import { HttpError } from '@uminily/errors'
 import pMap from 'p-map'
 import { Class } from 'type-fest'
-import { ConnectionDatabase, RepositoryBuilder } from '../../mikro-orm/src'
-import { Car } from '../tests/mocks/features/cars/entities/car.entity'
+import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
 import { QueryParsedResult } from './QueryParser'
 
 export abstract class CrudService<E extends AnyEntity> {

@@ -7,7 +7,7 @@ import {
   ValidatorConstraintInterface
 } from 'class-validator'
 import { Class } from 'type-fest'
-import { Inject } from '../../../injection/src'
+import { Inject } from '@uminily/injection'
 import { ConnectionDatabase } from '@uminily/mikro-orm'
 import { REQUEST_CONTEXT } from '../constants'
 

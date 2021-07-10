@@ -5,6 +5,8 @@
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
+    "clean": "rm -rf build",
+    "build": "rimraf ./dist && tsc",
     "test": "jest --coverage --runInBand --colors"
   },
   "jest": {
