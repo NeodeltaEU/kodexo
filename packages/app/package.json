@@ -5,12 +5,12 @@
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
     "clean": "rm -rf build",
-    "build": "rimraf dist && rollup -c rollup.config.ts",
+    "build": "rimraf ./dist && tsc",
     "test": "jest --coverage --runInBand --colors"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "typings": "dist/types/src/index.d.ts",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],

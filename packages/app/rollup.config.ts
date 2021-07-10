@@ -7,5 +7,10 @@ export default {
     format: 'cjs',
     sourcemap: true
   },
-  plugins: [typescript()]
+  external: ['@tinyhttp/app'],
+  plugins: [
+    typescript({
+      useTsconfigDeclarationDir: true
+    })
+  ]
 }
