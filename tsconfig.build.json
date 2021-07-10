@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "esnext",
     "target": "es2018",
     "sourceMap": true,
     "strict": true,
@@ -10,6 +10,9 @@
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
     "outDir": "build",
-    "resolveJsonModule": true
-  }
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "declaration": true
+  },
+  "exclude": ["node_modules", "./node_modules", "./node_modules/*"]
 }
