@@ -13,6 +13,9 @@ import { Class } from 'type-fest'
 import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
 import { QueryParsedResult } from './QueryParser'
 
+/**
+ *
+ */
 export abstract class CrudService<E extends AnyEntity> {
   protected readonly repository: EntityRepository<E>
   protected readonly entityMetadata: EntityMetadata
