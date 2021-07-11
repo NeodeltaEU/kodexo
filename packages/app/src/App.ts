@@ -54,6 +54,7 @@ export class App {
       .buildBeforeCustomMiddleware()
       .buildRoutesController()
       .buildFinalMiddlewares()
+      .buildMiscRoutes()
   }
 
   /**
@@ -84,6 +85,15 @@ export class App {
    *
    */
   private buildFinalMiddlewares() {
+    return this
+  }
+
+  /**
+   *
+   */
+  private buildMiscRoutes() {
+    // Avoiding 404 error on favicon when browsers hit the API
+    this.rawApp.get('/favicon.ico', (req, res) => res.status(204).end())
     return this
   }
 
