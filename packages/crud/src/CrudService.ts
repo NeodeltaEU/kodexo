@@ -7,10 +7,10 @@ import {
   ReferenceType,
   ValidationError
 } from '@mikro-orm/core'
+import { pMap } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
-import pMap from 'p-map'
-import { Class } from 'type-fest'
 import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
+import { Class } from 'type-fest'
 import { QueryParsedResult } from './QueryParser'
 
 /**
