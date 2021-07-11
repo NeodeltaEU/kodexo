@@ -1,10 +1,12 @@
 import { Configuration } from '@uminily/config'
 import '@uminily/mikro-orm'
-import { RequestContextMiddleware } from '@uminily/mikro-orm'
+import { ConnectionDatabase, RequestContextMiddleware } from '@uminily/mikro-orm'
+import { ServerHooks } from '@uminily/app'
 import { Car } from './features/cars/entities/car.entity'
 import { Dealership } from './features/dealerships/entities/dealership.entity'
 import { User } from './features/users/entities/user.entity'
 import { Workshop } from './features/workshops/entities/workshop.entity'
+import { Inject } from '../../../injection/dist'
 
 @Configuration({
   port: 4000,
@@ -13,6 +15,7 @@ import { Workshop } from './features/workshops/entities/workshop.entity'
     type: 'postgresql',
     user: 'kodex',
     password: 'kodex',
+    port: 5433,
     entities: [Car, Workshop, Dealership, User],
     debug: false
   },
@@ -21,4 +24,4 @@ import { Workshop } from './features/workshops/entities/workshop.entity'
   debugServer: true,
   skipClientError: true
 })
-export class Server {}
+export class Server implements ServerHooks {}

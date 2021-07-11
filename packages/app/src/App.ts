@@ -7,6 +7,7 @@ import { Inject, providerRegistry, Store } from '@uminily/injection'
 import { json } from 'body-parser'
 import { Server } from 'http'
 import { Class } from 'type-fest'
+import { ServerHooks } from './interfaces'
 import { importFiles } from './utils/importFiles'
 
 /**
@@ -177,8 +178,10 @@ export class App {
    *
    * @param tokenServer
    */
-  static async bootstrap(tokenServer: Class): Promise<Server> {
+  static async bootstrap(tokenServer: Class<ServerHooks>): Promise<Server> {
     const config = Store.from(tokenServer).get('configuration') as Kodexo.Configuration
+
+    const server = new tokenServer()
 
     providerRegistry
       .resolve<ConfigurationService>(ConfigurationService)
@@ -193,6 +196,8 @@ export class App {
     })
 
     await Promise.all(initPromises)
+
+    if (server.afterInit) await server.afterInit()
 
     const app = new App()
     return app.rawApp.listen(3000)
