@@ -1,4 +1,4 @@
-import { Server } from 'http'
+import { Server } from './mocks/Server'
 import * as request from 'supertest'
 import { App } from '../src/App'
 
@@ -6,7 +6,7 @@ let server: Server
 
 describe('App', () => {
   beforeAll(async done => {
-    server = await App.buildSingleRawApp()
+    server = await App.bootstrap(Server)
     done()
   })
 

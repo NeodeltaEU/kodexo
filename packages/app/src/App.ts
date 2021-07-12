@@ -1,10 +1,11 @@
 import { App as TinyApp, Handler, Request, Response } from '@tinyhttp/app'
 import { cors } from '@tinyhttp/cors'
+import { logger } from '@tinyhttp/logger'
 import { ControllerProvider, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
 import { HttpError } from '@uminily/errors'
 import { Inject, providerRegistry, Store } from '@uminily/injection'
-import { json } from 'body-parser'
+import { json, urlencoded } from 'body-parser'
 import { Server } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
@@ -18,7 +19,7 @@ export class App {
 
   public readonly rawApp = new TinyApp({
     onError: (err, req, res) => {
-      err = err.defaultHttpClassError || err
+      if (err.code === 404) err = HttpError.NotFound()
 
       const statusCode = err.statusCode || 500
 
@@ -50,7 +51,7 @@ export class App {
   /**
    *
    */
-  constructor(private options = {}) {
+  constructor() {
     this.buildMandatoryMiddlewares()
       .buildBeforeCustomMiddleware()
       .buildRoutesController()
@@ -62,9 +63,12 @@ export class App {
    *
    */
   private buildMandatoryMiddlewares() {
-    this.rawApp.use(cors()).use(json())
-    //.use(json())
-    //.use(urlencoded({ extended: true }))
+    if (this.configurationService.get('logRoutes')) this.rawApp.use(logger())
+
+    this.rawApp
+      .use(cors())
+      .use(json())
+      .use(urlencoded({ extended: true }))
 
     return this
   }
@@ -103,8 +107,6 @@ export class App {
    */
   private buildRoutesController() {
     providerRegistry.controllers.forEach((controllerProvider: ControllerProvider) => {
-      //const router = new TinyApp()
-
       controllerProvider.endpoints.forEach(endpoint => {
         const handler = async (req: Request, res: Response) => {
           const result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
@@ -131,8 +133,6 @@ export class App {
             break
         }
       })
-
-      //this.rawApp.use(controllerProvider.path.toString(), router)
     })
 
     return this
@@ -142,36 +142,9 @@ export class App {
    *
    * @param port
    */
-  public listen(port = 3000): Server {
+  public listenForRequests(): Server {
+    const port = this.configurationService.get('port') || 3000
     return this.rawApp.listen(port)
-  }
-
-  /**
-   *
-   */
-  static async start(options: AppOptions = {}) {
-    await importFiles('**/*Controller.ts')
-
-    const app = new App()
-    return app.listen(options.port)
-  }
-
-  /**
-   *
-   */
-  static async buildSingleRawApp(options: AppOptions = {}) {
-    await importFiles('**/*.controller.ts')
-
-    let initPromises: any = []
-
-    providerRegistry.services.forEach(value => {
-      initPromises.push(value.init())
-    })
-
-    await Promise.all(initPromises)
-
-    const app = new App()
-    return app.rawApp.listen(options.port || 3000)
   }
 
   /**
@@ -200,10 +173,6 @@ export class App {
     if (server.afterInit) await server.afterInit()
 
     const app = new App()
-    return app.rawApp.listen(3000)
+    return app.listenForRequests()
   }
-}
-
-export type AppOptions = {
-  port?: number
 }

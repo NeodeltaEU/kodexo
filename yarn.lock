@@ -1534,6 +1534,15 @@
   resolved "https://registry.yarnpkg.com/@tinyhttp/forwarded/-/forwarded-1.3.0.tgz#376d4692906377d2c89eeba4af04b32982fdc2b5"
   integrity sha512-U2FPtOH+DoFtd98edMRyqiquRaiuEl5I2PMUWdKaBSpiAIR96buyanQ7hScenz1MihK0AVid7wLAviaJU+Xlyg==
 
+"@tinyhttp/logger@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@tinyhttp/logger/-/logger-1.3.0.tgz#3924b16449277ac9e950e8d70fb26ce5d16c4327"
+  integrity sha512-u8vbW8OEPur3ZlkJGNO+Nl/xw78cdIaDAcWMUEg7o3UY9L5xezMQcLBPX8ykJLEB+Yl+BDmTvt1s1LzkwM6mNQ==
+  dependencies:
+    colorette "^1.2.2"
+    dayjs "^1.10.4"
+    http-status-emojis "^2.2.0"
+
 "@tinyhttp/proxy-addr@1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@tinyhttp/proxy-addr/-/proxy-addr-1.3.0.tgz#f1310f30acdf6bfbf08babb17ff3d94fb1fb81e9"
@@ -2838,6 +2847,11 @@ colorette@1.2.1:
   resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.1.tgz#4d0b921325c14faf92633086a536db6e89564b1b"
   integrity sha512-puCDz0CzydiSYOrnXpz/PKd69zRrribezjtE9yd4zvytoRc8+RY/KJPvtPFKZS3E3wP6neGyMe0vOTlHO5L3Pw==
 
+colorette@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz#cbcc79d5e99caea2dbf10eb3a26fd8b3e6acfa94"
+  integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
+
 colors@^1.1.2:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
@@ -3140,6 +3154,11 @@ dateformat@~1.0.4-1.2.3:
   dependencies:
     get-stdin "^4.0.1"
     meow "^3.3.0"
+
+dayjs@^1.10.4:
+  version "1.10.6"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
+  integrity sha512-AztC/IOW4L1Q41A86phW5Thhcrco3xuAA+YX/BLpLWWjRcTj5TOt/QImBLmCKlrF7u7k47arTnOyL6GnbG8Hvw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
@@ -4534,6 +4553,11 @@ http-signature@~1.2.0:
     assert-plus "^1.0.0"
     jsprim "^1.2.2"
     sshpk "^1.7.0"
+
+http-status-emojis@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/http-status-emojis/-/http-status-emojis-2.2.0.tgz#2cf3316f0c1610c4fc94c6fccdada35aa70f992a"
+  integrity sha512-ompKtgwpx8ff0hsbpIB7oE4ax1LXoHmftsHHStMELX56ivG3GhofTX8ZHWlUaFKfGjcGjw6G3rPk7dJRXMmbbg==
 
 https-proxy-agent@^2.2.3:
   version "2.2.4"

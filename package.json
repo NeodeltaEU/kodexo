@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap --use-workspaces"
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "publish-all": "lerna run build && lerna run test && lerna publish"
   },
   "devDependencies": {
     "lerna": "^3.22.1"

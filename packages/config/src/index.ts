@@ -14,6 +14,8 @@ declare global {
 
       skipClientError: boolean
 
+      logRoutes: boolean
+
       middlewares: Handler[]
     }
   }
