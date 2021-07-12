@@ -18,6 +18,9 @@ jobs:
       - run: yarn
         name: Install dependencies
 
+      - run: yarn bootstrap
+        name: Bootstrap with Lerna
+
       - run: lerna run build
         name: Build packages
 
