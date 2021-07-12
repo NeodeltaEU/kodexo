@@ -9,6 +9,8 @@ import { Workshop } from './features/workshops/entities/workshop.entity'
 
 const { POSTGRES_HOST, POSTGRES_PORT } = process.env
 
+console.log(POSTGRES_HOST, POSTGRES_PORT)
+
 @Configuration({
   port: 4000,
   mikroORM: {
