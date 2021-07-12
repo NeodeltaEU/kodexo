@@ -8,7 +8,9 @@ jobs:
 
     services:
       postgres:
-        image: postgres
+        image: postgres:latest
+        ports:
+          - 5432:5432
         env:
           POSTGRES_DB: kodex
           POSTGRES_USER: kodex
@@ -29,6 +31,16 @@ jobs:
         with:
           node-version: '14'
           registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install PostgreSQL client
+        run: |
+          apt-get update
+          apt-get install --yes postgresql-client
+
+      - name: Query database
+        run: psql -h postgres -d postgres_db -U postgres_user -c 'SELECT 1;'
+        env:
+          PGPASSWORD: kodex
 
       - run: yarn
         name: Install dependencies
