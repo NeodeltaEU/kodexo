@@ -1,11 +1,6 @@
 name: Clean Package Versions
 
-on:
-  push:
-    branches:
-      - master
-    paths:
-      - "packages/app/**"
+on: [push]
 
 jobs:
  clean:
