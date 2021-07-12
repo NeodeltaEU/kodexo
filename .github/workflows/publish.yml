@@ -34,16 +34,6 @@ jobs:
           node-version: '14'
           registry-url: 'https://npm.pkg.github.com'
 
-      - name: Install PostgreSQL client
-        run: |
-          apt-get update
-          apt-get install --yes postgresql-client
-
-      - name: Query database
-        run: psql -h postgres -d kodex -U kodex -c 'SELECT 1;'
-        env:
-          PGPASSWORD: kodex
-
       - run: yarn
         name: Install dependencies
 
