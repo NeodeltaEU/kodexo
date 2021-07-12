@@ -50,14 +50,14 @@ jobs:
       - run: yarn bootstrap
         name: Bootstrap with Lerna
 
-      - run: lerna run build
+      - run: yarn build
         name: Build packages
 
-      - run: lerna run test
+      - run: yarn test
         name: Testing packages
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
 
-      - run: lerna publish
-        name: Publish to repo
+      #- run: yarn lerna publish
+      #  name: Publish to repo
