@@ -1,6 +1,6 @@
 {
   "name": "@uminily/app",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
@@ -67,10 +67,10 @@
     "@tinyhttp/app": "^1.3.11",
     "@tinyhttp/cors": "^1.1.7",
     "@tinyhttp/logger": "^1.3.0",
-    "@uminily/common": "^0.0.16",
-    "@uminily/config": "^0.0.16",
-    "@uminily/errors": "^0.0.16",
-    "@uminily/injection": "^0.0.16",
+    "@uminily/common": "^0.0.17",
+    "@uminily/config": "^0.0.17",
+    "@uminily/errors": "^0.0.17",
+    "@uminily/injection": "^0.0.17",
     "body-parser": "^1.19.0",
     "globby": "^11.0.2",
     "normalize-path": "^3.0.0",
