@@ -1,4 +1,17 @@
-- uses: actions/delete-package-versions@v1
-  with:
-    package-name: '@uminily/app'
-    num-old-versions-to-delete: 5
+name: Clean Package Versions
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "packages/app/**"
+
+jobs:
+ clean:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/delete-package-versions@v1
+      with:
+        package-name: '@uminily/app'
+        num-old-versions-to-delete: 5
