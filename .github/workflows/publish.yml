@@ -1,0 +1,28 @@
+name: Publish packages
+
+on: [push]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout
+
+      - uses: actions/setup-node@v2
+        name: Install node
+        with:
+          node-version: '14'
+          registry-url: 'https://npm.pkg.github.com'
+
+      - run: yarn
+        name: Install dependencies
+
+      - run: lerna run build
+        name: Build packages
+
+      - run: lerna run test
+        name: Testing packages
+
+      - run: lerna publish
+        name: Publish to repo
