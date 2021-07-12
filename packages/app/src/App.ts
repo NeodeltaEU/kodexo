@@ -1,8 +1,8 @@
 import { App as TinyApp, Handler, Request, Response } from '@tinyhttp/app'
 import { cors } from '@tinyhttp/cors'
-import { logger } from '@tinyhttp/logger'
 import { ControllerProvider, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
+import { LoggerService } from '@uminily/logger'
 import { HttpError } from '@uminily/errors'
 import { Inject, providerRegistry, Store } from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
@@ -16,6 +16,7 @@ import { importFiles } from './utils/importFiles'
  */
 export class App {
   @Inject configurationService: ConfigurationService
+  @Inject logger: LoggerService
 
   public readonly rawApp = new TinyApp({
     onError: (err, req, res) => {
@@ -23,16 +24,17 @@ export class App {
 
       const statusCode = err.statusCode || 500
 
-      const debugServer = this.configurationService.get('debugServer') ?? true
-      const debugClient = this.configurationService.get('debugClient') ?? true
-      const skipClientError = this.configurationService.get('skipClientError') ?? false
+      const debugServer = this.configurationService.get('debug.displayErrorsOnServerCli') ?? true
+      const debugClient =
+        this.configurationService.get('debug.displayErrorsOnClientResponse') ?? true
+      const skipClientError = this.configurationService.get('debug.skipClientRequestError') ?? false
 
       if (debugServer && ((!skipClientError && statusCode < 500) || statusCode >= 500))
-        console.error(err)
+        this.logger.error(err)
 
       if (statusCode === 500) err = HttpError.InternalServerError()
 
-      const { message, defaultHttpClassError } = err
+      const { message } = err
 
       const stack = debugClient ? err.stack : undefined
       const errorCode = err.errorCode ? 'E' + err.errorCode.toString().padStart(5, '0') : undefined
@@ -63,7 +65,8 @@ export class App {
    *
    */
   private buildMandatoryMiddlewares() {
-    if (this.configurationService.get('logRoutes')) this.rawApp.use(logger())
+    if (this.configurationService.get('logs.request'))
+      this.rawApp.use(this.logger.getLoggerMiddleware())
 
     this.rawApp
       .use(cors())
@@ -144,7 +147,9 @@ export class App {
    */
   public listenForRequests(): Server {
     const port = this.configurationService.get('port') || 3000
-    return this.rawApp.listen(port)
+    return this.rawApp.listen(port, () => {
+      this.logger.info(`SERVER STARTED ON ${port}`)
+    })
   }
 
   /**

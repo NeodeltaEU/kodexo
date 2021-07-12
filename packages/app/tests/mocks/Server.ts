@@ -1,6 +1,12 @@
 import { Configuration } from '@uminily/config'
 
 @Configuration({
-  debugServer: false
+  debug: {
+    displayErrorsOnServerCli: false
+  },
+
+  logs: {
+    request: false
+  }
 })
 export class Server {}

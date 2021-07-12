@@ -1,20 +1,35 @@
 import { Service } from '@uminily/common'
+import * as objectPath from 'object-path'
+import { PartialDeep } from 'type-fest'
 
 @Service()
 export class ConfigurationService {
-  protected storage: Map<string, any> = new Map()
+  protected storage: PartialDeep<Kodexo.Configuration> = {}
 
-  applyConfig(configuration: Kodexo.Configuration) {
-    Object.entries(configuration).forEach(([key, value]) => {
-      this.set(key, value)
-    })
+  /**
+   *
+   * @param configuration
+   */
+  applyConfig(configuration: PartialDeep<Kodexo.Configuration>) {
+    this.storage = configuration
   }
 
-  get(key: string) {
-    return this.storage.get(key)
+  /**
+   *
+   * @param key
+   * @returns
+   */
+  get(path: string) {
+    return objectPath.get(this.storage, path)
   }
 
-  set(key: string, value: any) {
-    return this.storage.set(key, value)
+  /**
+   *
+   * @param key
+   * @param value
+   * @returns
+   */
+  set(path: string, value: any) {
+    objectPath.set(this.storage, path, value)
   }
 }
