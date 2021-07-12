@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
+    "@types/jest": "^26.0.24",
     "@types/pino-http": "^5.4.2",
     "@types/supertest": "^2.0.10",
     "@typescript-eslint/eslint-plugin": "^4.15.0",

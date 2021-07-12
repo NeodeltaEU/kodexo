@@ -10,11 +10,9 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strictPropertyInitialization": false,
-    "outDir": "build",
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "declaration": true,
     "composite": true
-  },
-  "exclude": ["node_modules", "./node_modules", "./node_modules/*"]
+  }
 }

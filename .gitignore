@@ -13,3 +13,5 @@ compiled
 
 .vscode
 *.code-workspace
+
+tsconfig.build.tsbuildinfo

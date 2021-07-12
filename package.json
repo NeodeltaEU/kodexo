@@ -7,6 +7,9 @@
   ],
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "clean": "rimraf -rf packages/**/dist && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
     "publish-all": "lerna run build && lerna run test && lerna publish"
   },
   "devDependencies": {
