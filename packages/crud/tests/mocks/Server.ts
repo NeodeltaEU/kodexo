@@ -21,7 +21,7 @@ console.log(POSTGRES_HOST, POSTGRES_PORT)
     password: 'kodex',
     port: parseInt(POSTGRES_PORT as string, 10) || 5433,
     entities: [Car, Workshop, Dealership, User],
-    debug: false
+    debug: true
   },
   middlewares: [RequestContextMiddleware()],
 
