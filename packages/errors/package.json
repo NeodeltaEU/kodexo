@@ -8,7 +8,7 @@
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
     "clean": "rm -rf build",
-    "build": "rimraf ./dist && tsc --project tsconfig.build.json",
+    "build": "rimraf ./dist && tsc -b tsconfig.build.json",
     "test": "jest --runInBand --colors --forceExit"
   },
   "jest": {

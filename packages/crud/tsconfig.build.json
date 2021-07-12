@@ -5,5 +5,15 @@
     "outDir": "dist",
     "rootDir": "src"
   },
+
+  "references": [
+    {
+      "path": "../errors/tsconfig.build.json"
+    },
+    {
+      "path": "../mikro-orm/tsconfig.build.json"
+    }
+  ],
+
   "exclude": ["node_modules", "dist"]
 }

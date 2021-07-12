@@ -1,4 +1,4 @@
-import { getClass } from '@uminily/common'
+import { getClass } from '../utils/class'
 import { Store } from '../main'
 
 export function Init() {

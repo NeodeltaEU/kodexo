@@ -5,5 +5,24 @@
     "outDir": "dist",
     "rootDir": "src"
   },
+
+  "references": [
+    {
+      "path": "../injection/tsconfig.build.json"
+    },
+    {
+      "path": "../errors/tsconfig.build.json"
+    },
+    {
+      "path": "../config/tsconfig.build.json"
+    },
+    {
+      "path": "../common/tsconfig.build.json"
+    },
+    {
+      "path": "../logger/tsconfig.build.json"
+    }
+  ],
+
   "exclude": ["node_modules", "dist"]
 }

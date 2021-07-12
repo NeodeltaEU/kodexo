@@ -7,8 +7,8 @@
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
-    "clean": "rm -rf build",
-    "build": "rimraf ./dist && tsc --project tsconfig.build.json",
+    "clean": "rimraf ./dist && rimraf tsconfig.build.tsbuildinfo",
+    "build": "yarn clean && tsc -b tsconfig.build.json",
     "test": "jest --runInBand --colors --forceExit"
   },
   "jest": {
