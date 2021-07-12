@@ -3,10 +3,102 @@ name: Clean Package Versions
 on: [push]
 
 jobs:
- clean:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/delete-package-versions@v1
-      with:
-        package-name: 'app'
-        num-old-versions-to-delete: 5
+  clean-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'app'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'injection'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'common'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'config'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'errors'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'mikro-orm'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'crud'
+          num-old-versions-to-delete: 10
+
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'logger'
+          num-old-versions-to-delete: 10
+
+
+#  clean-injection:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'injection'
+#          num-old-versions-to-delete: 10
+#
+#  clean-common:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'common'
+#          num-old-versions-to-delete: 10
+#
+#  clean-config:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'config'
+#          num-old-versions-to-delete: 10
+#
+#  clean-errors:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'errors'
+#          num-old-versions-to-delete: 10
+#
+#  clean-mikro-orm:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'mikro-orm'
+#          num-old-versions-to-delete: 10
+#
+#  clean-crud:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'crud'
+#          num-old-versions-to-delete: 10
+#
+#  clean-logger:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'logger'
+#          num-old-versions-to-delete: 10
