@@ -27,7 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-
+        with:
+          fetch-depth: 0
 
       - name: Install node
         uses: actions/setup-node@v2
@@ -64,7 +65,23 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+
+
+########
+# TODO: Clean from a SHA1 or something like that (avoid to delete last package)
+########
+
+  clean-app:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'app'
+          num-old-versions-to-delete: 1
+
   clean-injection:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
@@ -73,6 +90,7 @@ jobs:
           num-old-versions-to-delete: 1
 
   clean-common:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
@@ -81,6 +99,7 @@ jobs:
           num-old-versions-to-delete: 1
 
   clean-config:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
@@ -89,6 +108,7 @@ jobs:
           num-old-versions-to-delete: 1
 
   clean-errors:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
@@ -97,6 +117,7 @@ jobs:
           num-old-versions-to-delete: 1
 
   clean-mikro-orm:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
@@ -105,6 +126,7 @@ jobs:
           num-old-versions-to-delete: 1
 
   clean-crud:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
@@ -113,6 +135,7 @@ jobs:
           num-old-versions-to-delete: 1
 
   clean-logger:
+    needs: publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/delete-package-versions@v1
