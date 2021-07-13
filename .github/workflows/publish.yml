@@ -25,35 +25,39 @@ jobs:
           --health-retries 5
 
     steps:
-      - uses: actions/checkout@v2
-        name: Checkout
+      - name: Checkout
+        uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2
-        name: Install node
+
+      - name: Install node
+        uses: actions/setup-node@v2
         with:
           node-version: '14'
           registry-url: 'https://npm.pkg.github.com'
           scope: '@uminily'
 
-      - run: yarn
-        name: Install dependencies
+      - name: Install dependencies
+        run: yarn
 
-      - run: yarn bootstrap
-        name: Bootstrap with Lerna
+      - name: Bootstrap with Lerna
+        run: yarn bootstrap
 
-      - run: yarn build
-        name: Build packages
+      - name: Build packages
+        run: yarn build
 
-      - run: yarn test
-        name: Testing packages
+      - name: Testing packages
+        run: yarn test
         env:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
 
-      - run: yarn publish-all
-        name: Publish to repo
+      - name: Publish to repo
+        run: |
+          yarn version:ci
+          yarn publish:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   clean-injection:
     runs-on: ubuntu-latest

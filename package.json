@@ -6,13 +6,17 @@
     "packages/*"
   ],
   "scripts": {
+    "commit": "git-cz",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "lerna run build",
     "test": "lerna run test",
     "clean": "rimraf -rf packages/**/dist && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
-    "publish-all": "lerna publish from-package --yes"
+    "version:ci": "lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'",
+    "publish:ci": "lerna publish from-package --yes"
   },
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "lerna": "^4.0.0"
   }
 }
