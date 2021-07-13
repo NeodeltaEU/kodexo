@@ -33,6 +33,7 @@ jobs:
         with:
           node-version: '14'
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@uminily'
 
       - run: yarn
         name: Install dependencies
@@ -49,5 +50,7 @@ jobs:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
 
-      #- run: yarn lerna publish
-      #  name: Publish to repo
+      - run: yarn publish-all
+        name: Publish to repo
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

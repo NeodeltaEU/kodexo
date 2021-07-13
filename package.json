@@ -10,7 +10,7 @@
     "build": "lerna run build",
     "test": "lerna run test",
     "clean": "rimraf -rf packages/**/dist && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
-    "publish-all": "lerna run build && lerna run test && lerna publish"
+    "publish-all": "lerna publish from-package --yes"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
