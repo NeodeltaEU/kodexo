@@ -54,3 +54,59 @@ jobs:
         name: Publish to repo
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  clean-injection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'injection'
+          num-old-versions-to-delete: 1
+
+  clean-common:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'common'
+          num-old-versions-to-delete: 1
+
+  clean-config:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'config'
+          num-old-versions-to-delete: 1
+
+  clean-errors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'errors'
+          num-old-versions-to-delete: 1
+
+  clean-mikro-orm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'mikro-orm'
+          num-old-versions-to-delete: 1
+
+  clean-crud:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'crud'
+          num-old-versions-to-delete: 1
+
+  clean-logger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/delete-package-versions@v1
+        with:
+          package-name: 'logger'
+          num-old-versions-to-delete: 1
