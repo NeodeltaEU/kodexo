@@ -71,74 +71,75 @@ jobs:
 # TODO: Clean from a SHA1 or something like that (avoid to delete last package)
 ########
 
-  clean-app:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'app'
-          num-old-versions-to-delete: 1
-
-  clean-injection:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'injection'
-          num-old-versions-to-delete: 1
-
-  clean-common:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'common'
-          num-old-versions-to-delete: 1
-
-  clean-config:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'config'
-          num-old-versions-to-delete: 1
-
-  clean-errors:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'errors'
-          num-old-versions-to-delete: 1
-
-  clean-mikro-orm:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'mikro-orm'
-          num-old-versions-to-delete: 1
-
-  clean-crud:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'crud'
-          num-old-versions-to-delete: 1
-
-  clean-logger:
-    needs: publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/delete-package-versions@v1
-        with:
-          package-name: 'logger'
-          num-old-versions-to-delete: 1
+#  clean-app:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'app'
+#          num-old-versions-to-delete: 1
+#
+#  clean-injection:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'injection'
+#          num-old-versions-to-delete: 1
+#
+#  clean-common:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'common'
+#          num-old-versions-to-delete: 1
+#
+#  clean-config:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'config'
+#          num-old-versions-to-delete: 1
+#
+#  clean-errors:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'errors'
+#          num-old-versions-to-delete: 1
+#
+#  clean-mikro-orm:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'mikro-orm'
+#          num-old-versions-to-delete: 1
+#
+#  clean-crud:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'crud'
+#          num-old-versions-to-delete: 1
+#
+#  clean-logger:
+#    needs: publish
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/delete-package-versions@v1
+#        with:
+#          package-name: 'logger'
+#          num-old-versions-to-delete: 1
+#
