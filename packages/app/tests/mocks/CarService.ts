@@ -5,8 +5,10 @@ import { RegistrationService } from './RegistrationService'
 
 @Service()
 export class CarService {
-  @Inject private registrationService: RegistrationService
-  @Inject private carFactory: CarFactory
+  constructor(
+    @Inject private carFactory: CarFactory,
+    @Inject private registrationService: RegistrationService
+  ) {}
 
   /**
    *

@@ -2,7 +2,9 @@ import { Configuration } from '@uminily/config'
 
 @Configuration({
   debug: {
-    displayErrorsOnServerCli: false
+    displayErrorsOnServerCli: true,
+    skipClientRequestError: true,
+    displayErrorsOnClientResponse: false
   },
 
   logs: {

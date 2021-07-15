@@ -68,6 +68,8 @@ export class Provider<T = any> {
       ? this.store.get('constructorParams')
       : []
 
+    constructorsParams.sort((a: any, b: any) => a.parameterIndex - b.parameterIndex)
+
     if (!this.singleton)
       this.singleton = new this.token(
         ...constructorsParams.map((param: ConstructorParam) => param.provider.instance)

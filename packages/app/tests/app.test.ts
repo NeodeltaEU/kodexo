@@ -1,8 +1,9 @@
+import { Server as HttpServer } from 'http'
 import { Server } from './mocks/Server'
 import * as request from 'supertest'
 import { App } from '../src/App'
 
-let server: Server
+let server: HttpServer
 
 describe('App', () => {
   beforeAll(async done => {
@@ -12,6 +13,8 @@ describe('App', () => {
 
   it('should start a new app', async () => {
     const result = await request(server).get('/').expect(404)
+
+    console.log('wesh')
   })
 
   it('should have one controller', async () => {

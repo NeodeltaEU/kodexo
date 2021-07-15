@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build",
     "build": "rimraf ./dist && tsc -b tsconfig.build.json",
-    "test": "jest --runInBand --colors --forceExit"
+    "test": "jest --runInBand --colors"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
