@@ -39,7 +39,7 @@
   "scripts": {
     "commit": "git-cz",
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "build": "yarn clean && lerna run build",
+    "build": "yarn clean && lerna run build && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
     "test": "lerna run test",
     "clean": "rimraf -rf packages/**/dist && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
     "version:ci": "lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'",
