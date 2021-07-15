@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/config@0.2.0...@uminily/config@0.2.1) (2021-07-15)
+
+
+### Bug Fixes
+
+* **config:** return value on getOrFail method ([18cb31e](https://github.com/Uminily/kodexo/commit/18cb31e893f552c8a09cc59561e57923fffe89cb))
+
+
+
+
+
 # 0.2.0 (2021-07-15)
 
 

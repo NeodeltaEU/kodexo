@@ -1,6 +1,6 @@
 {
   "name": "@uminily/mikro-orm",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -60,7 +60,7 @@
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
     "@uminily/common": "^0.1.1",
-    "@uminily/config": "^0.2.0",
+    "@uminily/config": "^0.2.1",
     "@uminily/injection": "^0.1.1",
     "type-fest": "^1.2.1"
   },
