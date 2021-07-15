@@ -5,18 +5,53 @@
   "workspaces": [
     "packages/*"
   ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "scope-enum": [
+        2,
+        "always",
+        [
+          "app",
+          "common",
+          "config",
+          "crud",
+          "errors",
+          "injection",
+          "logger",
+          "mikro-orm"
+        ]
+      ],
+      "subject-max-length": [
+        2,
+        "always",
+        120
+      ]
+    }
+  },
   "scripts": {
     "commit": "git-cz",
     "bootstrap": "lerna bootstrap --use-workspaces",
-    "build": "lerna run build",
+    "build": "yarn clean && lerna run build",
     "test": "lerna run test",
     "clean": "rimraf -rf packages/**/dist && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
     "version:ci": "lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'",
-    "publish:ci": "lerna publish from-package --yes"
+    "publish:ci": "lerna publish from-package --yes",
+    "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "commitizen": "^4.2.4",
     "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.0",
     "lerna": "^4.0.0"
   }
 }
