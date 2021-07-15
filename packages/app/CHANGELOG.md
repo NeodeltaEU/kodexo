@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.2.1...@uminily/app@0.2.2) (2021-07-15)
+
+
+### Bug Fixes
+
+* **injection:** import constructor params order ([c779cf7](https://github.com/Uminily/kodexo/commit/c779cf7df3312aa09e4ef719da8ee561e78a1f82))
+
+
+
+
+
 ## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.2.0...@uminily/app@0.2.1) (2021-07-15)
 
 **Note:** Version bump only for package @uminily/app
