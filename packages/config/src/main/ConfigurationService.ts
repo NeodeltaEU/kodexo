@@ -25,6 +25,17 @@ export class ConfigurationService {
 
   /**
    *
+   * @param path
+   */
+  getOrFail(path: string) {
+    if (!objectPath.has(this.storage, path))
+      throw new Error(`Path "${path}" is not found in current configuration`)
+
+    objectPath.get(this.storage, path)
+  }
+
+  /**
+   *
    * @param key
    * @param value
    * @returns
