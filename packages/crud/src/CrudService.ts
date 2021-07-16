@@ -10,6 +10,7 @@ import {
 import { pMap } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
+import { Except } from 'type-fest'
 import { Class } from 'type-fest'
 import { QueryParsedResult } from './QueryParser'
 
@@ -60,7 +61,7 @@ export abstract class CrudService<E extends AnyEntity> {
    * @param id
    * @returns
    */
-  async getOne(id: any, queryParams: QueryParsedResult) {
+  async getOne(id: any, queryParams: QueryParsedResultForOneResult) {
     try {
       return this.retrieve(id, queryParams)
     } catch (err) {
@@ -112,7 +113,7 @@ export abstract class CrudService<E extends AnyEntity> {
   /**
    *
    */
-  async createOne(dto: any, queryParams: QueryParsedResult) {
+  async createOne(dto: any, queryParams: QueryParsedResultForOneResult) {
     const createdEntity: any = this.repository.create(dto)
     this.repository.persist(createdEntity)
     await this.save()
@@ -125,7 +126,7 @@ export abstract class CrudService<E extends AnyEntity> {
   /**
    *
    */
-  async updateOne(id: any, dto: any, queryParams: QueryParsedResult) {
+  async updateOne(id: any, dto: any, queryParams: QueryParsedResultForOneResult) {
     const entity = await this.retrieve(id, { identifiers: false })
 
     const initCollectionPromises: any[] = this.collectionFields
@@ -243,3 +244,8 @@ export abstract class CrudService<E extends AnyEntity> {
 type applyCollectionIdentifierForEntityOptions = {
   selectedFields?: string[]
 }
+
+type QueryParsedResultForOneResult = Except<
+  QueryParsedResult,
+  'limit' | 'offset' | 'orderBy' | 'filter'
+>
