@@ -1,5 +1,7 @@
+import { Handler } from '@tinyhttp/app'
 import { Store } from '@uminily/injection'
 import { Class } from 'type-fest'
+import { MiddlewareHandling } from '../../interfaces'
 import { RouteMethods } from '../methods'
 
 /**
@@ -16,6 +18,8 @@ export class Endpoint {
 
   public store: Store
 
+  public middlewares: MiddlewareHandler[] = []
+
   public propertyKey: string
 
   public externalDecorating: boolean = false
@@ -29,7 +33,8 @@ export class Endpoint {
     method,
     path,
     statusCode,
-    externalDecorating
+    externalDecorating,
+    middlewares
   }: EndpointOptions) {
     this.store = Store.from(target, propertyKey, descriptor)
 
@@ -40,6 +45,8 @@ export class Endpoint {
     this.path = path
     this.target = target
     this.propertyKey = propertyKey
+
+    if (middlewares?.length) this.middlewares = middlewares
 
     this.prepareStatusCode(statusCode)
   }
@@ -54,6 +61,24 @@ export class Endpoint {
     }
 
     this.statusCode = this.store.has('statusCode') ? this.store.get('statusCode') : statusCode
+  }
+
+  /**
+   *
+   * @param middlewares
+   */
+  addMiddleware(handler: Handler, instance?: MiddlewareHandling, top = false) {
+    const toPush = {
+      handler,
+      instance
+    }
+
+    if (top) {
+      this.middlewares.unshift(toPush)
+      return
+    }
+
+    this.middlewares.push(toPush)
   }
 
   /**
@@ -98,5 +123,11 @@ export type EndpointOptions = {
   descriptor: any
   method: RouteMethods
   path: string
+  middlewares?: MiddlewareHandler[]
   statusCode?: number
+}
+
+export type MiddlewareHandler = {
+  handler: Handler
+  instance?: MiddlewareHandling
 }

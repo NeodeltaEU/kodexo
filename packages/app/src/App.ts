@@ -1,4 +1,4 @@
-import { App as TinyApp, Handler, Request, Response } from '@tinyhttp/app'
+import { App as TinyApp, Handler, NextFunction, Request, Response } from '@tinyhttp/app'
 import { cors } from '@tinyhttp/cors'
 import { ControllerProvider, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
@@ -118,21 +118,30 @@ export class App {
 
         const path = controllerProvider.path.toString() + endpoint.path
 
+        const middlewares: Handler[] = endpoint.middlewares.map(
+          middleware => (req: Request, res: Response, next: NextFunction) => {
+            if (middleware.instance)
+              return middleware.handler.bind(middleware.instance)(req, res, next)
+
+            return middleware.handler(req, res, next)
+          }
+        )
+
         switch (endpoint.method) {
           case RouteMethods.GET:
-            this.rawApp.get(path, handler)
+            this.rawApp.get(path, ...middlewares, handler)
             break
 
           case RouteMethods.POST:
-            this.rawApp.post(path, handler)
+            this.rawApp.post(path, ...middlewares, handler)
             break
 
           case RouteMethods.PATCH:
-            this.rawApp.patch(path, handler)
+            this.rawApp.patch(path, ...middlewares, handler)
             break
 
           case RouteMethods.DELETE:
-            this.rawApp.delete(path, handler)
+            this.rawApp.delete(path, ...middlewares, handler)
             break
         }
       })

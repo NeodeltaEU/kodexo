@@ -1,7 +1,7 @@
 import { Class } from 'type-fest'
 import { Provider } from './Provider'
 
-// TODO: WTF? Is this needed ?
+// FIXME: WTF? Is this needed ?
 export type RegistryKey = Class
 
 /**
@@ -9,7 +9,8 @@ export type RegistryKey = Class
  */
 export enum Registries {
   SERVICE = 'services',
-  CONTROLLER = 'controllers'
+  CONTROLLER = 'controllers',
+  MIDDLEWARE = 'middlewares'
 }
 
 /**

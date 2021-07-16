@@ -1,6 +1,7 @@
-import { EndpointBuilder, RouteMethods } from '@uminily/common'
+import { EndpointBuilder, MiddlewareHandling, RouteMethods } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { validateOrReject, ValidationError } from 'class-validator'
+import { Class } from 'type-fest'
 import { REQUEST_CONTEXT } from './constants'
 import { CrudService } from './CrudService'
 import { CrudOptionsType } from './decorators'
@@ -54,7 +55,13 @@ export class CrudRouteFactory<M, C, U> {
     this.defaultRoutes.forEach(route => {
       const { name, path, method } = route
 
-      let descriptor, statusCode
+      let descriptor,
+        statusCode,
+        middlewares: Class<MiddlewareHandling>[] = []
+
+      if (this.options?.middlewares?.hasOwnProperty(name)) {
+        middlewares = (this.options.middlewares as any)[name] as Class<MiddlewareHandling>[]
+      }
 
       switch (name) {
         case 'getMany':
@@ -80,7 +87,7 @@ export class CrudRouteFactory<M, C, U> {
       }
 
       //
-      return this.buildRoute(path, method, name, descriptor as Function, statusCode)
+      return this.buildRoute(path, method, name, descriptor as Function, middlewares, statusCode)
     })
   }
 
@@ -239,6 +246,7 @@ export class CrudRouteFactory<M, C, U> {
     method: RouteMethods,
     propertyName: string,
     descriptor: Function,
+    middlewares: Class<MiddlewareHandling>[],
     statusCode?: number
   ) {
     return EndpointBuilder.startWithController(this.target)
@@ -248,6 +256,7 @@ export class CrudRouteFactory<M, C, U> {
       .withDescriptor(descriptor)
       .withStatusCode(statusCode)
       .fromExternalDecorator()
+      .withMiddlewares(middlewares)
       .build()
   }
 }

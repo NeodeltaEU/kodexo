@@ -10,6 +10,8 @@ import { Car } from './mocks/features/cars/entities/car.entity'
 import { Dealership } from './mocks/features/dealerships/entities/dealership.entity'
 import { User } from './mocks/features/users/entities/user.entity'
 import { Workshop } from './mocks/features/workshops/entities/workshop.entity'
+import { Profile } from './mocks/features/profiles/entities/profile.entity'
+import { LogMiddleware, mockCall } from './mocks/middlewares/LogMiddleware'
 
 describe('[Method]: GET', () => {
   let fetch: FetchFunction
@@ -703,6 +705,20 @@ describe('[Method]: GET', () => {
           const currentDate = new Date(car.registeredAt).getTime()
           expect(beforeDate).toBeLessThanOrEqual(currentDate)
         })
+      })
+    })
+
+    describe('- Middlewares', () => {
+      beforeAll(async () => {
+        await connection.syncSchema()
+
+        const profile = new Profile()
+
+        profile.private = true
+
+        connection.orm.em.persist(profile)
+
+        await connection.orm.em.flush()
       })
     })
   })

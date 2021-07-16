@@ -20,7 +20,7 @@ export class ControllerProvider<T = any> extends Provider<T> {
   /**
    *
    */
-  get endpoints() {
+  get endpoints(): Endpoint[] {
     const [external, internal] = partition(
       this.store.get('endpoints') as Endpoint[],
       endpoint => endpoint.externalDecorating

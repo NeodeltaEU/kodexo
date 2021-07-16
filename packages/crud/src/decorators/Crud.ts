@@ -1,4 +1,5 @@
 import { Class } from 'type-fest'
+import { MiddlewareHandling } from '../../../common/dist'
 import { CrudRouteFactory } from '../CrudRoutesFactory'
 
 /**
@@ -23,4 +24,13 @@ export type CrudOptionsType<M, C, U> = {
     createDto: Class<C>
     updateDto: Class<U>
   }
+  middlewares?: Partial<MiddlewareCrudOptionsType>
+}
+
+type MiddlewareCrudOptionsType = {
+  getOne: Class<MiddlewareHandling>[]
+  getMany: Class<MiddlewareHandling>[]
+  createOne: Class<MiddlewareHandling>[]
+  updateOne: Class<MiddlewareHandling>[]
+  deleteOne: Class<MiddlewareHandling>[]
 }

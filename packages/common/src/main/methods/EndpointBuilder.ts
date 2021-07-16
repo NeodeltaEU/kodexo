@@ -1,7 +1,10 @@
-import { Store } from '@uminily/injection'
-import { RouteMethods, Endpoint } from '..'
+import { providerRegistry, Store } from '@uminily/injection'
+import { Class } from 'type-fest'
+import { Endpoint, RouteMethods } from '..'
+import { MiddlewareHandling } from '../../interfaces'
 import { getClass } from '../../utils/class'
 import { isFunction } from '../../utils/functions/isFunction'
+import { MiddlewareHandler } from '../metadata'
 
 export function mapOptions(args: any[]) {
   let method: string | undefined = undefined
@@ -43,6 +46,8 @@ export class EndpointBuilder {
 
   private externalDecorating: boolean = false
 
+  private middlewares: MiddlewareHandler[]
+
   constructor(private target: any) {
     if (!target) throw new Error('A target must be a controller to create an endpoint')
   }
@@ -83,6 +88,24 @@ export class EndpointBuilder {
 
   /**
    *
+   */
+  withMiddlewares(middlewareTokens: Array<Class<MiddlewareHandling>>) {
+    this.middlewares = middlewareTokens.map(token => {
+      const { instance } = providerRegistry.resolve<MiddlewareHandling>(token)
+
+      const handler = instance.use
+
+      return {
+        handler,
+        instance
+      } as MiddlewareHandler
+    })
+
+    return this
+  }
+
+  /**
+   *
    * @param statusCode
    * @returns
    */
@@ -114,7 +137,16 @@ export class EndpointBuilder {
    *
    */
   build() {
-    const { target, propertyKey, method, path, descriptor, externalDecorating, statusCode } = this
+    const {
+      target,
+      propertyKey,
+      method,
+      path,
+      descriptor,
+      externalDecorating,
+      statusCode,
+      middlewares
+    } = this
 
     if (!propertyKey) throw new Error('Please use `fromProperty()` on EndpointBuilder...')
 
@@ -125,7 +157,8 @@ export class EndpointBuilder {
       path,
       descriptor,
       externalDecorating,
-      statusCode
+      statusCode,
+      middlewares
     })
 
     const classStore = Store.from(getClass(target))
@@ -143,18 +176,19 @@ export class EndpointBuilder {
    * @returns
    */
   static buildDecoratorMethod(method: RouteMethods) {
-    return (path: string = '/', options: any = {}) => (...args: any[]): any => {
-      const [target, propertyKey, descriptor] = args
+    return (path: string = '/', options: any = {}) =>
+      (...args: any[]): any => {
+        const [target, propertyKey, descriptor] = args
 
-      const endpointBuilder = new EndpointBuilder(target)
+        const endpointBuilder = new EndpointBuilder(target)
 
-      endpointBuilder
-        .forPath(path)
-        .withMethod(method)
-        .fromProperty(propertyKey)
-        .withDescriptor(descriptor)
-        .build()
-    }
+        endpointBuilder
+          .forPath(path)
+          .withMethod(method)
+          .fromProperty(propertyKey)
+          .withDescriptor(descriptor)
+          .build()
+      }
   }
 
   /**

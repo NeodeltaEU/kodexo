@@ -12,9 +12,7 @@ describe('App', () => {
   })
 
   it('should start a new app', async () => {
-    const result = await request(server).get('/').expect(404)
-
-    console.log('wesh')
+    await request(server).get('/').expect(404)
   })
 
   it('should have one controller', async () => {
@@ -22,5 +20,12 @@ describe('App', () => {
 
     expect(body).toHaveLength(1)
     expect(body[0]).toMatchObject({ model: 'Mégane', id: 1, registration: '11-111-111' })
+  })
+
+  it('should post on secured route', async () => {
+    const { body }: any = await request(server)
+      .post('/cars/secured')
+      .send({ test: 'test' })
+      .expect(200)
   })
 })
