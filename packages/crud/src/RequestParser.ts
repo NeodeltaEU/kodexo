@@ -1,4 +1,4 @@
-import { Request, URLParams } from '@uminily/app'
+import { Request, URLParams } from '@uminily/common'
 import { plainToClass } from 'class-transformer'
 import { REQUEST_CONTEXT } from './constants'
 import { QueryParsedResult, QueryParser } from './QueryParser'

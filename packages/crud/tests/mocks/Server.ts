@@ -1,15 +1,13 @@
+import { ServerHooks } from '@uminily/app'
 import { Configuration } from '@uminily/config'
 import '@uminily/mikro-orm'
-import { ConnectionDatabase, RequestContextMiddleware } from '@uminily/mikro-orm'
-import { ServerHooks } from '@uminily/app'
+import { RequestContextMiddleware } from '@uminily/mikro-orm'
 import { Car } from './features/cars/entities/car.entity'
 import { Dealership } from './features/dealerships/entities/dealership.entity'
 import { User } from './features/users/entities/user.entity'
 import { Workshop } from './features/workshops/entities/workshop.entity'
 
 const { POSTGRES_HOST, POSTGRES_PORT } = process.env
-
-console.log(POSTGRES_HOST, POSTGRES_PORT)
 
 @Configuration({
   port: 4000,

@@ -1,6 +1,5 @@
 import { EntityMetadata } from '@mikro-orm/core'
-import { Request } from '@uminily/app'
-import { isObject } from '@uminily/common'
+import { isObject, Request } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { Inject } from '@uminily/injection'
 import { ConnectionDatabase } from '@uminily/mikro-orm'
