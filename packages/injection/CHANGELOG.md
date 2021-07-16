@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.1.2...@uminily/injection@0.2.0) (2021-07-16)
+
+
+### Features
+
+* middleware implementation ([1f3f92f](https://github.com/Uminily/kodexo/commit/1f3f92fa8e44b21f9e44520cf9fa5d09ad7f1786))
+
+
+
+
+
 ## 0.1.2 (2021-07-15)
 
 

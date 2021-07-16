@@ -1,6 +1,6 @@
 {
   "name": "@uminily/common",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -56,8 +56,8 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/injection": "^0.1.2",
     "@tinyhttp/app": "^1.3.14",
+    "@uminily/injection": "^0.2.0",
     "type-fest": "^0.20.2"
   },
   "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
