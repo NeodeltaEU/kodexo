@@ -34,10 +34,8 @@ export class QueryParser {
 
   private currentEntityMetadata: EntityMetadata
 
-  constructor(req: Request, fromBody = false, private currentEntity?: string) {
+  constructor(rawQuery: any, private stringify = true, private currentEntity?: string) {
     this.setCurrentEntityMetadata()
-
-    const rawQuery: any = fromBody ? req.body : req.query
 
     this.parsePopulate(rawQuery.$populate)
     this.parseSelect(rawQuery.$select)
@@ -144,10 +142,16 @@ export class QueryParser {
 
     let filterPlainObjectParsed
 
-    try {
-      filterPlainObjectParsed = JSON.parse(rawFilter)
-    } catch (err) {
-      throw HttpError.BadRequest(`Malformed JSON Filter`)
+    if (this.stringify) {
+      try {
+        filterPlainObjectParsed = JSON.parse(rawFilter)
+      } catch (err) {
+        throw HttpError.BadRequest(`Malformed JSON Filter`)
+      }
+    } else {
+      if (!isObject(rawFilter)) throw HttpError.BadRequest(`Malformed JSON Filter`)
+
+      filterPlainObjectParsed = rawFilter
     }
 
     // TODO: test all fields if there are in metadata entity properties
@@ -248,7 +252,22 @@ export class QueryParser {
     // TODO: Not Good, go via Store & Reflect metadata
     const fromBody = req.method === 'POST' && req.path.includes('filter')
 
-    const queryParser = new QueryParser(req, fromBody, currentEntity)
+    let stringify
+
+    const rawQuery = (() => {
+      const querySchema = req.get('X-query-schema')
+
+      if (querySchema) {
+        stringify = false
+        return JSON.parse(Buffer.from(querySchema as string, 'base64').toString())
+      }
+
+      if (fromBody) stringify = false
+
+      return fromBody ? req.body : req.query
+    })()
+
+    const queryParser = new QueryParser(rawQuery, stringify, currentEntity)
 
     return queryParser.render()
   }

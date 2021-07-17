@@ -708,6 +708,172 @@ describe('[Method]: GET', () => {
       })
     })
 
+    describe('- Query Schema Header', () => {
+      let workshopId: string, dealershipId: string
+
+      /**
+       * This is the beginnings of the fetching SDK
+       * @param query
+       * @returns
+       */
+      function prepareHeader(query: any) {
+        const buffer = Buffer.from(JSON.stringify(query), 'utf-8')
+        const schemaHeader = buffer.toString('base64')
+
+        return {
+          'X-Query-schema': schemaHeader
+        }
+      }
+
+      const initialCarData = [
+        { title: 'My first Car', doors: 4 },
+        { title: 'My second Car', doors: 4 },
+        { title: 'My last Car', doors: 6 }
+      ]
+
+      beforeAll(async () => {
+        await connection.syncSchema()
+
+        const workshop = new Workshop()
+        workshop.title = 'My first Workshop'
+        workshop.country = 'GERMANY'
+        workshop.city = 'Berlin'
+
+        workshopId = workshop.id
+
+        connection.orm.em.persist(workshop)
+
+        const dealership = new Dealership()
+        dealership.title = 'My first Dealership'
+        dealershipId = dealership.id
+
+        connection.orm.em.persist(dealership)
+
+        const dealership2 = new Dealership()
+        dealership2.title = 'My second Dealership'
+        connection.orm.em.persist(dealership2)
+
+        const dealership3 = new Dealership()
+        dealership3.title = 'My third Dealership'
+        connection.orm.em.persist(dealership3)
+
+        const user = new User()
+        user.email = 'john.doe@acme.com'
+        user.favoriteDealerships.add(dealership)
+        user.favoriteDealerships.add(dealership2)
+        connection.orm.em.persist(user)
+
+        const user2 = new User()
+        user2.email = 'jane.doe@acme.com'
+        user2.favoriteDealerships.add(dealership)
+        connection.orm.em.persist(user2)
+
+        const user3 = new User()
+        user3.email = 'jane.doe@acme.com'
+        connection.orm.em.persist(user3)
+
+        initialCarData.forEach((carData, index) => {
+          const car = new Car()
+
+          car.title = carData.title
+          car.dealership = dealership
+          car.doors = carData.doors
+          car.owner = user
+
+          connection.orm.em.persist(car)
+        })
+
+        await connection.orm.em.flush()
+      })
+
+      it('should filter cars on one field', async () => {
+        const $filter = {
+          title: 'My first Car'
+        }
+
+        const headers = prepareHeader({ $filter })
+
+        const result = await fetch(`/cars`, { headers }).expect(200).json()
+
+        expect(result).toHaveLength(1)
+        expect(result[0].title).toBe('My first Car')
+      })
+
+      it('should filter cars with one other field (number)', async () => {
+        const $filter = {
+          doors: 4
+        }
+
+        const headers = prepareHeader({ $filter })
+
+        const result = await fetch(`/cars`, { headers }).expect(200).json()
+
+        expect(result).toHaveLength(2)
+      })
+
+      it('should filter cars with two fields', async () => {
+        const $filter = {
+          title: 'My first Car',
+          doors: 4
+        }
+
+        const headers = prepareHeader({ $filter })
+
+        const result = await fetch(`/cars`, { headers }).expect(200).json()
+
+        expect(result).toHaveLength(1)
+        expect(result[0].title).toBe('My first Car')
+      })
+
+      it('should filter cars with $or operator', async () => {
+        const $filter = {
+          $or: [
+            {
+              title: 'My first Car'
+            },
+            {
+              doors: 6
+            }
+          ]
+        }
+
+        const headers = prepareHeader({ $filter })
+
+        const result = await fetch(`/cars`, { headers }).expect(200).json()
+
+        expect(result).toHaveLength(2)
+        expect(result[0].title).toBe('My first Car')
+        expect(result[1].title).toBe('My last Car')
+      })
+
+      it('should filter cars with complex subquery', async () => {
+        const $filter = {
+          dealership: dealershipId,
+          $or: [
+            {
+              title: 'My first Car'
+            },
+            {
+              $and: [
+                {
+                  title: 'My last Car',
+                  doors: 6
+                }
+              ]
+            }
+          ]
+        }
+
+        const headers = prepareHeader({ $filter })
+
+        const result = await fetch(`/cars`, { headers }).expect(200).json()
+
+        expect(result).toHaveLength(2)
+        expect(result[0].title).toBe('My first Car')
+        expect(result[1].title).toBe('My last Car')
+      })
+    })
+
     describe('- Middlewares', () => {
       beforeAll(async () => {
         await connection.syncSchema()
