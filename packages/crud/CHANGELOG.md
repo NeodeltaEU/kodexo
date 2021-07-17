@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.3.0...@uminily/crud@0.4.0) (2021-07-17)
+
+
+### Features
+
+* **crud:** add query-schema header system ([806af73](https://github.com/Uminily/kodexo/commit/806af732f9fa638782a959f3b90c51faac987a80))
+
+
+
+
+
 # [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.2.2...@uminily/crud@0.3.0) (2021-07-16)
 
 
