@@ -220,9 +220,9 @@ export class QueryParser {
     this.orderBy = fields.reduce((result: any, field: string) => {
       const isDesc = field.startsWith('-')
 
-      const order = isDesc ? 'DESC' : 'ASC'
+      const fieldName = isDesc ? field.substring(1) : field
 
-      result[field] = isDesc ? order.substring(1) : order
+      result[fieldName] = isDesc ? 'DESC' : 'ASC'
 
       return result
     }, {})
