@@ -1,5 +1,5 @@
 import { App as TinyApp, Handler, NextFunction, Request, Response } from '@tinyhttp/app'
-import { cors } from '@tinyhttp/cors'
+import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { ControllerProvider, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
 import { LoggerService } from '@uminily/logger'
@@ -68,8 +68,12 @@ export class App {
     if (this.configurationService.get('logs.request'))
       this.rawApp.use(this.logger.getLoggerMiddleware())
 
+    const corsOptions: AccessControlOptions = {
+      allowedHeaders: ['content-type', 'x-query-schema']
+    }
+
     this.rawApp
-      .use(cors())
+      .use(cors(corsOptions))
       .use(json())
       .use(urlencoded({ extended: true }))
 
