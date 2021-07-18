@@ -69,7 +69,7 @@ export class App {
       this.rawApp.use(this.logger.getLoggerMiddleware())
 
     const corsOptions: AccessControlOptions = {
-      allowedHeaders: ['content-type', 'x-query-schema']
+      allowedHeaders: ['content-type', 'x-query-schema', 'authorization']
     }
 
     this.rawApp
