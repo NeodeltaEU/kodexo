@@ -218,9 +218,11 @@ export class QueryParser {
     // TODO: test all fields if there are in metadata entity properties
 
     this.orderBy = fields.reduce((result: any, field: string) => {
-      const order = field.startsWith('-') ? 'DESC' : 'ASC'
+      const isDesc = field.startsWith('-')
 
-      result[field] = order
+      const order = isDesc ? 'DESC' : 'ASC'
+
+      result[field] = isDesc ? order.substring(1) : order
 
       return result
     }, {})
