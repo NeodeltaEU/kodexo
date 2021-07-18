@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.4.1...@uminily/crud@0.5.0) (2021-07-18)
+
+
+### Features
+
+* start headers & x-total-count on getMany ([51ef2ae](https://github.com/Uminily/kodexo/commit/51ef2ae180633a28207cd458a175d8a67da1bf85))
+
+
+
+
+
 ## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.4.0...@uminily/crud@0.4.1) (2021-07-18)
 
 
