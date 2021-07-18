@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.4.0...@uminily/crud@0.4.1) (2021-07-18)
+
+
+### Bug Fixes
+
+* **crud:** queryparams must be not mandatory ([c0dab9c](https://github.com/Uminily/kodexo/commit/c0dab9c8304764d862d45e8531cdbc9098db83fd))
+
+
+
+
+
 # [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.3.0...@uminily/crud@0.4.0) (2021-07-17)
 
 
