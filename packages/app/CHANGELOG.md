@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.4.0...@uminily/app@0.4.1) (2021-07-18)
+
+
+### Bug Fixes
+
+* **app:** add cors options for x-query-schema ([ece5259](https://github.com/Uminily/kodexo/commit/ece525907daa57cce05b3978f5059fbcc0f2e700))
+* **app:** miss authorization header in cors ([cd612b6](https://github.com/Uminily/kodexo/commit/cd612b620153812fbf7251aea8a1eba07cc0ae25))
+
+
+
+
+
 # [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.3.0...@uminily/app@0.4.0) (2021-07-18)
 
 
