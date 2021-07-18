@@ -1,4 +1,4 @@
-import { EndpointBuilder, MiddlewareHandling, RouteMethods } from '@uminily/common'
+import { Endpoint, EndpointBuilder, MiddlewareHandling, RouteMethods } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { validateOrReject, ValidationError } from 'class-validator'
 import { Class } from 'type-fest'
@@ -196,10 +196,16 @@ export class CrudRouteFactory<M, C, U> {
    * @returns
    */
   private prepareGetManyRoute() {
-    return async (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+    return async (
+      service: CrudService<M>,
+      parsedParams: RequestParsedResult,
+      endpoint: Endpoint
+    ) => {
       const { entities, count } = await service.getMany(parsedParams.queryParams)
 
       // TODO: return count on an Header (make domain metho & decorator then)
+
+      endpoint.setHeader('X-Total-Count', count)
 
       return entities
     }
@@ -228,8 +234,12 @@ export class CrudRouteFactory<M, C, U> {
   private prepareRoute(handler: Function) {
     const parserOptions = { ...this.options.dto }
 
-    return function (this: CrudControllerInterface<M>, req: any, res: any) {
-      return handler(this.service, RequestParser.parse(req, parserOptions, this.service.entityName))
+    return function (this: CrudControllerInterface<M>, req: any, res: any, endpoint: Endpoint) {
+      return handler(
+        this.service,
+        RequestParser.parse(req, parserOptions, this.service.entityName),
+        endpoint
+      )
     }
   }
 

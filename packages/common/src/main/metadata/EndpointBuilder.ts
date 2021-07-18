@@ -1,10 +1,10 @@
 import { providerRegistry, Store } from '@uminily/injection'
 import { Class } from 'type-fest'
 import { Endpoint, RouteMethods } from '..'
-import { MiddlewareHandling } from '../../interfaces'
+import { Dictionnary, MiddlewareHandling } from '../../interfaces'
 import { getClass } from '../../utils/class'
 import { isFunction } from '../../utils/functions/isFunction'
-import { MiddlewareHandler } from '../metadata'
+import { MiddlewareHandler } from '.'
 
 export function mapOptions(args: any[]) {
   let method: string | undefined = undefined
@@ -47,6 +47,8 @@ export class EndpointBuilder {
   private externalDecorating: boolean = false
 
   private middlewares: MiddlewareHandler[]
+
+  private headers: Dictionnary = {}
 
   constructor(private target: any) {
     if (!target) throw new Error('A target must be a controller to create an endpoint')
@@ -131,6 +133,20 @@ export class EndpointBuilder {
   fromExternalDecorator() {
     this.externalDecorating = true
     return this
+  }
+
+  /**
+   *
+   */
+  addHeader(key: string, value: string) {
+    this.headers[key] = value
+  }
+
+  /**
+   *
+   */
+  addHeaders(headers: Dictionnary) {
+    this.headers = { ...this.headers, ...headers }
   }
 
   /**

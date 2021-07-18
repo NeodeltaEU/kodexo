@@ -112,7 +112,13 @@ export class App {
     providerRegistry.controllers.forEach((controllerProvider: ControllerProvider) => {
       controllerProvider.endpoints.forEach(endpoint => {
         const handler = async (req: Request, res: Response) => {
+          //
           const result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
+
+          //
+          res.set(endpoint.headers)
+
+          //
           res.status(endpoint.statusCode).json(result)
         }
 

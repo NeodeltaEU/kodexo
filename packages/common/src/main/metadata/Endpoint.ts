@@ -2,6 +2,7 @@ import { Handler } from '@tinyhttp/app'
 import { Store } from '@uminily/injection'
 import { Class } from 'type-fest'
 import { MiddlewareHandling } from '../../interfaces'
+import { Dictionnary } from '../../interfaces/Dictionnary'
 import { RouteMethods } from '../methods'
 
 /**
@@ -13,6 +14,8 @@ export class Endpoint {
   public method: RouteMethods
 
   public statusCode: number = 200
+
+  public headers: Dictionnary = {}
 
   public descriptor: any
 
@@ -34,6 +37,7 @@ export class Endpoint {
     path,
     statusCode,
     externalDecorating,
+    headers,
     middlewares
   }: EndpointOptions) {
     this.store = Store.from(target, propertyKey, descriptor)
@@ -47,6 +51,7 @@ export class Endpoint {
     this.propertyKey = propertyKey
 
     if (middlewares?.length) this.middlewares = middlewares
+    if (headers && Object.keys(headers).length) this.headers = headers
 
     this.prepareStatusCode(statusCode)
   }
@@ -84,13 +89,22 @@ export class Endpoint {
   /**
    *
    */
+  setHeader(key: string, value: any) {
+    this.headers[key] = value
+  }
+
+  /**
+   *
+   */
   get handler() {
     const { descriptor, externalDecorating, target, propertyKey } = this
+
+    const currentEndpoint = this
 
     const paramTypes = Reflect.getMetadata('design:paramtypes', target, propertyKey) || []
 
     return function (this: any, req: any, res: any) {
-      if (externalDecorating) return descriptor.apply(this, [req, res])
+      if (externalDecorating) return descriptor.apply(this, [req, res, currentEndpoint])
 
       const params = new Array(paramTypes.length).fill(null).map((entry, index) => {
         const store = Store.from(target, propertyKey, index)
@@ -124,6 +138,7 @@ export type EndpointOptions = {
   method: RouteMethods
   path: string
   middlewares?: MiddlewareHandler[]
+  headers?: Dictionnary
   statusCode?: number
 }
 

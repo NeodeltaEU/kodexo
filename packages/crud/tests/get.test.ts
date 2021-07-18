@@ -353,6 +353,7 @@ describe('[Method]: GET', () => {
         const result = await fetch(`/cars`)
           .expect(200)
           .expect('content-type', 'application/json')
+          .expect('x-total-count', '3')
           .json()
 
         expect(result).toHaveLength(3)
@@ -367,6 +368,7 @@ describe('[Method]: GET', () => {
         const result = await fetch(`/workshops`)
           .expect(200)
           .expect('content-type', 'application/json')
+          .expect('x-total-count', 0)
           .json()
 
         expect(result).toHaveLength(0)
@@ -378,6 +380,7 @@ describe('[Method]: GET', () => {
         const result = await fetch(`/dealerships?$populate=cars`)
           .expect(200)
           .expect('content-type', 'application/json')
+          .expect('x-total-count', 1)
           .json()
 
         expect(result).toHaveLength(1)
@@ -390,6 +393,7 @@ describe('[Method]: GET', () => {
         const result = await fetch(`/dealerships?$populate=cars.owner`)
           .expect(200)
           .expect('content-type', 'application/json')
+          .expect('x-total-count', 1)
           .json()
 
         expect(result[0].title).toBe('My first Dealership')
@@ -552,7 +556,10 @@ describe('[Method]: GET', () => {
           title: 'My first Car'
         })
 
-        const result = await fetch(`/cars?$filter=${filter}`).expect(200).json()
+        const result = await fetch(`/cars?$filter=${filter}`)
+          .expect(200)
+          .expect('x-total-count', 1)
+          .json()
 
         expect(result).toHaveLength(1)
         expect(result[0].title).toBe('My first Car')
@@ -563,7 +570,10 @@ describe('[Method]: GET', () => {
           doors: 4
         })
 
-        const result = await fetch(`/cars?$filter=${filter}`).expect(200).json()
+        const result = await fetch(`/cars?$filter=${filter}`)
+          .expect(200)
+          .expect('x-total-count', 2)
+          .json()
 
         expect(result).toHaveLength(2)
       })
@@ -574,7 +584,10 @@ describe('[Method]: GET', () => {
           doors: 4
         })
 
-        const result = await fetch(`/cars?$filter=${filter}`).expect(200).json()
+        const result = await fetch(`/cars?$filter=${filter}`)
+          .expect(200)
+          .expect('x-total-count', 1)
+          .json()
 
         expect(result).toHaveLength(1)
         expect(result[0].title).toBe('My first Car')
@@ -592,7 +605,10 @@ describe('[Method]: GET', () => {
           ]
         })
 
-        const result = await fetch(`/cars?$filter=${filter}`).expect(200).json()
+        const result = await fetch(`/cars?$filter=${filter}`)
+          .expect(200)
+          .expect('x-total-count', 2)
+          .json()
 
         expect(result).toHaveLength(2)
         expect(result[0].title).toBe('My first Car')
@@ -617,7 +633,10 @@ describe('[Method]: GET', () => {
           ]
         })
 
-        const result = await fetch(`/cars?$filter=${filter}`).expect(200).json()
+        const result = await fetch(`/cars?$filter=${filter}`)
+          .expect(200)
+          .expect('x-total-count', 2)
+          .json()
 
         expect(result).toHaveLength(2)
         expect(result[0].title).toBe('My first Car')
@@ -643,12 +662,18 @@ describe('[Method]: GET', () => {
       })
 
       it('should return the 10 first cars when limit is set', async () => {
-        const result = await fetch(`/cars?$limit=10`).expect(200).json()
+        const result = await fetch(`/cars?$limit=10`)
+          .expect(200)
+          .expect('x-total-count', 300)
+          .json()
         expect(result).toHaveLength(10)
       })
 
       it('should return maximum 100 cars at a time', async () => {
-        const result = await fetch(`/cars?$limit=200`).expect(200).json()
+        const result = await fetch(`/cars?$limit=200`)
+          .expect(200)
+          .expect('x-total-count', 300)
+          .json()
         expect(result).toHaveLength(100)
       })
 
@@ -656,22 +681,34 @@ describe('[Method]: GET', () => {
         const resultPage1 = await fetch(`/cars`).expect(200).json()
         expect(resultPage1).toHaveLength(100)
 
-        const resultPage2 = await fetch(`/cars?$offset=100`).expect(200).json()
+        const resultPage2 = await fetch(`/cars?$offset=100`)
+          .expect(200)
+          .expect('x-total-count', 300)
+          .json()
         expect(resultPage2).toHaveLength(100)
 
         expect(resultPage1).not.toBe(resultPage2)
       })
 
       it('should return no result when offset is over total count', async () => {
-        const result = await fetch(`/cars?$offset=500`).expect(200).json()
+        const result = await fetch(`/cars?$offset=500`)
+          .expect(200)
+          .expect('x-total-count', 300)
+          .json()
         expect(result).toHaveLength(0)
       })
 
       it('should return custom pagination when mixing limit & offset', async () => {
-        const resultPage1 = await fetch(`/cars?$offset=0&$limit=20`).expect(200).json()
+        const resultPage1 = await fetch(`/cars?$offset=0&$limit=20`)
+          .expect('x-total-count', 300)
+          .expect(200)
+          .json()
         expect(resultPage1).toHaveLength(20)
 
-        const resultPage2 = await fetch(`/cars?$offset=20&$limit=20`).expect(200).json()
+        const resultPage2 = await fetch(`/cars?$offset=20&$limit=20`)
+          .expect('x-total-count', 300)
+          .expect(200)
+          .json()
         expect(resultPage2).toHaveLength(20)
 
         expect(resultPage1).not.toBe(resultPage2)
@@ -696,7 +733,10 @@ describe('[Method]: GET', () => {
       })
 
       it('should return the 100 oldest cars', async () => {
-        const result = await fetch(`/cars?$order=registeredAt`).expect(200).json()
+        const result = await fetch(`/cars?$order=registeredAt`)
+          .expect(200)
+          .expect('x-total-count', 300)
+          .json()
         expect(result).toHaveLength(100)
 
         let beforeDate = new Date(result[0].registeredAt).getTime()
