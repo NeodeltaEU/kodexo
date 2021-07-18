@@ -61,7 +61,7 @@ export abstract class CrudService<E extends AnyEntity> {
    * @param id
    * @returns
    */
-  async getOne(id: any, queryParams: QueryParsedResultForOneResult) {
+  async getOne(id: any, queryParams?: QueryParsedResultForOneResult) {
     try {
       return this.retrieve(id, queryParams)
     } catch (err) {
