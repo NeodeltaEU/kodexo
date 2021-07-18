@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.0...@uminily/crud@0.5.1) (2021-07-18)
+
+
+### Bug Fixes
+
+* **crud:** order doesn't remove first charac - ([246a3a0](https://github.com/Uminily/kodexo/commit/246a3a045b43c5a530b321dc0ca9bb65187c1fa5))
+
+
+
+
+
 # [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.4.1...@uminily/crud@0.5.0) (2021-07-18)
 
 
