@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.1...@uminily/crud@0.5.2) (2021-07-18)
+
+
+### Bug Fixes
+
+* **crud:** derp last fix ([db3cba3](https://github.com/Uminily/kodexo/commit/db3cba3b074d5202dae847e2cc55e569d233f52e))
+
+
+
+
+
 ## [0.5.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.0...@uminily/crud@0.5.1) (2021-07-18)
 
 
