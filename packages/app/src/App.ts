@@ -147,6 +147,10 @@ export class App {
             this.rawApp.post(path, ...middlewares, handler)
             break
 
+          case RouteMethods.PUT:
+            this.rawApp.put(path, ...middlewares, handler)
+            break
+
           case RouteMethods.PATCH:
             this.rawApp.patch(path, ...middlewares, handler)
             break
