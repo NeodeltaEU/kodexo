@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.4.0...@uminily/common@0.5.0) (2021-07-21)
+
+
+### Features
+
+* add @Delete and @Put methods decorators ([d288b10](https://github.com/Uminily/kodexo/commit/d288b102037ef11a2f701eed7ecc8a8752d312e8))
+
+
+
+
+
 # [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.3.0...@uminily/common@0.4.0) (2021-07-21)
 
 
