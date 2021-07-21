@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.3.0...@uminily/common@0.4.0) (2021-07-21)
+
+
+### Features
+
+* **common:** add @Patch decorator ([3b23610](https://github.com/Uminily/kodexo/commit/3b2361059c63045142bbdb12b88cc4517d345b40))
+
+
+
+
+
 # [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.2.0...@uminily/common@0.3.0) (2021-07-18)
 
 
