@@ -1,17 +1,15 @@
-import { Server as HttpServer } from 'http'
-import { ConnectionDatabase } from '@uminily/mikro-orm'
 import { App } from '@uminily/app'
 import { providerRegistry } from '@uminily/injection'
-import { makeFetch, FetchFunction } from 'supertest-fetch'
+import { ConnectionDatabase } from '@uminily/mikro-orm'
 import * as faker from 'faker'
-
-import { Server } from './mocks/Server'
+import { Server as HttpServer } from 'http'
+import { FetchFunction, makeFetch } from 'supertest-fetch'
 import { Car } from './mocks/features/cars/entities/car.entity'
 import { Dealership } from './mocks/features/dealerships/entities/dealership.entity'
+import { Profile } from './mocks/features/profiles/entities/profile.entity'
 import { User } from './mocks/features/users/entities/user.entity'
 import { Workshop } from './mocks/features/workshops/entities/workshop.entity'
-import { Profile } from './mocks/features/profiles/entities/profile.entity'
-import { LogMiddleware, mockCall } from './mocks/middlewares/LogMiddleware'
+import { Server } from './mocks/Server'
 
 describe('[Method]: GET', () => {
   let fetch: FetchFunction
@@ -311,6 +309,30 @@ describe('[Method]: GET', () => {
           .json()
 
         expect(result.message).toBeDefined()
+      })
+    })
+
+    describe('- Serialization', () => {
+      let userId: string
+
+      beforeAll(async () => {
+        const user = new User()
+        user.password = 'test123'
+        user.email = 'john.doe.the.two@acme.com'
+
+        userId = user.id
+
+        await connection.orm.em.persistAndFlush(user)
+      })
+
+      it(`should serialize a simple user, without his password`, async () => {
+        const result = await fetch(`/users/${userId}`)
+          .expect(200)
+          .expect('content-type', 'application/json')
+          .json()
+
+        expect(result.email).toBe('john.doe.the.two@acme.com')
+        expect(result.password).toBeUndefined()
       })
     })
   })
