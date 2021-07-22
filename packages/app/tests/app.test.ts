@@ -28,4 +28,14 @@ describe('App', () => {
       .send({ test: 'test' })
       .expect(200)
   })
+
+  it('should apply dto', async () => {
+    const { body }: any = await request(server)
+      .post('/cars/newcar')
+      .send({ test: 'test', name: 'onche' })
+      .expect(200)
+
+    expect(body.test).toBeUndefined()
+    expect(body.name).toBe('onche')
+  })
 })

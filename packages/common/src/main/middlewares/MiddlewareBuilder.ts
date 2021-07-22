@@ -7,6 +7,7 @@ import { Endpoint } from '../metadata'
 
 export class MiddlewareBuilder {
   private methodName?: string
+  private middlewareInstance?: MiddlewareHandling
   private middlewareToken: Class<MiddlewareHandling>
 
   constructor(private target: any) {}
@@ -31,8 +32,16 @@ export class MiddlewareBuilder {
   /**
    *
    */
+  fromInstanciedMiddleware(middleware: MiddlewareHandling) {
+    this.middlewareInstance = middleware
+    return this
+  }
+
+  /**
+   *
+   */
   build() {
-    const { target, methodName, middlewareToken } = this
+    const { target, methodName, middlewareInstance, middlewareToken } = this
 
     const classStore = Store.from(getClass(target))
 
@@ -53,9 +62,13 @@ export class MiddlewareBuilder {
         `No endpoint found for ${methodName} on ${target.name}, middleware must not be applied`
       )
 
-    const { instance } = providerRegistry.resolve<MiddlewareHandling>(middlewareToken)
+    if (!middlewareInstance) {
+      const { instance } = providerRegistry.resolve<MiddlewareHandling>(middlewareToken)
+      currentEndpoint.addMiddleware(instance.use, instance, true)
+      return
+    }
 
-    currentEndpoint.addMiddleware(instance.use, instance, true)
+    currentEndpoint.addMiddleware(middlewareInstance.use, middlewareInstance, true)
   }
 
   /**

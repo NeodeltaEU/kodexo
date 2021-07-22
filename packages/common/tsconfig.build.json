@@ -9,6 +9,9 @@
   "references": [
     {
       "path": "../injection/tsconfig.build.json"
+    },
+    {
+      "path": "../errors/tsconfig.build.json"
     }
   ],
 
