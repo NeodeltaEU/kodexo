@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.5.0...@uminily/app@0.6.0) (2021-07-22)
+
+
+### Features
+
+* add UseValidation decorator ([0911c1c](https://github.com/Uminily/kodexo/commit/0911c1ce2f496369031e5c839f1a4505387c7126))
+
+
+
+
+
 # [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.4.3...@uminily/app@0.5.0) (2021-07-21)
 
 

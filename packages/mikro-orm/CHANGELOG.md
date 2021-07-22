@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.10](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.1.9...@uminily/mikro-orm@0.1.10) (2021-07-22)
+
+**Note:** Version bump only for package @uminily/mikro-orm
+
+
+
+
+
 ## [0.1.9](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.1.8...@uminily/mikro-orm@0.1.9) (2021-07-21)
 
 **Note:** Version bump only for package @uminily/mikro-orm
