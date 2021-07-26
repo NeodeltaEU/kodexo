@@ -25,7 +25,11 @@ export abstract class CrudService<E extends AnyEntity> {
 
   public readonly entityName?: string
 
-  constructor(protected connection: ConnectionDatabase, protected token: Class<E>) {
+  constructor(
+    protected connection: ConnectionDatabase,
+    protected token: Class<E>,
+    protected options?: CrudServiceOptions
+  ) {
     this.repository = RepositoryBuilder.fromOptions(connection, token) as EntityRepository<E>
 
     this.entityMetadata = (new this.token() as AnyEntity).__helper!.__meta
@@ -230,7 +234,13 @@ export abstract class CrudService<E extends AnyEntity> {
 
         await collection.init()
 
-        plainValue[firstLevel] = collection.getIdentifiers()
+        let identifierField
+
+        if (this.options?.collectionIdentifierFields.hasOwnProperty(firstLevel)) {
+          identifierField = this.options.collectionIdentifierFields[firstLevel]
+        }
+
+        plainValue[firstLevel] = collection.getIdentifiers(identifierField)
       })
 
       return plainValue
@@ -249,3 +259,7 @@ type QueryParsedResultForOneResult = Except<
   QueryParsedResult,
   'limit' | 'offset' | 'orderBy' | 'filter'
 >
+
+type CrudServiceOptions = {
+  collectionIdentifierFields: { [key: string]: string }
+}
