@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.6...@uminily/crud@0.5.7) (2021-07-26)
+
+
+### Bug Fixes
+
+* **crud:** custom collection id fields ([aefa8cc](https://github.com/Uminily/kodexo/commit/aefa8cc69887baa9e36d70deb8d01dc9fd3b7e40))
+
+
+
+
+
 ## [0.5.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.5...@uminily/crud@0.5.6) (2021-07-22)
 
 **Note:** Version bump only for package @uminily/crud
