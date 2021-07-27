@@ -34,7 +34,12 @@ export class QueryParser {
 
   private currentEntityMetadata: EntityMetadata
 
-  constructor(rawQuery: any, private stringify = true, private currentEntity?: string) {
+  constructor(
+    private req: Request,
+    rawQuery: any,
+    private stringify = true,
+    private currentEntity?: string
+  ) {
     this.setCurrentEntityMetadata()
 
     this.parsePopulate(rawQuery.$populate)
@@ -182,7 +187,9 @@ export class QueryParser {
       return converted
     }
 
-    this.filter = convertRecursive(filterPlainObjectParsed)
+    const mandatoryFilters = this.req.filter || {}
+
+    this.filter = { ...convertRecursive(filterPlainObjectParsed), ...mandatoryFilters }
   }
 
   /**
@@ -269,7 +276,7 @@ export class QueryParser {
       return fromBody ? req.body : req.query
     })()
 
-    const queryParser = new QueryParser(rawQuery, stringify, currentEntity)
+    const queryParser = new QueryParser(req, rawQuery, stringify, currentEntity)
 
     return queryParser.render()
   }
