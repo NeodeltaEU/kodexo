@@ -1,6 +1,6 @@
 {
   "name": "@uminily/logger",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -60,7 +60,7 @@
   },
   "dependencies": {
     "@types/pino": "^6.3.9",
-    "@uminily/common": "^0.6.0",
+    "@uminily/common": "^0.7.0",
     "@uminily/injection": "^0.2.0",
     "pino": "^6.12.0",
     "pino-http": "^5.5.0"

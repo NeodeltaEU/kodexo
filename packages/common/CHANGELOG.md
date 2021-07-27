@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.6.0...@uminily/common@0.7.0) (2021-07-27)
+
+
+### Features
+
+* **crud:** add req.filter option ([b69a8ba](https://github.com/Uminily/kodexo/commit/b69a8ba70a93fe0dc085ade97d0f95eb38cc8b94))
+
+
+
+
+
 # [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.5.0...@uminily/common@0.6.0) (2021-07-22)
 
 
