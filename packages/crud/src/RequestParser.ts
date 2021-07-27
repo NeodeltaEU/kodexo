@@ -18,8 +18,16 @@ export class RequestParser {
     this.parseCreateDto()
     this.parseUpdateDto()
     this.parseQuery()
+    this.parseAssign()
 
     this.pathParams = this.req.params || {}
+  }
+
+  /**
+   *
+   */
+  parseAssign() {
+    if (this.req.assign) this.assign = this.req.assign
   }
 
   /**
