@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.6.2...@uminily/app@0.7.0) (2021-07-27)
+
+
+### Features
+
+* permits @Use usage on controller ([35ac25e](https://github.com/Uminily/kodexo/commit/35ac25eabb7d3e6ecb2162da697b1b0bed0d953c))
+
+
+
+
+
 ## [0.6.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.6.1...@uminily/app@0.6.2) (2021-07-27)
 
 **Note:** Version bump only for package @uminily/app
