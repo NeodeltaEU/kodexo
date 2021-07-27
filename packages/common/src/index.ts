@@ -9,6 +9,7 @@ import { Request as TinyHttpRequest } from '@tinyhttp/app'
 
 interface Request extends TinyHttpRequest {
   filter?: any
+  assign?: any
 }
 
 export { Request }

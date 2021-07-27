@@ -96,10 +96,16 @@ export class CrudRouteFactory<M, C, U> {
    */
   private prepareCreateOneRoute() {
     return async (service: CrudService<M>, parsedParams: RequestParsedResult) => {
-      const { createDto, queryParams } = parsedParams
+      const { createDto, assign, queryParams } = parsedParams
 
       try {
         await validateOrReject(createDto, { whitelist: true, forbidUnknownValues: true })
+
+        // TODO: handle assign with validator, today override property from req.assign
+        Object.entries(assign).forEach(([key, value]) => {
+          createDto[key] = value
+        })
+
         return service.createOne(createDto, queryParams)
       } catch (err) {
         /* istanbul ignore next */
@@ -136,16 +142,24 @@ export class CrudRouteFactory<M, C, U> {
       const {
         updateDto,
         queryParams,
+        assign,
         pathParams: { id }
       } = parsedParams
 
       // TODO: Throw error & handle them with custom catch,
 
       try {
+        //console.log('amont', updateDto)
+
         await validateOrReject(updateDto, {
           whitelist: true,
           skipMissingProperties: true,
           forbidUnknownValues: true
+        })
+
+        // TODO: handle assign with validator, today override property from req.assign
+        Object.entries(assign).forEach(([key, value]) => {
+          updateDto[key] = value
         })
 
         delete updateDto[REQUEST_CONTEXT]

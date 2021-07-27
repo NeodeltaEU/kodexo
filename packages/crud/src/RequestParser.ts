@@ -6,6 +6,7 @@ import { QueryParsedResult, QueryParser } from './QueryParser'
 export class RequestParser {
   private createDto: { [key: string]: any } = {}
   private updateDto: { [key: string]: any } = {}
+  private assign: any = {}
   private pathParams = {}
   private queryParams: QueryParsedResult
 
@@ -59,11 +60,12 @@ export class RequestParser {
    *
    */
   render(): RequestParsedResult {
-    const { createDto, updateDto, pathParams, queryParams } = this
+    const { createDto, updateDto, pathParams, queryParams, assign } = this
 
     return {
       pathParams,
       queryParams,
+      assign,
       createDto,
       updateDto
     }
@@ -91,6 +93,7 @@ export type RequestParserOptions = {
 export type RequestParsedResult = {
   pathParams: URLParams
   queryParams: QueryParsedResult
+  assign: any
   createDto: any
   updateDto: any
 }
