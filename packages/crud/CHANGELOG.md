@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.0...@uminily/crud@0.6.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* **crud:** add req.assign ([ea75831](https://github.com/Uminily/kodexo/commit/ea758318c257d7a11806011b66c137e130327a52))
+
+
+
+
+
 # [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.7...@uminily/crud@0.6.0) (2021-07-27)
 
 
