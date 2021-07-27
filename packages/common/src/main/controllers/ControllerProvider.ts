@@ -1,9 +1,10 @@
+import { Middleware } from '@tinyhttp/app'
 import { Provider } from '@uminily/injection'
 import { Class } from 'type-fest'
 import { partition } from '../..'
 
 import { ControllerOptionsType, PathType } from '../../decorators'
-import { Endpoint } from '../metadata'
+import { Endpoint, MiddlewareHandler } from '../metadata'
 
 /**
  *
@@ -27,5 +28,12 @@ export class ControllerProvider<T = any> extends Provider<T> {
     )
 
     return [...internal, ...external]
+  }
+
+  /**
+   *
+   */
+  get middlewares(): MiddlewareHandler[] {
+    return this.store.get('middlewares') || []
   }
 }

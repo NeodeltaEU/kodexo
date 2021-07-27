@@ -129,7 +129,7 @@ export class App {
 
         const path = controllerProvider.path.toString() + endpoint.path
 
-        const middlewares: Handler[] = endpoint.middlewares.map(
+        const endpointMiddlewares: Handler[] = endpoint.middlewares.map(
           middleware => (req: Request, res: Response, next: NextFunction) => {
             if (middleware.instance)
               return middleware.handler.bind(middleware.instance)(req, res, next)
@@ -137,6 +137,17 @@ export class App {
             return middleware.handler(req, res, next)
           }
         )
+
+        const controllerMiddlewares: Handler[] = controllerProvider.middlewares.map(
+          middleware => (req: Request, res: Response, next: NextFunction) => {
+            if (middleware.instance)
+              return middleware.handler.bind(middleware.instance)(req, res, next)
+
+            return middleware.handler(req, res, next)
+          }
+        )
+
+        const middlewares = [...controllerMiddlewares, ...endpointMiddlewares]
 
         switch (endpoint.method) {
           case RouteMethods.GET:

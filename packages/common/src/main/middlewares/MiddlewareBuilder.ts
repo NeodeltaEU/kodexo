@@ -45,8 +45,21 @@ export class MiddlewareBuilder {
 
     const classStore = Store.from(getClass(target))
 
+    const instance = (() => {
+      if (middlewareInstance) return middlewareInstance
+      return providerRegistry.resolve<MiddlewareHandling>(middlewareToken).instance
+    })()
+
+    const handler = instance.use
+
     if (!methodName) {
-      // TODO: Middleware for controller
+      if (!classStore.has('middlewares')) classStore.set('middlewares', [])
+
+      classStore.get('middlewares').push({
+        handler,
+        instance
+      })
+
       return
     }
 
@@ -62,13 +75,7 @@ export class MiddlewareBuilder {
         `No endpoint found for ${methodName} on ${target.name}, middleware must not be applied`
       )
 
-    if (!middlewareInstance) {
-      const { instance } = providerRegistry.resolve<MiddlewareHandling>(middlewareToken)
-      currentEndpoint.addMiddleware(instance.use, instance, true)
-      return
-    }
-
-    currentEndpoint.addMiddleware(middlewareInstance.use, middlewareInstance, true)
+    currentEndpoint.addMiddleware(handler, instance, true)
   }
 
   /**

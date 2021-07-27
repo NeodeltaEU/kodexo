@@ -38,4 +38,10 @@ describe('App', () => {
     expect(body.test).toBeUndefined()
     expect(body.name).toBe('onche')
   })
+
+  it('should apply a middleware on an entire controller', async () => {
+    const { body }: any = await request(server).post('/houses').expect(200)
+
+    expect(body.override).toBe(true)
+  })
 })
