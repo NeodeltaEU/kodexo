@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.2...@uminily/crud@0.6.3) (2021-07-27)
+
+
+### Bug Fixes
+
+* **crud:** assign param not handled ([c82e70f](https://github.com/Uminily/kodexo/commit/c82e70fd91699974e727d2b4df532ad5b11853fd))
+
+
+
+
+
 ## [0.6.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.1...@uminily/crud@0.6.2) (2021-07-27)
 
 **Note:** Version bump only for package @uminily/crud
