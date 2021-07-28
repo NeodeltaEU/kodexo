@@ -143,7 +143,12 @@ export class QueryParser {
    * @param rawFilter
    */
   private parseFilter(rawFilter: any) {
-    if (!rawFilter) return
+    const mandatoryFilters = this.req.filter || {}
+
+    if (!rawFilter) {
+      this.filter = mandatoryFilters
+      return
+    }
 
     let filterPlainObjectParsed
 
@@ -186,8 +191,6 @@ export class QueryParser {
 
       return converted
     }
-
-    const mandatoryFilters = this.req.filter || {}
 
     this.filter = { ...convertRecursive(filterPlainObjectParsed), ...mandatoryFilters }
   }
