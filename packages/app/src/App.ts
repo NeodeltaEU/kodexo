@@ -6,6 +6,7 @@ import { LoggerService } from '@uminily/logger'
 import { HttpError } from '@uminily/errors'
 import { Inject, providerRegistry, Store } from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
+import * as cookieParser from 'cookie-parser'
 import { Server } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
@@ -73,8 +74,15 @@ export class App {
       exposedHeaders: ['content-length', 'content-type', 'x-total-count']
     }
 
+    const cookieSecret = this.configurationService.get('cookies.secret')
+
+    if (cookieSecret) {
+      this.rawApp.use(cookieParser(cookieSecret) as any)
+    }
+
     this.rawApp
       .use(cors(corsOptions))
+      .use(cookieParser(cookieSecret) as any)
       .use(json())
       .use(urlencoded({ extended: true }))
 

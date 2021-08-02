@@ -1855,6 +1855,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/cookie-parser@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@types/cookie-parser/-/cookie-parser-1.4.2.tgz#e4d5c5ffda82b80672a88a4281aaceefb1bd9df5"
+  integrity sha512-uwcY8m6SDQqciHsqcKDGbo10GdasYsPCYkH3hVegj9qAah6pX5HivOnOuI3WYmyQMnOATV39zv/Ybs0bC/6iVg==
+  dependencies:
+    "@types/express" "*"
+
 "@types/cookiejar@*":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.2.tgz#66ad9331f63fe8a3d3d9d8c6e3906dd10f6446e8"
@@ -1869,7 +1876,7 @@
     "@types/qs" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.17.7":
+"@types/express@*", "@types/express@^4.17.7":
   version "4.17.13"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.13.tgz#a76e2995728999bab51a33fabce1d705a3709034"
   integrity sha512-6bSZTPaTIACxn48l50SR+axgrqm6qXFIxrdAKaG6PaJk3+zuUr35hBlgT7vOmJcum+OEaIBLtHV/qloEAFITeA==
@@ -3448,6 +3455,24 @@ convert-source-map@^1.4.0, convert-source-map@^1.6.0, convert-source-map@^1.7.0:
   dependencies:
     safe-buffer "~5.1.1"
 
+cookie-parser@^1.4.5:
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.5.tgz#3e572d4b7c0c80f9c61daf604e4336831b5d1d49"
+  integrity sha512-f13bPUj/gG/5mDr+xLmSxxDsB9DQiTIfhJS/sqjrmfAWiAN+x2O4i/XguTL9yDZ+/IFDanJ+5x7hC4CXT9Tdzw==
+  dependencies:
+    cookie "0.4.0"
+    cookie-signature "1.0.6"
+
+cookie-signature@1.0.6, cookie-signature@1.0.x:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/cookie-signature/-/cookie-signature-1.0.6.tgz#e303a882b342cc3ee8ca513a79999734dab3ae2c"
+  integrity sha1-4wOogrNCzD7oylE6eZmXNNqzriw=
+
+cookie@0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
+  integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
+
 cookiejar@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/cookiejar/-/cookiejar-2.1.2.tgz#dd8a235530752f988f9a0844f3fc589e3111125c"
@@ -4263,6 +4288,14 @@ expand-tilde@^2.0.0, expand-tilde@^2.0.2:
   integrity sha1-l+gBqgUt8CRU3kawK/YhZCzchQI=
   dependencies:
     homedir-polyfill "^1.0.1"
+
+expect-cookies@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/expect-cookies/-/expect-cookies-0.2.0.tgz#48cea595c959f0423c65b6fe843dbca3b9b13dfe"
+  integrity sha512-PsxdOFTM/25mh+JiMyAx9JpnqjfZx8u7+E9McKNRrytREDFm/7LCGwcjk30U1x3I+UzM6IiZATQqSJK05G16hA==
+  dependencies:
+    cookie-signature "1.0.x"
+    should "7.1.x"
 
 expect@^26.6.2:
   version "26.6.2"
@@ -8549,6 +8582,34 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
+
+should-equal@0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/should-equal/-/should-equal-0.5.0.tgz#c797f135f3067feb69ebecdb306b1c3fe21b3e6f"
+  integrity sha1-x5fxNfMGf+tp6+zbMGscP+IbPm8=
+  dependencies:
+    should-type "0.2.0"
+
+should-format@0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/should-format/-/should-format-0.3.1.tgz#2cbb782461670ace4292b2b1ec468db8cf99e330"
+  integrity sha1-LLt4JGFnCs5CkrKx7EaNuM+Z4zA=
+  dependencies:
+    should-type "0.2.0"
+
+should-type@0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/should-type/-/should-type-0.2.0.tgz#6707ef95529d989dcc098fe0753ab1f9136bb7f6"
+  integrity sha1-ZwfvlVKdmJ3MCY/gdTqx+RNrt/Y=
+
+should@7.1.x:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/should/-/should-7.1.1.tgz#6464c48b6f7c1e1f18ac0483578fa2dd55c2c6e0"
+  integrity sha1-ZGTEi298Hh8YrASDV4+i3VXCxuA=
+  dependencies:
+    should-equal "0.5.0"
+    should-format "0.3.1"
+    should-type "0.2.0"
 
 side-channel@^1.0.4:
   version "1.0.4"

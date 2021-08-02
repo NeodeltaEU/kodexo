@@ -17,6 +17,16 @@ declare global {
        */
       middlewares: Handler[]
 
+      /**
+       *
+       */
+      cookies: {
+        /**
+         *
+         */
+        secret: string
+      }
+
       debug: {
         /**
          *

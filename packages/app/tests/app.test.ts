@@ -1,6 +1,7 @@
 import { Server as HttpServer } from 'http'
 import { Server } from './mocks/Server'
 import * as request from 'supertest'
+
 import { App } from '../src/App'
 
 let server: HttpServer
@@ -43,5 +44,17 @@ describe('App', () => {
     const { body }: any = await request(server).post('/houses').expect(200)
 
     expect(body.override).toBe(true)
+  })
+
+  it('should have cookie via @Res decorator availability', async () => {
+    const agent = request.agent(server)
+
+    const { body, headers }: any = await agent.get('/cars/res').expect(200)
+
+    expect(body.cookie).toBe(true)
+
+    const { body: body2 } = await agent.get('/cars/cookies').expect(200)
+
+    expect(body2.cookie).toBe('thevalue')
   })
 })

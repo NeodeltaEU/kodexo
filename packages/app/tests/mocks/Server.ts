@@ -7,6 +7,10 @@ import { Configuration } from '@uminily/config'
     displayErrorsOnClientResponse: false
   },
 
+  cookies: {
+    secret: 'abc'
+  },
+
   logs: {
     request: false
   }

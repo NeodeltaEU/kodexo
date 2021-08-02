@@ -5,6 +5,14 @@ import { MiddlewareHandling } from '../../interfaces'
 import { Dictionnary } from '../../interfaces/Dictionnary'
 import { RouteMethods } from '../methods'
 
+export enum MethodsParams {
+  BODY_PARAMS = 'BodyParams',
+  ROUTE_PARAMS = 'RouteParams',
+  COOKIE_PARAMS = 'CookieParams',
+  REQ = 'Req',
+  RES = 'Res'
+}
+
 /**
  *
  */
@@ -112,14 +120,24 @@ export class Endpoint {
         const type = store.get('type')
         const paramName = store.get('paramName')
 
-        // TODO : create a class to handle this & dispatch domain outside decorator & others things
+        // TODO: create a class to handle this & dispatch domain outside decorator & others things
+        // TODO: test & send errors when paramName doesnt exist
 
         switch (type) {
-          case 'RouteParams':
+          case MethodsParams.ROUTE_PARAMS:
             return paramName ? req.params[paramName] : req.params
 
-          case 'BodyParams':
+          case MethodsParams.BODY_PARAMS:
             return paramName ? req.body[paramName] : req.body
+
+          case MethodsParams.COOKIE_PARAMS:
+            return paramName ? req.signedCookies[paramName] : req.signedCookies
+
+          case MethodsParams.REQ:
+            return req
+
+          case MethodsParams.RES:
+            return res
         }
 
         return entry
