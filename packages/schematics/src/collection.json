@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "feature": {
+      "description": "Create a new feature",
+      "factory": "./lib/feature/feature.factory#main",
+      "schema": "./lib/feature/schema.json"
+    }
+  }
+}
