@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.2...@uminily/app@0.8.3) (2021-08-03)
+
+
+### Bug Fixes
+
+* first init async service ([f6860fb](https://github.com/Uminily/kodexo/commit/f6860fb75d948cfdddd037a4e706c60ba0542656))
+
+
+
+
+
 ## [0.8.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.1...@uminily/app@0.8.2) (2021-08-03)
 
 **Note:** Version bump only for package @uminily/app

@@ -1,6 +1,6 @@
 {
   "name": "@uminily/mikro-orm",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -59,9 +59,9 @@
   "dependencies": {
     "@mikro-orm/core": "^4.5.7",
     "@mikro-orm/postgresql": "^4.5.7",
-    "@uminily/common": "^0.9.2",
-    "@uminily/config": "^0.3.2",
-    "@uminily/injection": "^0.2.2",
+    "@uminily/common": "^0.9.3",
+    "@uminily/config": "^0.3.3",
+    "@uminily/injection": "^0.2.3",
     "type-fest": "^1.2.1"
   },
   "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
