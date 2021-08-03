@@ -1,10 +1,10 @@
 import { App as TinyApp, Handler, NextFunction, Request, Response } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
-import { ControllerProvider, RouteMethods } from '@uminily/common'
+import { ControllerProvider, pMap, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
 import { LoggerService } from '@uminily/logger'
 import { HttpError } from '@uminily/errors'
-import { Inject, providerRegistry, Store } from '@uminily/injection'
+import { Inject, Provider, providerRegistry, Store } from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
 import { Server } from 'http'
@@ -212,6 +212,14 @@ export class App {
 
     let initPromises: any = []
 
+    await pMap(
+      Array.from(providerRegistry.asyncServices.values()),
+      async (asyncServiceProvider: Provider) => {
+        await asyncServiceProvider.init()
+      }
+    )
+
+    // TODO: DEPENDENCIES ASYNC FIRST NEEDED
     providerRegistry.services.forEach(value => {
       initPromises.push(value.init())
     })

@@ -40,6 +40,11 @@ export class Provider<T = any> {
 
   /**
    *
+   */
+  private isInitialized = false
+
+  /**
+   *
    * @param currentClass
    */
   constructor(public token: Class<T>, protected options: any = {}) {
@@ -68,13 +73,15 @@ export class Provider<T = any> {
    * @returns
    */
   public async init() {
-    if (!this.isAsync) return
+    if (!this.isAsync || this.isInitialized) return
 
     const initMethod: string = this.store.get('init')
 
     this.buildSingleton()
 
     await (this.singleton as any)[initMethod]()
+
+    this.isInitialized = true
   }
 
   /**

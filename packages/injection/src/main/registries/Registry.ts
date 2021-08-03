@@ -73,6 +73,18 @@ export class Registry extends Map<RegistryKey, Provider> {
   /**
    *
    */
+  get asyncServices() {
+    return Array.from(this.services.values())
+      .filter(provider => provider.isAsync)
+      .reduce((result, provider) => {
+        result.set(provider.token, provider)
+        return result
+      }, new Map())
+  }
+
+  /**
+   *
+   */
   get injectables() {
     return Array.from(this.values())
       .filter(provider => provider.injectable)
