@@ -109,12 +109,12 @@ export class Endpoint {
 
     const currentEndpoint = this
 
-    const paramTypes = Reflect.getMetadata('design:paramtypes', target, propertyKey) || []
+    const paramTypes: any[] = Reflect.getMetadata('design:paramtypes', target, propertyKey) || []
 
     return function (this: any, req: any, res: any) {
       if (externalDecorating) return descriptor.apply(this, [req, res, currentEndpoint])
 
-      const params = new Array(paramTypes.length).fill(null).map((entry, index) => {
+      const params = paramTypes.map((entry: any, index) => {
         const store = Store.from(target, propertyKey, index)
 
         const type = store.get('type')

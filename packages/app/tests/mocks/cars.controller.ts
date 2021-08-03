@@ -1,3 +1,4 @@
+import { RouteParams } from '@uminily/common'
 import {
   BodyParams,
   Controller,
@@ -39,8 +40,13 @@ export class CarsController {
     return body
   }
 
-  @Get('/res')
-  async getRes(@Res() res: Response) {
+  @Post('/res')
+  async getRes(
+    @BodyParams('email') email: string,
+    @BodyParams('password') password: string,
+    @RouteParams('id') id: string,
+    @Res() res: Response
+  ) {
     const cookieOptions = {
       maxAge: 1000 * 60 * 60 * 24 * 365,
       httpOnly: true,
@@ -48,7 +54,7 @@ export class CarsController {
     }
 
     res.cookie('thecookie', 'thevalue', cookieOptions)
-    return { cookie: true }
+    return { cookie: true, email }
   }
 
   @Get('/cookies')

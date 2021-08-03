@@ -49,9 +49,13 @@ describe('App', () => {
   it('should have cookie via @Res decorator availability', async () => {
     const agent = request.agent(server)
 
-    const { body, headers }: any = await agent.get('/cars/res').expect(200)
+    const { body, headers }: any = await agent
+      .post('/cars/res')
+      .send({ email: 'john.doe@acme.com' })
+      .expect(200)
 
     expect(body.cookie).toBe(true)
+    expect(body.email).toBe('john.doe@acme.com')
 
     const { body: body2 } = await agent.get('/cars/cookies').expect(200)
 

@@ -19,7 +19,9 @@ export function getDecoratorType(args: any[]): DecoratorTypes {
   const isParameter = typeof descriptorOrIndex === 'number'
   const isMethod = !!(descriptorOrIndex && descriptorOrIndex.value)
   const isProperty =
-    !isMethod && ((propertyKey && descriptorOrIndex === undefined) || descriptorOrIndex)
+    !isParameter &&
+    !isMethod &&
+    ((propertyKey && descriptorOrIndex === undefined) || descriptorOrIndex)
 
   const isStatic = target === (target.prototype ? target : target.constructor)
 
