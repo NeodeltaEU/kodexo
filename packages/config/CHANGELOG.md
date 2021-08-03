@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/config@0.2.10...@uminily/config@0.3.0) (2021-08-03)
+
+
+### Features
+
+* add cookies params & options ([ff4e3e1](https://github.com/Uminily/kodexo/commit/ff4e3e17e7e95952c09b65f7c24f7dbc0d3be484))
+
+
+
+
+
 ## [0.2.10](https://github.com/Uminily/kodexo/compare/@uminily/config@0.2.9...@uminily/config@0.2.10) (2021-07-27)
 
 **Note:** Version bump only for package @uminily/config

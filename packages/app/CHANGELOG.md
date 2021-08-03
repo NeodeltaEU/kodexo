@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.7.0...@uminily/app@0.8.0) (2021-08-03)
+
+
+### Features
+
+* add cookies params & options ([ff4e3e1](https://github.com/Uminily/kodexo/commit/ff4e3e17e7e95952c09b65f7c24f7dbc0d3be484))
+
+
+
+
+
 # [0.7.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.6.2...@uminily/app@0.7.0) (2021-07-27)
 
 
