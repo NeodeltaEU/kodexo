@@ -1,6 +1,6 @@
 import { Handler } from '@tinyhttp/app'
 import { Class } from 'type-fest'
-import { providerRegistry, Store } from '../../../../injection/dist'
+import { providerRegistry, Store } from '@uminily/injection'
 import { MiddlewareHandling } from '../../interfaces'
 import { getClass } from '../../utils'
 import { Endpoint } from '../metadata'

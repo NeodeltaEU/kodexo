@@ -10,7 +10,8 @@ export type RegistryKey = Class
 export enum Registries {
   SERVICE = 'services',
   CONTROLLER = 'controllers',
-  MIDDLEWARE = 'middlewares'
+  MIDDLEWARE = 'middlewares',
+  PARAM = 'param'
 }
 
 /**

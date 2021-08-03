@@ -1,7 +1,7 @@
 import { Store } from '@uminily/injection'
-import { MethodsParams } from '../../main'
+import { MethodsParams, ParamBuilder } from '../../main'
 
-export function CookieParams(paramName?: string): Function {
+/*export function CookieParams(paramName?: string): Function {
   return (target: any, propertyKey: string, paramaterIndex: number) => {
     const paramaterStore = Store.from(target, propertyKey, paramaterIndex)
 
@@ -9,4 +9,8 @@ export function CookieParams(paramName?: string): Function {
 
     if (paramName) paramaterStore.set('paramName', paramName)
   }
-}
+}*/
+
+export const CookieParams = ParamBuilder.buildParamDecorator((needed, req) => {
+  return needed ? req.signedCookies[needed] : req.signedCookies
+})

@@ -35,6 +35,11 @@ export class Provider<T = any> {
 
   /**
    *
+   */
+  private isCallback = false
+
+  /**
+   *
    * @param currentClass
    */
   constructor(public token: Class<T>, protected options: any = {}) {
@@ -42,9 +47,21 @@ export class Provider<T = any> {
     this.store = Store.from(token)
 
     if (options.factory) this.isFactory = true
+    if (options.callback) this.isCallback = true
 
     this.isAsync = this.store.has('init')
   }
+
+  /**
+   *
+
+  static fromCallback(callback: Function) {
+    const callbackContainer = class {
+      public callback = callback
+    }
+
+    return new Provider(callbackContainer, { callback: true })
+  }*/
 
   /**
    *
@@ -81,6 +98,8 @@ export class Provider<T = any> {
    */
   public get instance() {
     if (!this.singleton) this.buildSingleton()
+
+    //if (this.isCallback) return this.singleton.callback
 
     if (!this.isFactory) return this.singleton
     return new this.token()

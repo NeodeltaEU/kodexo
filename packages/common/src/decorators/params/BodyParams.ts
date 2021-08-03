@@ -1,7 +1,7 @@
 import { Store } from '@uminily/injection'
-import { MethodsParams } from '../../main'
+import { MethodsParams, ParamBuilder } from '../../main'
 
-export function BodyParams(paramName?: string): Function {
+/*export function BodyParams(paramName?: string): Function {
   return (target: any, propertyKey: string, paramaterIndex: number) => {
     const paramaterStore = Store.from(target, propertyKey, paramaterIndex)
 
@@ -9,4 +9,8 @@ export function BodyParams(paramName?: string): Function {
 
     if (paramName) paramaterStore.set('paramName', paramName)
   }
-}
+}*/
+
+export const BodyParams = ParamBuilder.buildParamDecorator((needed, req) => {
+  return needed ? req.body[needed] : req.body
+})

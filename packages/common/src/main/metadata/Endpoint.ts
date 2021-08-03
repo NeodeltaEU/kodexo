@@ -119,28 +119,40 @@ export class Endpoint {
 
         const type = store.get('type')
         const paramName = store.get('paramName')
+        const callback = store.get('callback')
 
         // TODO: create a class to handle this & dispatch domain outside decorator & others things
         // TODO: test & send errors when paramName doesnt exist
 
+        let toPush
+
         switch (type) {
           case MethodsParams.ROUTE_PARAMS:
-            return paramName ? req.params[paramName] : req.params
+            toPush = paramName ? req.params[paramName] : req.params
+            break
 
-          case MethodsParams.BODY_PARAMS:
-            return paramName ? req.body[paramName] : req.body
+          /*case MethodsParams.BODY_PARAMS:
+            toPush = paramName ? req.body[paramName] : req.body
+            break*/
 
           case MethodsParams.COOKIE_PARAMS:
-            return paramName ? req.signedCookies[paramName] : req.signedCookies
+            toPush = paramName ? req.signedCookies[paramName] : req.signedCookies
+            break
 
           case MethodsParams.REQ:
-            return req
+            toPush = req
+            break
 
           case MethodsParams.RES:
-            return res
+            toPush = res
+            break
+
+          default:
+            toPush = callback(paramName, req, res)
+            break
         }
 
-        return entry
+        return toPush
       })
 
       return descriptor.apply(this, params)

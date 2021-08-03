@@ -4,7 +4,7 @@ export enum DecoratorTypes {
   METHOD = 'method',
   STATIC_METHOD = 'static:method',
   CLASS = 'class',
-  PARAMETER = 'paramater',
+  PARAMETER = 'parameter',
   CONSTRUCTOR_PARAMETER = 'constructor:parameter',
   STATIC_PARAMETER = 'static:parameter'
 }
