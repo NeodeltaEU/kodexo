@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.2.0...@uminily/injection@0.2.1) (2021-08-03)
+
+
+### Bug Fixes
+
+* **injection:** param args interpreted as property ([83dc9e8](https://github.com/Uminily/kodexo/commit/83dc9e8a67fcc6bf21d5982b851c4d32c6c7147c))
+
+
+
+
+
 # [0.2.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.1.2...@uminily/injection@0.2.0) (2021-07-16)
 
 

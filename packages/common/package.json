@@ -1,6 +1,6 @@
 {
   "name": "@uminily/common",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -58,7 +58,7 @@
   "dependencies": {
     "@tinyhttp/app": "^1.3.14",
     "@uminily/errors": "^0.1.1",
-    "@uminily/injection": "^0.2.0",
+    "@uminily/injection": "^0.2.1",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "type-fest": "^0.20.2"
