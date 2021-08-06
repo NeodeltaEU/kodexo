@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.18](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.1.17...@uminily/mikro-orm@0.1.18) (2021-08-06)
+
+
+### Bug Fixes
+
+* **mikro-orm:** change to mikro 5.0 beta version ([157fa18](https://github.com/Uminily/kodexo/commit/157fa187b66fecff489daa306dbd34d74489acf9))
+
+
+
+
+
 ## [0.1.17](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.1.16...@uminily/mikro-orm@0.1.17) (2021-08-03)
 
 **Note:** Version bump only for package @uminily/mikro-orm

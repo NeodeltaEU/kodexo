@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.9](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.8...@uminily/crud@0.6.9) (2021-08-06)
+
+
+### Bug Fixes
+
+* **mikro-orm:** change to mikro 5.0 beta version ([157fa18](https://github.com/Uminily/kodexo/commit/157fa187b66fecff489daa306dbd34d74489acf9))
+
+
+
+
+
 ## [0.6.8](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.7...@uminily/crud@0.6.8) (2021-08-03)
 
 **Note:** Version bump only for package @uminily/crud
