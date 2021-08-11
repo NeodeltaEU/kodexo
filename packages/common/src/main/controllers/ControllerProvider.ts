@@ -1,5 +1,5 @@
 import { Middleware } from '@tinyhttp/app'
-import { Provider } from '@uminily/injection'
+import { Provider, ProviderOptions, ProviderType } from '@uminily/injection'
 import { Class } from 'type-fest'
 import { partition } from '../..'
 
@@ -12,8 +12,8 @@ import { Endpoint, MiddlewareHandler } from '../metadata'
 export class ControllerProvider<T = any> extends Provider<T> {
   public path: PathType
 
-  constructor(protected currentClass: Class<T>, protected options: ControllerOptionsType) {
-    super(currentClass, options)
+  constructor(protected currentClass: Class<T>, options: ControllerOptionsType) {
+    super(currentClass, ProviderType.CONTROLLER, options as ProviderOptions)
 
     this.path = options.path
   }
@@ -23,7 +23,7 @@ export class ControllerProvider<T = any> extends Provider<T> {
    */
   get endpoints(): Endpoint[] {
     const [external, internal] = partition(
-      this.store.get('endpoints') as Endpoint[],
+      (this.store.get('endpoints') as Endpoint[]) || [],
       endpoint => endpoint.externalDecorating
     )
 

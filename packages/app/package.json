@@ -6,7 +6,9 @@
   "scripts": {
     "clean": "rm -rf build",
     "build": "rimraf ./dist && tsc -b tsconfig.build.json",
-    "test": "jest --runInBand --colors"
+    "test": "jest --runInBand --colors",
+    "test:watch": "jest --runInBand --colors --watch",
+    "test:start": "ts-node-dev ./tests/mocks/start.ts"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -81,6 +83,7 @@
     "cookie-parser": "^1.4.5",
     "globby": "^11.0.2",
     "normalize-path": "^3.0.0",
+    "normalize-url": "^7.0.0",
     "supertest-fetch": "^1.4.3",
     "type-fest": "^0.20.2"
   },

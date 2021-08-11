@@ -80,7 +80,7 @@ export class Endpoint {
    *
    * @param middlewares
    */
-  addMiddleware(handler: Handler, instance?: MiddlewareHandling, top = false) {
+  /*addMiddleware(handler: Handler, instance?: MiddlewareHandling, top = false) {
     const toPush = {
       handler,
       instance
@@ -92,6 +92,36 @@ export class Endpoint {
     }
 
     this.middlewares.push(toPush)
+  }*/
+
+  addMiddleware(middlewareToken: Class<MiddlewareHandling>, top = false) {
+    const toPush = {
+      middlewareToken
+    }
+
+    top ? this.middlewares.unshift(toPush) : this.middlewares.push(toPush)
+  }
+
+  /**
+   *
+   */
+  addInstanciedMiddleware(instance: MiddlewareHandling, top = false) {
+    const toPush = {
+      instance
+    }
+
+    top ? this.middlewares.unshift(toPush) : this.middlewares.push(toPush)
+  }
+
+  /**
+   *
+   */
+  addRawMiddleware(handler: Handler, top = false) {
+    const toPush = {
+      handler
+    }
+
+    top ? this.middlewares.unshift(toPush) : this.middlewares.push(toPush)
   }
 
   /**
@@ -173,6 +203,7 @@ export type EndpointOptions = {
 }
 
 export type MiddlewareHandler = {
-  handler: Handler
+  handler?: Handler
   instance?: MiddlewareHandling
+  middlewareToken?: Class<MiddlewareHandling>
 }

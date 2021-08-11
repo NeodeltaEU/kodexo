@@ -8,10 +8,12 @@ export type RegistryKey = Class
  *
  */
 export enum Registries {
+  PROVIDER = 'providers',
   SERVICE = 'services',
   CONTROLLER = 'controllers',
   MIDDLEWARE = 'middlewares',
-  PARAM = 'param'
+  PARAM = 'param',
+  MODULE = 'modules'
 }
 
 /**
@@ -25,7 +27,7 @@ export class Registry extends Map<RegistryKey, Provider> {
    * @param token
    * @param target
    */
-  public register(registry: string, target: any, providerOptions?: any) {
+  public register(registry: Registries, target: any, providerOptions?: any) {
     const provider = new Provider(target, providerOptions)
     this.registerProvider(registry, provider)
   }
@@ -34,7 +36,7 @@ export class Registry extends Map<RegistryKey, Provider> {
    *
    * @param provider
    */
-  public registerProvider(registry: string, provider: Provider) {
+  public registerProvider(registry: Registries, provider: Provider) {
     this.findOrCreateRegistry(registry).set(provider.token, provider)
     this.set(provider.token, provider)
   }
@@ -68,6 +70,20 @@ export class Registry extends Map<RegistryKey, Provider> {
    */
   get services(): Map<RegistryKey, Provider> {
     return this.registries.get(Registries.SERVICE) || new Map()
+  }
+
+  /**
+   *
+   */
+  get modules(): Map<RegistryKey, Provider> {
+    return this.registries.get(Registries.MODULE) || new Map()
+  }
+
+  /**
+   *
+   */
+  get middlewares(): Map<RegistryKey, Provider> {
+    return this.registries.get(Registries.MIDDLEWARE) || new Map()
   }
 
   /**

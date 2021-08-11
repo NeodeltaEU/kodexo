@@ -1,16 +1,23 @@
 import { App as TinyApp, Handler, NextFunction, Request, Response } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
-import { ControllerProvider, pMap, RouteMethods } from '@uminily/common'
+import { ControllerProvider, ModuleProvider, pMap, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
 import { LoggerService } from '@uminily/logger'
 import { HttpError } from '@uminily/errors'
-import { Inject, Provider, providerRegistry, Store } from '@uminily/injection'
+import {
+  Inject,
+  importProviders,
+  providerRegistry,
+  Store,
+  IProvider,
+  Registries
+} from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
 import { Server } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
-import { importFiles } from './utils/importFiles'
+import { Injector } from './Injector'
 
 /**
  *
@@ -54,7 +61,7 @@ export class App {
   /**
    *
    */
-  constructor() {
+  constructor(public routing: IProvider[] = []) {
     this.buildMandatoryMiddlewares()
       .buildBeforeCustomMiddleware()
       .buildRoutesController()
@@ -122,62 +129,98 @@ export class App {
    *
    */
   private buildRoutesController() {
+    const middlewareProviders = providerRegistry.middlewares
+
+    // TODO: EXTERNALIZE ALL THIS !!!
     providerRegistry.controllers.forEach((controllerProvider: ControllerProvider) => {
-      controllerProvider.endpoints.forEach(endpoint => {
-        const handler = async (req: Request, res: Response) => {
-          //
-          const result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
+      const mountingEndpoints = this.routing
+        .filter(provider => provider.token === controllerProvider.token)
+        .map(provider => provider.route)
 
-          //
-          res.set(endpoint.headers)
+      mountingEndpoints.forEach(mountEndpoint => {
+        controllerProvider.endpoints.forEach(endpoint => {
+          const handler = async (req: Request, res: Response) => {
+            //
+            const result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
 
-          //
-          res.status(endpoint.statusCode).json(result)
-        }
+            //
+            res.set(endpoint.headers)
 
-        const path = controllerProvider.path.toString() + endpoint.path
-
-        const endpointMiddlewares: Handler[] = endpoint.middlewares.map(
-          middleware => (req: Request, res: Response, next: NextFunction) => {
-            if (middleware.instance)
-              return middleware.handler.bind(middleware.instance)(req, res, next)
-
-            return middleware.handler(req, res, next)
+            //
+            res.status(endpoint.statusCode).json(result)
           }
-        )
 
-        const controllerMiddlewares: Handler[] = controllerProvider.middlewares.map(
-          middleware => (req: Request, res: Response, next: NextFunction) => {
-            if (middleware.instance)
-              return middleware.handler.bind(middleware.instance)(req, res, next)
+          // TODO: PROTECT PATH & NORMALIZE THEM
+          const path = `${mountEndpoint}${controllerProvider.path}${endpoint.path}`
+            .replace(/\/+/g, '/')
+            .replace(/\/+$/, '')
 
-            return middleware.handler(req, res, next)
+          // TODO: REFACTOR OMG
+          const endpointMiddlewares: Handler[] = endpoint.middlewares.map(middleware => {
+            return (req: Request, res: Response, next: NextFunction) => {
+              if (middleware.instance) {
+                const handler = middleware.instance.use
+                return handler.bind(middleware.instance)(req, res, next)
+              }
+
+              if (middleware.middlewareToken) {
+                const middlewareFound = middlewareProviders.get(middleware.middlewareToken)
+
+                if (!middlewareFound)
+                  throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
+
+                const handler = middlewareFound.instance.use
+                return handler.bind(middlewareFound.instance)(req, res, next)
+              }
+
+              if (!middleware.handler) throw new Error(`Middleware not found`)
+
+              return middleware.handler(req, res, next)
+            }
+          })
+
+          const controllerMiddlewares: Handler[] = controllerProvider.middlewares.map(
+            middleware => (req: Request, res: Response, next: NextFunction) => {
+              if (middleware.middlewareToken) {
+                const middlewareFound = middlewareProviders.get(middleware.middlewareToken)
+
+                if (!middlewareFound)
+                  throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
+
+                const handler = middlewareFound.instance.use
+                return handler.bind(middlewareFound.instance)(req, res, next)
+              }
+
+              if (!middleware.handler) throw new Error(`Middleware not found`)
+
+              return middleware.handler(req, res, next)
+            }
+          )
+
+          const middlewares = [...controllerMiddlewares, ...endpointMiddlewares]
+
+          switch (endpoint.method) {
+            case RouteMethods.GET:
+              this.rawApp.get(path, ...middlewares, handler)
+              break
+
+            case RouteMethods.POST:
+              this.rawApp.post(path, ...middlewares, handler)
+              break
+
+            case RouteMethods.PUT:
+              this.rawApp.put(path, ...middlewares, handler)
+              break
+
+            case RouteMethods.PATCH:
+              this.rawApp.patch(path, ...middlewares, handler)
+              break
+
+            case RouteMethods.DELETE:
+              this.rawApp.delete(path, ...middlewares, handler)
+              break
           }
-        )
-
-        const middlewares = [...controllerMiddlewares, ...endpointMiddlewares]
-
-        switch (endpoint.method) {
-          case RouteMethods.GET:
-            this.rawApp.get(path, ...middlewares, handler)
-            break
-
-          case RouteMethods.POST:
-            this.rawApp.post(path, ...middlewares, handler)
-            break
-
-          case RouteMethods.PUT:
-            this.rawApp.put(path, ...middlewares, handler)
-            break
-
-          case RouteMethods.PATCH:
-            this.rawApp.patch(path, ...middlewares, handler)
-            break
-
-          case RouteMethods.DELETE:
-            this.rawApp.delete(path, ...middlewares, handler)
-            break
-        }
+        })
       })
     })
 
@@ -199,36 +242,34 @@ export class App {
    *
    * @param tokenServer
    */
-  static async bootstrap(tokenServer: Class<ServerHooks>): Promise<Server> {
-    const config = Store.from(tokenServer).get('configuration') as Kodexo.Configuration
+  static async bootstrap(Server: Class<ServerHooks>): Promise<Server> {
+    const config = Store.from(Server).get('configuration') as Kodexo.Configuration
 
-    const server = new tokenServer()
+    const configuration = await Injector.invoke(ConfigurationService)
+    configuration.applyConfig(config)
 
-    providerRegistry
-      .resolve<ConfigurationService>(ConfigurationService)
-      .instance.applyConfig(config)
+    const appModule = configuration.getOrFail('appModule')
 
-    await importFiles('**/*.controller.ts')
+    // TODO: Move all of that into domain to register module & start rootModule
+    const RootModule = class {}
 
-    let initPromises: any = []
+    const moduleProvider = new ModuleProvider(RootModule, [appModule, LoggerService])
+    providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
 
-    await pMap(
-      Array.from(providerRegistry.asyncServices.values()),
-      async (asyncServiceProvider: Provider) => {
-        await asyncServiceProvider.init()
-      }
-    )
+    const providers = await importProviders([RootModule])
+    const routing = providers.filter(provider => provider.route)
 
-    // TODO: DEPENDENCIES ASYNC FIRST NEEDED
-    providerRegistry.services.forEach(value => {
-      initPromises.push(value.init())
+    await Injector.invoke(RootModule)
+
+    await pMap(routing, async provider => {
+      await Injector.invoke(provider.token)
     })
 
-    await Promise.all(initPromises)
+    const server = new Server()
 
     if (server.afterInit) await server.afterInit()
 
-    const app = new App()
+    const app = new App(routing)
     return app.listenForRequests()
   }
 }

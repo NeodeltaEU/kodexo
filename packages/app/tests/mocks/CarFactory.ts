@@ -4,11 +4,9 @@ import { RegistrationService } from './RegistrationService'
 
 @Factory()
 export class CarFactory {
-  @Inject private registrationService: RegistrationService
-
   public currentCar: any
 
-  constructor() {
+  constructor(@Inject private registrationService: RegistrationService) {
     this.currentCar = {
       id: 3,
       model: 'Jaguar',

@@ -11,10 +11,10 @@ import {
   UseValidation
 } from '@uminily/common'
 import { Inject } from '@uminily/injection'
-import { AuthMiddleware } from './auth.middleware'
-import { CarDto } from './car.dto'
-import { CarService } from './CarService'
-import { LogMiddleware } from './log.middleware'
+import { AuthMiddleware } from '../auth.middleware'
+import { CarDto } from '../car.dto'
+import { CarService } from '../CarService'
+import { LogMiddleware } from '../log.middleware'
 
 @Controller('/cars')
 export class CarsController {

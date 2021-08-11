@@ -40,7 +40,7 @@ export class MiddlewareBuilder {
   /**
    *
    */
-  build() {
+  /*build() {
     const { target, methodName, middlewareInstance, middlewareToken } = this
 
     const classStore = Store.from(getClass(target))
@@ -76,6 +76,37 @@ export class MiddlewareBuilder {
       )
 
     currentEndpoint.addMiddleware(handler, instance, true)
+  }*/
+
+  // TODO: REFACTOR THIS, HOW CRAPPY THIS IS
+  build() {
+    const { target, methodName, middlewareInstance, middlewareToken } = this
+
+    const classStore = Store.from(getClass(target))
+
+    if (!methodName) {
+      if (!classStore.has('middlewares')) classStore.set('middlewares', [])
+      classStore
+        .get('middlewares')
+        .push(middlewareInstance ? { instance: middlewareInstance } : { middlewareToken })
+      return
+    }
+
+    if (!classStore.has('endpoints'))
+      throw new Error(`An error has occurred during fetching endpoints for ${target.name}`)
+
+    const endpoints = (classStore.get('endpoints') as Endpoint[]) || []
+
+    const currentEndpoint = endpoints.find(endpoint => endpoint.propertyKey === methodName)
+
+    if (!currentEndpoint)
+      throw new Error(
+        `No endpoint found for ${methodName} on ${target.name}, middleware must not be applied`
+      )
+
+    middlewareInstance
+      ? currentEndpoint.addInstanciedMiddleware(middlewareInstance)
+      : currentEndpoint.addMiddleware(middlewareToken)
   }
 
   /**

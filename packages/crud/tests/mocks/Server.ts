@@ -2,6 +2,8 @@ import { ServerHooks } from '@uminily/app'
 import { Configuration } from '@uminily/config'
 import '@uminily/mikro-orm'
 import { RequestContextMiddleware } from '@uminily/mikro-orm'
+import { Class } from 'type-fest'
+import { AppModule } from './app.module'
 import { Car } from './features/cars/entities/car.entity'
 import { Dealership } from './features/dealerships/entities/dealership.entity'
 import { Profile } from './features/profiles/entities/profile.entity'
@@ -11,6 +13,7 @@ import { Workshop } from './features/workshops/entities/workshop.entity'
 const { POSTGRES_HOST, POSTGRES_PORT } = process.env
 
 @Configuration({
+  appModule: AppModule,
   port: 4000,
   mikroORM: {
     host: POSTGRES_HOST || 'localhost',

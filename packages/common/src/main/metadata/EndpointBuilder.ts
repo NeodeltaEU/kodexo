@@ -92,15 +92,10 @@ export class EndpointBuilder {
    *
    */
   withMiddlewares(middlewareTokens: Array<Class<MiddlewareHandling>>) {
-    this.middlewares = middlewareTokens.map(token => {
-      const { instance } = providerRegistry.resolve<MiddlewareHandling>(token)
-
-      const handler = instance.use
-
+    this.middlewares = middlewareTokens.map(middlewareToken => {
       return {
-        handler,
-        instance
-      } as MiddlewareHandler
+        middlewareToken
+      }
     })
 
     return this

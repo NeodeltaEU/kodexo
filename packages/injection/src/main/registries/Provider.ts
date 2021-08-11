@@ -1,8 +1,16 @@
 import { Class } from 'type-fest'
-import { ConstructorParam } from '../../interfaces'
+import { ConstructorParam, IProvider } from '../../interfaces'
 import { Store } from '../metadata/Store'
 
-export class Provider<T = any> {
+export enum ProviderType {
+  PROVIDER = 'provider',
+  MODULE = 'module',
+  CONTROLLER = 'controller',
+  SERVICE = 'service',
+  MIDDLEWARE = 'middleware'
+}
+
+export class Provider<T = any> implements IProvider {
   /**
    *
    */
@@ -45,16 +53,50 @@ export class Provider<T = any> {
 
   /**
    *
+   */
+  public imports: any[] = []
+
+  /**
+   *
+   */
+  public dependencies: Provider[] = []
+
+  /**
+   *
    * @param currentClass
    */
-  constructor(public token: Class<T>, protected options: any = {}) {
+  constructor(
+    public token: Class<T>,
+    public type: ProviderType = ProviderType.PROVIDER,
+    protected options: ProviderOptions = {}
+  ) {
     this.name = token.name
     this.store = Store.from(token)
 
     if (options.factory) this.isFactory = true
-    if (options.callback) this.isCallback = true
+    //if (options.callback) this.isCallback = true
 
     this.isAsync = this.store.has('init')
+
+    this.imports = this.options.imports || []
+
+    this.dependencies = this.getConstructorParams().map((param: ConstructorParam) => param.provider)
+
+    //console.log(this.name, this.dependencies)
+  }
+
+  /**
+   *
+   */
+  public get instance() {
+    //if (!this.singleton) this.buildSingleton()
+
+    //if (this.isCallback) return this.singleton.callback
+
+    if (!this.isFactory) return this.singleton
+    return new this.token(
+      ...this.getConstructorParams().map((param: ConstructorParam) => param.provider.instance)
+    )
   }
 
   /**
@@ -73,7 +115,13 @@ export class Provider<T = any> {
    * @returns
    */
   public async init() {
-    if (!this.isAsync || this.isInitialized) return
+    if (this.isInitialized) return
+
+    if (!this.isAsync) {
+      this.buildSingleton()
+      this.isInitialized = true
+      return
+    }
 
     const initMethod: string = this.store.get('init')
 
@@ -84,31 +132,28 @@ export class Provider<T = any> {
     this.isInitialized = true
   }
 
-  /**
-   *
-   */
-  protected buildSingleton() {
+  getConstructorParams() {
     const constructorsParams = this.store.has('constructorParams')
       ? this.store.get('constructorParams')
       : []
 
     constructorsParams.sort((a: any, b: any) => a.parameterIndex - b.parameterIndex)
 
-    if (!this.singleton)
-      this.singleton = new this.token(
-        ...constructorsParams.map((param: ConstructorParam) => param.provider.instance)
-      )
+    return constructorsParams
   }
 
   /**
    *
    */
-  public get instance() {
-    if (!this.singleton) this.buildSingleton()
-
-    //if (this.isCallback) return this.singleton.callback
-
-    if (!this.isFactory) return this.singleton
-    return new this.token()
+  protected buildSingleton() {
+    if (!this.singleton)
+      this.singleton = new this.token(
+        ...this.getConstructorParams().map((param: ConstructorParam) => param.provider.instance)
+      )
   }
+}
+
+export type ProviderOptions = {
+  imports?: Provider[]
+  factory?: boolean
 }

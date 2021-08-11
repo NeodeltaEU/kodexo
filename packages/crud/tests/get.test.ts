@@ -23,6 +23,7 @@ describe('[Method]: GET', () => {
 
     // TODO: externalize connection for testing !!!
     connection = providerRegistry.resolve<ConnectionDatabase>(ConnectionDatabase).instance
+
     await connection.init()
     await connection.syncSchema()
 

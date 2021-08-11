@@ -19,6 +19,8 @@ export class ValidationMiddleware implements MiddlewareHandling {
 
       next()
     } catch (err) {
+      console.error(err)
+
       if (!Array.isArray(err)) return next(err)
 
       // TODO: smart handling for class validator
