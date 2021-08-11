@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.9.3...@uminily/common@0.10.0) (2021-08-11)
+
+
+### Features
+
+* change everything with modules ([f9a8972](https://github.com/Uminily/kodexo/commit/f9a89725a2db6b039e1179b606452ec85cbbb239))
+
+
+
+
+
 ## [0.9.3](https://github.com/Uminily/kodexo/compare/@uminily/common@0.9.2...@uminily/common@0.9.3) (2021-08-03)
 
 **Note:** Version bump only for package @uminily/common
