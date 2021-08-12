@@ -49,7 +49,7 @@ export class Provider<T = any> implements IProvider {
   /**
    *
    */
-  private isInitialized = false
+  public isInitialized = false
 
   /**
    *

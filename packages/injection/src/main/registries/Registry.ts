@@ -89,7 +89,7 @@ export class Registry extends Map<RegistryKey, Provider> {
   /**
    *
    */
-  get asyncServices() {
+  /*get asyncServices() {
     return Array.from(this.services.values())
       .filter(provider => provider.isAsync)
       .reduce((result, provider) => {
@@ -97,10 +97,6 @@ export class Registry extends Map<RegistryKey, Provider> {
         return result
       }, new Map())
   }
-
-  /**
-   *
-   */
   get injectables() {
     return Array.from(this.values())
       .filter(provider => provider.injectable)
@@ -108,6 +104,12 @@ export class Registry extends Map<RegistryKey, Provider> {
         result.set(provider.token, provider)
         return result
       }, new Map())
+  }*/
+
+  get providerStates() {
+    return Array.from(this.values()).map(provider => {
+      return { name: provider.name, status: provider.isInitialized ? 'loaded' : 'not loaded' }
+    })
   }
 }
 

@@ -248,6 +248,8 @@ export class App {
     const configuration = await Injector.invoke(ConfigurationService)
     configuration.applyConfig(config)
 
+    const logger = await Injector.invoke(LoggerService)
+
     const appModule = configuration.getOrFail('appModule')
 
     // TODO: Move all of that into domain to register module & start rootModule
@@ -264,6 +266,19 @@ export class App {
     await pMap(routing, async provider => {
       await Injector.invoke(provider.token)
     })
+
+    const providersLoaded = providerRegistry.providerStates.filter(
+      provider => provider.status === 'loaded'
+    ).length
+    const providersFound = providerRegistry.providerStates.length
+
+    logger.info('---------------')
+    for (const provider of providerRegistry.providerStates) {
+      logger.info(`Status: ${provider.status} \t ${provider.name}`)
+    }
+    logger.info('---------------')
+    logger.info(`${providersLoaded} Loaded / ${providersFound} Providers Found`)
+    logger.info('---------------')
 
     const server = new Server()
 
