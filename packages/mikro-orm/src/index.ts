@@ -1,4 +1,4 @@
-import { Configuration as MikroConfiguration, Options as MikroOptions } from '@mikro-orm/core'
+import { Options as MikroOptions } from '@mikro-orm/core'
 
 export * from './ConnectionDatabase'
 export * from './RepositoryBuilder'
@@ -8,7 +8,7 @@ export * from './mikro.module'
 declare global {
   namespace Kodexo {
     interface Configuration {
-      mikroORM: MikroOptions | MikroConfiguration
+      mikroORM: Omit<MikroOptions, 'entities' | 'entitiesTs'>
     }
   }
 }

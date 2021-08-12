@@ -62,6 +62,7 @@
     "@uminily/common": "^0.10.1",
     "@uminily/config": "^0.4.1",
     "@uminily/injection": "^0.3.1",
+    "@uminily/logger": "^0.2.13",
     "type-fest": "^1.2.1"
   },
   "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"

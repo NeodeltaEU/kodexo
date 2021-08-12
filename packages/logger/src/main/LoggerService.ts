@@ -1,11 +1,13 @@
 import { Service } from '@uminily/common'
 import * as pino from 'pino'
 import * as pinoHttp from 'pino-http'
-import { Logger } from 'pino'
+import { Logger, Level } from 'pino'
 
 @Service()
 export class LoggerService {
   private readonly logger: Logger
+
+  private lastLineContent: string
 
   constructor() {
     this.logger = pino({
@@ -27,10 +29,37 @@ export class LoggerService {
 
   /**
    *
+   */
+  separator(level: Level = 'info') {
+    const content = '--------------'
+
+    if (this.lastLineContent === content) return
+
+    switch (level) {
+      case 'info':
+        return this.info(content)
+      case 'error':
+        return this.error(content)
+      case 'debug':
+        return this.debug(content)
+      case 'warn':
+        return this.warn(content)
+      case 'fatal':
+        return this.fatal(content)
+    }
+  }
+
+  setLastLog(lastLineContent: any) {
+    this.lastLineContent = lastLineContent.toString() as string
+  }
+
+  /**
+   *
    * @param obj
    * @returns
    */
   info(obj: any) {
+    this.setLastLog(obj)
     return this.logger.info(obj)
   }
 
@@ -39,6 +68,7 @@ export class LoggerService {
    * @param obj
    */
   error(obj: any) {
+    this.setLastLog(obj)
     return this.logger.error(obj)
   }
 
@@ -47,6 +77,7 @@ export class LoggerService {
    * @param obj
    */
   debug(obj: any) {
+    this.setLastLog(obj)
     return this.logger.debug(obj)
   }
 
@@ -55,6 +86,7 @@ export class LoggerService {
    * @param obj
    */
   warn(obj: any) {
+    this.setLastLog(obj)
     return this.logger.warn(obj)
   }
 
@@ -63,6 +95,7 @@ export class LoggerService {
    * @param obj
    */
   fatal(obj: any) {
+    this.setLastLog(obj)
     return this.logger.fatal(obj)
   }
 }

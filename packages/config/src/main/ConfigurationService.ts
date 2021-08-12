@@ -1,16 +1,21 @@
 import { Service } from '@uminily/common'
 import * as objectPath from 'object-path'
 import { PartialDeep } from 'type-fest'
+import { Inject } from '@uminily/injection'
+import { LoggerService } from '@uminily/logger'
 
 @Service()
 export class ConfigurationService {
   protected storage: PartialDeep<Kodexo.Configuration> = {}
+
+  constructor(@Inject private logger: LoggerService) {}
 
   /**
    *
    * @param configuration
    */
   applyConfig(configuration: PartialDeep<Kodexo.Configuration>) {
+    this.logger.info(`[CONFIG] ${Object.keys(configuration).length} key config loaded`)
     this.storage = configuration
   }
 

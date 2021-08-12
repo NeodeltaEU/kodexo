@@ -234,7 +234,7 @@ export class App {
   public listenForRequests(): Server {
     const port = this.configurationService.get('port') || 3000
     return this.rawApp.listen(port, () => {
-      this.logger.info(`SERVER STARTED ON ${port}`)
+      this.logger.info(`[APP] SERVER STARTED ON ${port}`)
     })
   }
 
@@ -243,12 +243,19 @@ export class App {
    * @param tokenServer
    */
   static async bootstrap(Server: Class<ServerHooks>): Promise<Server> {
+    const logger = await Injector.invoke(LoggerService)
+
+    logger.separator()
+    logger.separator()
+    logger.separator()
+    logger.separator()
+
     const config = Store.from(Server).get('configuration') as Kodexo.Configuration
 
     const configuration = await Injector.invoke(ConfigurationService)
     configuration.applyConfig(config)
 
-    const logger = await Injector.invoke(LoggerService)
+    logger.separator()
 
     const appModule = configuration.getOrFail('appModule')
 
@@ -272,13 +279,13 @@ export class App {
     ).length
     const providersFound = providerRegistry.providerStates.length
 
-    logger.info('---------------')
+    logger.separator()
     for (const provider of providerRegistry.providerStates) {
-      logger.info(`Status: ${provider.status} \t ${provider.name}`)
+      logger.info(`[INJECTION] Status: ${provider.status} \t ${provider.name}`)
     }
-    logger.info('---------------')
-    logger.info(`${providersLoaded} Loaded / ${providersFound} Providers Found`)
-    logger.info('---------------')
+    logger.separator()
+    logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} providers found`)
+    logger.separator()
 
     const server = new Server()
 
