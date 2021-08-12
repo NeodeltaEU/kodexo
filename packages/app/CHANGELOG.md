@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.10.0...@uminily/app@0.10.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* **app:** server can have di constructor ([242c50c](https://github.com/Uminily/kodexo/commit/242c50cb2d17d9aa29bc35874dd0c2287830b192))
+
+
+
+
+
 # [0.10.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.9.1...@uminily/app@0.10.0) (2021-08-12)
 
 
