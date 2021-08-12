@@ -1,4 +1,6 @@
 import { Configuration } from '@uminily/config'
+import { Inject } from '@uminily/injection'
+import { LoggerService } from '@uminily/logger'
 import { ServerHooks } from '../../src'
 import { AppModule } from './app.module'
 
@@ -19,4 +21,8 @@ import { AppModule } from './app.module'
     request: false
   }
 })
-export class Server implements ServerHooks {}
+export class Server implements ServerHooks {
+  constructor(@Inject private logger: LoggerService) {}
+
+  //async afterInit() {}
+}

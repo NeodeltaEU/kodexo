@@ -10,7 +10,8 @@ import {
   providerRegistry,
   Store,
   IProvider,
-  Registries
+  Registries,
+  ConstructorParam
 } from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
@@ -239,7 +240,7 @@ export class App {
   }
 
   /**
-   *
+   * TODO: REFACTOR ALL OF THIS OMG OMG
    * @param tokenServer
    */
   static async bootstrap(Server: Class<ServerHooks>): Promise<Server> {
@@ -250,7 +251,9 @@ export class App {
     logger.separator()
     logger.separator()
 
-    const config = Store.from(Server).get('configuration') as Kodexo.Configuration
+    const serverStore = Store.from(Server)
+
+    const config = serverStore.get('configuration') as Kodexo.Configuration
 
     const configuration = await Injector.invoke(ConfigurationService)
     configuration.applyConfig(config)
@@ -287,7 +290,15 @@ export class App {
     logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} providers found`)
     logger.separator()
 
-    const server = new Server()
+    const serverConstructorsParams = serverStore.has('constructorParams')
+      ? serverStore.get('constructorParams')
+      : []
+
+    serverConstructorsParams.sort((a: any, b: any) => a.parameterIndex - b.parameterIndex)
+
+    const server = new Server(
+      ...serverConstructorsParams.map((param: ConstructorParam) => param.provider.instance)
+    )
 
     if (server.afterInit) await server.afterInit()
 
