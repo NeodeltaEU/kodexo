@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/logger@0.2.14...@uminily/logger@0.3.0) (2021-08-12)
+
+
+### Features
+
+* add entities modules & logs ([8d35799](https://github.com/Uminily/kodexo/commit/8d357992000e9ef93c105aeaee28afc5a5c27709))
+
+
+
+
+
 ## [0.2.14](https://github.com/Uminily/kodexo/compare/@uminily/logger@0.2.13...@uminily/logger@0.2.14) (2021-08-12)
 
 **Note:** Version bump only for package @uminily/logger

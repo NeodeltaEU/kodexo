@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.10.1...@uminily/common@0.11.0) (2021-08-12)
+
+
+### Features
+
+* add entities modules & logs ([8d35799](https://github.com/Uminily/kodexo/commit/8d357992000e9ef93c105aeaee28afc5a5c27709))
+
+
+
+
+
 ## [0.10.1](https://github.com/Uminily/kodexo/compare/@uminily/common@0.10.0...@uminily/common@0.10.1) (2021-08-12)
 
 **Note:** Version bump only for package @uminily/common
