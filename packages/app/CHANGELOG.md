@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.9.0...@uminily/app@0.9.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* **app:** add logger for providers loading ([4182bc1](https://github.com/Uminily/kodexo/commit/4182bc19175389b095a9b7af1dca9b1692f4ec34))
+
+
+
+
+
 # [0.9.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.3...@uminily/app@0.9.0) (2021-08-11)
 
 
