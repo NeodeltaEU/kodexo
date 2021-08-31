@@ -3,7 +3,6 @@ import { ModuleProvider, Service } from '@uminily/common'
 import { Init, Inject, Provider, providerRegistry } from '@uminily/injection'
 import { ConfigurationService } from '@uminily/config'
 import { LoggerService } from '@uminily/logger'
-import { isArray } from 'lodash'
 
 @Service()
 export class ConnectionDatabase {
@@ -32,7 +31,7 @@ export class ConnectionDatabase {
       Array.from(providerRegistry.modules.values()).forEach((providerModule: Provider) => {
         if (
           !(providerModule as ModuleProvider).entities ||
-          !isArray((providerModule as ModuleProvider).entities)
+          !Array.isArray((providerModule as ModuleProvider).entities)
         )
           return
 
