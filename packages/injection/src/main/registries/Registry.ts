@@ -108,7 +108,9 @@ export class Registry extends Map<RegistryKey, Provider> {
 
   get providerStates() {
     return Array.from(this.values()).map(provider => {
-      return { name: provider.name, status: provider.isInitialized ? 'loaded' : 'not loaded' }
+      const { name, type, isInitialized } = provider
+
+      return { name, type, status: isInitialized ? 'loaded' : 'not loaded' }
     })
   }
 }

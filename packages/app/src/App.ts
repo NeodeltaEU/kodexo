@@ -280,7 +280,9 @@ export class App {
     const providersLoaded = providerRegistry.providerStates.filter(
       provider => provider.status === 'loaded'
     ).length
+
     const providersFound = providerRegistry.providerStates.length
+    const controllersFound = routing.length
 
     logger.separator()
     for (const provider of providerRegistry.providerStates) {
@@ -288,6 +290,7 @@ export class App {
     }
     logger.separator()
     logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} providers found`)
+    logger.info(`[INJECTION] ${controllersFound} controllers found`)
     logger.separator()
 
     const serverConstructorsParams = serverStore.has('constructorParams')
