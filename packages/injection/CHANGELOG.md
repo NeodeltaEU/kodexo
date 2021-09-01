@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.3.1...@uminily/injection@0.4.0) (2021-09-01)
+
+
+### Features
+
+* add worker & queue ([d3ef4db](https://github.com/Uminily/kodexo/commit/d3ef4dbdb51f4fda5db2dbe8f9e844dafe0e8e6e))
+* **app:** add controller debug ([eb7af67](https://github.com/Uminily/kodexo/commit/eb7af67eb2b4f5aa2051206ba1518c100d28aff1))
+
+
+
+
+
 ## [0.3.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.3.0...@uminily/injection@0.3.1) (2021-08-12)
 
 

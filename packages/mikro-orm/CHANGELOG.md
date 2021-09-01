@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.1](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.3.0...@uminily/mikro-orm@0.3.1) (2021-09-01)
+
+
+### Bug Fixes
+
+* **mikro-orm:** remove useless lodash import ([8b639fd](https://github.com/Uminily/kodexo/commit/8b639fd7ce2b40d03a6c096383a0279a03f9e75a))
+
+
+
+
+
 # [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.2.1...@uminily/mikro-orm@0.3.0) (2021-08-12)
 
 

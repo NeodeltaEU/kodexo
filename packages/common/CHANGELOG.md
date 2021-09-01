@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.11.0...@uminily/common@0.12.0) (2021-09-01)
+
+
+### Features
+
+* add worker & queue ([d3ef4db](https://github.com/Uminily/kodexo/commit/d3ef4dbdb51f4fda5db2dbe8f9e844dafe0e8e6e))
+
+
+
+
+
 # [0.11.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.10.1...@uminily/common@0.11.0) (2021-08-12)
 
 
