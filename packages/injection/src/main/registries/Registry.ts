@@ -13,7 +13,8 @@ export enum Registries {
   CONTROLLER = 'controllers',
   MIDDLEWARE = 'middlewares',
   PARAM = 'param',
-  MODULE = 'modules'
+  MODULE = 'modules',
+  QUEUES = 'queues'
 }
 
 /**
@@ -44,9 +45,16 @@ export class Registry extends Map<RegistryKey, Provider> {
   /**
    *
    */
-  public resolve<T>(token: Class): Provider<T> {
+  public resolve<T>(token: Class<T>): Provider<T> {
     if (!this.has(token)) throw new Error(`Missing token ${token.name} on global registry!`)
     return this.get(token) as Provider<T>
+  }
+
+  /**
+   *
+   */
+  public getInstanceOf<T>(token: Class<T>): T {
+    return this.resolve(token).instance
   }
 
   /**
@@ -84,6 +92,13 @@ export class Registry extends Map<RegistryKey, Provider> {
    */
   get middlewares(): Map<RegistryKey, Provider> {
     return this.registries.get(Registries.MIDDLEWARE) || new Map()
+  }
+
+  /**
+   *
+   */
+  get queues(): Map<RegistryKey, Provider> {
+    return this.registries.get(Registries.QUEUES) || new Map()
   }
 
   /**

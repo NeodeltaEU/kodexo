@@ -7,7 +7,8 @@ export enum ProviderType {
   MODULE = 'module',
   CONTROLLER = 'controller',
   SERVICE = 'service',
-  MIDDLEWARE = 'middleware'
+  MIDDLEWARE = 'middleware',
+  QUEUE = 'queue'
 }
 
 export class Provider<T = any> implements IProvider {

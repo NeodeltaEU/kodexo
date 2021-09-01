@@ -10,7 +10,6 @@ import { IProvider } from '../interfaces/IProvider'
 export async function importProviders(imports: any): Promise<IProvider[]> {
   const providers = await importComponents(imports)
   const children = await importRecursive(providers)
-
   return [...children, ...providers]
 }
 
@@ -31,8 +30,9 @@ export async function importRecursive(providers: any[]): Promise<IProvider[]> {
     .map(async (provider: Provider) => {
       const imports = await importProviders(provider.imports)
       const routing = await importProviders((provider as any).routing)
+      const queues = await importProviders((provider as any).queues)
 
-      return [...imports, ...routing]
+      return [...imports, ...routing, ...queues]
     })
 
   return concat(await Promise.all(promises))

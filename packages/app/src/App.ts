@@ -19,6 +19,7 @@ import { Server } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
 import { Injector } from './Injector'
+import { QueueManager } from '@uminily/queueing'
 
 /**
  *
@@ -247,9 +248,6 @@ export class App {
     const logger = await Injector.invoke(LoggerService)
 
     logger.separator()
-    logger.separator()
-    logger.separator()
-    logger.separator()
 
     const serverStore = Store.from(Server)
 
@@ -283,14 +281,16 @@ export class App {
 
     const providersFound = providerRegistry.providerStates.length
     const controllersFound = routing.length
+    const queuesFound = Array.from(providerRegistry.queues.values()).length
 
     logger.separator()
     for (const provider of providerRegistry.providerStates) {
       logger.info(`[INJECTION] Status: ${provider.status} \t ${provider.name}`)
     }
     logger.separator()
-    logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} providers found`)
-    logger.info(`[INJECTION] ${controllersFound} controllers found`)
+    logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} provider(s) found`)
+    logger.info(`[INJECTION] ${controllersFound} controller(s) found`)
+    logger.info(`[INJECTION] ${queuesFound} queue(s) found`)
     logger.separator()
 
     const serverConstructorsParams = serverStore.has('constructorParams')
@@ -304,6 +304,11 @@ export class App {
     )
 
     if (server.afterInit) await server.afterInit()
+
+    if (queuesFound) {
+      const queueManager = providerRegistry.getInstanceOf(QueueManager)
+      queueManager.prepareQueues()
+    }
 
     const app = new App(routing)
     return app.listenForRequests()

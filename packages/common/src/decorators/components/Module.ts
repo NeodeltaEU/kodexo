@@ -4,9 +4,14 @@ import { ModuleProvider } from '../../main/modules/ModuleProvider'
 
 export function Module(options: ModuleDecoratorOptions) {
   return (target: any) => {
-    const provider = new ModuleProvider(target, options.imports, options.routing)
+    const provider = new ModuleProvider(
+      target,
+      options.imports,
+      options.routing,
+      options?.queues || []
+    )
 
-    const { imports, routing, ...otherOptions } = options
+    const { imports, routing, queues, ...otherOptions } = options
 
     for (const otherOption in otherOptions) {
       provider[otherOption] = otherOptions[otherOption]
@@ -19,6 +24,7 @@ export function Module(options: ModuleDecoratorOptions) {
 export type ModuleDecoratorOptions = {
   imports: any[]
   routing?: { [key: string]: any }
+  queues?: any[]
 
   [key: string]: any
 }
