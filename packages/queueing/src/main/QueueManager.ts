@@ -13,8 +13,6 @@ export class QueueManager {
   private bullConnection: ConnectionOptions
 
   constructor(@Inject private configurationService: ConfigurationService) {
-    console.log(this.configurationService.getOrFail('bull'))
-
     this.bullConnection = this.configurationService.getOrFail('bull')
   }
 
@@ -23,7 +21,7 @@ export class QueueManager {
    */
   prepareQueues() {
     Array.from(providerRegistry.queues.values()).forEach(queueProvider => {
-      const { queueName, instance } = queueProvider as QueueProvider
+      const { queueName, token } = queueProvider as QueueProvider
 
       const config: QueueOptions = {
         connection: this.bullConnection
@@ -31,7 +29,7 @@ export class QueueManager {
 
       const queue = new Queue(queueName, config)
 
-      this.currentQueues.set(instance.constructor.name, queue)
+      this.currentQueues.set(token.name, queue)
     })
   }
 

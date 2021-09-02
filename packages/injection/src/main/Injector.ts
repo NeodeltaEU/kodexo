@@ -6,8 +6,6 @@ export class Injector {
   public async invokeLocally(token: any) {
     const provider = this.ensureProvider(token)
 
-    //console.log({ name: provider.name, deps: provider.dependencies, imports: provider.imports })
-
     await pMap(provider.dependencies, async depProvider => {
       await this.resolve(depProvider)
     })
@@ -32,8 +30,6 @@ export class Injector {
     )
 
     await provider.init()
-
-    //console.log({ provider })
 
     return provider.instance
   }

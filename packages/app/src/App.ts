@@ -11,7 +11,8 @@ import {
   Store,
   IProvider,
   Registries,
-  ConstructorParam
+  ConstructorParam,
+  ProviderType
 } from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
@@ -267,6 +268,7 @@ export class App {
     providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
 
     const providers = await importProviders([RootModule])
+
     const routing = providers.filter(provider => provider.route)
 
     await Injector.invoke(RootModule)
@@ -275,13 +277,19 @@ export class App {
       await Injector.invoke(provider.token)
     })
 
+    // TODO: Something is weird about loading module declarated providers only
+    // when a @Decorator is found, the provider is created and added to registry, it must be loading only if
+    // it's a declarated into a module
+
     const providersLoaded = providerRegistry.providerStates.filter(
       provider => provider.status === 'loaded'
     ).length
 
     const providersFound = providerRegistry.providerStates.length
     const controllersFound = routing.length
-    const queuesFound = Array.from(providerRegistry.queues.values()).length
+    const queuesFound = providerRegistry.providerStates.filter(
+      provider => provider.status === 'loaded' && provider.type === ProviderType.QUEUE
+    ).length
 
     logger.separator()
     for (const provider of providerRegistry.providerStates) {
