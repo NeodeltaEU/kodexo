@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.4.0...@uminily/injection@0.4.1) (2021-09-02)
+
+
+### Bug Fixes
+
+* loading queue was weird ([fe6b4a2](https://github.com/Uminily/kodexo/commit/fe6b4a2d5f86b7529fa99923057443c3a1b4061f))
+
+
+
+
+
 # [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.3.1...@uminily/injection@0.4.0) (2021-09-01)
 
 
