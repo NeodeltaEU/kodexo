@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.1.1...@uminily/queueing@0.1.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* **queueing:** prefixing queue option ([02a518e](https://github.com/Uminily/kodexo/commit/02a518e66bb0d3546f9441f2cf830d4bc6315c13))
+
+
+
+
+
 ## [0.1.1](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.1.0...@uminily/queueing@0.1.1) (2021-09-02)
 
 
