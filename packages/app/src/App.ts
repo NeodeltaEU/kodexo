@@ -6,6 +6,7 @@ import { LoggerService } from '@uminily/logger'
 import { HttpError } from '@uminily/errors'
 import {
   Inject,
+  Injector,
   importProviders,
   providerRegistry,
   Store,
@@ -19,7 +20,6 @@ import * as cookieParser from 'cookie-parser'
 import { Server } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
-import { Injector } from './Injector'
 import { QueueManager } from '@uminily/queueing'
 
 /**
@@ -278,8 +278,8 @@ export class App {
     })
 
     // TODO: Something is weird about loading module declarated providers only
-    // when a @Decorator is found, the provider is created and added to registry, it must be loading only if
-    // it's a declarated into a module
+    // when a @Decorator is found, the provider is created and added to registry, it must be loaded only if
+    // it's declarated into a module
 
     const providersLoaded = providerRegistry.providerStates.filter(
       provider => provider.status === 'loaded'
