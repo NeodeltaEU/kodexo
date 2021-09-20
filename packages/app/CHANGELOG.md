@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.1...@uminily/app@0.11.2) (2021-09-20)
+
+
+### Bug Fixes
+
+* **app:** injector from package injection ([c3b99d4](https://github.com/Uminily/kodexo/commit/c3b99d4b94d769b45cfcf35fe8a8780b7a3fe244))
+
+
+
+
+
 ## [0.11.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.0...@uminily/app@0.11.1) (2021-09-02)
 
 
