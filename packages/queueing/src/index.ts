@@ -13,6 +13,9 @@ declare global {
       bull: {
         connection: ConnectionOptions
       }
+      queue: {
+        prefix?: string
+      }
     }
   }
 }

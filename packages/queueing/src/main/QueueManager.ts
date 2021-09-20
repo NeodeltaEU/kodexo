@@ -11,9 +11,11 @@ export class QueueManager {
   private currentWorkers: Map<string, Worker> = new Map()
   private currentQueues: Map<string, Queue> = new Map()
   private bullConnection: ConnectionOptions
+  private queuePrefix: string
 
   constructor(@Inject private configurationService: ConfigurationService) {
     this.bullConnection = this.configurationService.getOrFail('bull')
+    this.queuePrefix = this.configurationService.get('queue.prefix')
   }
 
   /**
@@ -27,7 +29,9 @@ export class QueueManager {
         connection: this.bullConnection
       }
 
-      const queue = new Queue(queueName, config)
+      const name = (this.queuePrefix ? this.queuePrefix : '') + queueName
+
+      const queue = new Queue(name, config)
 
       this.currentQueues.set(token.name, queue)
     })
@@ -44,7 +48,9 @@ export class QueueManager {
         connection: this.bullConnection
       }
 
-      const worker = new Worker(queueName, instance.processor, config)
+      const name = (this.queuePrefix ? this.queuePrefix : '') + queueName
+
+      const worker = new Worker(name, instance.processor, config)
 
       this.currentWorkers.set(instance.constructor.name, worker)
     })

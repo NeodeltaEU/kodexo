@@ -21,6 +21,7 @@
         [
           "app",
           "common",
+          "queueing",
           "config",
           "crud",
           "errors",
