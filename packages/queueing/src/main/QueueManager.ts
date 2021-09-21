@@ -26,6 +26,8 @@ export class QueueManager {
   constructor(@Inject private configurationService: ConfigurationService) {
     this.bullConnection = this.configurationService.getOrFail('bull')
     this.queuePrefix = this.configurationService.get('queues.prefix')
+
+    this.prepareFlowProducer()
   }
 
   /**
@@ -69,7 +71,7 @@ export class QueueManager {
   /**
    *
    */
-  startFlowProducer() {
+  prepareFlowProducer() {
     const config: QueueOptions = {
       connection: this.bullConnection
     }
@@ -82,7 +84,6 @@ export class QueueManager {
    */
   listen() {
     this.startAllWorkers()
-    this.startFlowProducer()
   }
 
   /**
