@@ -69,6 +69,8 @@ export class AppWorker {
 
     const queueManager = providerRegistry.getInstanceOf(QueueManager)
 
-    queueManager.startAllWorkers()
+    queueManager.listen()
+
+    logger.info('[WORKER] QueueManager listening now for jobs...')
   }
 }
