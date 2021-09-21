@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.6](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.5...@uminily/app@0.11.6) (2021-09-21)
+
+
+### Bug Fixes
+
+* **app:** queues init before afterInit method ([9a8128e](https://github.com/Uminily/kodexo/commit/9a8128e9184be102eef522efbca75e320bec7823))
+
+
+
+
+
 ## [0.11.5](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.4...@uminily/app@0.11.5) (2021-09-21)
 
 **Note:** Version bump only for package @uminily/app
