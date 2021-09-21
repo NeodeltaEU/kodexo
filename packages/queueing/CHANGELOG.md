@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.1...@uminily/queueing@0.2.2) (2021-09-21)
+
+
+### Bug Fixes
+
+* **queueing:** children params no more mandatory ([471119a](https://github.com/Uminily/kodexo/commit/471119a87db00a556b4d76b242656cb22bfb2aa0))
+
+
+
+
+
 ## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.0...@uminily/queueing@0.2.1) (2021-09-21)
 
 
