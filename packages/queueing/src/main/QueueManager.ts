@@ -122,7 +122,7 @@ export class QueueManager {
         name,
         data,
         queueName: foundQueue.name,
-        children: children.map(child => resolveQueueNames(child))
+        children: children ? children.map(child => resolveQueueNames(child)) : []
       }
     }
 
@@ -140,5 +140,5 @@ type JobFlowParams = {
   parentQueue: Class<QueueHandler>
   jobName: string
   jobData?: any
-  children: JobFlowParams[]
+  children?: JobFlowParams[]
 }
