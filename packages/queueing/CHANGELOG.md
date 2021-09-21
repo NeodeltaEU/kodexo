@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.1.2...@uminily/queueing@0.2.0) (2021-09-21)
+
+
+### Features
+
+* **queueing:** add flow producer system ([9cc7ed1](https://github.com/Uminily/kodexo/commit/9cc7ed1370dd39fd359b92cfbf70161b1f0f97f2))
+
+
+
+
+
 ## [0.1.2](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.1.1...@uminily/queueing@0.1.2) (2021-09-20)
 
 
