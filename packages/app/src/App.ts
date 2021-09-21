@@ -311,12 +311,12 @@ export class App {
       ...serverConstructorsParams.map((param: ConstructorParam) => param.provider.instance)
     )
 
-    if (server.afterInit) await server.afterInit()
-
     if (queuesFound) {
       const queueManager = providerRegistry.getInstanceOf(QueueManager)
       queueManager.prepareQueues()
     }
+
+    if (server.afterInit) await server.afterInit()
 
     const app = new App(routing)
     return app.listenForRequests()
