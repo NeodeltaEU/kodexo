@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.3](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.2...@uminily/queueing@0.2.3) (2021-09-22)
+
+
+### Bug Fixes
+
+* **queueing:** export Job class from bullmq ([c747eae](https://github.com/Uminily/kodexo/commit/c747eae13e6c9ad27241dbbc2018a28503eea9bb))
+
+
+
+
+
 ## [0.2.2](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.1...@uminily/queueing@0.2.2) (2021-09-21)
 
 
