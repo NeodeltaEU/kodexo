@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.3...@uminily/queueing@0.2.4) (2021-09-23)
+
+
+### Bug Fixes
+
+* **queueing:** bind queue instance to worker ([681d485](https://github.com/Uminily/kodexo/commit/681d4852169461e85fde4f9f674108f9ab303de4))
+
+
+
+
+
 ## [0.2.3](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.2...@uminily/queueing@0.2.3) (2021-09-22)
 
 
