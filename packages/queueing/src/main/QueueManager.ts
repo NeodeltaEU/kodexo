@@ -62,7 +62,7 @@ export class QueueManager {
 
       const name = (this.queuePrefix ? this.queuePrefix : '') + queueName
 
-      const worker = new Worker(name, instance.processor, config)
+      const worker = new Worker(name, instance.processor.bind(instance), config)
 
       this.currentWorkers.set(instance.constructor.name, worker)
     })
