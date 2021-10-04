@@ -34,7 +34,7 @@ export class QueueManager {
    */
   prepareQueues() {
     Array.from(providerRegistry.queues.values()).forEach(queueProvider => {
-      const { queueName, token } = queueProvider as QueueProvider
+      const { queueName, token, instance } = queueProvider as QueueProvider
 
       const config: QueueOptions = {
         connection: this.bullConnection
@@ -43,6 +43,10 @@ export class QueueManager {
       const name = (this.queuePrefix ? this.queuePrefix + '-' : '') + queueName
 
       const queue = new Queue(name, config)
+
+      if (instance.onCompleted) queue.on('completed', instance.onCompleted.bind(instance))
+      if (instance.onDrained) queue.on('drained', instance.onDrained.bind(instance))
+      if (instance.onFailed) queue.on('failed', instance.onFailed.bind(instance))
 
       this.currentQueues.set(token.name, queue)
     })
