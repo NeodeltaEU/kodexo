@@ -44,10 +44,6 @@ export class QueueManager {
 
       const queue = new Queue(name, config)
 
-      if (instance.onCompleted) queue.on('completed', instance.onCompleted.bind(instance))
-      if (instance.onDrained) queue.on('drained', instance.onDrained.bind(instance))
-      if (instance.onFailed) queue.on('failed', instance.onFailed.bind(instance))
-
       this.currentQueues.set(token.name, queue)
     })
   }
@@ -66,6 +62,17 @@ export class QueueManager {
       const name = (this.queuePrefix ? this.queuePrefix + '-' : '') + queueName
 
       const worker = new Worker(name, instance.processor.bind(instance), config)
+
+      if (instance.onCompleted) worker.on('completed', instance.onCompleted.bind(instance))
+      if (instance.onProgress) worker.on('progress', instance.onProgress.bind(instance))
+      if (instance.onDrained) worker.on('drained', instance.onDrained.bind(instance))
+      if (instance.onActive) worker.on('active', instance.onActive.bind(instance))
+      if (instance.onFailed) worker.on('failed', instance.onFailed.bind(instance))
+
+      worker.on('error', err => {
+        // log the error
+        console.error(err)
+      })
 
       this.currentWorkers.set(instance.constructor.name, worker)
     })
