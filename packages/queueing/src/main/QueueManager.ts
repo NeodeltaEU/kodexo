@@ -1,19 +1,18 @@
-import {
-  Worker,
-  ConnectionOptions,
-  WorkerOptions,
-  Queue,
-  QueueOptions,
-  FlowProducer,
-  Job,
-  FlowJob
-} from 'bullmq'
 import { Service } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
 import { Inject, providerRegistry } from '@uminily/injection'
+import {
+  ConnectionOptions,
+  FlowJob,
+  FlowProducer,
+  Queue,
+  QueueOptions,
+  Worker,
+  WorkerOptions
+} from 'bullmq'
+import { Class } from 'type-fest'
 import { QueueProvider } from '../components/QueueProvider'
 import { QueueHandler } from '../interfaces'
-import { Class } from 'type-fest'
 
 @Service()
 export class QueueManager {
@@ -41,7 +40,7 @@ export class QueueManager {
         connection: this.bullConnection
       }
 
-      const name = (this.queuePrefix ? this.queuePrefix : '') + queueName
+      const name = (this.queuePrefix ? this.queuePrefix + '-' : '') + queueName
 
       const queue = new Queue(name, config)
 
@@ -60,7 +59,7 @@ export class QueueManager {
         connection: this.bullConnection
       }
 
-      const name = (this.queuePrefix ? this.queuePrefix : '') + queueName
+      const name = (this.queuePrefix ? this.queuePrefix + '-' : '') + queueName
 
       const worker = new Worker(name, instance.processor.bind(instance), config)
 
