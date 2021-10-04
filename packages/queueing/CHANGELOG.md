@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.5...@uminily/queueing@0.3.0) (2021-10-04)
+
+
+### Features
+
+* **queueing:** add events on queue ([163d8f5](https://github.com/Uminily/kodexo/commit/163d8f5ddbed22eb646c2f58522f652562897de4))
+
+
+
+
+
 ## [0.2.5](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.2.4...@uminily/queueing@0.2.5) (2021-10-04)
 
 
