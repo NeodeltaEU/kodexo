@@ -17,10 +17,11 @@ import {
 } from '@uminily/injection'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
-import { Server } from 'http'
+import { Server as HttpServer } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
 import { QueueManager } from '@uminily/queueing'
+import { createTerminus, TerminusOptions } from '@godaddy/terminus'
 
 /**
  *
@@ -232,20 +233,49 @@ export class App {
 
   /**
    *
+   */
+  private prepareReadinessLiveness(server: HttpServer) {
+    const readinessLivenessOptions: TerminusOptions = {
+      healthChecks: {
+        '/healthcheck': async () => {
+          return 'ok'
+        }
+      },
+
+      onShutdown: async () => {
+        this.logger.info('[APP] Shutting down...')
+      },
+
+      onSignal: async () => {
+        this.logger.info(`[APP] Close signal received...`)
+        // Close database or prepare some executions from server instance
+      }
+    }
+
+    createTerminus(server, readinessLivenessOptions)
+  }
+
+  /**
+   *
    * @param port
    */
-  public listenForRequests(): Server {
+  public listenForRequests(): HttpServer {
     const port = this.configurationService.get('port') || 3000
-    return this.rawApp.listen(port, () => {
+
+    const server = this.rawApp.listen(port, () => {
       this.logger.info(`[APP] SERVER STARTED ON ${port}`)
     })
+
+    this.prepareReadinessLiveness(server)
+
+    return server
   }
 
   /**
    * TODO: REFACTOR ALL OF THIS OMG OMG
    * @param tokenServer
    */
-  static async bootstrap(Server: Class<ServerHooks>): Promise<Server> {
+  static async bootstrap(Server: Class<ServerHooks>): Promise<HttpServer> {
     const logger = await Injector.invoke(LoggerService)
 
     logger.separator()
