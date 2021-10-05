@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.12...@uminily/app@0.12.0) (2021-10-05)
+
+
+### Features
+
+* **app:** add readiness probe system ([40b993f](https://github.com/Uminily/kodexo/commit/40b993f8e7c18277dd80dadff89075c55ea32e16))
+
+
+
+
+
 ## [0.11.12](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.11...@uminily/app@0.11.12) (2021-10-04)
 
 **Note:** Version bump only for package @uminily/app
