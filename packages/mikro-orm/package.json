@@ -64,8 +64,8 @@
     "type-fest": "^1.2.1"
   },
   "peerDependencies": {
-    "@mikro-orm/core": "^5.0.0-dev.393",
-    "@mikro-orm/postgresql": "^5.0.0-dev.393"
+    "@mikro-orm/core": "^5.0.0-dev.275",
+    "@mikro-orm/postgresql": "^5.0.0-dev.275"
   },
   "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
 }
