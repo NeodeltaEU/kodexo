@@ -91,7 +91,7 @@ export abstract class CrudService<E extends AnyEntity> {
 
     try {
       const [entities, count] = await this.repository.findAndCount(filter, {
-        populate,
+        populate: populate as any,
         fields,
         limit,
         offset,
@@ -224,7 +224,7 @@ export abstract class CrudService<E extends AnyEntity> {
     const applyForOneEntity = async (entity: E) => {
       const plainValue = entity.toJSON()
 
-      await pMap(targetFields, async field => {
+      await pMap(targetFields, async (field: string) => {
         // TODO: WE NEED TO HANDLE MULTIPLE LEVEL AND APPLY THIS BELOW
         const [firstLevel] = field.split('.')
 

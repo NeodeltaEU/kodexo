@@ -324,6 +324,12 @@ describe('[Method]: GET', () => {
         userId = user.id
 
         await connection.orm.em.persistAndFlush(user)
+
+        const dealership = new Dealership()
+        dealership.title = 'My first Dealership'
+        dealership.customers.add(user)
+
+        await connection.orm.em.persistAndFlush(dealership)
       })
 
       it(`should serialize a simple user, without his password`, async () => {
@@ -333,6 +339,7 @@ describe('[Method]: GET', () => {
           .json()
 
         expect(result.email).toBe('john.doe.the.two@acme.com')
+        expect(result.favoriteDealerships.length).toBe(1)
         expect(result.password).toBeUndefined()
       })
     })
