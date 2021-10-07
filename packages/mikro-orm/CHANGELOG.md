@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.5](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.3.4...@uminily/mikro-orm@0.3.5) (2021-10-07)
+
+
+### Bug Fixes
+
+* mikro orm in peer dependencies ([48b0d15](https://github.com/Uminily/kodexo/commit/48b0d15890268392639239d82dafaba9b621b699))
+* mikro-orm bullshits ([a65001e](https://github.com/Uminily/kodexo/commit/a65001eee9520da093d1e1c05de850037a7e1bad))
+
+
+
+
+
 ## [0.3.4](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.3.3...@uminily/mikro-orm@0.3.4) (2021-10-06)
 
 
