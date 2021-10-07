@@ -52,7 +52,7 @@ describe('[Method]: POST', () => {
       const userFoundInDatabase = await connection.orm.em.findOne(User, result.id)
 
       expect(userFoundInDatabase).toBeDefined()
-      expect(userFoundInDatabase.email).toBe('john.doe@acme.com')
+      expect(userFoundInDatabase?.email).toBe('john.doe@acme.com')
     })
 
     it('should return an error with empty body', async () => {
@@ -189,8 +189,11 @@ describe('[Method]: POST', () => {
           .json()
 
         expect(result.title).toBe('My first Dealership')
-        expect(result.customers).toHaveLength(3)
-        expect(result.cars).toHaveLength(0)
+
+        expect(result.customers).toBeUndefined()
+        expect(result.cars).toBeUndefined()
+        //expect(result.customers).toHaveLength(3)
+        //expect(result.cars).toHaveLength(0)
 
         const user1Updated = await connection.orm.em.findOneOrFail(User, userIds[0], {
           populate: ['favoriteDealerships'],
@@ -236,8 +239,12 @@ describe('[Method]: POST', () => {
           .json()
 
         expect(result.title).toBe('My first Dealership')
-        expect(result.customers).toHaveLength(0)
-        expect(result.cars).toHaveLength(0)
+
+        expect(result.customer).toBeUndefined()
+        expect(result.cars).toBeUndefined()
+
+        //expect(result.customers).toHaveLength(0)
+        //expect(result.cars).toHaveLength(0)
       })
 
       it('should return an error when a customer does not exist', async () => {

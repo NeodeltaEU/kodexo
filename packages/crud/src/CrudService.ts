@@ -99,7 +99,7 @@ export abstract class CrudService<E extends AnyEntity> {
       })
 
       return {
-        entities: this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
+        entities, //this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
         count
       }
     } catch (err) {
@@ -189,9 +189,11 @@ export abstract class CrudService<E extends AnyEntity> {
         fields
       })
 
-      return identifiers
+      return entity
+
+      /*return identifiers
         ? this.applyCollectionsIdentifiersForEntity(entity, { selectedFields: fields })
-        : entity
+        : entity*/
     } catch (err) {
       if (err instanceof NotFoundError) {
         throw HttpError.NotFound()
