@@ -12,6 +12,9 @@
     },
     {
       "path": "../mikro-orm/tsconfig.build.json"
+    },
+    {
+      "path": "../logger/tsconfig.build.json"
     }
   ],
 
