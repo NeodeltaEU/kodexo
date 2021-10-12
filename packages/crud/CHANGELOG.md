@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.9.0...@uminily/crud@0.9.1) (2021-10-12)
+
+
+### Bug Fixes
+
+* dafuq lerna ([d9db97d](https://github.com/Uminily/kodexo/commit/d9db97dc7a42f8206189e6f27c038b3decc3a69b))
+* peerDependencies for mikro orm ([fddd0be](https://github.com/Uminily/kodexo/commit/fddd0bec9f7a7fcf9da1dc380c3452ce0c482bfb))
+
+
+
+
+
 # [0.9.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.8.4...@uminily/crud@0.9.0) (2021-10-07)
 
 

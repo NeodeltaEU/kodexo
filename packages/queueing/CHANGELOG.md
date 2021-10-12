@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.3.1...@uminily/queueing@0.3.2) (2021-10-12)
+
+
+### Bug Fixes
+
+* bull connection item ([22b9bb3](https://github.com/Uminily/kodexo/commit/22b9bb34502a9871d90976eda8c5db8f7665c872))
+
+
+
+
+
 ## [0.3.1](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.3.0...@uminily/queueing@0.3.1) (2021-10-04)
 
 
