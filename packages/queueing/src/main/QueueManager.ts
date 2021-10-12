@@ -23,7 +23,7 @@ export class QueueManager {
   private queuePrefix: string
 
   constructor(@Inject private configurationService: ConfigurationService) {
-    this.bullConnection = this.configurationService.getOrFail('bull')
+    this.bullConnection = this.configurationService.getOrFail('bull.connection')
     this.queuePrefix = this.configurationService.get('queues.prefix')
 
     this.prepareFlowProducer()
