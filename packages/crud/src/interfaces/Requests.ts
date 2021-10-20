@@ -1,9 +1,5 @@
 import { Request, URLParams } from '@uminily/common'
 
-export interface RequestWithParsing extends Request {
-  parsed: RequestParsedResult
-}
-
 export interface RequestWithOverride extends Request {
   override?: OverrideQuery
 }
@@ -12,7 +8,7 @@ export interface RequestWithMerge extends Request {
   merge?: MergeQuery
 }
 
-export interface RequestCrud extends RequestWithParsing, RequestWithOverride, RequestWithMerge {}
+export interface RequestCrud extends RequestWithOverride, RequestWithMerge {}
 
 export type RequestParserOptions = {
   createDto?: any
