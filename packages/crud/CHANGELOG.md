@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.0...@uminily/crud@0.10.1) (2021-10-20)
+
+
+### Bug Fixes
+
+* **crud:** request interfaces ([f94e908](https://github.com/Uminily/kodexo/commit/f94e90883b3456c04cafc4b30cda743285cc8d1a))
+
+
+
+
+
 # [0.10.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.9.1...@uminily/crud@0.10.0) (2021-10-20)
 
 
