@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.9.1...@uminily/crud@0.10.0) (2021-10-20)
+
+
+### Features
+
+* **crud:** add override & merge options to parser ([cf84e62](https://github.com/Uminily/kodexo/commit/cf84e6239489ce93be0dfa76e62f9ce6b4a9ddbb))
+
+
+
+
+
 ## [0.9.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.9.0...@uminily/crud@0.9.1) (2021-10-12)
 
 
