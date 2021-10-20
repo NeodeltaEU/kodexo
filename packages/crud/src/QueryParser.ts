@@ -1,8 +1,10 @@
 import { EntityMetadata } from '@mikro-orm/core'
-import { isObject, Request } from '@uminily/common'
+import { isObject } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { Inject } from '@uminily/injection'
 import { ConnectionDatabase } from '@uminily/mikro-orm'
+import { QueryParsedResult, OverrideQuery, MergeQuery, RequestCrud } from './interfaces'
+import { mergeArrays } from './utils/mergeArrays'
 
 const authorizedOperators: { [key: string]: string } = {
   $eq: '$eq',
@@ -22,32 +24,97 @@ const authorizedOperators: { [key: string]: string } = {
   $or: '$or'
 }
 
-export class QueryParser {
+export class QueryParser implements QueryParsedResult {
   @Inject private connection: ConnectionDatabase
 
-  private populate?: string[]
-  private fields?: string[]
-  private filter: any = {}
-  private orderBy: any
-  private limit: number = 100
-  private offset?: number
+  public populate?: string[]
+  public fields?: string[]
+  public filter: any = {}
+  public orderBy: any
+  public limit: number = 100
+  public offset?: number
 
   private currentEntityMetadata: EntityMetadata
 
   constructor(
-    private req: Request,
+    private req: RequestCrud,
     rawQuery: any,
     private stringify = true,
     private currentEntity?: string
   ) {
     this.setCurrentEntityMetadata()
 
+    this.parseAll(rawQuery)
+    this.overrideAll()
+    this.mergeAll()
+  }
+
+  /**
+   *
+   * @param rawQuery
+   */
+  private parseAll(rawQuery: any) {
     this.parsePopulate(rawQuery.$populate)
     this.parseSelect(rawQuery.$select)
     this.parseFilter(rawQuery.$filter)
     this.parseLimit(rawQuery.$limit)
     this.parseOffset(rawQuery.$offset)
     this.parseOrder(rawQuery.$order)
+  }
+
+  /**
+   *
+   * @returns
+   */
+  private overrideAll() {
+    if (!this.req.override) return
+
+    this.override('populate')
+    this.override('fields')
+    this.override('filter')
+    this.override('orderBy')
+    this.override('limit')
+    this.override('offset')
+  }
+
+  /**
+   *
+   */
+  private override<K extends keyof OverrideQuery>(param: K) {
+    if (!this.req.override || this.req.override[param] === undefined) return
+
+    this[param] = this.req.override[param]
+  }
+
+  /**
+   *
+   */
+  private mergeAll() {
+    if (!this.req.merge) return
+
+    this.merge('populate')
+    this.merge('fields')
+    this.merge('filter')
+  }
+
+  /**
+   *
+   * @param param
+   * @returns
+   */
+  private merge<K extends keyof MergeQuery>(param: K) {
+    if (!this.req.merge || this.req.merge[param] === undefined) return
+
+    if (Array.isArray(this.req.merge[param])) {
+      this[param] = mergeArrays(this[param], this.req.merge[param])
+      return
+    }
+
+    if (isObject(this.req.merge[param])) {
+      const tmpObj = isObject(this[param]) ? this[param] : {}
+      this[param] = { ...tmpObj, ...this.req.merge[param] }
+      return
+    }
   }
 
   /**
@@ -260,7 +327,7 @@ export class QueryParser {
    * @param req
    * @returns
    */
-  static parse(req: Request, currentEntity?: string) {
+  static parse(req: RequestCrud, currentEntity?: string) {
     // TODO: Not Good, go via Store & Reflect metadata
     const fromBody = req.method === 'POST' && req.path.includes('filter')
 
@@ -283,13 +350,4 @@ export class QueryParser {
 
     return queryParser.render()
   }
-}
-
-export type QueryParsedResult = {
-  filter: any
-  fields?: string[]
-  orderBy?: string
-  limit: number
-  offset?: number
-  populate?: Array<string>
 }

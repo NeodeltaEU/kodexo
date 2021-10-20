@@ -6,7 +6,8 @@ import { REQUEST_CONTEXT } from './constants'
 import { CrudService } from './CrudService'
 import { CrudOptionsType } from './decorators'
 import { CrudControllerInterface } from './interfaces/CrudControllerInterface'
-import { RequestParsedResult, RequestParser } from './RequestParser'
+import { RequestParser } from './RequestParser'
+import { RequestParsedResult } from './interfaces'
 
 export class CrudRouteFactory<M, C, U> {
   constructor(protected target: any, protected options: CrudOptionsType<M, C, U>) {

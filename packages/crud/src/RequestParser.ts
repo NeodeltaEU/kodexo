@@ -1,7 +1,12 @@
-import { Request, URLParams } from '@uminily/common'
 import { plainToClass } from 'class-transformer'
 import { REQUEST_CONTEXT } from './constants'
-import { QueryParsedResult, QueryParser } from './QueryParser'
+import {
+  QueryParsedResult,
+  RequestCrud,
+  RequestParsedResult,
+  RequestParserOptions
+} from './interfaces'
+import { QueryParser } from './QueryParser'
 
 export class RequestParser {
   private createDto: { [key: string]: any } = {}
@@ -11,7 +16,7 @@ export class RequestParser {
   private queryParams: QueryParsedResult
 
   constructor(
-    private req: Request,
+    private req: RequestCrud,
     private options: RequestParserOptions = {},
     private currentEntity?: string
   ) {
@@ -84,24 +89,8 @@ export class RequestParser {
    * @param req
    * @returns
    */
-  static parse(req: Request, options: RequestParserOptions, currentEntity?: string) {
-    //console.log(connection.entitiesMetadata)
-
+  static parse(req: RequestCrud, options: RequestParserOptions, currentEntity?: string) {
     const requestParser = new RequestParser(req, options, currentEntity)
-
     return requestParser.render()
   }
-}
-
-export type RequestParserOptions = {
-  createDto?: any
-  updateDto?: any
-}
-
-export type RequestParsedResult = {
-  pathParams: URLParams
-  queryParams: QueryParsedResult
-  assign: any
-  createDto: any
-  updateDto: any
 }

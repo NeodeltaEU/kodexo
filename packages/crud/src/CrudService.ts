@@ -10,9 +10,8 @@ import {
 import { pMap } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
-import { Except } from 'type-fest'
-import { Class } from 'type-fest'
-import { QueryParsedResult } from './QueryParser'
+import { Except, Class } from 'type-fest'
+import { QueryParsedResult } from './interfaces'
 
 /**
  *
