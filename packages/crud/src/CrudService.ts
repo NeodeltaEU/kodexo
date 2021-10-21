@@ -178,12 +178,19 @@ export abstract class CrudService<E extends AnyEntity> {
    *
    */
   async retrieve(id: any, options: any = {}): Promise<E> {
-    let { populate, fields, identifiers = true } = options
+    let { populate, fields, filter = {}, identifiers = true } = options
+
+    console.log({ filter })
+
+    const filterQuery: any = {
+      ...filter,
+      id
+    }
 
     try {
       // TODO: when select subchild property, include relation-key in field, unless hydration wont work
 
-      const entity = await this.repository.findOneOrFail(id, {
+      const entity = await this.repository.findOneOrFail(filterQuery, {
         populate,
         fields
       })
@@ -256,10 +263,7 @@ type applyCollectionIdentifierForEntityOptions = {
   selectedFields?: string[]
 }
 
-type QueryParsedResultForOneResult = Except<
-  QueryParsedResult,
-  'limit' | 'offset' | 'orderBy' | 'filter'
->
+type QueryParsedResultForOneResult = Except<QueryParsedResult, 'limit' | 'offset' | 'orderBy'>
 
 type CrudServiceOptions = {
   collectionIdentifierFields: { [key: string]: string }
