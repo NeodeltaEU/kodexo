@@ -180,8 +180,6 @@ export abstract class CrudService<E extends AnyEntity> {
   async retrieve(id: any, options: any = {}): Promise<E> {
     let { populate, fields, filter = {}, identifiers = true } = options
 
-    console.log({ filter })
-
     const filterQuery: any = {
       ...filter,
       id
@@ -263,7 +261,9 @@ type applyCollectionIdentifierForEntityOptions = {
   selectedFields?: string[]
 }
 
-type QueryParsedResultForOneResult = Except<QueryParsedResult, 'limit' | 'offset' | 'orderBy'>
+type QueryParsedResultForOneResult = Partial<
+  Except<QueryParsedResult, 'limit' | 'offset' | 'orderBy'>
+>
 
 type CrudServiceOptions = {
   collectionIdentifierFields: { [key: string]: string }
