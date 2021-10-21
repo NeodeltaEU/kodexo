@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.1...@uminily/crud@0.10.2) (2021-10-21)
+
+
+### Bug Fixes
+
+* **crud:** enable override & merge for getOne ([12dcc10](https://github.com/Uminily/kodexo/commit/12dcc1098376cb724ba88ae95f8c7f038518ef4a))
+
+
+
+
+
 ## [0.10.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.0...@uminily/crud@0.10.1) (2021-10-20)
 
 
