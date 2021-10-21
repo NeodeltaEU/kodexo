@@ -151,26 +151,13 @@ export abstract class CrudService<E extends AnyEntity> {
    * @param id
    */
   async deleteOne(id: any) {
-    const filterQuery: any = {
-      id
-    }
+    const entity: any = await this.retrieve(id)
 
-    try {
-      const entity: any = await this.repository.findOneOrFail(filterQuery)
+    await this.repository.removeAndFlush(entity)
 
-      await this.repository.removeAndFlush(entity)
-
-      return {
-        id,
-        deletedAt: new Date()
-      }
-    } catch (err) {
-      if (err instanceof NotFoundError) {
-        throw HttpError.NotFound()
-      }
-
-      /* istanbul ignore next */
-      throw err
+    return {
+      id,
+      deletedAt: new Date()
     }
   }
 
