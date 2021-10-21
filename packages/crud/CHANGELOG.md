@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.3...@uminily/crud@0.10.4) (2021-10-21)
+
+
+### Bug Fixes
+
+* **crud:** prepare for delete tenancy system ([6c561af](https://github.com/Uminily/kodexo/commit/6c561af81aec175aa6884297dfb3a0fa8d1aef41))
+
+
+
+
+
 ## [0.10.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.2...@uminily/crud@0.10.3) (2021-10-21)
 
 
