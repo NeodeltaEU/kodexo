@@ -5,6 +5,8 @@ export * from './RepositoryBuilder'
 export * from './RequestContextMiddleware'
 export * from './mikro.module'
 
+export * from './filters'
+
 declare global {
   namespace Kodexo {
     interface Configuration {
