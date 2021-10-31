@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.3.5...@uminily/mikro-orm@0.4.0) (2021-10-31)
+
+
+### Features
+
+* **mikro-orm:** add soft delete filter ([ff955c1](https://github.com/Uminily/kodexo/commit/ff955c13e91ff4af1d178914d6299675aaff4c0d))
+
+
+
+
+
 ## [0.3.5](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.3.4...@uminily/mikro-orm@0.3.5) (2021-10-12)
 
 
