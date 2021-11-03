@@ -1,0 +1,64 @@
+{
+  "name": "@uminily/access-control",
+  "version": "0.4.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": "https://github.com/Uminily/kodexo",
+  "scripts": {
+    "clean": "rm -rf build",
+    "build": "rimraf ./dist && tsc -b tsconfig.build.json",
+    "test": "jest --runInBand --colors --forceExit",
+    "test:watch": "jest --runInBand --colors --verbose --forceExit --watch"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testTimeout": 7000,
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/tests/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 60,
+        "functions": 60,
+        "lines": 60,
+        "statements": 60
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}"
+    ]
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "eslint": "^7.19.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "reflect-metadata": "^0.1.13",
+    "supertest": "^6.1.3",
+    "ts-jest": "^26.5.1",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.4"
+  },
+  "dependencies": {
+    "@uminily/common": "^0.12.1",
+    "@uminily/config": "^0.5.3",
+    "@uminily/injection": "^0.4.1"
+  }
+}
