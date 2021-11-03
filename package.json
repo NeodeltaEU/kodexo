@@ -27,7 +27,8 @@
           "errors",
           "injection",
           "logger",
-          "mikro-orm"
+          "mikro-orm",
+          "access-control"
         ]
       ],
       "subject-max-length": [
