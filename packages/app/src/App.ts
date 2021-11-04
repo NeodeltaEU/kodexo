@@ -160,11 +160,18 @@ export class App {
             .replace(/\/+$/, '')
 
           // TODO: REFACTOR OMG
-          const endpointMiddlewares: Handler[] = endpoint.middlewares.map(middleware => {
+          const middlewares: Handler[] = [
+            ...controllerProvider.middlewares,
+            ...endpoint.middlewares
+          ].map(middleware => {
             return (req: Request, res: Response, next: NextFunction) => {
               if (middleware.instance) {
                 const handler = middleware.instance.use
-                return handler.bind(middleware.instance)(req, res, next)
+                try {
+                  return handler.bind(middleware.instance)(req, res, next)
+                } catch (err) {
+                  return next(err)
+                }
               }
 
               if (middleware.middlewareToken) {
@@ -174,16 +181,24 @@ export class App {
                   throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
 
                 const handler = middlewareFound.instance.use
-                return handler.bind(middlewareFound.instance)(req, res, next)
+                try {
+                  return handler.bind(middlewareFound.instance)(req, res, next)
+                } catch (err) {
+                  return next(err)
+                }
               }
 
               if (!middleware.handler) throw new Error(`Middleware not found`)
 
-              return middleware.handler(req, res, next)
+              try {
+                return middleware.handler(req, res, next)
+              } catch (err) {
+                return next(err)
+              }
             }
           })
 
-          const controllerMiddlewares: Handler[] = controllerProvider.middlewares.map(
+          /*const controllerMiddlewares: Handler[] = controllerProvider.middlewares.map(
             middleware => (req: Request, res: Response, next: NextFunction) => {
               if (middleware.middlewareToken) {
                 const middlewareFound = middlewareProviders.get(middleware.middlewareToken)
@@ -201,7 +216,7 @@ export class App {
             }
           )
 
-          const middlewares = [...controllerMiddlewares, ...endpointMiddlewares]
+          const middlewares = [...controllerMiddlewares, ...endpointMiddlewares]*/
 
           switch (endpoint.method) {
             case RouteMethods.GET:
