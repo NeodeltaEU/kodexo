@@ -57,6 +57,7 @@ export class CrudRouteFactory<M, C, U> {
       const { name, path, method } = route
 
       let descriptor,
+        action,
         statusCode,
         middlewares: Class<MiddlewareHandling>[] = []
 

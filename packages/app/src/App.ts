@@ -1,27 +1,28 @@
-import { App as TinyApp, Handler, NextFunction, Request, Response } from '@tinyhttp/app'
+import { createTerminus, TerminusOptions } from '@godaddy/terminus'
+import { App as TinyApp, Handler } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
-import { ControllerProvider, ModuleProvider, pMap, RouteMethods } from '@uminily/common'
+import { ModuleProvider, pMap, RouteMethods } from '@uminily/common'
 import { ConfigurationService } from '@uminily/config'
-import { LoggerService } from '@uminily/logger'
 import { HttpError } from '@uminily/errors'
 import {
+  ConstructorParam,
+  importProviders,
   Inject,
   Injector,
-  importProviders,
-  providerRegistry,
-  Store,
   IProvider,
+  providerRegistry,
+  ProviderType,
   Registries,
-  ConstructorParam,
-  ProviderType
+  Store
 } from '@uminily/injection'
+import { LoggerService } from '@uminily/logger'
+import { QueueManager } from '@uminily/queueing'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
 import { Server as HttpServer } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
-import { QueueManager } from '@uminily/queueing'
-import { createTerminus, TerminusOptions } from '@godaddy/terminus'
+import { RoutesService } from './RoutesService'
 
 /**
  *
@@ -29,6 +30,7 @@ import { createTerminus, TerminusOptions } from '@godaddy/terminus'
 export class App {
   @Inject configurationService: ConfigurationService
   @Inject logger: LoggerService
+  @Inject routesService: RoutesService
 
   public readonly rawApp = new TinyApp({
     onError: (err, req, res) => {
@@ -133,115 +135,37 @@ export class App {
    *
    */
   private buildRoutesController() {
-    const middlewareProviders = providerRegistry.middlewares
+    const paths = this.routesService.updateRouting(this.routing).getDetailsRoutes()
 
-    // TODO: EXTERNALIZE ALL THIS !!!
-    providerRegistry.controllers.forEach((controllerProvider: ControllerProvider) => {
-      const mountingEndpoints = this.routing
-        .filter(provider => provider.token === controllerProvider.token)
-        .map(provider => provider.route)
+    Array.from(paths.entries()).forEach(([path, routeEndpoints]) => {
+      routeEndpoints.forEach(({ endpoint, middlewares, handler }) => {
+        switch (endpoint.method) {
+          case RouteMethods.GET:
+            this.rawApp.get(path, ...middlewares, handler)
+            break
 
-      mountingEndpoints.forEach(mountEndpoint => {
-        controllerProvider.endpoints.forEach(endpoint => {
-          const handler = async (req: Request, res: Response) => {
-            //
-            const result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
+          case RouteMethods.POST:
+            this.rawApp.post(path, ...middlewares, handler)
+            break
 
-            //
-            res.set(endpoint.headers)
+          case RouteMethods.PUT:
+            this.rawApp.put(path, ...middlewares, handler)
+            break
 
-            //
-            res.status(endpoint.statusCode).json(result)
-          }
+          case RouteMethods.PATCH:
+            this.rawApp.patch(path, ...middlewares, handler)
+            break
 
-          // TODO: PROTECT PATH & NORMALIZE THEM
-          const path = `${mountEndpoint}${controllerProvider.path}${endpoint.path}`
-            .replace(/\/+/g, '/')
-            .replace(/\/+$/, '')
-
-          // TODO: REFACTOR OMG
-          const middlewares: Handler[] = [
-            ...controllerProvider.middlewares,
-            ...endpoint.middlewares
-          ].map(middleware => {
-            return (req: Request, res: Response, next: NextFunction) => {
-              if (middleware.instance) {
-                const handler = middleware.instance.use
-                try {
-                  return handler.bind(middleware.instance)(req, res, next)
-                } catch (err) {
-                  return next(err)
-                }
-              }
-
-              if (middleware.middlewareToken) {
-                const middlewareFound = middlewareProviders.get(middleware.middlewareToken)
-
-                if (!middlewareFound)
-                  throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
-
-                const handler = middlewareFound.instance.use
-                try {
-                  return handler.bind(middlewareFound.instance)(req, res, next)
-                } catch (err) {
-                  return next(err)
-                }
-              }
-
-              if (!middleware.handler) throw new Error(`Middleware not found`)
-
-              try {
-                return middleware.handler(req, res, next)
-              } catch (err) {
-                return next(err)
-              }
-            }
-          })
-
-          /*const controllerMiddlewares: Handler[] = controllerProvider.middlewares.map(
-            middleware => (req: Request, res: Response, next: NextFunction) => {
-              if (middleware.middlewareToken) {
-                const middlewareFound = middlewareProviders.get(middleware.middlewareToken)
-
-                if (!middlewareFound)
-                  throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
-
-                const handler = middlewareFound.instance.use
-                return handler.bind(middlewareFound.instance)(req, res, next)
-              }
-
-              if (!middleware.handler) throw new Error(`Middleware not found`)
-
-              return middleware.handler(req, res, next)
-            }
-          )
-
-          const middlewares = [...controllerMiddlewares, ...endpointMiddlewares]*/
-
-          switch (endpoint.method) {
-            case RouteMethods.GET:
-              this.rawApp.get(path, ...middlewares, handler)
-              break
-
-            case RouteMethods.POST:
-              this.rawApp.post(path, ...middlewares, handler)
-              break
-
-            case RouteMethods.PUT:
-              this.rawApp.put(path, ...middlewares, handler)
-              break
-
-            case RouteMethods.PATCH:
-              this.rawApp.patch(path, ...middlewares, handler)
-              break
-
-            case RouteMethods.DELETE:
-              this.rawApp.delete(path, ...middlewares, handler)
-              break
-          }
-        })
+          case RouteMethods.DELETE:
+            this.rawApp.delete(path, ...middlewares, handler)
+            break
+        }
       })
     })
+
+    const count = this.routesService.routesCount
+
+    this.logger.info(`[APP] ${count} routes registered`)
 
     return this
   }
@@ -309,7 +233,7 @@ export class App {
     // TODO: Move all of that into domain to register module & start rootModule
     const RootModule = class {}
 
-    const moduleProvider = new ModuleProvider(RootModule, [appModule, LoggerService])
+    const moduleProvider = new ModuleProvider(RootModule, [appModule, LoggerService, RoutesService])
     providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
 
     const providers = await importProviders([RootModule])

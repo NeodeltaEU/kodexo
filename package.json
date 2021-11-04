@@ -31,7 +31,7 @@
           "access-control"
         ]
       ],
-      "subject-max-length": [
+      "header-max-length": [
         2,
         "always",
         120

@@ -86,6 +86,7 @@
     "globby": "^11.0.2",
     "normalize-path": "^3.0.0",
     "normalize-url": "^7.0.0",
+    "regexparam": "^2.0.0",
     "supertest-fetch": "^1.4.3",
     "type-fest": "^0.20.2"
   },

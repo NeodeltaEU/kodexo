@@ -4,6 +4,7 @@ import { Class } from 'type-fest'
 import { MiddlewareHandling } from '../../interfaces'
 import { Dictionnary } from '../../interfaces/Dictionnary'
 import { RouteMethods } from '../methods'
+import kebabCase = require('lodash.kebabcase')
 
 export enum MethodsParams {
   BODY_PARAMS = 'BodyParams',
@@ -35,7 +36,9 @@ export class Endpoint {
 
   public externalDecorating: boolean = false
 
-  private target: any
+  public readonly target: any
+
+  public readonly action: string
 
   constructor({
     target,
@@ -46,7 +49,8 @@ export class Endpoint {
     statusCode,
     externalDecorating,
     headers,
-    middlewares
+    middlewares,
+    action
   }: EndpointOptions) {
     this.store = Store.from(target, propertyKey, descriptor)
 
@@ -57,6 +61,7 @@ export class Endpoint {
     this.path = path
     this.target = target
     this.propertyKey = propertyKey
+    this.action = action
 
     if (middlewares?.length) this.middlewares = middlewares
     if (headers && Object.keys(headers).length) this.headers = headers
@@ -134,6 +139,16 @@ export class Endpoint {
   /**
    *
    */
+  get controllerResource(): string {
+    const kebab = kebabCase(this.target.constructor.name)
+
+    // removing "-controller" from the end of the string
+    return kebab.substring(0, kebab.length - 11)
+  }
+
+  /**
+   *
+   */
   get handler() {
     const { descriptor, externalDecorating, target, propertyKey } = this
 
@@ -200,6 +215,7 @@ export type EndpointOptions = {
   middlewares?: MiddlewareHandler[]
   headers?: Dictionnary
   statusCode?: number
+  action: string
 }
 
 export type MiddlewareHandler = {

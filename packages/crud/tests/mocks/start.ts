@@ -1,4 +1,4 @@
-import { App } from '../../../app/src'
+import { App } from '@uminily/app'
 import { Server } from './Server'
 
 async function bootstrap() {

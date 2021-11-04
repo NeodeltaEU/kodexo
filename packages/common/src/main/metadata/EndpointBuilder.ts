@@ -33,6 +33,10 @@ export function mapOptions(args: any[]) {
   }
 }
 
+export type MethodDecoratorOptions = Partial<{
+  action: string
+}>
+
 export class EndpointBuilder {
   private path: string = '/'
 
@@ -49,6 +53,8 @@ export class EndpointBuilder {
   private middlewares: MiddlewareHandler[]
 
   private headers: Dictionnary = {}
+
+  private action?: string
 
   constructor(private target: any) {
     if (!target) throw new Error('A target must be a controller to create an endpoint')
@@ -113,6 +119,18 @@ export class EndpointBuilder {
 
   /**
    *
+   * @param name
+   * @returns
+   */
+  withAction(action?: string) {
+    if (!action) return this
+
+    this.action = action
+    return this
+  }
+
+  /**
+   *
    * @param property
    * @returns
    */
@@ -156,7 +174,8 @@ export class EndpointBuilder {
       descriptor,
       externalDecorating,
       statusCode,
-      middlewares
+      middlewares,
+      action
     } = this
 
     if (!propertyKey) throw new Error('Please use `fromProperty()` on EndpointBuilder...')
@@ -169,7 +188,8 @@ export class EndpointBuilder {
       descriptor,
       externalDecorating,
       statusCode,
-      middlewares
+      middlewares,
+      action: action || propertyKey
     })
 
     const classStore = Store.from(getClass(target))
@@ -187,7 +207,7 @@ export class EndpointBuilder {
    * @returns
    */
   static buildDecoratorMethod(method: RouteMethods) {
-    return (path: string = '/', options: any = {}) =>
+    return (path: string = '/', options: MethodDecoratorOptions = {}) =>
       (...args: any[]): any => {
         const [target, propertyKey, descriptor] = args
 
@@ -195,8 +215,9 @@ export class EndpointBuilder {
 
         endpointBuilder
           .forPath(path)
-          .withMethod(method)
           .fromProperty(propertyKey)
+          .withMethod(method)
+          .withAction(options?.action)
           .withDescriptor(descriptor)
           .build()
       }
