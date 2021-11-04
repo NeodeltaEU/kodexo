@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.12.2...@uminily/app@0.13.0) (2021-11-04)
+
+
+### Features
+
+* **app:** add RoutesService & actions ([3f0d789](https://github.com/Uminily/kodexo/commit/3f0d789decedef929e6cf63b4cf58e56a349979f))
+
+
+
+
+
 ## [0.12.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.12.1...@uminily/app@0.12.2) (2021-11-04)
 
 **Note:** Version bump only for package @uminily/app

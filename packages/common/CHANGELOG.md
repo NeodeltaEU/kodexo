@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.12.2...@uminily/common@0.13.0) (2021-11-04)
+
+
+### Bug Fixes
+
+* **common:** controller must end with Controller ([e2c1a35](https://github.com/Uminily/kodexo/commit/e2c1a35d654ee02d883823b459b0372ac16f216b))
+
+
+### Features
+
+* **app:** add RoutesService & actions ([3f0d789](https://github.com/Uminily/kodexo/commit/3f0d789decedef929e6cf63b4cf58e56a349979f))
+
+
+
+
+
 ## [0.12.2](https://github.com/Uminily/kodexo/compare/@uminily/common@0.12.1...@uminily/common@0.12.2) (2021-11-04)
 
 **Note:** Version bump only for package @uminily/common
