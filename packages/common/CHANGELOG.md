@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/Uminily/kodexo/compare/@uminily/common@0.13.0...@uminily/common@0.13.1) (2021-11-04)
+
+
+### Bug Fixes
+
+* **common:** endpoint controller resource ([803df4d](https://github.com/Uminily/kodexo/commit/803df4d1714f7fde97ad5c3778e408f687e2b105))
+
+
+
+
+
 # [0.13.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.12.2...@uminily/common@0.13.0) (2021-11-04)
 
 
