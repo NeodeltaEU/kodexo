@@ -9,6 +9,12 @@ export function Controller(options: ControllerOptionsType | PathType): ClassDeco
   const parsedOptions = parseControllerOptions(options)
 
   return (target: any) => {
+    if (!target.name.endsWith('Controller')) {
+      throw new Error(
+        `Controller decorator can only be used on a class that ends with 'Controller'`
+      )
+    }
+
     const provider = new ControllerProvider(target, parsedOptions)
     providerRegistry.registerProvider(Registries.CONTROLLER, provider)
   }
