@@ -5,6 +5,7 @@ import { MiddlewareHandling } from '../../interfaces'
 import { Dictionnary } from '../../interfaces/Dictionnary'
 import { RouteMethods } from '../methods'
 import kebabCase = require('lodash.kebabcase')
+import { getClass } from '../..'
 
 export enum MethodsParams {
   BODY_PARAMS = 'BodyParams',
@@ -140,7 +141,7 @@ export class Endpoint {
    *
    */
   get controllerResource(): string {
-    const kebab = kebabCase(this.target.constructor.name)
+    const kebab = kebabCase(getClass(this.target).name)
 
     // removing "-controller" from the end of the string
     return kebab.substring(0, kebab.length - 11)
