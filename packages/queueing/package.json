@@ -1,6 +1,6 @@
 {
   "name": "@uminily/queueing",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -59,10 +59,10 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/common": "^0.13.1",
-    "@uminily/config": "^0.5.6",
+    "@uminily/common": "^0.14.0",
+    "@uminily/config": "^0.5.7",
     "@uminily/injection": "^0.4.1",
-    "@uminily/logger": "^0.3.6",
+    "@uminily/logger": "^0.3.7",
     "bullmq": "^1.44.2"
   }
 }

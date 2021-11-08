@@ -1,6 +1,6 @@
 {
   "name": "@uminily/crud",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -48,7 +48,7 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
-    "@uminily/app": "^0.13.1",
+    "@uminily/app": "^0.13.2",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -65,9 +65,9 @@
   "dependencies": {
     "@mikro-orm/core": "^5.0.0-dev.393",
     "@mikro-orm/postgresql": "^5.0.0-dev.393",
-    "@uminily/common": "^0.13.1",
+    "@uminily/common": "^0.14.0",
     "@uminily/errors": "^0.1.1",
-    "@uminily/mikro-orm": "^0.4.3",
+    "@uminily/mikro-orm": "^0.4.4",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "query-string": "^7.0.1",

@@ -1,6 +1,6 @@
 {
   "name": "@uminily/access-control",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -57,8 +57,8 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/common": "^0.13.1",
-    "@uminily/config": "^0.5.6",
+    "@uminily/common": "^0.14.0",
+    "@uminily/config": "^0.5.7",
     "@uminily/injection": "^0.4.1"
   }
 }

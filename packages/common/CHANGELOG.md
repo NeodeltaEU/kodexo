@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.13.1...@uminily/common@0.14.0) (2021-11-08)
+
+
+### Features
+
+* **common:** add @Injectable decorator ([9be4f52](https://github.com/Uminily/kodexo/commit/9be4f525254c8af75485aec98993c251390174f1))
+
+
+
+
+
 ## [0.13.1](https://github.com/Uminily/kodexo/compare/@uminily/common@0.13.0...@uminily/common@0.13.1) (2021-11-04)
 
 
