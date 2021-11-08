@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.2...@uminily/app@0.13.3) (2021-11-08)
+
+
+### Bug Fixes
+
+* **app:** middleware error handling ([66a1a83](https://github.com/Uminily/kodexo/commit/66a1a835e249d20037636a5e92f976dddc59b607))
+
+
+
+
+
 ## [0.13.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.1...@uminily/app@0.13.2) (2021-11-08)
 
 **Note:** Version bump only for package @uminily/app
