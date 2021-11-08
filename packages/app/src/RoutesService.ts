@@ -1,4 +1,4 @@
-import { Handler } from '@tinyhttp/app'
+import { AsyncHandler, Handler } from '@tinyhttp/app'
 import {
   ControllerProvider,
   Request,
@@ -60,12 +60,8 @@ export class RoutesService {
           ].map(middleware => {
             return (req: Request, res: Response, next: NextFunction) => {
               if (middleware.instance) {
-                const handler = middleware.instance.use
-                try {
-                  return handler.bind(middleware.instance)(req, res, next)
-                } catch (err) {
-                  return next(err)
-                }
+                const handler = middleware.instance.use as AsyncHandler
+                return handler.bind(middleware.instance)(req, res, next).catch(next)
               }
 
               if (middleware.middlewareToken) {
@@ -75,11 +71,7 @@ export class RoutesService {
                   throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
 
                 const handler = middlewareFound.instance.use
-                try {
-                  return handler.bind(middlewareFound.instance)(req, res, next)
-                } catch (err) {
-                  return next(err)
-                }
+                return handler.bind(middlewareFound.instance)(req, res, next).catch(next)
               }
 
               if (!middleware.handler) throw new Error(`Middleware not found`)
@@ -87,7 +79,7 @@ export class RoutesService {
               try {
                 return middleware.handler(req, res, next)
               } catch (err) {
-                return next(err)
+                next(err)
               }
             }
           })
