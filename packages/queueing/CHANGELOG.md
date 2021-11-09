@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.7](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.3.6...@uminily/queueing@0.3.7) (2021-11-09)
+
+**Note:** Version bump only for package @uminily/queueing
+
+
+
+
+
 ## [0.3.6](https://github.com/Uminily/kodexo/compare/@uminily/queueing@0.3.5...@uminily/queueing@0.3.6) (2021-11-08)
 
 **Note:** Version bump only for package @uminily/queueing

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/Uminily/kodexo/compare/@uminily/common@0.14.0...@uminily/common@0.14.1) (2021-11-09)
+
+
+### Bug Fixes
+
+* **common:** validation middleware errors ([292ce2f](https://github.com/Uminily/kodexo/commit/292ce2f743e8a8deaeec9188ca0715bcce534d0e))
+
+
+
+
+
 # [0.14.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.13.1...@uminily/common@0.14.0) (2021-11-08)
 
 
