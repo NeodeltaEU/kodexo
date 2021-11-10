@@ -151,7 +151,9 @@ export class RoutesService {
 
     const routeEndpoints = this.routes.get(foundPath.route)
 
-    return routeEndpoints?.find(routeEndpoint => routeEndpoint.endpoint.method === method)
+    return routeEndpoints?.find(
+      routeEndpoint => routeEndpoint.endpoint.method === method.toLowerCase()
+    )
   }
 
   /**
