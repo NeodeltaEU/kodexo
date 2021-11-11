@@ -22,7 +22,7 @@ import * as cookieParser from 'cookie-parser'
 import { Server as HttpServer } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
-import { RoutesService } from './RoutesService'
+import { RoutesService } from './components'
 
 /**
  *
