@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/Uminily/kodexo/compare/@uminily/config@0.5.8...@uminily/config@0.5.9) (2021-11-11)
+
+**Note:** Version bump only for package @uminily/config
+
+
+
+
+
 ## [0.5.8](https://github.com/Uminily/kodexo/compare/@uminily/config@0.5.7...@uminily/config@0.5.8) (2021-11-09)
 
 **Note:** Version bump only for package @uminily/config

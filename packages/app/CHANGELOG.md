@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.4...@uminily/app@0.14.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **app:** method lowercasing ([c3a0a45](https://github.com/Uminily/kodexo/commit/c3a0a455cacfd074ca08d60bfd3316774b3c65b4))
+
+
+### Features
+
+* **app:** add app providers service ([f688cc7](https://github.com/Uminily/kodexo/commit/f688cc77d293f4dd78dc2b138eca4c9ce2f73373))
+
+
+
+
+
 ## [0.13.4](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.3...@uminily/app@0.13.4) (2021-11-09)
 
 **Note:** Version bump only for package @uminily/app
