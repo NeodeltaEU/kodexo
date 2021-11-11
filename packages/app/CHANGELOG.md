@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.14.0...@uminily/app@0.14.1) (2021-11-11)
+
+
+### Bug Fixes
+
+* **app:** forget appProvidersService exports ([112cae4](https://github.com/Uminily/kodexo/commit/112cae441ea4c1b5f665c090457c84474eed0d87))
+
+
+
+
+
 # [0.14.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.4...@uminily/app@0.14.0) (2021-11-11)
 
 
