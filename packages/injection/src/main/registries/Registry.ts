@@ -1,8 +1,8 @@
 import { Class } from 'type-fest'
+import { isString } from '../../utils/cleanGlobPatterns'
 import { Provider } from './Provider'
 
-// FIXME: WTF? Is this needed ?
-export type RegistryKey = Class
+export type RegistryKey<T = any> = Class<T>
 
 /**
  *
@@ -22,6 +22,7 @@ export enum Registries {
  */
 export class Registry extends Map<RegistryKey, Provider> {
   private registries: Map<string, Map<RegistryKey, Provider>> = new Map()
+  private namedMap: Map<string, Provider> = new Map()
 
   /**
    *
@@ -38,23 +39,40 @@ export class Registry extends Map<RegistryKey, Provider> {
    * @param provider
    */
   public registerProvider(registry: Registries, provider: Provider) {
+    if (this.namedMap.has(provider.name))
+      throw new Error(`A token with ${provider.token.name} is already registered...`)
+
     this.findOrCreateRegistry(registry).set(provider.token, provider)
     this.set(provider.token, provider)
+    this.namedMap.set(provider.name, provider)
   }
 
   /**
    *
    */
-  public resolve<T>(token: Class<T>): Provider<T> {
+  public resolve<T>(token: RegistryKey<T>): Provider<T> {
     if (!this.has(token)) throw new Error(`Missing token ${token.name} on global registry!`)
     return this.get(token) as Provider<T>
   }
 
   /**
    *
+   * @param tokenName
+   * @returns
    */
-  public getInstanceOf<T>(token: Class<T>): T {
-    return this.resolve(token).instance
+  public resolveByName<T>(tokenName: string) {
+    if (!this.namedMap.has(tokenName))
+      throw new Error(`Missing token ${tokenName} on global registry!`)
+
+    return this.namedMap.get(tokenName) as Provider<T>
+  }
+
+  /**
+   *
+   */
+  public getInstanceOf<T = any>(token: string | RegistryKey<T>): T {
+    const provider = isString(token) ? this.resolveByName<T>(token) : this.resolve(token)
+    return provider.instance
   }
 
   /**
