@@ -23,6 +23,7 @@ import { Server as HttpServer } from 'http'
 import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
 import { RoutesService } from './components'
+import { AppProvidersService } from './components/AppProvidersService'
 
 /**
  *
@@ -215,18 +216,7 @@ export class App {
    * @param tokenServer
    */
   static async bootstrap(Server: Class<ServerHooks>): Promise<HttpServer> {
-    const logger = await Injector.invoke(LoggerService)
-
-    logger.separator()
-
-    const serverStore = Store.from(Server)
-
-    const config = serverStore.get('configuration') as Kodexo.Configuration
-
-    const configuration = await Injector.invoke(ConfigurationService)
-    configuration.applyConfig(config)
-
-    logger.separator()
+    const { logger, configuration, serverStore } = await AppProvidersService.startInvokation(Server)
 
     const appModule = configuration.getOrFail('appModule')
 
