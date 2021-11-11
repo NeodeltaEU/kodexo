@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.6...@uminily/crud@0.11.7) (2021-11-11)
+
+
+### Bug Fixes
+
+* **crud:** remove orm caching ([62f8722](https://github.com/Uminily/kodexo/commit/62f87220121ac7913b09bf4c129f9c6bf4000280))
+
+
+
+
+
 ## [0.11.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.5...@uminily/crud@0.11.6) (2021-11-11)
 
 **Note:** Version bump only for package @uminily/crud
