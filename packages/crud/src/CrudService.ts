@@ -88,6 +88,8 @@ export abstract class CrudService<E extends AnyEntity> {
   async getMany(queryParams: QueryParsedResult) {
     let { populate, fields, filter, limit, offset, orderBy } = queryParams
 
+    this.removeCache()
+
     try {
       const [entities, count] = await this.repository.findAndCount(filter, {
         populate: populate as any,
@@ -121,7 +123,7 @@ export abstract class CrudService<E extends AnyEntity> {
     this.repository.persist(createdEntity)
     await this.save()
 
-    this.connection.orm.em.clear()
+    this.removeCache()
 
     return this.retrieve(createdEntity.id, queryParams)
   }
@@ -171,6 +173,8 @@ export abstract class CrudService<E extends AnyEntity> {
       ...filter,
       id
     }
+
+    this.removeCache()
 
     try {
       // TODO: when select subchild property, include relation-key in field, unless hydration wont work
