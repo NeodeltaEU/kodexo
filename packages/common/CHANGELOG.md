@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.14.2...@uminily/common@0.15.0) (2021-11-12)
+
+
+### Features
+
+* **injection:** modules now have providers option ([4c4da34](https://github.com/Uminily/kodexo/commit/4c4da340391db464cbfcf8eda2ee2a723acfe73a))
+
+
+
+
+
 ## [0.14.2](https://github.com/Uminily/kodexo/compare/@uminily/common@0.14.1...@uminily/common@0.14.2) (2021-11-11)
 
 **Note:** Version bump only for package @uminily/common
