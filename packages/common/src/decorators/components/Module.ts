@@ -6,7 +6,8 @@ export function Module(options: ModuleDecoratorOptions) {
   return (target: any) => {
     const provider = new ModuleProvider(
       target,
-      options.imports,
+      options?.imports,
+      options?.providers,
       options.routing,
       options?.queues || []
     )
@@ -22,7 +23,8 @@ export function Module(options: ModuleDecoratorOptions) {
 }
 
 export type ModuleDecoratorOptions = {
-  imports: any[]
+  imports?: any[]
+  providers?: any[]
   routing?: { [key: string]: any }
   queues?: any[]
 

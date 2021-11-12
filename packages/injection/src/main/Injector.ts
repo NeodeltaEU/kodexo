@@ -20,9 +20,10 @@ export class Injector {
    */
   private async resolve(provider: Provider) {
     const queues = (provider as any).queues || []
+    const providers = (provider as any).providers || []
 
     await pMap(
-      [...provider.imports, ...queues],
+      [...provider.imports, ...providers, ...queues],
       async token => {
         await this.invokeLocally(token)
       },

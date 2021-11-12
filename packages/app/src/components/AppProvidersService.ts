@@ -26,7 +26,7 @@ export class AppProvidersService {
    *
    * @param Server
    */
-  private async applyConfigFromServer(Server: Class<ServerHooks>) {
+  private applyConfigFromServer(Server: Class<ServerHooks>) {
     this.serverStore = Store.from(Server)
     const config = this.serverStore.get('configuration') as Kodexo.Configuration
     this.configuration.applyConfig(config)
@@ -41,7 +41,7 @@ export class AppProvidersService {
 
     service.logger.separator()
 
-    await service.applyConfigFromServer(Server)
+    service.applyConfigFromServer(Server)
 
     service.logger.separator()
 

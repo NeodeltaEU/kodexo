@@ -11,7 +11,7 @@ compiled
 .rpt2_cache
 *.tgz
 
-.vscode
+#.vscode
 *.code-workspace
 
 tsconfig.build.tsbuildinfo

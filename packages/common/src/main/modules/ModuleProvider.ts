@@ -9,7 +9,8 @@ export class ModuleProvider<T = any> extends Provider<T> {
 
   constructor(
     protected currentClass: Class<T>,
-    imports: any[],
+    imports: any[] = [],
+    public providers: any[] = [],
     public routing?: any,
     public queues: any[] = []
   ) {
