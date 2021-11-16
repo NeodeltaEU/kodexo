@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.0...@uminily/app@0.15.1) (2021-11-16)
+
+
+### Bug Fixes
+
+* **app:** public method on appProviders ([eca5b45](https://github.com/Uminily/kodexo/commit/eca5b45cee56bc8028f48f64f056fe9ed9a34530))
+
+
+
+
+
 # [0.15.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.14.1...@uminily/app@0.15.0) (2021-11-12)
 
 

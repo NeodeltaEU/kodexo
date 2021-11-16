@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.8...@uminily/crud@0.12.0) (2021-11-16)
+
+
+### Features
+
+* **crud:** add decorators options ([5df1e7b](https://github.com/Uminily/kodexo/commit/5df1e7b802a17d92015d521d088842b2cde121fb))
+
+
+
+
+
 ## [0.11.8](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.7...@uminily/crud@0.11.8) (2021-11-12)
 
 **Note:** Version bump only for package @uminily/crud
