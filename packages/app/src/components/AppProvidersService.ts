@@ -26,7 +26,7 @@ export class AppProvidersService {
    *
    * @param Server
    */
-  private applyConfigFromServer(Server: Class<ServerHooks>) {
+  public applyConfigFromServer(Server: Class<ServerHooks>) {
     this.serverStore = Store.from(Server)
     const config = this.serverStore.get('configuration') as Kodexo.Configuration
     this.configuration.applyConfig(config)
