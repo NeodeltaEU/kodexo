@@ -65,6 +65,12 @@ export class CrudRouteFactory<M, C, U> {
         middlewares = (this.options.middlewares as any)[name] as Class<MiddlewareHandling>[]
       }
 
+      if (this.options?.decorators?.hasOwnProperty(name)) {
+        ;(this.options.decorators as any)[name].forEach((decorator: Function) => {
+          decorator(this.target, name)
+        })
+      }
+
       switch (name) {
         case 'getMany':
           descriptor = this.prepareRoute(this.prepareGetManyRoute())

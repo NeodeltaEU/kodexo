@@ -24,13 +24,22 @@ export type CrudOptionsType<M, C, U> = {
     createDto: Class<C>
     updateDto: Class<U>
   }
-  middlewares?: Partial<MiddlewareCrudOptionsType>
+  middlewares?: MiddlewareCrudOptionsType
+  decorators?: DecoratorCrudOptions
 }
 
-type MiddlewareCrudOptionsType = {
+export type MiddlewareCrudOptionsType = Partial<{
   getOne: Class<MiddlewareHandling>[]
   getMany: Class<MiddlewareHandling>[]
   createOne: Class<MiddlewareHandling>[]
   updateOne: Class<MiddlewareHandling>[]
   deleteOne: Class<MiddlewareHandling>[]
-}
+}>
+
+export type DecoratorCrudOptions = Partial<{
+  getOne: Function[]
+  getMany: Function[]
+  createOne: Function[]
+  updataOne: Function[]
+  deleteOne: Function[]
+}>

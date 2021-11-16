@@ -6,12 +6,16 @@ import { Car } from './entities/car.entity'
 import { CarsService } from './cars.service'
 import { CreateCarDto } from './dto/create-car.dto'
 import { UpdateCarDto } from './dto/update-car.dto'
+import { Allow } from '../../decorators/Allow'
 
 @Crud({
   model: Car,
   dto: {
     createDto: CreateCarDto,
     updateDto: UpdateCarDto
+  },
+  decorators: {
+    getOne: [Allow('admin')]
   }
 })
 @Controller('/cars')
