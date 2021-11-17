@@ -40,6 +40,6 @@ export type DecoratorCrudOptions = Partial<{
   getOne: Function[]
   getMany: Function[]
   createOne: Function[]
-  updataOne: Function[]
+  updateOne: Function[]
   deleteOne: Function[]
 }>
