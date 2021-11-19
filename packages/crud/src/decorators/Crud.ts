@@ -20,9 +20,9 @@ function parseCrudOptions<M, C, U>(options: CrudOptionsType<M, C, U>): any {
 
 export type CrudOptionsType<M, C, U> = {
   model: Class<M>
-  dto: {
-    createDto: Class<C>
-    updateDto: Class<U>
+  dto?: {
+    createDto?: Class<C>
+    updateDto?: Class<U>
   }
   middlewares?: MiddlewareCrudOptionsType
   decorators?: DecoratorCrudOptions
