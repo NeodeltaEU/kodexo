@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.1...@uminily/crud@0.12.2) (2021-11-19)
+
+
+### Bug Fixes
+
+* **crud:** classToPlain before saving ([42adca3](https://github.com/Uminily/kodexo/commit/42adca3414633554c09c6445e291c62fa53e1cfc))
+
+
+
+
+
 ## [0.12.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.0...@uminily/crud@0.12.1) (2021-11-17)
 
 
