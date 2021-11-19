@@ -1,6 +1,6 @@
 {
   "name": "@uminily/access-control",
-  "version": "0.5.7",
+  "version": "0.5.8",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",

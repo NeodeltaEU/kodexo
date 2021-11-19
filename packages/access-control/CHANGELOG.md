@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.8](https://github.com/Uminily/kodexo/compare/@uminily/access-control@0.5.7...@uminily/access-control@0.5.8) (2021-11-19)
+
+
+### Bug Fixes
+
+* **access-control:** getRole method missing ([6a2afd6](https://github.com/Uminily/kodexo/commit/6a2afd61b34e8f74fba7e306923ce92469807b08))
+
+
+
+
+
 ## [0.5.7](https://github.com/Uminily/kodexo/compare/@uminily/access-control@0.5.6...@uminily/access-control@0.5.7) (2021-11-12)
 
 **Note:** Version bump only for package @uminily/access-control
