@@ -16,6 +16,14 @@ export class AccessControlService {
     return this.acc.defineRole(roleName)
   }
 
+  defineOrGetRole(roleName: string) {
+    try {
+      return this.acc.getRole(roleName)
+    } catch (err) {
+      return this.defineRole(roleName)
+    }
+  }
+
   /**
    *
    * @returns
