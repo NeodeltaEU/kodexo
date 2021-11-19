@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.9](https://github.com/Uminily/kodexo/compare/@uminily/access-control@0.5.8...@uminily/access-control@0.5.9) (2021-11-19)
+
+
+### Bug Fixes
+
+* **access-control:** defineOrGetRole method ([1f9296b](https://github.com/Uminily/kodexo/commit/1f9296bbee99e9183b2ee43786dfda06c8b25925))
+
+
+
+
+
 ## [0.5.8](https://github.com/Uminily/kodexo/compare/@uminily/access-control@0.5.7...@uminily/access-control@0.5.8) (2021-11-19)
 
 
