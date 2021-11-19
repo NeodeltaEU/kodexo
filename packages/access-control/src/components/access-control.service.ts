@@ -27,6 +27,14 @@ export class AccessControlService {
   /**
    *
    * @param roleName
+   */
+  getRole(roleName: string) {
+    return this.acc.getRole(roleName)
+  }
+
+  /**
+   *
+   * @param roleName
    * @returns
    */
   can(roleName: string | Role) {
