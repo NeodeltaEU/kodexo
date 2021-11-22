@@ -8,7 +8,7 @@ import { CrudOptionsType } from './decorators'
 import { CrudControllerInterface } from './interfaces/CrudControllerInterface'
 import { RequestParser } from './RequestParser'
 import { RequestParsedResult } from './interfaces'
-import { classToPlain } from 'class-transformer'
+import { instanceToPlain } from 'class-transformer'
 
 export class CrudRouteFactory<M, C, U> {
   constructor(protected target: any, protected options: CrudOptionsType<M, C, U>) {
@@ -115,7 +115,7 @@ export class CrudRouteFactory<M, C, U> {
           createDto[key] = value
         })
 
-        return service.createOne(classToPlain(createDto), queryParams)
+        return service.createOne(instanceToPlain(createDto), queryParams)
       } catch (err) {
         /* istanbul ignore next */
         if (!Array.isArray(err)) throw err
@@ -173,7 +173,7 @@ export class CrudRouteFactory<M, C, U> {
 
         delete updateDto[REQUEST_CONTEXT]
 
-        return service.updateOne(id, classToPlain(updateDto), queryParams)
+        return service.updateOne(id, instanceToPlain(updateDto), queryParams)
       } catch (err) {
         /* istanbul ignore next */
         if (!Array.isArray(err)) throw err

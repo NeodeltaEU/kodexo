@@ -1,4 +1,4 @@
-import { plainToClass } from 'class-transformer'
+import { plainToInstance } from 'class-transformer'
 import { REQUEST_CONTEXT } from './constants'
 import {
   QueryParsedResult,
@@ -50,7 +50,7 @@ export class RequestParser {
     if (!Object.keys(this.req.body).length) return
 
     this.createDto = this.options.createDto
-      ? plainToClass(this.options.createDto, this.req.body)
+      ? plainToInstance(this.options.createDto, this.req.body)
       : this.req.body
   }
 
@@ -62,7 +62,7 @@ export class RequestParser {
     if (!Object.keys(this.req.body).length) return
 
     this.updateDto = this.options.updateDto
-      ? plainToClass(this.options.updateDto, this.req.body)
+      ? plainToInstance(this.options.updateDto, this.req.body)
       : this.req.body
 
     // Overload DTO with request property for customs validators via class-validator

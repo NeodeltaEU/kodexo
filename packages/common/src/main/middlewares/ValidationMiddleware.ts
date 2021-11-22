@@ -3,14 +3,14 @@ import { HttpError } from '@uminily/errors'
 import { MiddlewareHandling } from '../../interfaces'
 
 import { validateOrReject, ValidationError } from 'class-validator'
-import { plainToClass } from 'class-transformer'
+import { plainToInstance } from 'class-transformer'
 import { Class } from 'type-fest'
 
 export class ValidationMiddleware implements MiddlewareHandling {
   constructor(private dtoToken: Class) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
-    const dto: any = plainToClass(this.dtoToken, req.body)
+    const dto: any = plainToInstance(this.dtoToken, req.body)
 
     try {
       await validateOrReject(dto, { whitelist: true, forbidUnknownValues: true })
