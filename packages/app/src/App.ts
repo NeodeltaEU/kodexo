@@ -85,7 +85,8 @@ export class App {
 
     const corsOptions: AccessControlOptions = {
       allowedHeaders: ['content-type', 'x-query-schema', 'authorization'],
-      exposedHeaders: ['content-length', 'content-type', 'x-total-count']
+      exposedHeaders: ['content-length', 'content-type', 'x-total-count', 'set-cookie'],
+      credentials: true
     }
 
     const cookieSecret = this.configurationService.get('cookies.secret')
