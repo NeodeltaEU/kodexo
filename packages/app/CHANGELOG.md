@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.1...@uminily/app@0.15.2) (2021-11-22)
+
+
+### Bug Fixes
+
+* **app:** credentials & cookies cors options ([485414d](https://github.com/Uminily/kodexo/commit/485414d4294cb49f7ce2b261495c7e0cbf815434))
+
+
+
+
+
 ## [0.15.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.0...@uminily/app@0.15.1) (2021-11-16)
 
 
