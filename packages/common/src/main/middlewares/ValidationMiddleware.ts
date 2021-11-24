@@ -56,11 +56,13 @@ export class ValidationMiddleware implements MiddlewareHandling {
         throw HttpError.UnprocessableEntity()
 
       const errors = err.reduce((result, validationError) => {
-        const { property, constraints } = validationError
+        const { property, constraints, children } = validationError
 
         // TODO: Handle nested errors with children & make some tests
         if (!constraints) {
-          result.push({ property, message: 'An error has occured during validation.' })
+          if (!children?.length)
+            result.push({ property, message: 'An error has occured during validation.' })
+
           return handleChildrenErrors(result, validationError.children, property)
         }
 
