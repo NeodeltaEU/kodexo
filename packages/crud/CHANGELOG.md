@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.6...@uminily/crud@0.12.7) (2021-11-24)
+
+
+### Bug Fixes
+
+* **crud:** isUnique validator ([91d4680](https://github.com/Uminily/kodexo/commit/91d46805352d036025bc316864603f813348e997))
+
+
+
+
+
 ## [0.12.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.5...@uminily/crud@0.12.6) (2021-11-24)
 
 **Note:** Version bump only for package @uminily/crud
