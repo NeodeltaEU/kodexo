@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.3](https://github.com/Uminily/kodexo/compare/@uminily/common@0.15.2...@uminily/common@0.15.3) (2021-11-24)
+
+
+### Bug Fixes
+
+* **common:** class transformer version ([588a0cb](https://github.com/Uminily/kodexo/commit/588a0cb3fcf2b19ee1b23bd29431c816b5e14771))
+
+
+
+
+
 ## [0.15.2](https://github.com/Uminily/kodexo/compare/@uminily/common@0.15.1...@uminily/common@0.15.2) (2021-11-24)
 
 
