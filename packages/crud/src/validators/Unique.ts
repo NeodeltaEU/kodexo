@@ -31,10 +31,13 @@ class Unique implements ValidatorConstraintInterface {
 
     const repo = this.connection.orm.em.getRepository(entityClass) as EntityRepository<E>
 
-    const { id }: any = (validationArguments.object as any)[REQUEST_CONTEXT]
-
     const whereConditions: any = { [property]: value }
-    if (id) whereConditions.id = { $ne: id }
+
+    if ((validationArguments.object as any)[REQUEST_CONTEXT]) {
+      const { id }: any = (validationArguments.object as any)[REQUEST_CONTEXT]
+
+      if (id) whereConditions.id = { $ne: id }
+    }
 
     const results = await repo.count(whereConditions)
 
