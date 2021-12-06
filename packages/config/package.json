@@ -1,6 +1,6 @@
 {
   "name": "@uminily/config",
-  "version": "0.5.13",
+  "version": "0.5.14",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -58,9 +58,9 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/common": "^0.15.3",
-    "@uminily/injection": "^0.6.0",
-    "@uminily/logger": "^0.3.13",
+    "@uminily/common": "^0.15.4",
+    "@uminily/injection": "^0.6.1",
+    "@uminily/logger": "^0.3.14",
     "object-path": "^0.11.5",
     "type-fest": "^1.2.2"
   },

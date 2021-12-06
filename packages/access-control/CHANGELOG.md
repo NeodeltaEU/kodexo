@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.13](https://github.com/Uminily/kodexo/compare/@uminily/access-control@0.5.12...@uminily/access-control@0.5.13) (2021-12-06)
+
+**Note:** Version bump only for package @uminily/access-control
+
+
+
+
+
 ## [0.5.12](https://github.com/Uminily/kodexo/compare/@uminily/access-control@0.5.11...@uminily/access-control@0.5.12) (2021-11-24)
 
 **Note:** Version bump only for package @uminily/access-control

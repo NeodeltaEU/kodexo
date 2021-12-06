@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.6.0...@uminily/injection@0.6.1) (2021-12-06)
+
+
+### Bug Fixes
+
+* **injection:** add missing normalize-path ([c489866](https://github.com/Uminily/kodexo/commit/c489866843917e76e6261ff757dd6c9dc580f6ca))
+
+
+
+
+
 # [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.5.0...@uminily/injection@0.6.0) (2021-11-12)
 
 
