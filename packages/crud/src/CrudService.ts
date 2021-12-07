@@ -2,6 +2,7 @@ import {
   AnyEntity,
   Collection,
   EntityMetadata,
+  EntityProperty,
   EntityRepository,
   NotFoundError,
   ReferenceType,
@@ -9,8 +10,9 @@ import {
 } from '@mikro-orm/core'
 import { pMap } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
+import { Store } from '@uminily/injection'
 import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
-import { Except, Class } from 'type-fest'
+import { Class, Except } from 'type-fest'
 import { QueryParsedResult } from './interfaces'
 
 /**
@@ -86,9 +88,11 @@ export abstract class CrudService<E extends AnyEntity> {
    * @returns
    */
   async getMany(queryParams: QueryParsedResult) {
-    let { populate, fields, filter, limit, offset, orderBy } = queryParams
+    let { populate, fields, filter, limit, offset, orderBy, req } = queryParams
 
     this.removeCache()
+
+    if (populate) await this.populateChecking(populate, req)
 
     try {
       const [entities, count] = await this.repository.findAndCount(filter, {
@@ -165,9 +169,56 @@ export abstract class CrudService<E extends AnyEntity> {
 
   /**
    *
+   * @param populate
+   */
+  private async populateChecking(populate: string[], req: Request) {
+    const canPopulate = async (
+      fields: string[],
+      currentEntity: Class<any>,
+      relations: EntityProperty<any>[],
+      currentIndex: number = 0
+    ): Promise<boolean> => {
+      if (currentIndex === fields.length) return true
+
+      const callback = Store.from(currentEntity, fields[currentIndex]).get('limitPopulate')
+
+      if (callback) {
+        const isValid = await callback(req)
+        if (!isValid) throw new Error('Invalid populate')
+      }
+
+      const nextRelation = relations.find(relation => relation.name === fields[currentIndex])
+
+      if (!nextRelation) return false
+
+      const { targetMeta } = nextRelation
+
+      return canPopulate(
+        fields,
+        targetMeta?.class as any,
+        targetMeta?.relations || [],
+        currentIndex + 1
+      )
+    }
+
+    await pMap(populate, async (populateChain: string) => {
+      const fields = populateChain.split('.')
+
+      try {
+        await canPopulate(fields, this.entityMetadata.class, this.entityMetadata.relations)
+      } catch (err) {
+        throw HttpError.Unauthorized({ message: 'You are not allowed to populate this field' })
+      }
+    })
+  }
+
+  /**
+   *
    */
   async retrieve(id: any, options: any = {}): Promise<E> {
-    let { populate, fields, filter = {}, identifiers = true } = options
+    let { populate, fields, req, filter = {}, identifiers = true } = options
+
+    if (populate) await this.populateChecking(populate, req)
 
     const filterQuery: any = {
       ...filter,
@@ -252,9 +303,7 @@ type applyCollectionIdentifierForEntityOptions = {
   selectedFields?: string[]
 }
 
-type QueryParsedResultForOneResult = Partial<
-  Except<QueryParsedResult, 'limit' | 'offset' | 'orderBy'>
->
+type QueryParsedResultForOneResult = Except<QueryParsedResult, 'limit' | 'offset' | 'orderBy'>
 
 type CrudServiceOptions = {
   collectionIdentifierFields: { [key: string]: string }

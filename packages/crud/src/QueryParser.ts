@@ -310,7 +310,7 @@ export class QueryParser implements QueryParsedResult {
    * @returns
    */
   private render(): QueryParsedResult {
-    const { populate, fields, filter, limit, offset, orderBy } = this
+    const { populate, fields, filter, limit, offset, orderBy, req } = this
 
     return {
       filter,
@@ -318,7 +318,8 @@ export class QueryParser implements QueryParsedResult {
       populate,
       orderBy,
       limit,
-      offset
+      offset,
+      req
     }
   }
 

@@ -78,7 +78,7 @@ describe('[Method]: GET', () => {
         { title: 'My last Car' }
       ]
 
-      let dealershipId: string
+      let dealershipId: string, userId: string
 
       beforeAll(async () => {
         await connection.syncSchema()
@@ -101,6 +101,7 @@ describe('[Method]: GET', () => {
         user.email = 'john.doe@acme.com'
         user.favoriteDealerships.add(dealership)
         user.favoriteDealerships.add(dealership2)
+        userId = user.id
         connection.orm.em.persist(user)
 
         const user2 = new User()
@@ -171,6 +172,24 @@ describe('[Method]: GET', () => {
       it('should return a malformatted error when client trying to subpopulate with unknown properties', async () => {
         await fetch(`/dealerships/${dealershipId}?$populate=cars.windows`)
           .expect(400)
+          .expect('content-type', 'application/json')
+      })
+
+      it('should return an error if we are not allowed in a simple populate query', async () => {
+        await fetch(`/users/${userId}?$populate=invoices`)
+          .expect(401)
+          .expect('content-type', 'application/json')
+      })
+
+      it('should return an error if we are not allowed in a deep populate query', async () => {
+        await fetch(`/dealerships/${dealershipId}?$populate=cars.owner.invoices`)
+          .expect(401)
+          .expect('content-type', 'application/json')
+      })
+
+      it('should return an error if we are not allowed in a multiple deep populate query', async () => {
+        await fetch(`/dealerships/${dealershipId}?$populate=customers cars.owner.invoices`)
+          .expect(401)
           .expect('content-type', 'application/json')
       })
     })
@@ -445,6 +464,24 @@ describe('[Method]: GET', () => {
       it('should return a malformatted error when client trying to subpopulate with unknown properties', async () => {
         await fetch(`/dealerships?$populate=cars.windows`)
           .expect(400)
+          .expect('content-type', 'application/json')
+      })
+
+      it('should return an error if we are not allowed in a simple populate query', async () => {
+        await fetch(`/users?$populate=invoices`)
+          .expect(401)
+          .expect('content-type', 'application/json')
+      })
+
+      it('should return an error if we are not allowed in a deep populate query', async () => {
+        await fetch(`/dealerships?$populate=cars.owner.invoices`)
+          .expect(401)
+          .expect('content-type', 'application/json')
+      })
+
+      it('should return an error if we are not allowed in a multiple deep populate query', async () => {
+        await fetch(`/dealerships?$populate=customers cars.owner.invoices`)
+          .expect(401)
           .expect('content-type', 'application/json')
       })
     })
