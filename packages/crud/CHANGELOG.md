@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.9...@uminily/crud@0.13.0) (2021-12-07)
+
+
+### Features
+
+* **crud:** add @LimitPopulate decorator ([2daa530](https://github.com/Uminily/kodexo/commit/2daa530839d952fa7bea8cedb109da1da6378450))
+* **crud:** add limitDeepPopulate option to @Crud ([24e7d5b](https://github.com/Uminily/kodexo/commit/24e7d5b65d64c6332cee2561ed18624ff9e6327d))
+
+
+
+
+
 ## [0.12.9](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.8...@uminily/crud@0.12.9) (2021-12-06)
 
 **Note:** Version bump only for package @uminily/crud
