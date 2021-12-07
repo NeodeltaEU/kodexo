@@ -255,7 +255,10 @@ export class CrudRouteFactory<M, C, U> {
    * @returns
    */
   private prepareRoute(handler: Function) {
-    const parserOptions = { ...this.options.dto }
+    const parserOptions = {
+      ...this.options.dto,
+      limitDeepPopulate: this.options.limitDeepPopulate || 6
+    }
 
     return function (this: CrudControllerInterface<M>, req: any, res: any, endpoint: Endpoint) {
       return handler(

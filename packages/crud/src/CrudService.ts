@@ -8,7 +8,7 @@ import {
   ReferenceType,
   ValidationError
 } from '@mikro-orm/core'
-import { pMap } from '@uminily/common'
+import { pMap, Request } from '@uminily/common'
 import { HttpError } from '@uminily/errors'
 import { Store } from '@uminily/injection'
 import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'

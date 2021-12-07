@@ -17,7 +17,7 @@ export class RequestParser {
 
   constructor(
     private req: RequestCrud,
-    private options: RequestParserOptions = {},
+    private options: RequestParserOptions,
     private currentEntity?: string
   ) {
     this.parseCreateDto()
@@ -39,7 +39,9 @@ export class RequestParser {
    *
    */
   parseQuery() {
-    this.queryParams = QueryParser.parse(this.req, this.currentEntity)
+    const { limitDeepPopulate } = this.options
+    const options = { limitDeepPopulate, currentEntity: this.currentEntity }
+    this.queryParams = QueryParser.parse(this.req, options)
   }
 
   /**

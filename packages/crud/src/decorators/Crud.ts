@@ -24,6 +24,7 @@ export type CrudOptionsType<M, C, U> = {
     createDto?: Class<C>
     updateDto?: Class<U>
   }
+  limitDeepPopulate?: number
   middlewares?: MiddlewareCrudOptionsType
   decorators?: DecoratorCrudOptions
 }

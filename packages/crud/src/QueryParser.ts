@@ -24,6 +24,11 @@ const authorizedOperators: { [key: string]: string } = {
   $or: '$or'
 }
 
+export type QueryParsingOptions = {
+  limitDeepPopulate: number
+  currentEntity?: string
+}
+
 export class QueryParser implements QueryParsedResult {
   @Inject private connection: ConnectionDatabase
 
@@ -37,8 +42,9 @@ export class QueryParser implements QueryParsedResult {
   private currentEntityMetadata: EntityMetadata
 
   constructor(
-    private req: RequestCrud,
+    public req: RequestCrud,
     rawQuery: any,
+    private limitDeepPopulate: number,
     private stringify = true,
     private currentEntity?: string
   ) {
@@ -139,6 +145,13 @@ export class QueryParser implements QueryParsedResult {
     const splitted: string[] = rawPopulate.split(' ')
 
     const isRelationPathValid = (parent: EntityMetadata, path: string): boolean => {
+      const pathSplitted = path.split('.')
+
+      if (this.limitDeepPopulate < pathSplitted.length)
+        throw HttpError.BadRequest({
+          message: `Unauthorized populate path, no more than ${this.limitDeepPopulate} levels`
+        })
+
       const [currentLevel, ...nextLevel] = path.split('.')
 
       const relationFound = parent.relations.find(relation => relation.name === currentLevel)
@@ -328,7 +341,7 @@ export class QueryParser implements QueryParsedResult {
    * @param req
    * @returns
    */
-  static parse(req: RequestCrud, currentEntity?: string) {
+  static parse(req: RequestCrud, options: QueryParsingOptions) {
     // TODO: Not Good, go via Store & Reflect metadata
     const fromBody = req.method === 'POST' && req.path.includes('filter')
 
@@ -347,7 +360,13 @@ export class QueryParser implements QueryParsedResult {
       return fromBody ? req.body : req.query
     })()
 
-    const queryParser = new QueryParser(req, rawQuery, stringify, currentEntity)
+    const queryParser = new QueryParser(
+      req,
+      rawQuery,
+      options.limitDeepPopulate,
+      stringify,
+      options.currentEntity
+    )
 
     return queryParser.render()
   }

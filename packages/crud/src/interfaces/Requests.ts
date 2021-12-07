@@ -13,6 +13,7 @@ export interface RequestCrud extends RequestWithOverride, RequestWithMerge {}
 export type RequestParserOptions = {
   createDto?: any
   updateDto?: any
+  limitDeepPopulate: number
 }
 
 export type RequestParsedResult = {
@@ -33,5 +34,5 @@ export type QueryParsedResult = {
   populate?: Array<string>
 }
 
-export type OverrideQuery = Partial<QueryParsedResult>
-export type MergeQuery = Partial<Omit<QueryParsedResult, 'orderBy' | 'limit' | 'offset'>>
+export type OverrideQuery = Partial<Omit<QueryParsedResult, 'req'>>
+export type MergeQuery = Partial<Omit<QueryParsedResult, 'req' | 'orderBy' | 'limit' | 'offset'>>
