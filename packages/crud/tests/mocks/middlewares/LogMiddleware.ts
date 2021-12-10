@@ -6,7 +6,7 @@ export const mockCall = (req: Request) => {
 
 @Middleware()
 export class LogMiddleware implements MiddlewareHandling {
-  use(req: Request, res: Response, next: NextFunction) {
+  async use(req: Request, res: Response, next: NextFunction) {
     mockCall(req)
 
     next()
