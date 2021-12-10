@@ -1,6 +1,6 @@
 {
   "name": "@uminily/storage",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -67,9 +67,9 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.44.0",
     "@aws-sdk/lib-storage": "^3.44.0",
-    "@uminily/app": "^0.15.6",
-    "@uminily/common": "^0.15.4",
-    "@uminily/config": "^0.5.14",
+    "@uminily/app": "^0.16.0",
+    "@uminily/common": "^0.16.0",
+    "@uminily/config": "^0.5.15",
     "@uminily/errors": "^0.1.1",
     "@uminily/injection": "^0.6.1",
     "busboy": "^0.3.1",

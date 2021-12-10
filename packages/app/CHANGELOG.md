@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.6...@uminily/app@0.16.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **app:** middleware use check ([299183b](https://github.com/Uminily/kodexo/commit/299183b62bc3c2f115cc915b5d78630b9d31c6dc))
+
+
+### Features
+
+* **storage:** new storage module ([7723ec9](https://github.com/Uminily/kodexo/commit/7723ec90f7c0c1e4b31eb300edf1b152ef0ccfbf))
+
+
+
+
+
 ## [0.15.6](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.5...@uminily/app@0.15.6) (2021-12-06)
 
 **Note:** Version bump only for package @uminily/app

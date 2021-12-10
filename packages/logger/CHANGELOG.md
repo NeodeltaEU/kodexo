@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.15](https://github.com/Uminily/kodexo/compare/@uminily/logger@0.3.14...@uminily/logger@0.3.15) (2021-12-10)
+
+**Note:** Version bump only for package @uminily/logger
+
+
+
+
+
 ## [0.3.14](https://github.com/Uminily/kodexo/compare/@uminily/logger@0.3.13...@uminily/logger@0.3.14) (2021-12-06)
 
 **Note:** Version bump only for package @uminily/logger
