@@ -1,5 +1,5 @@
 import { Middleware, MiddlewareHandling, NextFunction, Request, Response } from '@uminily/common'
-import { Inject } from '../../../injection/dist'
+import { Inject } from '@uminily/injection'
 import { CityService } from './CityService'
 
 @Middleware()
