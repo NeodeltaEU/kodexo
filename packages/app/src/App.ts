@@ -97,7 +97,6 @@ export class App {
 
     this.rawApp
       .use(cors(corsOptions))
-      .use(cookieParser(cookieSecret) as any)
       .use(json())
       .use(urlencoded({ extended: true }))
 

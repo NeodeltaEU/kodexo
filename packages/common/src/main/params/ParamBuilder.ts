@@ -19,4 +19,17 @@ export class ParamBuilder {
       }
     }
   }
+
+  static buildParamDecoratorMandatory(callback: callbackRequestFunction) {
+    return (needed: string) => {
+      return (target: any, propertyKey: string, paramaterIndex: number) => {
+        const paramaterStore = Store.from(target, propertyKey, paramaterIndex)
+
+        paramaterStore.set('type', uuid())
+        paramaterStore.set('callback', callback)
+
+        if (needed) paramaterStore.set('paramName', needed)
+      }
+    }
+  }
 }

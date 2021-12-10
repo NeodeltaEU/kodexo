@@ -1,5 +1,5 @@
-import { Handler } from '@tinyhttp/app'
+import { Request, Response, NextFunction } from '@tinyhttp/app'
 
 export interface MiddlewareHandling {
-  use: Handler
+  use: (req: Request, res: Response, next: NextFunction, args?: any) => Promise<void>
 }

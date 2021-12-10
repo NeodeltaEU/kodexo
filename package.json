@@ -28,7 +28,8 @@
           "injection",
           "logger",
           "mikro-orm",
-          "access-control"
+          "acc",
+          "storage"
         ]
       ],
       "header-max-length": [

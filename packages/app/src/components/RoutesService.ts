@@ -1,11 +1,11 @@
 import { AsyncHandler, Handler } from '@tinyhttp/app'
 import {
   ControllerProvider,
+  Endpoint,
+  NextFunction,
   Request,
   Response,
-  NextFunction,
-  Service,
-  Endpoint
+  Service
 } from '@uminily/common'
 import { IProvider, providerRegistry } from '@uminily/injection'
 import { parse } from 'regexparam'
@@ -57,27 +57,29 @@ export class RoutesService {
           const preparedMiddlewares: Handler[] = [
             ...controllerProvider.middlewares,
             ...endpoint.middlewares
-          ].map(middleware => {
+          ].map(middlewareOptions => {
+            const { instance, middlewareToken, handler, args } = middlewareOptions
+
             return (req: Request, res: Response, next: NextFunction) => {
-              if (middleware.instance) {
-                const handler = middleware.instance.use as AsyncHandler
-                return handler.bind(middleware.instance)(req, res, next).catch(next)
+              if (instance) {
+                const handler = instance.use
+                return handler.bind(instance)(req, res, next, args).catch(next)
               }
 
-              if (middleware.middlewareToken) {
-                const middlewareFound = middlewares.get(middleware.middlewareToken)
+              if (middlewareToken) {
+                const middlewareFound = middlewares.get(middlewareToken)
 
-                if (!middlewareFound)
-                  throw new Error(`Middleware not found: ${middleware.middlewareToken}`)
+                if (!middlewareFound) throw new Error(`Middleware not found: ${middlewareToken}`)
 
                 const handler = middlewareFound.instance.use
-                return handler.bind(middlewareFound.instance)(req, res, next).catch(next)
+                return handler.bind(middlewareFound.instance)(req, res, next, args).catch(next)
               }
 
-              if (!middleware.handler) throw new Error(`Middleware not found`)
+              if (!handler) throw new Error(`Middleware not found`)
 
               try {
-                return middleware.handler(req, res, next)
+                // TODO: No args here ?
+                return handler(req, res, next)
               } catch (err) {
                 next(err)
               }

@@ -8,6 +8,7 @@ import { Endpoint } from '../metadata'
 export class MiddlewareBuilder {
   private methodName?: string
   private middlewareInstance?: MiddlewareHandling
+  private args: any
   private middlewareToken: Class<MiddlewareHandling>
 
   constructor(private target: any) {}
@@ -34,6 +35,16 @@ export class MiddlewareBuilder {
    */
   fromInstanciedMiddleware(middleware: MiddlewareHandling) {
     this.middlewareInstance = middleware
+    return this
+  }
+
+  /**
+   *
+   * @param args
+   * @returns
+   */
+  withArgs(args: any) {
+    this.args = args
     return this
   }
 
@@ -80,7 +91,7 @@ export class MiddlewareBuilder {
 
   // TODO: REFACTOR THIS, HOW CRAPPY THIS IS
   build() {
-    const { target, methodName, middlewareInstance, middlewareToken } = this
+    const { target, methodName, middlewareInstance, args, middlewareToken } = this
 
     const classStore = Store.from(getClass(target))
 
@@ -88,7 +99,9 @@ export class MiddlewareBuilder {
       if (!classStore.has('middlewares')) classStore.set('middlewares', [])
       classStore
         .get('middlewares')
-        .push(middlewareInstance ? { instance: middlewareInstance } : { middlewareToken })
+        .push(
+          middlewareInstance ? { instance: middlewareInstance, args } : { middlewareToken, args }
+        )
       return
     }
 
@@ -105,8 +118,8 @@ export class MiddlewareBuilder {
       )
 
     middlewareInstance
-      ? currentEndpoint.addInstanciedMiddleware(middlewareInstance)
-      : currentEndpoint.addMiddleware(middlewareToken)
+      ? currentEndpoint.addInstanciedMiddleware(middlewareInstance, args)
+      : currentEndpoint.addMiddleware(middlewareToken, args)
   }
 
   /**
