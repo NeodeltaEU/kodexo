@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.4...@uminily/crud@0.13.5) (2021-12-13)
+
+
+### Bug Fixes
+
+* **crud:** change repo visibility on CrudService ([268fcbc](https://github.com/Uminily/kodexo/commit/268fcbc0324dd413e55ba7908ae17f0feb782e6b))
+
+
+
+
+
 ## [0.13.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.3...@uminily/crud@0.13.4) (2021-12-13)
 
 
