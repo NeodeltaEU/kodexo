@@ -171,7 +171,10 @@ export abstract class CrudService<E extends AnyEntity> {
    *
    * @param populate
    */
-  private async populateChecking(populate: string[], req: Request) {
+  private async populateChecking(populate: string[], req?: Request) {
+    // FIXME: this is a hack for coding simplicity, but it's not the best way to do it
+    if (!req) return true
+
     const canPopulate = async (
       fields: string[],
       currentEntity: Class<any>,

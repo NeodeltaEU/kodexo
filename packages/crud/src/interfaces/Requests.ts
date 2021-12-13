@@ -25,7 +25,7 @@ export type RequestParsedResult = {
 }
 
 export type QueryParsedResult = {
-  req: Request
+  req?: Request
   filter: any
   fields?: Array<string>
   orderBy?: string
