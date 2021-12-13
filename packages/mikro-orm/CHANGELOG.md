@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.4.12...@uminily/mikro-orm@0.5.0) (2021-12-13)
+
+
+### Features
+
+* **mikro-orm:** add subscribers settings ([6f044c1](https://github.com/Uminily/kodexo/commit/6f044c12c86d76ce86117f4c48dcdfdd7158107a))
+
+
+
+
+
 ## [0.4.12](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.4.11...@uminily/mikro-orm@0.4.12) (2021-12-10)
 
 **Note:** Version bump only for package @uminily/mikro-orm
