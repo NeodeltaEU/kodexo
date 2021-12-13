@@ -10,7 +10,7 @@ export * from './filters'
 declare global {
   namespace Kodexo {
     interface Configuration {
-      mikroORM: Omit<MikroOptions, 'entities' | 'entitiesTs'>
+      mikroORM: Omit<MikroOptions, 'entities' | 'entitiesTs' | 'subscribers'>
     }
   }
 }

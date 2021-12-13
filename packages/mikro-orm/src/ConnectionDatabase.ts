@@ -25,23 +25,32 @@ export class ConnectionDatabase {
    */
   @Init()
   async init() {
-    const entities = (() => {
-      const rawEntities: any[] = []
+    const rawEntities: any[] = []
+    const rawSubscribers: any[] = []
 
-      Array.from(providerRegistry.modules.values()).forEach((providerModule: Provider) => {
-        if (
-          !(providerModule as ModuleProvider).entities ||
-          !Array.isArray((providerModule as ModuleProvider).entities)
-        )
-          return
-
+    Array.from(providerRegistry.modules.values()).forEach((providerModule: Provider) => {
+      if (
+        (providerModule as ModuleProvider).entities &&
+        Array.isArray((providerModule as ModuleProvider).entities)
+      )
         rawEntities.push(...(providerModule as ModuleProvider).entities)
-      })
 
-      return [...new Set(rawEntities)]
-    })()
+      if (
+        (providerModule as ModuleProvider).subscribers &&
+        Array.isArray((providerModule as ModuleProvider).subscribers)
+      )
+        rawSubscribers.push(...(providerModule as ModuleProvider).subscribers)
+    })
+
+    const entities = [...new Set(rawEntities)]
+    const subscribers = [...new Set(rawSubscribers)]
 
     this.settings.entities = entities
+    this.settings.subscribers = subscribers.map(subscriberToken => {
+      return new subscriberToken()
+    })
+
+    this.logger.info(`[MIKRO-ORM] ${subscribers.length} subscribers loaded`)
 
     this.logger.info(`[MIKRO-ORM] ${entities.length} entities loaded`)
 
