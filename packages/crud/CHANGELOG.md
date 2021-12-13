@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.3...@uminily/crud@0.13.4) (2021-12-13)
+
+
+### Bug Fixes
+
+* **crud:** same thing with filters ([368a303](https://github.com/Uminily/kodexo/commit/368a3034e7b9fa03a550014e1874898f70ae2b04))
+
+
+
+
+
 ## [0.13.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.2...@uminily/crud@0.13.3) (2021-12-13)
 
 

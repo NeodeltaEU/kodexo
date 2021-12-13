@@ -1,6 +1,6 @@
 {
   "name": "@uminily/crud",
-  "version": "0.13.3",
+  "version": "0.13.4",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
