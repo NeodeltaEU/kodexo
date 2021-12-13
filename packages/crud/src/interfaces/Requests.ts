@@ -26,10 +26,10 @@ export type RequestParsedResult = {
 
 export type QueryParsedResult = {
   req?: Request
-  filter: any
+  filter?: any
   fields?: Array<string>
   orderBy?: string
-  limit: number
+  limit?: number
   offset?: number
   populate?: Array<string>
 }

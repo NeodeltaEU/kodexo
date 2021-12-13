@@ -88,7 +88,7 @@ export abstract class CrudService<E extends AnyEntity> {
    * @returns
    */
   async getMany(queryParams: QueryParsedResult) {
-    let { populate, fields, filter, limit, offset, orderBy, req } = queryParams
+    let { populate, fields, filter = {}, limit, offset, orderBy, req } = queryParams
 
     this.removeCache()
 
