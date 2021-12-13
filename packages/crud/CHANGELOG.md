@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.2...@uminily/crud@0.13.3) (2021-12-13)
+
+
+### Bug Fixes
+
+* **crud:** mandatory req in service ([cbac87f](https://github.com/Uminily/kodexo/commit/cbac87ff8a238427ef1d615cc17a9c356b952398))
+
+
+
+
+
 ## [0.13.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.1...@uminily/crud@0.13.2) (2021-12-13)
 
 **Note:** Version bump only for package @uminily/crud
