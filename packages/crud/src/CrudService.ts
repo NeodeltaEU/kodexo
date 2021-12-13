@@ -19,7 +19,7 @@ import { QueryParsedResult } from './interfaces'
  *
  */
 export abstract class CrudService<E extends AnyEntity> {
-  protected readonly repository: EntityRepository<E>
+  public readonly repository: EntityRepository<E>
   protected readonly entityMetadata: EntityMetadata
   protected readonly collectionFields: string[]
   protected readonly entityProperties: string[]
