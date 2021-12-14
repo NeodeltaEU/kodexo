@@ -3,6 +3,7 @@ import { ModuleProvider, Service } from '@uminily/common'
 import { Init, Inject, Provider, providerRegistry } from '@uminily/injection'
 import { ConfigurationService } from '@uminily/config'
 import { LoggerService } from '@uminily/logger'
+import { EntityManager } from '@mikro-orm/postgresql'
 
 @Service()
 export class ConnectionDatabase {
@@ -78,5 +79,12 @@ export class ConnectionDatabase {
    */
   async close() {
     await this.orm.close()
+  }
+
+  /**
+   *
+   */
+  get em() {
+    return this.orm.em as EntityManager
   }
 }
