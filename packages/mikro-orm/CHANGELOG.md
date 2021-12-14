@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.5.0...@uminily/mikro-orm@0.5.1) (2021-12-14)
+
+
+### Bug Fixes
+
+* **mikro-orm:** add em from postgres def ([70ac41f](https://github.com/Uminily/kodexo/commit/70ac41f0e0f45854cf61b1a4cc70cd9a51926256))
+
+
+
+
+
 # [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.4.12...@uminily/mikro-orm@0.5.0) (2021-12-13)
 
 

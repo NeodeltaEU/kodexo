@@ -1,6 +1,6 @@
 {
   "name": "@uminily/crud",
-  "version": "0.13.5",
+  "version": "0.13.6",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -67,7 +67,7 @@
     "@mikro-orm/postgresql": "^5.0.0-dev.393",
     "@uminily/common": "^0.16.0",
     "@uminily/errors": "^0.1.1",
-    "@uminily/mikro-orm": "^0.5.0",
+    "@uminily/mikro-orm": "^0.5.1",
     "class-transformer": "^0.5.0",
     "class-validator": "^0.13.2",
     "query-string": "^7.0.1",

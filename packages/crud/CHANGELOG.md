@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.5...@uminily/crud@0.13.6) (2021-12-14)
+
+**Note:** Version bump only for package @uminily/crud
+
+
+
+
+
 ## [0.13.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.4...@uminily/crud@0.13.5) (2021-12-13)
 
 
