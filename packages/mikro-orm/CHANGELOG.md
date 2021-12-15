@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.5.1...@uminily/mikro-orm@0.6.0) (2021-12-15)
+
+
+### Features
+
+* **mikro-orm:** entities only if prov. is loaded ([e221397](https://github.com/Uminily/kodexo/commit/e22139776849b702e82af6f00563312c06bc721d))
+* **mikro-orm:** modular mikro components loading ([bcd86ef](https://github.com/Uminily/kodexo/commit/bcd86ef0547121928d91a6ca4f44be656dba71ff))
+
+
+
+
+
 ## [0.5.1](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.5.0...@uminily/mikro-orm@0.5.1) (2021-12-14)
 
 

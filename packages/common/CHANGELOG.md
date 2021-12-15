@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.16.0...@uminily/common@0.17.0) (2021-12-15)
+
+
+### Features
+
+* **mikro-orm:** modular mikro components loading ([bcd86ef](https://github.com/Uminily/kodexo/commit/bcd86ef0547121928d91a6ca4f44be656dba71ff))
+
+
+
+
+
 # [0.16.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.15.4...@uminily/common@0.16.0) (2021-12-10)
 
 
