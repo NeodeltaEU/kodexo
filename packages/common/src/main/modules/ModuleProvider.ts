@@ -12,6 +12,7 @@ export class ModuleProvider<T = any> extends Provider<T> {
     imports: any[] = [],
     public providers: any[] = [],
     public routing?: any,
+    public flags: string[] = [],
     public queues: any[] = []
   ) {
     super(currentClass, ProviderType.MODULE, { imports })

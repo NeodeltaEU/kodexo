@@ -9,10 +9,11 @@ export function Module(options: ModuleDecoratorOptions) {
       options?.imports,
       options?.providers,
       options.routing,
+      options?.flags,
       options?.queues || []
     )
 
-    const { imports, routing, queues, ...otherOptions } = options
+    const { imports, routing, queues, flags, ...otherOptions } = options
 
     for (const otherOption in otherOptions) {
       provider[otherOption] = otherOptions[otherOption]

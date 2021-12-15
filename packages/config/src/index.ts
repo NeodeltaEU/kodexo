@@ -58,6 +58,11 @@ declare global {
          */
         mute: boolean
       }
+
+      features: {
+        flags: string[]
+        enabled: boolean
+      }
     }
   }
 }

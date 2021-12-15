@@ -2,13 +2,7 @@ import { ServerHooks } from '@uminily/app'
 import { Configuration } from '@uminily/config'
 import '@uminily/mikro-orm'
 import { RequestContextMiddleware } from '@uminily/mikro-orm'
-import { Class } from 'type-fest'
 import { AppModule } from './app.module'
-import { Car } from './features/cars/entities/car.entity'
-import { Dealership } from './features/dealerships/entities/dealership.entity'
-import { Profile } from './features/profiles/entities/profile.entity'
-import { User } from './features/users/entities/user.entity'
-import { Workshop } from './features/workshops/entities/workshop.entity'
 
 const { POSTGRES_HOST, POSTGRES_PORT } = process.env
 
@@ -34,6 +28,11 @@ const { POSTGRES_HOST, POSTGRES_PORT } = process.env
 
   logs: {
     request: false
+  },
+
+  features: {
+    flags: ['cars', 'dealerships', 'profiles', 'users', 'workshops'],
+    enabled: true
   }
 })
 export class Server implements ServerHooks {}

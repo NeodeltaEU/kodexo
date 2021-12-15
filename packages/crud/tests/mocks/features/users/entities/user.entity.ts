@@ -5,7 +5,7 @@ import { v4 } from 'uuid'
 import { LimitPopulate } from '../../../../../src/decorators/LimitPopulate'
 import { Car } from '../../cars/entities/car.entity'
 import { Dealership } from '../../dealerships/entities/dealership.entity'
-import { Invoice } from '../../invoices/entities/invoice.entity'
+import { Invoice } from './invoice.entity'
 
 const limitInvoice = async (req: Request) => {
   return false
