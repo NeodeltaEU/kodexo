@@ -29,19 +29,21 @@ export class ConnectionDatabase {
     const rawEntities: any[] = []
     const rawSubscribers: any[] = []
 
-    Array.from(providerRegistry.modules.values()).forEach((providerModule: Provider) => {
-      if (
-        (providerModule as ModuleProvider).entities &&
-        Array.isArray((providerModule as ModuleProvider).entities)
-      )
-        rawEntities.push(...(providerModule as ModuleProvider).entities)
+    Array.from(providerRegistry.modules.values())
+      .filter(providerModule => providerModule.isInitialized)
+      .forEach((providerModule: Provider) => {
+        if (
+          (providerModule as ModuleProvider).entities &&
+          Array.isArray((providerModule as ModuleProvider).entities)
+        )
+          rawEntities.push(...(providerModule as ModuleProvider).entities)
 
-      if (
-        (providerModule as ModuleProvider).subscribers &&
-        Array.isArray((providerModule as ModuleProvider).subscribers)
-      )
-        rawSubscribers.push(...(providerModule as ModuleProvider).subscribers)
-    })
+        if (
+          (providerModule as ModuleProvider).subscribers &&
+          Array.isArray((providerModule as ModuleProvider).subscribers)
+        )
+          rawSubscribers.push(...(providerModule as ModuleProvider).subscribers)
+      })
 
     const entities = [...new Set(rawEntities)]
     const subscribers = [...new Set(rawSubscribers)]
