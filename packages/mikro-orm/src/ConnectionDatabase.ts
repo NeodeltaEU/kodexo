@@ -1,6 +1,13 @@
 import { EntityMetadata, MikroORM, Options as MikroOptions } from '@mikro-orm/core'
 import { ModuleProvider, Service } from '@uminily/common'
-import { Init, Inject, Provider, providerRegistry, ProviderType } from '@uminily/injection'
+import {
+  Init,
+  Inject,
+  Provider,
+  providerRegistry,
+  ProviderType,
+  ensureProvider
+} from '@uminily/injection'
 import { ConfigurationService } from '@uminily/config'
 import { LoggerService } from '@uminily/logger'
 import { EntityManager } from '@mikro-orm/postgresql'
@@ -36,9 +43,10 @@ export class ConnectionDatabase {
       modules.forEach(module => {
         filteredModules.add(module)
 
-        const modulesDep = module.dependencies.filter(
-          (provider: Provider) => provider.type === ProviderType.MODULE
-        )
+        const modulesDep = module.imports.filter((provider: Provider) => {
+          provider = ensureProvider(provider)
+          return provider.type === ProviderType.MODULE
+        })
 
         checkSubModuleRecursive(modulesDep as ModuleProvider[])
       })
@@ -56,9 +64,10 @@ export class ConnectionDatabase {
           features.filter(x => (module as ModuleProvider).flags?.includes(x)).length > 0
 
         if (intersectFlags) {
-          const concernedSubmodules = module.dependencies.filter(
-            (provider: Provider) => provider.type === ProviderType.MODULE
-          )
+          const concernedSubmodules = module.imports.filter((provider: Provider) => {
+            provider = ensureProvider(provider)
+            return provider.type === ProviderType.MODULE
+          })
 
           checkSubModuleRecursive(concernedSubmodules as ModuleProvider[])
 
