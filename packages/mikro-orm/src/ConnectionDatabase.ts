@@ -43,10 +43,12 @@ export class ConnectionDatabase {
       modules.forEach(module => {
         filteredModules.add(module)
 
-        const modulesDep = module.imports.filter((provider: Provider) => {
-          provider = ensureProvider(provider)
-          return provider.type === ProviderType.MODULE
-        })
+        const modulesDep = module.imports
+          .map((provider: any) => (provider = ensureProvider(provider)))
+          .filter((provider: Provider) => {
+            provider = ensureProvider(provider)
+            return provider.type === ProviderType.MODULE
+          })
 
         checkSubModuleRecursive(modulesDep as ModuleProvider[])
       })
@@ -64,10 +66,9 @@ export class ConnectionDatabase {
           features.filter(x => (module as ModuleProvider).flags?.includes(x)).length > 0
 
         if (intersectFlags) {
-          const concernedSubmodules = module.imports.filter((provider: Provider) => {
-            provider = ensureProvider(provider)
-            return provider.type === ProviderType.MODULE
-          })
+          const concernedSubmodules = module.imports
+            .map((provider: any) => (provider = ensureProvider(provider)))
+            .filter((provider: Provider) => provider.type === ProviderType.MODULE)
 
           checkSubModuleRecursive(concernedSubmodules as ModuleProvider[])
 
