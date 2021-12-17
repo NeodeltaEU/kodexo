@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.2](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.6.1...@uminily/mikro-orm@0.6.2) (2021-12-17)
+
+
+### Bug Fixes
+
+* **mikro-orm:** force provider casting ([ddd061b](https://github.com/Uminily/kodexo/commit/ddd061bb3681cf6ec1ca346ea1c5bee085f98221))
+
+
+
+
+
 ## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.6.0...@uminily/mikro-orm@0.6.1) (2021-12-17)
 
 
