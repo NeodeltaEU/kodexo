@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.6.0...@uminily/mikro-orm@0.6.1) (2021-12-17)
+
+
+### Bug Fixes
+
+* **mikro-orm:** flags with submodules imports ([324ead6](https://github.com/Uminily/kodexo/commit/324ead67bd84321af287eb0980a11e3bb3986b85))
+
+
+
+
+
 # [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/mikro-orm@0.5.1...@uminily/mikro-orm@0.6.0) (2021-12-15)
 
 

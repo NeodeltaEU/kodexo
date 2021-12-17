@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/Uminily/kodexo/compare/@uminily/common@0.17.0...@uminily/common@0.17.1) (2021-12-17)
+
+**Note:** Version bump only for package @uminily/common
+
+
+
+
+
 # [0.17.0](https://github.com/Uminily/kodexo/compare/@uminily/common@0.16.0...@uminily/common@0.17.0) (2021-12-15)
 
 
