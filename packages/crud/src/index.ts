@@ -3,3 +3,4 @@ export * from './interfaces'
 export * from './validators'
 
 export * from './CrudService'
+export * from './CrudRoutesFactory'

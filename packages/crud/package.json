@@ -63,8 +63,8 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@mikro-orm/core": "^5.0.0-dev.393",
-    "@mikro-orm/postgresql": "^5.0.0-dev.393",
+    "@mikro-orm/core": "^5.0.0",
+    "@mikro-orm/postgresql": "^5.0.0",
     "@uminily/common": "^0.17.1",
     "@uminily/errors": "^0.1.1",
     "@uminily/mikro-orm": "^0.6.2",
