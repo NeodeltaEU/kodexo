@@ -43,12 +43,12 @@
     ]
   },
   "devDependencies": {
+    "@kodexo/app": "^0.16.2",
     "@types/faker": "^5.5.7",
     "@types/jest": "^26.0.24",
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
-    "@kodexo/app": "^0.16.2",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -63,16 +63,16 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@mikro-orm/core": "^5.0.0",
-    "@mikro-orm/postgresql": "^5.0.0",
     "@kodexo/common": "^0.17.1",
     "@kodexo/errors": "^0.1.1",
     "@kodexo/mikro-orm": "^0.6.3",
+    "@mikro-orm/core": "^5.0.0",
+    "@mikro-orm/postgresql": "^5.0.0",
     "class-transformer": "^0.5.0",
     "class-validator": "^0.13.2",
     "query-string": "^7.0.1",
     "type-fest": "^1.2.1",
     "uuid": "^8.3.2"
   },
-  "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
+  "gitHead": "45f513f5ce3d273dd50e33aab7f7ba374e49b792"
 }

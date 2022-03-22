@@ -60,5 +60,6 @@
     "@kodexo/common": "^0.17.1",
     "@kodexo/config": "^0.6.1",
     "@kodexo/injection": "^0.6.2"
-  }
+  },
+  "gitHead": "45f513f5ce3d273dd50e33aab7f7ba374e49b792"
 }

@@ -57,13 +57,13 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@mikro-orm/core": "^5.0.0",
-    "@mikro-orm/postgresql": "^5.0.0",
     "@kodexo/common": "^0.17.1",
     "@kodexo/config": "^0.6.1",
     "@kodexo/injection": "^0.6.2",
     "@kodexo/logger": "^0.3.17",
+    "@mikro-orm/core": "^5.0.0",
+    "@mikro-orm/postgresql": "^5.0.0",
     "type-fest": "^1.2.1"
   },
-  "gitHead": "d2c098524d260f4349d9ce38925b4a504c6da172"
+  "gitHead": "45f513f5ce3d273dd50e33aab7f7ba374e49b792"
 }

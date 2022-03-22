@@ -64,5 +64,6 @@
     "@kodexo/injection": "^0.6.2",
     "@kodexo/logger": "^0.3.17",
     "bullmq": "^1.44.2"
-  }
+  },
+  "gitHead": "45f513f5ce3d273dd50e33aab7f7ba374e49b792"
 }
