@@ -65,5 +65,5 @@
     "@mikro-orm/postgresql": "^5.0.0",
     "type-fest": "^1.2.1"
   },
-  "gitHead": "45f513f5ce3d273dd50e33aab7f7ba374e49b792"
+  "gitHead": "3341d44d2cc6d1a4e6b993d4df43a23a0df3175a"
 }
