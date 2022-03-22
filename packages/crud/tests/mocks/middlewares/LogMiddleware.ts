@@ -1,4 +1,4 @@
-import { MiddlewareHandling, Request, Response, NextFunction, Middleware } from '@uminily/common'
+import { MiddlewareHandling, Request, Response, NextFunction, Middleware } from '@kodexo/common'
 
 export const mockCall = (req: Request) => {
   req.params.log = 'yes'

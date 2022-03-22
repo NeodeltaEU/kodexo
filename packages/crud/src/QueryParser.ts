@@ -1,8 +1,8 @@
 import { EntityMetadata } from '@mikro-orm/core'
-import { isObject } from '@uminily/common'
-import { HttpError } from '@uminily/errors'
-import { Inject } from '@uminily/injection'
-import { ConnectionDatabase } from '@uminily/mikro-orm'
+import { isObject } from '@kodexo/common'
+import { HttpError } from '@kodexo/errors'
+import { Inject } from '@kodexo/injection'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
 import { QueryParsedResult, OverrideQuery, MergeQuery, RequestCrud } from './interfaces'
 import { mergeArrays } from './utils/mergeArrays'
 

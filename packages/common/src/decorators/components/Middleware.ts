@@ -1,4 +1,4 @@
-import { providerRegistry, Registries } from '@uminily/injection'
+import { providerRegistry, Registries } from '@kodexo/injection'
 import { MiddlewareProvider } from '../../main/middlewares'
 
 export function Middleware(options: any = {}): ClassDecorator {

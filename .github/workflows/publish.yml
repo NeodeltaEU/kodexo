@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: '14'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@uminily'
+          scope: '@kodexo'
 
       - name: Config git user
         run: |

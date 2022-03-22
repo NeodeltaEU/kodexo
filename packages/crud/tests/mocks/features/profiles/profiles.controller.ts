@@ -1,5 +1,5 @@
-import { Inject } from '@uminily/injection'
-import { Controller } from '@uminily/common'
+import { Inject } from '@kodexo/injection'
+import { Controller } from '@kodexo/common'
 import { Crud, CrudControllerInterface, CrudService } from '../../../../src'
 import { Profile } from './entities/profile.entity'
 import { ProfilesService } from './profiles.service'

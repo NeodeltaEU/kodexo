@@ -1,5 +1,5 @@
 import { Handler } from '@tinyhttp/app'
-import { Store } from '@uminily/injection'
+import { Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 import { MiddlewareHandling } from '../../interfaces'
 import { Dictionnary } from '../../interfaces/Dictionnary'

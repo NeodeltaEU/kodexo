@@ -1,5 +1,5 @@
 {
-  "name": "@uminily/injection",
+  "name": "@kodexo/injection",
   "version": "0.6.2",
   "main": "dist/index.js",
   "module": "dist/index.js",

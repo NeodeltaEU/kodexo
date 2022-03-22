@@ -1,4 +1,4 @@
-import { Store } from '@uminily/injection'
+import { Store } from '@kodexo/injection'
 import { MethodsParams, ParamBuilder } from '../../main'
 
 /*export function CookieParams(paramName?: string): Function {

@@ -1,4 +1,4 @@
-import { Service } from '@uminily/common'
+import { Service } from '@kodexo/common'
 import * as pino from 'pino'
 import * as pinoHttp from 'pino-http'
 import { Logger, Level } from 'pino'

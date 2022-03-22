@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { Workshop } from './entities/workshop.entity'
 import { WorkshopsService } from './workshops.service'
 

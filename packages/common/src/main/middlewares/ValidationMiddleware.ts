@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from '@tinyhttp/app'
-import { HttpError } from '@uminily/errors'
+import { HttpError } from '@kodexo/errors'
 import { MiddlewareHandling } from '../../interfaces'
 
 import { validateOrReject, ValidationError } from 'class-validator'

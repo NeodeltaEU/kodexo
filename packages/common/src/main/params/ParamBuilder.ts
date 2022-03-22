@@ -1,4 +1,4 @@
-import { Store } from '@uminily/injection'
+import { Store } from '@kodexo/injection'
 import { v4 as uuid } from 'uuid'
 import { Request, Response } from '../..'
 

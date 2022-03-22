@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.6.2](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.6.1...@uminily/injection@0.6.2) (2021-12-17)
+## [0.6.2](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.6.1...@kodexo/injection@0.6.2) (2021-12-17)
 
 
 ### Bug Fixes
@@ -14,7 +14,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.6.0...@uminily/injection@0.6.1) (2021-12-06)
+## [0.6.1](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.6.0...@kodexo/injection@0.6.1) (2021-12-06)
 
 
 ### Bug Fixes
@@ -25,7 +25,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.5.0...@uminily/injection@0.6.0) (2021-11-12)
+# [0.6.0](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.5.0...@kodexo/injection@0.6.0) (2021-11-12)
 
 
 ### Features
@@ -36,7 +36,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.4.1...@uminily/injection@0.5.0) (2021-11-11)
+# [0.5.0](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.4.1...@kodexo/injection@0.5.0) (2021-11-11)
 
 
 ### Features
@@ -47,7 +47,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.4.0...@uminily/injection@0.4.1) (2021-09-02)
+## [0.4.1](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.4.0...@kodexo/injection@0.4.1) (2021-09-02)
 
 
 ### Bug Fixes
@@ -58,7 +58,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.3.1...@uminily/injection@0.4.0) (2021-09-01)
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.3.1...@kodexo/injection@0.4.0) (2021-09-01)
 
 
 ### Features
@@ -70,7 +70,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.3.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.3.0...@uminily/injection@0.3.1) (2021-08-12)
+## [0.3.1](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.3.0...@kodexo/injection@0.3.1) (2021-08-12)
 
 
 ### Bug Fixes
@@ -81,7 +81,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.2.3...@uminily/injection@0.3.0) (2021-08-11)
+# [0.3.0](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.2.3...@kodexo/injection@0.3.0) (2021-08-11)
 
 
 ### Features
@@ -92,7 +92,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.3](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.2.2...@uminily/injection@0.2.3) (2021-08-03)
+## [0.2.3](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.2.2...@kodexo/injection@0.2.3) (2021-08-03)
 
 
 ### Bug Fixes
@@ -103,15 +103,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.2](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.2.1...@uminily/injection@0.2.2) (2021-08-03)
+## [0.2.2](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.2.1...@kodexo/injection@0.2.2) (2021-08-03)
 
-**Note:** Version bump only for package @uminily/injection
-
-
+**Note:** Version bump only for package @kodexo/injection
 
 
 
-## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.2.0...@uminily/injection@0.2.1) (2021-08-03)
+
+
+## [0.2.1](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.2.0...@kodexo/injection@0.2.1) (2021-08-03)
 
 
 ### Bug Fixes
@@ -122,7 +122,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.2.0](https://github.com/Uminily/kodexo/compare/@uminily/injection@0.1.2...@uminily/injection@0.2.0) (2021-07-16)
+# [0.2.0](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.1.2...@kodexo/injection@0.2.0) (2021-07-16)
 
 
 ### Features
@@ -191,4 +191,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.1 (2021-07-13)
 
-**Note:** Version bump only for package @uminily/injection
+**Note:** Version bump only for package @kodexo/injection

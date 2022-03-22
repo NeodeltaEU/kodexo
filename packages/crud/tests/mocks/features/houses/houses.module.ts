@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { House } from './entities/House'
 
 @Module({

@@ -1,7 +1,7 @@
-import { MiddlewareHandling, NextFunction, Request, Response } from '@uminily/common'
+import { MiddlewareHandling, NextFunction, Request, Response } from '@kodexo/common'
 import * as Busboy from 'busboy'
 import * as bytes from 'bytes'
-import { HttpError } from '@uminily/errors'
+import { HttpError } from '@kodexo/errors'
 import { StorageService } from './StorageService'
 import { FileResult, UploadFileStorageOptions } from '../interfaces'
 

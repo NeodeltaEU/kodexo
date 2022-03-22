@@ -1,4 +1,4 @@
-import { RouteParams } from '@uminily/common'
+import { RouteParams } from '@kodexo/common'
 import {
   BodyParams,
   Controller,
@@ -9,8 +9,8 @@ import {
   Response,
   Use,
   UseValidation
-} from '@uminily/common'
-import { Inject } from '@uminily/injection'
+} from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { AuthMiddleware } from '../auth.middleware'
 import { CarDto } from '../car.dto'
 import { CarService } from '../CarService'

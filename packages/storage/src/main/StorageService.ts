@@ -1,5 +1,5 @@
-import { pMap } from '@uminily/common'
-import { ConfigurationService } from '@uminily/config'
+import { pMap } from '@kodexo/common'
+import { ConfigurationService } from '@kodexo/config'
 import { Readable } from 'stream'
 import {
   FileResult,

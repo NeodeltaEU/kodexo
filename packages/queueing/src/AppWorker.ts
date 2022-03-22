@@ -1,8 +1,8 @@
-import { ConstructorParam, Injector, providerRegistry, Registries, Store } from '@uminily/injection'
-import { LoggerService } from '@uminily/logger'
-import { ConfigurationService } from '@uminily/config'
+import { ConstructorParam, Injector, providerRegistry, Registries, Store } from '@kodexo/injection'
+import { LoggerService } from '@kodexo/logger'
+import { ConfigurationService } from '@kodexo/config'
 import { Class } from 'type-fest'
-import { ModuleProvider } from '@uminily/common'
+import { ModuleProvider } from '@kodexo/common'
 import { QueueManager } from './main'
 
 // TODO: SAME CODE OF @app, PLEASE REFACTOR!

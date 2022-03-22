@@ -1,5 +1,5 @@
-import { Controller } from '@uminily/common'
-import { Inject } from '@uminily/injection'
+import { Controller } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 
 import { Crud } from '../../../../src/decorators'
 import { CrudControllerInterface } from '../../../../src/interfaces/CrudControllerInterface'

@@ -1,5 +1,5 @@
 {
-  "name": "@uminily/storage",
+  "name": "@kodexo/storage",
   "version": "0.1.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -67,11 +67,11 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.44.0",
     "@aws-sdk/lib-storage": "^3.44.0",
-    "@uminily/app": "^0.16.2",
-    "@uminily/common": "^0.17.1",
-    "@uminily/config": "^0.6.1",
-    "@uminily/errors": "^0.1.1",
-    "@uminily/injection": "^0.6.2",
+    "@kodexo/app": "^0.16.2",
+    "@kodexo/common": "^0.17.1",
+    "@kodexo/config": "^0.6.1",
+    "@kodexo/errors": "^0.1.1",
+    "@kodexo/injection": "^0.6.2",
     "busboy": "^0.3.1",
     "bytes": "^3.1.1",
     "mime-types": "^2.1.34",

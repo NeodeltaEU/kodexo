@@ -1,5 +1,5 @@
-import { Middleware } from '@uminily/common'
-import { Inject } from '@uminily/injection'
+import { Middleware } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { UploadMiddleware } from '../../main'
 import { S3StorageService } from './s3storage.service'
 

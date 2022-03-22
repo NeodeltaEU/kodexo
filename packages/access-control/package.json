@@ -1,5 +1,5 @@
 {
-  "name": "@uminily/access-control",
+  "name": "@kodexo/access-control",
   "version": "0.5.16",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -57,8 +57,8 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@uminily/common": "^0.17.1",
-    "@uminily/config": "^0.6.1",
-    "@uminily/injection": "^0.6.2"
+    "@kodexo/common": "^0.17.1",
+    "@kodexo/config": "^0.6.1",
+    "@kodexo/injection": "^0.6.2"
   }
 }

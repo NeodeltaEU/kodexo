@@ -1,4 +1,4 @@
-import { providerRegistry, Registries } from '@uminily/injection'
+import { providerRegistry, Registries } from '@kodexo/injection'
 import { QueueProvider } from '../components/QueueProvider'
 
 export function Queue(name: string, options?: any): ClassDecorator {

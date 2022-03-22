@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { S3UploadMiddleware } from './s3uploader.middleware'
 import { S3StorageService } from './s3storage.service'
 

@@ -1,6 +1,6 @@
-import { Configuration } from '@uminily/config'
-import { Inject } from '@uminily/injection'
-import { LoggerService } from '@uminily/logger'
+import { Configuration } from '@kodexo/config'
+import { Inject } from '@kodexo/injection'
+import { LoggerService } from '@kodexo/logger'
 import { ServerHooks } from '../../src'
 import { AppModule } from './app.module'
 

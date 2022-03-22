@@ -6,8 +6,8 @@ import {
   Request,
   Response,
   Service
-} from '@uminily/common'
-import { IProvider, providerRegistry } from '@uminily/injection'
+} from '@kodexo/common'
+import { IProvider, providerRegistry } from '@kodexo/injection'
 import { parse } from 'regexparam'
 
 export type RouteEndpoint = {

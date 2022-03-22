@@ -1,4 +1,4 @@
-import { Configuration } from '@uminily/config'
+import { Configuration } from '@kodexo/config'
 import { QueueTestModule } from './queue-test.module'
 
 @Configuration({

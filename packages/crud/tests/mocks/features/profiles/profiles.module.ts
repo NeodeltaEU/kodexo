@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { Profile } from './entities/profile.entity'
 import { ProfilesService } from './profiles.service'
 

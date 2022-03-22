@@ -1,6 +1,6 @@
-import { Service } from '@uminily/common'
-import { ConfigurationService } from '@uminily/config'
-import { Inject, providerRegistry } from '@uminily/injection'
+import { Service } from '@kodexo/common'
+import { ConfigurationService } from '@kodexo/config'
+import { Inject, providerRegistry } from '@kodexo/injection'
 import {
   ConnectionOptions,
   FlowJob,

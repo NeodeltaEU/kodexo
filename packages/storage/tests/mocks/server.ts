@@ -1,5 +1,5 @@
-import { ServerHooks } from '@uminily/app'
-import { Configuration } from '@uminily/config'
+import { ServerHooks } from '@kodexo/app'
+import { Configuration } from '@kodexo/config'
 import { AppModule } from './app.module'
 
 @Configuration({

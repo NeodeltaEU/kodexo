@@ -1,5 +1,5 @@
 {
-  "name": "@uminily/crud",
+  "name": "@kodexo/crud",
   "version": "0.14.3",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -48,7 +48,7 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
-    "@uminily/app": "^0.16.2",
+    "@kodexo/app": "^0.16.2",
     "eslint": "^7.19.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-plugin-prettier": "^3.3.1",
@@ -65,9 +65,9 @@
   "dependencies": {
     "@mikro-orm/core": "^5.0.0",
     "@mikro-orm/postgresql": "^5.0.0",
-    "@uminily/common": "^0.17.1",
-    "@uminily/errors": "^0.1.1",
-    "@uminily/mikro-orm": "^0.6.3",
+    "@kodexo/common": "^0.17.1",
+    "@kodexo/errors": "^0.1.1",
+    "@kodexo/mikro-orm": "^0.6.3",
     "class-transformer": "^0.5.0",
     "class-validator": "^0.13.2",
     "query-string": "^7.0.1",

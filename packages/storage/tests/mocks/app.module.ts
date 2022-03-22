@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { FilesModule } from './features/files/files.module'
 
 @Module({

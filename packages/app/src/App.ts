@@ -1,9 +1,9 @@
 import { createTerminus, TerminusOptions } from '@godaddy/terminus'
 import { App as TinyApp, Handler } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
-import { ModuleProvider, pMap, RouteMethods } from '@uminily/common'
-import { ConfigurationService } from '@uminily/config'
-import { HttpError } from '@uminily/errors'
+import { ModuleProvider, pMap, RouteMethods } from '@kodexo/common'
+import { ConfigurationService } from '@kodexo/config'
+import { HttpError } from '@kodexo/errors'
 import {
   ConstructorParam,
   importProviders,
@@ -14,9 +14,9 @@ import {
   ProviderType,
   Registries,
   Store
-} from '@uminily/injection'
-import { LoggerService } from '@uminily/logger'
-import { QueueManager } from '@uminily/queueing'
+} from '@kodexo/injection'
+import { LoggerService } from '@kodexo/logger'
+import { QueueManager } from '@kodexo/queueing'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
 import { Server as HttpServer } from 'http'

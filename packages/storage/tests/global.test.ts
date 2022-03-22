@@ -1,4 +1,4 @@
-import { App } from '@uminily/app'
+import { App } from '@kodexo/app'
 import { Server as HttpServer } from 'http'
 import * as request from 'supertest'
 import { Server } from './mocks/server'

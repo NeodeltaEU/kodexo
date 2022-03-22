@@ -1,5 +1,5 @@
-import { Factory } from '@uminily/common'
-import { Inject } from '@uminily/injection'
+import { Factory } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { RegistrationService } from './RegistrationService'
 
 @Factory()

@@ -1,4 +1,4 @@
-import { Store } from '@uminily/injection'
+import { Store } from '@kodexo/injection'
 import { PartialDeep } from 'type-fest'
 
 export function Configuration(configuration: PartialDeep<Kodexo.Configuration>) {

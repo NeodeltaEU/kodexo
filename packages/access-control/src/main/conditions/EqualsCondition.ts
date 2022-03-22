@@ -1,4 +1,4 @@
-import { isObject } from '@uminily/common'
+import { isObject } from '@kodexo/common'
 import { Evaluate } from './Evaluate'
 
 export class EqualsCondition implements Evaluate {

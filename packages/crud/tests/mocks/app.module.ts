@@ -1,5 +1,5 @@
-import { Module } from '@uminily/common'
-import { MikroModule } from '@uminily/mikro-orm'
+import { Module } from '@kodexo/common'
+import { MikroModule } from '@kodexo/mikro-orm'
 import { CarsModule } from './features/cars/cars.module'
 import { DealershipsModule } from './features/dealerships/dealerships.module'
 import { HousesModule } from './features/houses/houses.module'

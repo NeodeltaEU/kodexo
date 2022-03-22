@@ -3,23 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.16.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.16.1...@uminily/app@0.16.2) (2021-12-17)
+## [0.16.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.16.1...@kodexo/app@0.16.2) (2021-12-17)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.16.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.16.0...@uminily/app@0.16.1) (2021-12-15)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-# [0.16.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.6...@uminily/app@0.16.0) (2021-12-10)
+## [0.16.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.16.0...@kodexo/app@0.16.1) (2021-12-15)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+# [0.16.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.6...@kodexo/app@0.16.0) (2021-12-10)
 
 
 ### Bug Fixes
@@ -35,31 +35,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.15.6](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.5...@uminily/app@0.15.6) (2021-12-06)
+## [0.15.6](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.5...@kodexo/app@0.15.6) (2021-12-06)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.15.5](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.4...@uminily/app@0.15.5) (2021-11-24)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-## [0.15.4](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.3...@uminily/app@0.15.4) (2021-11-24)
+## [0.15.5](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.4...@kodexo/app@0.15.5) (2021-11-24)
 
-**Note:** Version bump only for package @uminily/app
-
-
+**Note:** Version bump only for package @kodexo/app
 
 
 
-## [0.15.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.2...@uminily/app@0.15.3) (2021-11-22)
+
+
+## [0.15.4](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.3...@kodexo/app@0.15.4) (2021-11-24)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+## [0.15.3](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.2...@kodexo/app@0.15.3) (2021-11-22)
 
 
 ### Bug Fixes
@@ -70,7 +70,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.15.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.1...@uminily/app@0.15.2) (2021-11-22)
+## [0.15.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.1...@kodexo/app@0.15.2) (2021-11-22)
 
 
 ### Bug Fixes
@@ -81,7 +81,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.15.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.15.0...@uminily/app@0.15.1) (2021-11-16)
+## [0.15.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.15.0...@kodexo/app@0.15.1) (2021-11-16)
 
 
 ### Bug Fixes
@@ -92,7 +92,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.15.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.14.1...@uminily/app@0.15.0) (2021-11-12)
+# [0.15.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.14.1...@kodexo/app@0.15.0) (2021-11-12)
 
 
 ### Features
@@ -103,7 +103,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.14.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.14.0...@uminily/app@0.14.1) (2021-11-11)
+## [0.14.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.14.0...@kodexo/app@0.14.1) (2021-11-11)
 
 
 ### Bug Fixes
@@ -114,7 +114,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.14.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.4...@uminily/app@0.14.0) (2021-11-11)
+# [0.14.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.13.4...@kodexo/app@0.14.0) (2021-11-11)
 
 
 ### Bug Fixes
@@ -130,15 +130,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.13.4](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.3...@uminily/app@0.13.4) (2021-11-09)
+## [0.13.4](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.13.3...@kodexo/app@0.13.4) (2021-11-09)
 
-**Note:** Version bump only for package @uminily/app
-
-
+**Note:** Version bump only for package @kodexo/app
 
 
 
-## [0.13.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.2...@uminily/app@0.13.3) (2021-11-08)
+
+
+## [0.13.3](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.13.2...@kodexo/app@0.13.3) (2021-11-08)
 
 
 ### Bug Fixes
@@ -149,23 +149,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.13.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.1...@uminily/app@0.13.2) (2021-11-08)
+## [0.13.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.13.1...@kodexo/app@0.13.2) (2021-11-08)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.13.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.13.0...@uminily/app@0.13.1) (2021-11-04)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-# [0.13.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.12.2...@uminily/app@0.13.0) (2021-11-04)
+## [0.13.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.13.0...@kodexo/app@0.13.1) (2021-11-04)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+# [0.13.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.12.2...@kodexo/app@0.13.0) (2021-11-04)
 
 
 ### Features
@@ -176,23 +176,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.12.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.12.1...@uminily/app@0.12.2) (2021-11-04)
+## [0.12.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.12.1...@kodexo/app@0.12.2) (2021-11-04)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.12.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.12.0...@uminily/app@0.12.1) (2021-10-12)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-# [0.12.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.12...@uminily/app@0.12.0) (2021-10-05)
+## [0.12.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.12.0...@kodexo/app@0.12.1) (2021-10-12)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+# [0.12.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.12...@kodexo/app@0.12.0) (2021-10-05)
 
 
 ### Features
@@ -203,55 +203,55 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.11.12](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.11...@uminily/app@0.11.12) (2021-10-04)
+## [0.11.12](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.11...@kodexo/app@0.11.12) (2021-10-04)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.11.11](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.10...@uminily/app@0.11.11) (2021-10-04)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-## [0.11.10](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.9...@uminily/app@0.11.10) (2021-10-04)
+## [0.11.11](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.10...@kodexo/app@0.11.11) (2021-10-04)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.11.9](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.8...@uminily/app@0.11.9) (2021-09-23)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-## [0.11.8](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.7...@uminily/app@0.11.8) (2021-09-22)
+## [0.11.10](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.9...@kodexo/app@0.11.10) (2021-10-04)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.11.7](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.6...@uminily/app@0.11.7) (2021-09-21)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-## [0.11.6](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.5...@uminily/app@0.11.6) (2021-09-21)
+## [0.11.9](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.8...@kodexo/app@0.11.9) (2021-09-23)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+## [0.11.8](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.7...@kodexo/app@0.11.8) (2021-09-22)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+## [0.11.7](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.6...@kodexo/app@0.11.7) (2021-09-21)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+## [0.11.6](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.5...@kodexo/app@0.11.6) (2021-09-21)
 
 
 ### Bug Fixes
@@ -262,31 +262,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.11.5](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.4...@uminily/app@0.11.5) (2021-09-21)
+## [0.11.5](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.4...@kodexo/app@0.11.5) (2021-09-21)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.11.4](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.3...@uminily/app@0.11.4) (2021-09-21)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-## [0.11.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.2...@uminily/app@0.11.3) (2021-09-20)
+## [0.11.4](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.3...@kodexo/app@0.11.4) (2021-09-21)
 
-**Note:** Version bump only for package @uminily/app
-
-
+**Note:** Version bump only for package @kodexo/app
 
 
 
-## [0.11.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.1...@uminily/app@0.11.2) (2021-09-20)
+
+
+## [0.11.3](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.2...@kodexo/app@0.11.3) (2021-09-20)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+## [0.11.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.1...@kodexo/app@0.11.2) (2021-09-20)
 
 
 ### Bug Fixes
@@ -297,7 +297,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.11.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.11.0...@uminily/app@0.11.1) (2021-09-02)
+## [0.11.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.11.0...@kodexo/app@0.11.1) (2021-09-02)
 
 
 ### Bug Fixes
@@ -308,7 +308,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.11.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.10.1...@uminily/app@0.11.0) (2021-09-01)
+# [0.11.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.10.1...@kodexo/app@0.11.0) (2021-09-01)
 
 
 ### Features
@@ -320,7 +320,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.10.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.10.0...@uminily/app@0.10.1) (2021-08-12)
+## [0.10.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.10.0...@kodexo/app@0.10.1) (2021-08-12)
 
 
 ### Bug Fixes
@@ -331,7 +331,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.10.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.9.1...@uminily/app@0.10.0) (2021-08-12)
+# [0.10.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.9.1...@kodexo/app@0.10.0) (2021-08-12)
 
 
 ### Features
@@ -342,7 +342,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.9.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.9.0...@uminily/app@0.9.1) (2021-08-12)
+## [0.9.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.9.0...@kodexo/app@0.9.1) (2021-08-12)
 
 
 ### Bug Fixes
@@ -353,7 +353,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.9.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.3...@uminily/app@0.9.0) (2021-08-11)
+# [0.9.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.8.3...@kodexo/app@0.9.0) (2021-08-11)
 
 
 ### Features
@@ -364,7 +364,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.2...@uminily/app@0.8.3) (2021-08-03)
+## [0.8.3](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.8.2...@kodexo/app@0.8.3) (2021-08-03)
 
 
 ### Bug Fixes
@@ -375,15 +375,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.1...@uminily/app@0.8.2) (2021-08-03)
+## [0.8.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.8.1...@kodexo/app@0.8.2) (2021-08-03)
 
-**Note:** Version bump only for package @uminily/app
-
-
+**Note:** Version bump only for package @kodexo/app
 
 
 
-## [0.8.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.8.0...@uminily/app@0.8.1) (2021-08-03)
+
+
+## [0.8.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.8.0...@kodexo/app@0.8.1) (2021-08-03)
 
 
 ### Bug Fixes
@@ -394,7 +394,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.8.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.7.0...@uminily/app@0.8.0) (2021-08-03)
+# [0.8.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.7.0...@kodexo/app@0.8.0) (2021-08-03)
 
 
 ### Features
@@ -405,7 +405,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.7.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.6.2...@uminily/app@0.7.0) (2021-07-27)
+# [0.7.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.6.2...@kodexo/app@0.7.0) (2021-07-27)
 
 
 ### Features
@@ -416,23 +416,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.6.1...@uminily/app@0.6.2) (2021-07-27)
+## [0.6.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.6.1...@kodexo/app@0.6.2) (2021-07-27)
 
-**Note:** Version bump only for package @uminily/app
-
-
-
-
-
-## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.6.0...@uminily/app@0.6.1) (2021-07-27)
-
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
 
 
-# [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.5.0...@uminily/app@0.6.0) (2021-07-22)
+## [0.6.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.6.0...@kodexo/app@0.6.1) (2021-07-27)
+
+**Note:** Version bump only for package @kodexo/app
+
+
+
+
+
+# [0.6.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.5.0...@kodexo/app@0.6.0) (2021-07-22)
 
 
 ### Features
@@ -443,7 +443,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.4.3...@uminily/app@0.5.0) (2021-07-21)
+# [0.5.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.4.3...@kodexo/app@0.5.0) (2021-07-21)
 
 
 ### Features
@@ -454,15 +454,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.3](https://github.com/Uminily/kodexo/compare/@uminily/app@0.4.2...@uminily/app@0.4.3) (2021-07-21)
+## [0.4.3](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.4.2...@kodexo/app@0.4.3) (2021-07-21)
 
-**Note:** Version bump only for package @uminily/app
-
-
+**Note:** Version bump only for package @kodexo/app
 
 
 
-## [0.4.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.4.1...@uminily/app@0.4.2) (2021-07-18)
+
+
+## [0.4.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.4.1...@kodexo/app@0.4.2) (2021-07-18)
 
 
 ### Bug Fixes
@@ -473,7 +473,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.4.0...@uminily/app@0.4.1) (2021-07-18)
+## [0.4.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.4.0...@kodexo/app@0.4.1) (2021-07-18)
 
 
 ### Bug Fixes
@@ -485,7 +485,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.3.0...@uminily/app@0.4.0) (2021-07-18)
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.3.0...@kodexo/app@0.4.0) (2021-07-18)
 
 
 ### Features
@@ -496,7 +496,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/app@0.2.2...@uminily/app@0.3.0) (2021-07-16)
+# [0.3.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.2.2...@kodexo/app@0.3.0) (2021-07-16)
 
 
 ### Features
@@ -507,7 +507,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.2](https://github.com/Uminily/kodexo/compare/@uminily/app@0.2.1...@uminily/app@0.2.2) (2021-07-15)
+## [0.2.2](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.2.1...@kodexo/app@0.2.2) (2021-07-15)
 
 
 ### Bug Fixes
@@ -518,9 +518,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/app@0.2.0...@uminily/app@0.2.1) (2021-07-15)
+## [0.2.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.2.0...@kodexo/app@0.2.1) (2021-07-15)
 
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
@@ -598,7 +598,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.1.2](https://github.com/Uminily/kodexo/compare/v0.1.1...v0.1.2) (2021-07-15)
 
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app
 
 
 
@@ -606,4 +606,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.1 (2021-07-13)
 
-**Note:** Version bump only for package @uminily/app
+**Note:** Version bump only for package @kodexo/app

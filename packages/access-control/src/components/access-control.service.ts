@@ -1,4 +1,4 @@
-import { Service } from '@uminily/common'
+import { Service } from '@kodexo/common'
 import { AccessControlCenter } from '../main/AccessControlCenter'
 import { Role } from '../main/Role'
 

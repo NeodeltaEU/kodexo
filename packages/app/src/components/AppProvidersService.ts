@@ -1,7 +1,7 @@
-import { Service } from '@uminily/common'
-import { ConfigurationService } from '@uminily/config'
-import { Inject, Injector, providerRegistry, Store } from '@uminily/injection'
-import { LoggerService } from '@uminily/logger'
+import { Service } from '@kodexo/common'
+import { ConfigurationService } from '@kodexo/config'
+import { Inject, Injector, providerRegistry, Store } from '@kodexo/injection'
+import { LoggerService } from '@kodexo/logger'
 import { Class } from 'type-fest'
 import { ServerHooks } from '..'
 

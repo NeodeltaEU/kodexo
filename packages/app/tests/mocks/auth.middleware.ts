@@ -1,5 +1,5 @@
-import { Middleware, MiddlewareHandling, NextFunction, Request, Response } from '@uminily/common'
-import { Inject } from '@uminily/injection'
+import { Middleware, MiddlewareHandling, NextFunction, Request, Response } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { CityService } from './CityService'
 
 @Middleware()

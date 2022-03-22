@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { S3StorageModule } from '../../../../src'
 import { FilesController } from './files.controller'
 

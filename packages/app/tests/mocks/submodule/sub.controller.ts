@@ -1,5 +1,5 @@
-import { Controller, Get } from '@uminily/common'
-import { Inject } from '@uminily/injection'
+import { Controller, Get } from '@kodexo/common'
+import { Inject } from '@kodexo/injection'
 import { AsyncService } from './async.service'
 
 @Controller('/')

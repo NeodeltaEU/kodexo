@@ -1,8 +1,8 @@
-import { Service } from '@uminily/common'
+import { Service } from '@kodexo/common'
 import * as objectPath from 'object-path'
 import { PartialDeep } from 'type-fest'
-import { Inject } from '@uminily/injection'
-import { LoggerService } from '@uminily/logger'
+import { Inject } from '@kodexo/injection'
+import { LoggerService } from '@kodexo/logger'
 
 @Service()
 export class ConfigurationService {

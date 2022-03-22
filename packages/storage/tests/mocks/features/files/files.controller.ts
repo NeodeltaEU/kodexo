@@ -1,4 +1,4 @@
-import { Controller, Post, Use } from '@uminily/common'
+import { Controller, Post, Use } from '@kodexo/common'
 import { FileResult, S3UploadFileStorageOptions, S3UploadMiddleware } from '../../../../src'
 import { File } from '../../../../src/decorators'
 

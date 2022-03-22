@@ -1,5 +1,5 @@
 import { EntityMetadata, MikroORM, Options as MikroOptions } from '@mikro-orm/core'
-import { ModuleProvider, Service } from '@uminily/common'
+import { ModuleProvider, Service } from '@kodexo/common'
 import {
   Init,
   Inject,
@@ -7,9 +7,9 @@ import {
   providerRegistry,
   ProviderType,
   ensureProvider
-} from '@uminily/injection'
-import { ConfigurationService } from '@uminily/config'
-import { LoggerService } from '@uminily/logger'
+} from '@kodexo/injection'
+import { ConfigurationService } from '@kodexo/config'
+import { LoggerService } from '@kodexo/logger'
 import { EntityManager } from '@mikro-orm/postgresql'
 
 @Service()

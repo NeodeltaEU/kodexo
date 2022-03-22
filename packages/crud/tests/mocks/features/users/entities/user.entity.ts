@@ -1,5 +1,5 @@
 import { Collection, Entity, ManyToMany, OneToMany, PrimaryKey, Property } from '@mikro-orm/core'
-import { Request } from '@uminily/common'
+import { Request } from '@kodexo/common'
 
 import { v4 } from 'uuid'
 import { LimitPopulate } from '../../../../../src/decorators/LimitPopulate'

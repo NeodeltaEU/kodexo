@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { CarFactory } from '../CarFactory'
 import { AsyncService } from './async.service'
 import { SubController } from './sub.controller'

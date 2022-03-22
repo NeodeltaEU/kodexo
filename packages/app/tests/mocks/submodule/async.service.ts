@@ -1,5 +1,5 @@
-import { Service } from '@uminily/common'
-import { Init } from '@uminily/injection'
+import { Service } from '@kodexo/common'
+import { Init } from '@kodexo/injection'
 
 @Service()
 export class AsyncService {

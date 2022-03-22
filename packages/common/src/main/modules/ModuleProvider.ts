@@ -1,4 +1,4 @@
-import { Provider, ProviderType } from '@uminily/injection'
+import { Provider, ProviderType } from '@kodexo/injection'
 import { Class } from 'type-fest'
 
 /**

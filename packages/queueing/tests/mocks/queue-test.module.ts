@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { QueueingModule } from '../../src'
 import { ChangeWordQueue } from './queues/ChangeWordQueue'
 

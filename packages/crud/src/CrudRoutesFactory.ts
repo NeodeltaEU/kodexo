@@ -1,5 +1,5 @@
-import { Endpoint, EndpointBuilder, MiddlewareHandling, RouteMethods } from '@uminily/common'
-import { HttpError } from '@uminily/errors'
+import { Endpoint, EndpointBuilder, MiddlewareHandling, RouteMethods } from '@kodexo/common'
+import { HttpError } from '@kodexo/errors'
 import { validateOrReject, ValidationError } from 'class-validator'
 import { Class } from 'type-fest'
 import { REQUEST_CONTEXT } from './constants'

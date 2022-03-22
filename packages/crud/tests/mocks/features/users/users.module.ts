@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { Invoice } from './entities/invoice.entity'
 import { User } from './entities/user.entity'
 import { UsersService } from './users.service'

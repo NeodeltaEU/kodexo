@@ -1,4 +1,4 @@
-import { Request, URLParams } from '@uminily/common'
+import { Request, URLParams } from '@kodexo/common'
 
 export interface RequestWithOverride extends Request {
   override?: OverrideQuery

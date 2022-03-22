@@ -1,4 +1,4 @@
-import { Module } from '@uminily/common'
+import { Module } from '@kodexo/common'
 import { AuthMiddleware } from './auth.middleware'
 import { CarFactory } from './CarFactory'
 import { ControllerMiddleware } from './controller.middleware'

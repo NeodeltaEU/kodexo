@@ -3,31 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.14.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.14.2...@uminily/crud@0.14.3) (2022-02-07)
+## [0.14.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.14.2...@kodexo/crud@0.14.3) (2022-02-07)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.14.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.14.1...@uminily/crud@0.14.2) (2021-12-17)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.14.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.14.0...@uminily/crud@0.14.1) (2021-12-17)
+## [0.14.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.14.1...@kodexo/crud@0.14.2) (2021-12-17)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-# [0.14.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.6...@uminily/crud@0.14.0) (2021-12-15)
+
+
+## [0.14.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.14.0...@kodexo/crud@0.14.1) (2021-12-17)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+# [0.14.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.6...@kodexo/crud@0.14.0) (2021-12-15)
 
 
 ### Features
@@ -38,15 +38,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.13.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.5...@uminily/crud@0.13.6) (2021-12-14)
+## [0.13.6](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.5...@kodexo/crud@0.13.6) (2021-12-14)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-## [0.13.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.4...@uminily/crud@0.13.5) (2021-12-13)
+
+
+## [0.13.5](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.4...@kodexo/crud@0.13.5) (2021-12-13)
 
 
 ### Bug Fixes
@@ -57,7 +57,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.13.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.3...@uminily/crud@0.13.4) (2021-12-13)
+## [0.13.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.3...@kodexo/crud@0.13.4) (2021-12-13)
 
 
 ### Bug Fixes
@@ -68,7 +68,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.13.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.2...@uminily/crud@0.13.3) (2021-12-13)
+## [0.13.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.2...@kodexo/crud@0.13.3) (2021-12-13)
 
 
 ### Bug Fixes
@@ -79,23 +79,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.13.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.1...@uminily/crud@0.13.2) (2021-12-13)
+## [0.13.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.1...@kodexo/crud@0.13.2) (2021-12-13)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.13.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.13.0...@uminily/crud@0.13.1) (2021-12-10)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-# [0.13.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.9...@uminily/crud@0.13.0) (2021-12-07)
+## [0.13.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.13.0...@kodexo/crud@0.13.1) (2021-12-10)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+# [0.13.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.9...@kodexo/crud@0.13.0) (2021-12-07)
 
 
 ### Features
@@ -107,15 +107,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.12.9](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.8...@uminily/crud@0.12.9) (2021-12-06)
+## [0.12.9](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.8...@kodexo/crud@0.12.9) (2021-12-06)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-## [0.12.8](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.7...@uminily/crud@0.12.8) (2021-11-24)
+
+
+## [0.12.8](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.7...@kodexo/crud@0.12.8) (2021-11-24)
 
 
 ### Bug Fixes
@@ -126,7 +126,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.12.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.6...@uminily/crud@0.12.7) (2021-11-24)
+## [0.12.7](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.6...@kodexo/crud@0.12.7) (2021-11-24)
 
 
 ### Bug Fixes
@@ -137,23 +137,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.12.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.5...@uminily/crud@0.12.6) (2021-11-24)
+## [0.12.6](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.5...@kodexo/crud@0.12.6) (2021-11-24)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.12.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.4...@uminily/crud@0.12.5) (2021-11-24)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.12.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.3...@uminily/crud@0.12.4) (2021-11-22)
+## [0.12.5](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.4...@kodexo/crud@0.12.5) (2021-11-24)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.12.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.3...@kodexo/crud@0.12.4) (2021-11-22)
 
 
 ### Bug Fixes
@@ -164,15 +164,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.12.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.2...@uminily/crud@0.12.3) (2021-11-22)
+## [0.12.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.2...@kodexo/crud@0.12.3) (2021-11-22)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-## [0.12.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.1...@uminily/crud@0.12.2) (2021-11-19)
+
+
+## [0.12.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.1...@kodexo/crud@0.12.2) (2021-11-19)
 
 
 ### Bug Fixes
@@ -183,7 +183,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.12.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.12.0...@uminily/crud@0.12.1) (2021-11-17)
+## [0.12.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.12.0...@kodexo/crud@0.12.1) (2021-11-17)
 
 
 ### Bug Fixes
@@ -194,7 +194,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.12.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.8...@uminily/crud@0.12.0) (2021-11-16)
+# [0.12.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.8...@kodexo/crud@0.12.0) (2021-11-16)
 
 
 ### Features
@@ -205,15 +205,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.11.8](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.7...@uminily/crud@0.11.8) (2021-11-12)
+## [0.11.8](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.7...@kodexo/crud@0.11.8) (2021-11-12)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-## [0.11.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.6...@uminily/crud@0.11.7) (2021-11-11)
+
+
+## [0.11.7](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.6...@kodexo/crud@0.11.7) (2021-11-11)
 
 
 ### Bug Fixes
@@ -224,55 +224,55 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.11.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.5...@uminily/crud@0.11.6) (2021-11-11)
+## [0.11.6](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.5...@kodexo/crud@0.11.6) (2021-11-11)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.11.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.4...@uminily/crud@0.11.5) (2021-11-11)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.11.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.3...@uminily/crud@0.11.4) (2021-11-09)
+## [0.11.5](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.4...@kodexo/crud@0.11.5) (2021-11-11)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.11.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.2...@uminily/crud@0.11.3) (2021-11-08)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.11.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.1...@uminily/crud@0.11.2) (2021-11-08)
+## [0.11.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.3...@kodexo/crud@0.11.4) (2021-11-09)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.11.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.11.0...@uminily/crud@0.11.1) (2021-11-04)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-# [0.11.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.6...@uminily/crud@0.11.0) (2021-11-04)
+## [0.11.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.2...@kodexo/crud@0.11.3) (2021-11-08)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.11.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.1...@kodexo/crud@0.11.2) (2021-11-08)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.11.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.11.0...@kodexo/crud@0.11.1) (2021-11-04)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+# [0.11.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.6...@kodexo/crud@0.11.0) (2021-11-04)
 
 
 ### Features
@@ -283,23 +283,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.10.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.5...@uminily/crud@0.10.6) (2021-11-04)
+## [0.10.6](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.5...@kodexo/crud@0.10.6) (2021-11-04)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.10.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.4...@uminily/crud@0.10.5) (2021-10-31)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.10.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.3...@uminily/crud@0.10.4) (2021-10-21)
+## [0.10.5](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.4...@kodexo/crud@0.10.5) (2021-10-31)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.10.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.3...@kodexo/crud@0.10.4) (2021-10-21)
 
 
 ### Bug Fixes
@@ -310,7 +310,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.10.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.2...@uminily/crud@0.10.3) (2021-10-21)
+## [0.10.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.2...@kodexo/crud@0.10.3) (2021-10-21)
 
 
 ### Bug Fixes
@@ -321,7 +321,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.10.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.1...@uminily/crud@0.10.2) (2021-10-21)
+## [0.10.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.1...@kodexo/crud@0.10.2) (2021-10-21)
 
 
 ### Bug Fixes
@@ -332,7 +332,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.10.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.10.0...@uminily/crud@0.10.1) (2021-10-20)
+## [0.10.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.10.0...@kodexo/crud@0.10.1) (2021-10-20)
 
 
 ### Bug Fixes
@@ -343,7 +343,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.10.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.9.1...@uminily/crud@0.10.0) (2021-10-20)
+# [0.10.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.9.1...@kodexo/crud@0.10.0) (2021-10-20)
 
 
 ### Features
@@ -354,7 +354,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.9.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.9.0...@uminily/crud@0.9.1) (2021-10-12)
+## [0.9.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.9.0...@kodexo/crud@0.9.1) (2021-10-12)
 
 
 ### Bug Fixes
@@ -366,7 +366,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.9.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.8.4...@uminily/crud@0.9.0) (2021-10-07)
+# [0.9.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.8.4...@kodexo/crud@0.9.0) (2021-10-07)
 
 
 ### Bug Fixes
@@ -383,7 +383,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.8.3...@uminily/crud@0.8.4) (2021-10-06)
+## [0.8.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.8.3...@kodexo/crud@0.8.4) (2021-10-06)
 
 
 ### Bug Fixes
@@ -394,31 +394,31 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.8.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.8.2...@uminily/crud@0.8.3) (2021-10-06)
+## [0.8.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.8.2...@kodexo/crud@0.8.3) (2021-10-06)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.8.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.8.1...@uminily/crud@0.8.2) (2021-09-02)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.8.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.8.0...@uminily/crud@0.8.1) (2021-09-01)
+## [0.8.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.8.1...@kodexo/crud@0.8.2) (2021-09-02)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-# [0.8.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.7.1...@uminily/crud@0.8.0) (2021-08-12)
+
+
+## [0.8.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.8.0...@kodexo/crud@0.8.1) (2021-09-01)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+# [0.8.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.7.1...@kodexo/crud@0.8.0) (2021-08-12)
 
 
 ### Features
@@ -429,15 +429,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.7.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.7.0...@uminily/crud@0.7.1) (2021-08-12)
+## [0.7.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.7.0...@kodexo/crud@0.7.1) (2021-08-12)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-# [0.7.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.9...@uminily/crud@0.7.0) (2021-08-11)
+
+
+# [0.7.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.9...@kodexo/crud@0.7.0) (2021-08-11)
 
 
 ### Features
@@ -448,7 +448,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.9](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.8...@uminily/crud@0.6.9) (2021-08-06)
+## [0.6.9](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.8...@kodexo/crud@0.6.9) (2021-08-06)
 
 
 ### Bug Fixes
@@ -459,39 +459,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.8](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.7...@uminily/crud@0.6.8) (2021-08-03)
+## [0.6.8](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.7...@kodexo/crud@0.6.8) (2021-08-03)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.6.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.6...@uminily/crud@0.6.7) (2021-08-03)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.6.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.5...@uminily/crud@0.6.6) (2021-08-03)
+## [0.6.7](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.6...@kodexo/crud@0.6.7) (2021-08-03)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.6.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.4...@uminily/crud@0.6.5) (2021-08-03)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.6.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.3...@uminily/crud@0.6.4) (2021-07-28)
+## [0.6.6](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.5...@kodexo/crud@0.6.6) (2021-08-03)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.6.5](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.4...@kodexo/crud@0.6.5) (2021-08-03)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.6.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.3...@kodexo/crud@0.6.4) (2021-07-28)
 
 
 ### Bug Fixes
@@ -502,7 +502,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.2...@uminily/crud@0.6.3) (2021-07-27)
+## [0.6.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.2...@kodexo/crud@0.6.3) (2021-07-27)
 
 
 ### Bug Fixes
@@ -513,15 +513,15 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.6.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.1...@uminily/crud@0.6.2) (2021-07-27)
+## [0.6.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.1...@kodexo/crud@0.6.2) (2021-07-27)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-## [0.6.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.6.0...@uminily/crud@0.6.1) (2021-07-27)
+
+
+## [0.6.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.6.0...@kodexo/crud@0.6.1) (2021-07-27)
 
 
 ### Bug Fixes
@@ -532,7 +532,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.6.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.7...@uminily/crud@0.6.0) (2021-07-27)
+# [0.6.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.7...@kodexo/crud@0.6.0) (2021-07-27)
 
 
 ### Features
@@ -543,7 +543,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.5.7](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.6...@uminily/crud@0.5.7) (2021-07-26)
+## [0.5.7](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.6...@kodexo/crud@0.5.7) (2021-07-26)
 
 
 ### Bug Fixes
@@ -554,39 +554,39 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.5.6](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.5...@uminily/crud@0.5.6) (2021-07-22)
+## [0.5.6](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.5...@kodexo/crud@0.5.6) (2021-07-22)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.5.5](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.4...@uminily/crud@0.5.5) (2021-07-21)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.5.4](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.3...@uminily/crud@0.5.4) (2021-07-21)
+## [0.5.5](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.4...@kodexo/crud@0.5.5) (2021-07-21)
 
-**Note:** Version bump only for package @uminily/crud
-
-
-
-
-
-## [0.5.3](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.2...@uminily/crud@0.5.3) (2021-07-21)
-
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
 
 
-## [0.5.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.1...@uminily/crud@0.5.2) (2021-07-18)
+## [0.5.4](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.3...@kodexo/crud@0.5.4) (2021-07-21)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.5.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.2...@kodexo/crud@0.5.3) (2021-07-21)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
+## [0.5.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.1...@kodexo/crud@0.5.2) (2021-07-18)
 
 
 ### Bug Fixes
@@ -597,7 +597,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.5.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.5.0...@uminily/crud@0.5.1) (2021-07-18)
+## [0.5.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.5.0...@kodexo/crud@0.5.1) (2021-07-18)
 
 
 ### Bug Fixes
@@ -608,7 +608,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.5.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.4.1...@uminily/crud@0.5.0) (2021-07-18)
+# [0.5.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.4.1...@kodexo/crud@0.5.0) (2021-07-18)
 
 
 ### Features
@@ -619,7 +619,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.4.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.4.0...@uminily/crud@0.4.1) (2021-07-18)
+## [0.4.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.4.0...@kodexo/crud@0.4.1) (2021-07-18)
 
 
 ### Bug Fixes
@@ -630,7 +630,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.4.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.3.0...@uminily/crud@0.4.0) (2021-07-17)
+# [0.4.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.3.0...@kodexo/crud@0.4.0) (2021-07-17)
 
 
 ### Features
@@ -641,7 +641,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [0.3.0](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.2.2...@uminily/crud@0.3.0) (2021-07-16)
+# [0.3.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.2.2...@kodexo/crud@0.3.0) (2021-07-16)
 
 
 ### Features
@@ -652,17 +652,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [0.2.2](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.2.1...@uminily/crud@0.2.2) (2021-07-15)
+## [0.2.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.2.1...@kodexo/crud@0.2.2) (2021-07-15)
 
-**Note:** Version bump only for package @uminily/crud
-
-
+**Note:** Version bump only for package @kodexo/crud
 
 
 
-## [0.2.1](https://github.com/Uminily/kodexo/compare/@uminily/crud@0.2.0...@uminily/crud@0.2.1) (2021-07-15)
 
-**Note:** Version bump only for package @uminily/crud
+
+## [0.2.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.2.0...@kodexo/crud@0.2.1) (2021-07-15)
+
+**Note:** Version bump only for package @kodexo/crud
 
 
 
@@ -735,7 +735,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.1.2](https://github.com/Uminily/kodexo/compare/v0.1.1...v0.1.2) (2021-07-15)
 
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud
 
 
 
@@ -743,4 +743,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 0.1.1 (2021-07-13)
 
-**Note:** Version bump only for package @uminily/crud
+**Note:** Version bump only for package @kodexo/crud

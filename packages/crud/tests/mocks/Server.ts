@@ -1,7 +1,7 @@
-import { ServerHooks } from '@uminily/app'
-import { Configuration } from '@uminily/config'
-import '@uminily/mikro-orm'
-import { RequestContextMiddleware } from '@uminily/mikro-orm'
+import { ServerHooks } from '@kodexo/app'
+import { Configuration } from '@kodexo/config'
+import '@kodexo/mikro-orm'
+import { RequestContextMiddleware } from '@kodexo/mikro-orm'
 import { AppModule } from './app.module'
 
 const { POSTGRES_HOST, POSTGRES_PORT } = process.env

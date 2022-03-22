@@ -1,4 +1,4 @@
-import { Provider, providerRegistry, Registries } from '@uminily/injection'
+import { Provider, providerRegistry, Registries } from '@kodexo/injection'
 
 /**
  *

@@ -7,8 +7,8 @@ import {
   ValidatorConstraintInterface
 } from 'class-validator'
 import { Class } from 'type-fest'
-import { Inject } from '@uminily/injection'
-import { ConnectionDatabase } from '@uminily/mikro-orm'
+import { Inject } from '@kodexo/injection'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
 import { REQUEST_CONTEXT } from '../constants'
 
 interface UniqueValidationArguments<E> extends ValidationArguments {

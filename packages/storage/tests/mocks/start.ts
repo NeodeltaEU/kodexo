@@ -1,4 +1,4 @@
-import { App } from '@uminily/app'
+import { App } from '@kodexo/app'
 import { Server } from './Server'
 
 async function bootstrap() {

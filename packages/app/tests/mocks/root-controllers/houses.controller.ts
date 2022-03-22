@@ -1,4 +1,4 @@
-import { BodyParams, Controller, Get, Post, Use } from '@uminily/common'
+import { BodyParams, Controller, Get, Post, Use } from '@kodexo/common'
 import { Inject } from '../../../../injection/dist'
 import { ControllerMiddleware } from '../controller.middleware'
 import { AsyncService } from '../submodule/async.service'

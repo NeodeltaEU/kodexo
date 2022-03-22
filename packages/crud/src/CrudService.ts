@@ -8,10 +8,10 @@ import {
   ReferenceType,
   ValidationError
 } from '@mikro-orm/core'
-import { pMap, Request } from '@uminily/common'
-import { HttpError } from '@uminily/errors'
-import { Store } from '@uminily/injection'
-import { ConnectionDatabase, RepositoryBuilder } from '@uminily/mikro-orm'
+import { pMap, Request } from '@kodexo/common'
+import { HttpError } from '@kodexo/errors'
+import { Store } from '@kodexo/injection'
+import { ConnectionDatabase, RepositoryBuilder } from '@kodexo/mikro-orm'
 import { Class, Except } from 'type-fest'
 import { QueryParsedResult } from './interfaces'
 

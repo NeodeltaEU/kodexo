@@ -1,4 +1,4 @@
-import { providerRegistry, Store } from '@uminily/injection'
+import { providerRegistry, Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 import { Endpoint, RouteMethods } from '..'
 import { Dictionnary, MiddlewareHandling } from '../../interfaces'

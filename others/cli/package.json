@@ -1,5 +1,5 @@
 {
-  "name": "@uminily/cli",
+  "name": "@kodexo/cli",
   "version": "0.0.1",
   "description": "CLI",
   "bin": {
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@angular-devkit/schematics-cli": "^12.1.4",
-    "@uminily/schematics": "^0.0.1",
+    "@kodexo/schematics": "^0.0.1",
     "commander": "^8.1.0"
   }
 }

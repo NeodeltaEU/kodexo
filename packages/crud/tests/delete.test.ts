@@ -1,7 +1,7 @@
 import { Server as HttpServer } from 'http'
-import { ConnectionDatabase } from '@uminily/mikro-orm'
-import { App } from '@uminily/app'
-import { providerRegistry } from '@uminily/injection'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
+import { App } from '@kodexo/app'
+import { providerRegistry } from '@kodexo/injection'
 import { makeFetch, FetchFunction } from 'supertest-fetch'
 
 import { Server } from './mocks/Server'
