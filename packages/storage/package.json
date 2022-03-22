@@ -41,6 +41,9 @@
       "src/**/*.{js,ts}"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/busboy": "^0.3.1",
     "@types/bytes": "^3.1.1",

@@ -44,6 +44,9 @@
       "src/**/*.{js,ts}"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
     "@types/cookie-parser": "^1.4.2",

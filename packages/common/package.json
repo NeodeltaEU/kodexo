@@ -39,6 +39,9 @@
       "src/**/*.{js,ts}"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/lodash.kebabcase": "^4.1.6",

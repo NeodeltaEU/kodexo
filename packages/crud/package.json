@@ -42,6 +42,9 @@
       "src/**/*.{js,ts}"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@kodexo/app": "^0.16.2",
     "@types/faker": "^5.5.7",

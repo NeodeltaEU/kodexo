@@ -40,6 +40,9 @@
       "src/**/*.{js,ts}"
     ]
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/normalize-path": "^3.0.0",
