@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.2.0 (2022-03-22)
+
+
+### Features
+
+* **storage:** new storage module ([7723ec9](https://github.com/Uminily/kodexo/commit/7723ec90f7c0c1e4b31eb300edf1b152ef0ccfbf))
+
+
+
+
+
 ## [0.1.2](https://github.com/Uminily/kodexo/compare/@kodexo/storage@0.1.1...@kodexo/storage@0.1.2) (2021-12-17)
 
 **Note:** Version bump only for package @kodexo/storage

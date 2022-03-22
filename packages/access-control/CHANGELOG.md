@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.6.0 (2022-03-22)
+
+
+### Bug Fixes
+
+* **access-control:** defineOrGetRole method ([1f9296b](https://github.com/Uminily/kodexo/commit/1f9296bbee99e9183b2ee43786dfda06c8b25925))
+* **access-control:** getRole method missing ([6a2afd6](https://github.com/Uminily/kodexo/commit/6a2afd61b34e8f74fba7e306923ce92469807b08))
+
+
+### Features
+
+* **access-control:** new access-control package ([82fe54f](https://github.com/Uminily/kodexo/commit/82fe54f9e61c80dba9d90d0a351376d95f7f0dcf))
+
+
+
+
+
 ## [0.5.16](https://github.com/Uminily/kodexo/compare/@kodexo/access-control@0.5.15...@kodexo/access-control@0.5.16) (2021-12-17)
 
 **Note:** Version bump only for package @kodexo/access-control

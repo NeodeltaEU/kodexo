@@ -3,6 +3,118 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.15.0 (2022-03-22)
+
+
+### Bug Fixes
+
+* **crud:** add req.assign ([ea75831](https://github.com/Uminily/kodexo/commit/ea758318c257d7a11806011b66c137e130327a52))
+* **crud:** assign param not handled ([c82e70f](https://github.com/Uminily/kodexo/commit/c82e70fd91699974e727d2b4df532ad5b11853fd))
+* **crud:** change repo visibility on CrudService ([268fcbc](https://github.com/Uminily/kodexo/commit/268fcbc0324dd413e55ba7908ae17f0feb782e6b))
+* **crud:** classToPlain before saving ([42adca3](https://github.com/Uminily/kodexo/commit/42adca3414633554c09c6445e291c62fa53e1cfc))
+* **crud:** custom collection id fields ([aefa8cc](https://github.com/Uminily/kodexo/commit/aefa8cc69887baa9e36d70deb8d01dc9fd3b7e40))
+* **crud:** derp last fix ([db3cba3](https://github.com/Uminily/kodexo/commit/db3cba3b074d5202dae847e2cc55e569d233f52e))
+* **crud:** enable override & merge for getOne ([12dcc10](https://github.com/Uminily/kodexo/commit/12dcc1098376cb724ba88ae95f8c7f038518ef4a))
+* **crud:** filter partial type ([b45325f](https://github.com/Uminily/kodexo/commit/b45325fbb925bdd53a05a344590068cea1281f77))
+* **crud:** isUnique validator ([91d4680](https://github.com/Uminily/kodexo/commit/91d46805352d036025bc316864603f813348e997))
+* **crud:** mandatory req in service ([cbac87f](https://github.com/Uminily/kodexo/commit/cbac87ff8a238427ef1d615cc17a9c356b952398))
+* **crud:** order doesn't remove first charac - ([246a3a0](https://github.com/Uminily/kodexo/commit/246a3a045b43c5a530b321dc0ca9bb65187c1fa5))
+* **crud:** prepare for delete tenancy system ([6c561af](https://github.com/Uminily/kodexo/commit/6c561af81aec175aa6884297dfb3a0fa8d1aef41))
+* **crud:** query parsing mandatory filters ([030773f](https://github.com/Uminily/kodexo/commit/030773f5a267b06060288f70e1e4dedd5b0be7b1))
+* **crud:** queryparams must be not mandatory ([c0dab9c](https://github.com/Uminily/kodexo/commit/c0dab9c8304764d862d45e8531cdbc9098db83fd))
+* **crud:** remove orm caching ([62f8722](https://github.com/Uminily/kodexo/commit/62f87220121ac7913b09bf4c129f9c6bf4000280))
+* **crud:** request interfaces ([f94e908](https://github.com/Uminily/kodexo/commit/f94e90883b3456c04cafc4b30cda743285cc8d1a))
+* **crud:** same thing with filters ([368a303](https://github.com/Uminily/kodexo/commit/368a3034e7b9fa03a550014e1874898f70ae2b04))
+* **crud:** update IsUnique decorator ([528c947](https://github.com/Uminily/kodexo/commit/528c94746839e44ed0be943eb83eed98d82c16f4))
+* **crud:** updateOne decorator option ([36303bd](https://github.com/Uminily/kodexo/commit/36303bdcb6a726e1b569df0d274df87129609e6a))
+* dafuq lerna ([d9db97d](https://github.com/Uminily/kodexo/commit/d9db97dc7a42f8206189e6f27c038b3decc3a69b))
+* mikro orm in peer dependencies ([48b0d15](https://github.com/Uminily/kodexo/commit/48b0d15890268392639239d82dafaba9b621b699))
+* mikro-orm bullshits ([a65001e](https://github.com/Uminily/kodexo/commit/a65001eee9520da093d1e1c05de850037a7e1bad))
+* **mikro-orm:** change to mikro 5.0 beta version ([157fa18](https://github.com/Uminily/kodexo/commit/157fa187b66fecff489daa306dbd34d74489acf9))
+* peerDependencies for mikro orm ([fddd0be](https://github.com/Uminily/kodexo/commit/fddd0bec9f7a7fcf9da1dc380c3452ce0c482bfb))
+* update class-transformer security ([f4a69aa](https://github.com/Uminily/kodexo/commit/f4a69aafd847bf08e50bc70d49d88162e562a435))
+* versions mikro orm ([9bc2918](https://github.com/Uminily/kodexo/commit/9bc29180845dd8b54592d42858bb66efad8b4cc7))
+
+
+### Features
+
+* add entities modules & logs ([8d35799](https://github.com/Uminily/kodexo/commit/8d357992000e9ef93c105aeaee28afc5a5c27709))
+* **app:** add RoutesService & actions ([3f0d789](https://github.com/Uminily/kodexo/commit/3f0d789decedef929e6cf63b4cf58e56a349979f))
+* change everything with modules ([f9a8972](https://github.com/Uminily/kodexo/commit/f9a89725a2db6b039e1179b606452ec85cbbb239))
+* **crud:** add @LimitPopulate decorator ([2daa530](https://github.com/Uminily/kodexo/commit/2daa530839d952fa7bea8cedb109da1da6378450))
+* **crud:** add decorators options ([5df1e7b](https://github.com/Uminily/kodexo/commit/5df1e7b802a17d92015d521d088842b2cde121fb))
+* **crud:** add limitDeepPopulate option to @Crud ([24e7d5b](https://github.com/Uminily/kodexo/commit/24e7d5b65d64c6332cee2561ed18624ff9e6327d))
+* **crud:** add override & merge options to parser ([cf84e62](https://github.com/Uminily/kodexo/commit/cf84e6239489ce93be0dfa76e62f9ce6b4a9ddbb))
+* **crud:** add query-schema header system ([806af73](https://github.com/Uminily/kodexo/commit/806af732f9fa638782a959f3b90c51faac987a80))
+* **crud:** add req.filter option ([b69a8ba](https://github.com/Uminily/kodexo/commit/b69a8ba70a93fe0dc085ade97d0f95eb38cc8b94))
+* **crud:** remove auto populating with ids ([382ade3](https://github.com/Uminily/kodexo/commit/382ade3e006f400ec2e62a07924eab825e3a7ac8))
+* middleware implementation ([1f3f92f](https://github.com/Uminily/kodexo/commit/1f3f92fa8e44b21f9e44520cf9fa5d09ad7f1786))
+* **mikro-orm:** modular mikro components loading ([bcd86ef](https://github.com/Uminily/kodexo/commit/bcd86ef0547121928d91a6ca4f44be656dba71ff))
+* start headers & x-total-count on getMany ([51ef2ae](https://github.com/Uminily/kodexo/commit/51ef2ae180633a28207cd458a175d8a67da1bf85))
+
+
+
+## 0.1.2 (2021-07-15)
+
+
+
+## 0.1.1 (2021-07-13)
+
+
+
+# 0.1.0 (2021-07-13)
+
+
+
+## 0.0.18 (2021-07-12)
+
+
+
+## 0.0.17 (2021-07-12)
+
+
+
+## 0.0.16 (2021-07-11)
+
+
+### Features
+
+* **app:** add afterInit hook on ServerHooks ([3baac31](https://github.com/Uminily/kodexo/commit/3baac31f8dd18516a0ffa610de798dd74bf26b10))
+
+
+
+## 0.0.15 (2021-07-11)
+
+
+### Bug Fixes
+
+* **common:** own pMap function is available ([cd7323a](https://github.com/Uminily/kodexo/commit/cd7323a04163e2fa5e13a048ba244ba53fae0cc0))
+
+
+
+## 0.0.14 (2021-07-10)
+
+
+
+## 0.0.13 (2021-07-10)
+
+
+
+## 0.0.12 (2021-07-10)
+
+
+
+## 0.0.11 (2021-07-10)
+
+
+### Bug Fixes
+
+* **packages:** wrong repo ([b5dee6a](https://github.com/Uminily/kodexo/commit/b5dee6a71e411ef01addd9331690d5495d779e03))
+
+
+
+
+
 ## [0.14.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.14.2...@kodexo/crud@0.14.3) (2022-02-07)
 
 **Note:** Version bump only for package @kodexo/crud

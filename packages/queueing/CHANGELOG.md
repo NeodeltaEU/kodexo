@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2022-03-22)
+
+
+### Bug Fixes
+
+* bull connection item ([22b9bb3](https://github.com/Uminily/kodexo/commit/22b9bb34502a9871d90976eda8c5db8f7665c872))
+* loading queue was weird ([fe6b4a2](https://github.com/Uminily/kodexo/commit/fe6b4a2d5f86b7529fa99923057443c3a1b4061f))
+* **queueing:** add slug mention on prefix ([9557ad4](https://github.com/Uminily/kodexo/commit/9557ad49ea9c1c266ccbba9617c0aa86452ae232))
+* **queueing:** bind queue instance to worker ([681d485](https://github.com/Uminily/kodexo/commit/681d4852169461e85fde4f9f674108f9ab303de4))
+* **queueing:** children params no more mandatory ([471119a](https://github.com/Uminily/kodexo/commit/471119a87db00a556b4d76b242656cb22bfb2aa0))
+* **queueing:** events on worker instead of queue ([3bbcdd4](https://github.com/Uminily/kodexo/commit/3bbcdd4e12a80175eac53374de19f9aea498c998))
+* **queueing:** export Job class from bullmq ([c747eae](https://github.com/Uminily/kodexo/commit/c747eae13e6c9ad27241dbbc2018a28503eea9bb))
+* **queueing:** prefixing queue option ([02a518e](https://github.com/Uminily/kodexo/commit/02a518e66bb0d3546f9441f2cf830d4bc6315c13))
+* **queueing:** prepare flow producer ([518b676](https://github.com/Uminily/kodexo/commit/518b6767813366fb688000a86aa0fe27dd3ff24d))
+
+
+### Features
+
+* add worker & queue ([d3ef4db](https://github.com/Uminily/kodexo/commit/d3ef4dbdb51f4fda5db2dbe8f9e844dafe0e8e6e))
+* **queueing:** add events on queue ([163d8f5](https://github.com/Uminily/kodexo/commit/163d8f5ddbed22eb646c2f58522f652562897de4))
+* **queueing:** add flow producer system ([9cc7ed1](https://github.com/Uminily/kodexo/commit/9cc7ed1370dd39fd359b92cfbf70161b1f0f97f2))
+
+
+
+
+
 ## [0.3.16](https://github.com/Uminily/kodexo/compare/@kodexo/queueing@0.3.15...@kodexo/queueing@0.3.16) (2021-12-17)
 
 **Note:** Version bump only for package @kodexo/queueing
