@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.15.0...@kodexo/crud@0.15.1) (2022-04-20)
+
+
+### Bug Fixes
+
+* **crud:** errors with embedded entity ([1f317e1](https://github.com/Uminily/kodexo/commit/1f317e18f2c1abec5cf3f356853f618c5c0e9824))
+
+
+
+
+
 # 0.15.0 (2022-03-22)
 
 
