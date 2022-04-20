@@ -22,7 +22,7 @@ const { POSTGRES_HOST, POSTGRES_PORT } = process.env
 
   debug: {
     skipClientRequestError: true,
-    displayErrorsOnServerCli: false,
+    displayErrorsOnServerCli: true,
     displayErrorsOnClientResponse: false
   },
 
@@ -31,7 +31,7 @@ const { POSTGRES_HOST, POSTGRES_PORT } = process.env
   },
 
   features: {
-    flags: ['cars', 'dealerships', 'profiles', 'users', 'workshops'],
+    flags: ['cars', 'dealerships', 'profiles', 'users', 'workshops', 'customers'],
     enabled: true
   }
 })

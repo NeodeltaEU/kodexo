@@ -120,16 +120,29 @@ export class CrudRouteFactory<M, C, U> {
         /* istanbul ignore next */
         if (!Array.isArray(err)) throw err
 
-        // TODO: smart handling for class validator
+        // TODO: smart handling for class validator, children etc...
         if (err[0] instanceof ValidationError && !err[0].property)
           throw HttpError.UnprocessableEntity()
 
         const errors = err.reduce((result, validationError) => {
-          const { property, constraints } = validationError
+          const { property, constraints, children } = validationError
 
-          Object.values(constraints).forEach(message => {
-            result.push({ property, message })
-          })
+          if (constraints) {
+            Object.values(constraints).forEach(message => {
+              result.push({ property, message })
+            })
+          }
+
+          // TODO: here is very ugly
+          if (children?.length > 0) {
+            children.forEach((child: any) => {
+              if (child.constraints) {
+                Object.values(child.constraints).forEach(message => {
+                  result.push({ property: `${property}`, message })
+                })
+              }
+            })
+          }
 
           return result
         }, [])

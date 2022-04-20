@@ -1,6 +1,7 @@
 import { Module } from '@kodexo/common'
 import { MikroModule } from '@kodexo/mikro-orm'
 import { CarsModule } from './features/cars/cars.module'
+import { CustomersModule } from './features/customers/customers.module'
 import { DealershipsModule } from './features/dealerships/dealerships.module'
 import { HousesModule } from './features/houses/houses.module'
 import { ProfilesModule } from './features/profiles/profiles.module'
@@ -21,6 +22,7 @@ if (activeOtherModule) {
     '/': 'tests/mocks/**/*.controller.ts'
   },
   imports: [
+    CustomersModule,
     CarsModule,
     DealershipsModule,
     ProfilesModule,

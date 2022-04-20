@@ -265,5 +265,45 @@ describe('[Method]: POST', () => {
         expect(error.details).toHaveLength(1)
       })
     })
+
+    describe('Create with embedded entity', () => {
+      beforeEach(async () => {
+        await connection.syncSchema()
+      })
+
+      it('should return an error when embedded entity is not valid', async () => {
+        const body = JSON.stringify({
+          name: 'Customer',
+          address: {
+            city: 'Paris',
+            postalCode: 75000
+          }
+        })
+
+        const error = await fetch('/customers', { method: 'POST', body, headers })
+          .expect(422)
+          .json()
+
+        expect(error.statusCode).toBe(422)
+        expect(error.details).toHaveLength(2)
+      })
+
+      it('should be good with embedded full entity', async () => {
+        const body = JSON.stringify({
+          name: 'Customer',
+          address: {
+            city: 'Paris',
+            postalCode: '75000',
+            street: '1 rue de la tour'
+          }
+        })
+
+        const result = await fetch('/customers', { method: 'POST', body, headers })
+          .expect(201)
+          .json()
+
+        console.log(result)
+      })
+    })
   })
 })
