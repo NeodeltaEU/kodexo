@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.17.1...@kodexo/app@0.18.0) (2022-04-23)
+
+
+### Features
+
+* add interceptor facility ([c45b58d](https://github.com/Uminily/kodexo/commit/c45b58d59b53db26e5daa8f720f1e0f131d703f2))
+
+
+
+
+
 ## [0.17.1](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.17.0...@kodexo/app@0.17.1) (2022-04-23)
 
 **Note:** Version bump only for package @kodexo/app

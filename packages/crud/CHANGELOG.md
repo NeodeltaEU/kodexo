@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.15.2...@kodexo/crud@0.15.3) (2022-04-23)
+
+**Note:** Version bump only for package @kodexo/crud
+
+
+
+
+
 ## [0.15.2](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.15.1...@kodexo/crud@0.15.2) (2022-04-23)
 
 **Note:** Version bump only for package @kodexo/crud

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/Uminily/kodexo/compare/@kodexo/injection@0.7.0...@kodexo/injection@0.8.0) (2022-04-23)
+
+
+### Features
+
+* add interceptor facility ([c45b58d](https://github.com/Uminily/kodexo/commit/c45b58d59b53db26e5daa8f720f1e0f131d703f2))
+
+
+
+
+
 # 0.7.0 (2022-03-22)
 
 
