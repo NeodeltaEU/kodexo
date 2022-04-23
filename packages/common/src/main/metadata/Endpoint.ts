@@ -2,7 +2,6 @@ import { Handler } from '@tinyhttp/app'
 import { Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 import { MiddlewareHandling } from '../../interfaces'
-import { Dictionnary } from '../../interfaces/Dictionnary'
 import { RouteMethods } from '../methods'
 import kebabCase = require('lodash.kebabcase')
 import { getClass } from '../..'
@@ -25,7 +24,7 @@ export class Endpoint {
 
   public statusCode: number = 200
 
-  public headers: Dictionnary = {}
+  public headers: Record<string, string> = {}
 
   public descriptor: any
 
@@ -204,7 +203,7 @@ export type EndpointOptions = {
   method: RouteMethods
   path: string
   middlewares?: MiddlewareHandler[]
-  headers?: Dictionnary
+  headers?: Record<string, string>
   statusCode?: number
   action: string
 }
