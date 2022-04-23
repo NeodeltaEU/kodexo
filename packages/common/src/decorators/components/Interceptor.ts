@@ -1,7 +1,7 @@
 import { providerRegistry, Registries } from '@kodexo/injection'
 import { MiddlewareProvider } from '../../main/middlewares'
 
-export function Middleware(options: any = {}): ClassDecorator {
+export function Interceptor(options: any = {}): ClassDecorator {
   return (target: any) => {
     if (
       !(
@@ -9,9 +9,9 @@ export function Middleware(options: any = {}): ClassDecorator {
         Object.getOwnPropertyNames(target.prototype).includes('use')
       )
     )
-      throw new Error(`Middleware ${target.name} does not have use() method`)
+      throw new Error(`Interceptor ${target.name} does not have use() method`)
 
-    const provider = new MiddlewareProvider(target)
-    providerRegistry.registerProvider(Registries.MIDDLEWARE, provider)
+    const provider = new MiddlewareProvider(target, { interceptor: true })
+    providerRegistry.registerProvider(Registries.INTERCEPTOR, provider)
   }
 }

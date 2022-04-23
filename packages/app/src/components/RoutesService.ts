@@ -2,6 +2,7 @@ import { AsyncHandler, Handler } from '@tinyhttp/app'
 import {
   ControllerProvider,
   Endpoint,
+  MiddlewareHandler,
   NextFunction,
   Request,
   Response,
@@ -16,6 +17,10 @@ export type RouteEndpoint = {
   middlewares: Array<Handler>
 }
 
+export type RequestWithResult = Request & {
+  result?: any
+}
+
 @Service()
 export class RoutesService {
   private currentRouting: IProvider[] = []
@@ -28,79 +33,80 @@ export class RoutesService {
    * @returns
    */
   private buildRoutes() {
-    const { middlewares, controllers } = providerRegistry
-
-    controllers.forEach((controllerProvider: ControllerProvider) => {
-      const mountingEndpoints = this.currentRouting
+    providerRegistry.controllers.forEach((controllerProvider: ControllerProvider) => {
+      this.currentRouting
         .filter(provider => provider.token === controllerProvider.token)
         .map(provider => provider.route)
+        .forEach(mountEndpoint =>
+          controllerProvider.endpoints.forEach(endpoint => {
+            /**
+             *
+             * @param req
+             * @param res
+             */
+            const resultHandler = (req: RequestWithResult, res: Response) => {
+              const { statusCode, headers } = endpoint
 
-      mountingEndpoints.forEach(mountEndpoint => {
-        controllerProvider.endpoints.forEach(endpoint => {
-          const handler = async (req: Request, res: Response) => {
-            //
-            const result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
-
-            //
-            res.set(endpoint.headers)
-
-            //
-            res.status(endpoint.statusCode).json(result)
-          }
-
-          // TODO: PROTECT PATH & NORMALIZE THEM
-          const path = `${mountEndpoint}${controllerProvider.path}${endpoint.path}`
-            .replace(/\/+/g, '/')
-            .replace(/\/+$/, '')
-
-          // TODO: REFACTOR OMG
-          const preparedMiddlewares: Handler[] = [
-            ...controllerProvider.middlewares,
-            ...endpoint.middlewares
-          ].map(middlewareOptions => {
-            const { instance, middlewareToken, handler, args } = middlewareOptions
-
-            return (req: Request, res: Response, next: NextFunction) => {
-              if (instance) {
-                const handler = instance.use
-                return handler.bind(instance)(req, res, next, args).catch(next)
-              }
-
-              if (middlewareToken) {
-                const middlewareFound = middlewares.get(middlewareToken)
-
-                if (!middlewareFound) throw new Error(`Middleware not found: ${middlewareToken}`)
-
-                const handler = middlewareFound.instance.use
-                return handler.bind(middlewareFound.instance)(req, res, next, args).catch(next)
-              }
-
-              if (!handler) throw new Error(`Middleware not found`)
-
-              try {
-                // TODO: No args here ?
-                return handler(req, res, next)
-              } catch (err) {
-                next(err)
-              }
+              res.set(headers)
+              res.status(statusCode)
+              res.json(req.result)
             }
+
+            /**
+             *
+             */
+            const middlewares = this.transformMiddlewareIntancesIntoHandlers(
+              ...controllerProvider.middlewares,
+              ...endpoint.middlewares
+            )
+
+            /**
+             *
+             * @param req
+             * @param res
+             */
+            const executeCallbackMiddleware = async (
+              req: RequestWithResult,
+              res: Response,
+              next: NextFunction
+            ) => {
+              req.result = await endpoint.handler.bind(controllerProvider.instance)(req, res)
+              next()
+            }
+
+            //
+            middlewares.push(executeCallbackMiddleware)
+
+            /**
+             *
+             */
+            const interceptors = this.transformMiddlewareIntancesIntoHandlers(
+              ...endpoint.interceptors
+            )
+
+            //
+            middlewares.push(...interceptors)
+
+            const routeEndpoint = {
+              endpoint,
+              middlewares,
+              handler: resultHandler
+            }
+
+            // TODO: PROTECT PATH & NORMALIZE THEM
+            const path = `${mountEndpoint}${controllerProvider.path}${endpoint.path}`
+              .replace(/\/+/g, '/')
+              .replace(/\/+$/, '')
+
+            if (this.routes.has(path)) {
+              this.routes.get(path)?.push(routeEndpoint)
+            } else {
+              this.routes.set(path, [routeEndpoint])
+            }
+
+            this.registeredCount++
           })
-
-          const routeEndpoint = {
-            endpoint,
-            handler,
-            middlewares: preparedMiddlewares
-          }
-
-          if (this.routes.has(path)) {
-            this.routes.get(path)?.push(routeEndpoint)
-          } else {
-            this.routes.set(path, [routeEndpoint])
-          }
-
-          this.registeredCount++
-        })
-      })
+        )
     })
   }
 
@@ -171,5 +177,43 @@ export class RoutesService {
 
     this.buildRoutes()
     return this
+  }
+
+  /**
+   *
+   */
+  private transformMiddlewareIntancesIntoHandlers(
+    ...middlewaresInstances: MiddlewareHandler[]
+  ): Handler[] {
+    const { mergedMiddlewares } = providerRegistry
+
+    return middlewaresInstances.map(middlewareInstance => {
+      const { instance, middlewareToken, handler, args } = middlewareInstance
+
+      return (req: Request, res: Response, next: NextFunction) => {
+        if (instance) {
+          const handler = instance.use
+          return handler.bind(instance)(req, res, next, args).catch(next)
+        }
+
+        if (middlewareToken) {
+          const middlewareFound = mergedMiddlewares.get(middlewareToken)
+
+          if (!middlewareFound) throw new Error(`Middleware not found: ${middlewareToken}`)
+
+          const handler = middlewareFound.instance.use
+          return handler.bind(middlewareFound.instance)(req, res, next, args).catch(next)
+        }
+
+        if (!handler) throw new Error(`Middleware not found`)
+
+        try {
+          // TODO: No args here ?
+          return handler(req, res, next)
+        } catch (err) {
+          next(err)
+        }
+      }
+    })
   }
 }

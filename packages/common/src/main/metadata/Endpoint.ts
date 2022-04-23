@@ -32,6 +32,8 @@ export class Endpoint {
 
   public middlewares: MiddlewareHandler[] = []
 
+  public interceptors: MiddlewareHandler[] = []
+
   public propertyKey: string
 
   public externalDecorating: boolean = false
@@ -50,6 +52,7 @@ export class Endpoint {
     externalDecorating,
     headers,
     middlewares,
+    interceptors,
     action
   }: EndpointOptions) {
     this.store = Store.from(target, propertyKey, descriptor)
@@ -64,6 +67,7 @@ export class Endpoint {
     this.action = action
 
     if (middlewares?.length) this.middlewares = middlewares
+    if (interceptors?.length) this.interceptors = interceptors
     if (headers && Object.keys(headers).length) this.headers = headers
 
     this.prepareStatusCode(statusCode)
@@ -117,6 +121,44 @@ export class Endpoint {
     }
 
     top ? this.middlewares.unshift(toPush) : this.middlewares.push(toPush)
+  }
+
+  /**
+   *
+   * @param middlewareToken
+   * @param args
+   * @param top
+   */
+  addInterceptor(middlewareToken: Class<MiddlewareHandling>, args: any, top = false) {
+    const toPush = {
+      middlewareToken,
+      args
+    }
+
+    top ? this.interceptors.unshift(toPush) : this.interceptors.push(toPush)
+  }
+
+  /**
+   *
+   */
+  addInstanciedInterceptor(instance: MiddlewareHandling, args: any, top = false) {
+    const toPush = {
+      instance,
+      args
+    }
+
+    top ? this.interceptors.unshift(toPush) : this.interceptors.push(toPush)
+  }
+
+  /**
+   *
+   */
+  addRawInterceptor(handler: Handler, top = false) {
+    const toPush = {
+      handler
+    }
+
+    top ? this.interceptors.unshift(toPush) : this.interceptors.push(toPush)
   }
 
   /**
@@ -203,6 +245,7 @@ export type EndpointOptions = {
   method: RouteMethods
   path: string
   middlewares?: MiddlewareHandler[]
+  interceptors?: MiddlewareHandler[]
   headers?: Record<string, string>
   statusCode?: number
   action: string

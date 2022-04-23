@@ -12,6 +12,7 @@ export enum Registries {
   SERVICE = 'services',
   CONTROLLER = 'controllers',
   MIDDLEWARE = 'middlewares',
+  INTERCEPTOR = 'interceptor',
   PARAM = 'param',
   MODULE = 'modules',
   QUEUES = 'queues'
@@ -110,6 +111,23 @@ export class Registry extends Map<RegistryKey, Provider> {
    */
   get middlewares(): Map<RegistryKey, Provider> {
     return this.registries.get(Registries.MIDDLEWARE) || new Map()
+  }
+
+  /**
+   *
+   */
+  get interceptors(): Map<RegistryKey, Provider> {
+    return this.registries.get(Registries.INTERCEPTOR) || new Map()
+  }
+
+  /**
+   *
+   */
+  get mergedMiddlewares() {
+    return new Map([
+      ...Array.from(this.middlewares.entries()),
+      ...Array.from(this.interceptors.entries())
+    ])
   }
 
   /**

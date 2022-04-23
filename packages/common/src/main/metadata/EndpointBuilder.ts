@@ -25,6 +25,8 @@ export class EndpointBuilder {
 
   private middlewares: MiddlewareHandler[]
 
+  private interceptors: MiddlewareHandler[]
+
   private headers: Dictionnary = {}
 
   private action?: string
@@ -63,6 +65,21 @@ export class EndpointBuilder {
       throw new Error('This is not definition of a descriptor for Endpoint Builder')
 
     this.descriptor = isFunction(descriptor) ? { value: descriptor } : descriptor
+
+    return this
+  }
+
+  /**
+   *
+   * @param interceptors
+   * @returns
+   */
+  withInterceptors(interceptors: Array<Class<MiddlewareHandling>>) {
+    this.interceptors = interceptors.map(middlewareToken => {
+      return {
+        middlewareToken
+      }
+    })
 
     return this
   }
@@ -148,6 +165,7 @@ export class EndpointBuilder {
       externalDecorating,
       statusCode,
       middlewares,
+      interceptors,
       action
     } = this
 
@@ -162,6 +180,7 @@ export class EndpointBuilder {
       externalDecorating,
       statusCode,
       middlewares,
+      interceptors,
       action: action || propertyKey
     })
 

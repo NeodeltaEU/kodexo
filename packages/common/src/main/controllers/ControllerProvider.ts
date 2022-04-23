@@ -1,4 +1,3 @@
-import { Middleware } from '@tinyhttp/app'
 import { Provider, ProviderOptions, ProviderType } from '@kodexo/injection'
 import { Class } from 'type-fest'
 import { partition } from '../..'

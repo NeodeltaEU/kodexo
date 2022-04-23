@@ -15,6 +15,7 @@ import { AuthMiddleware } from '../auth.middleware'
 import { CarDto } from '../car.dto'
 import { CarService } from '../CarService'
 import { LogMiddleware } from '../log.middleware'
+import { ModifyResultInterceptor } from '../modify-result.interceptor'
 
 @Controller('/cars')
 export class CarsController {
@@ -22,6 +23,7 @@ export class CarsController {
 
   constructor(@Inject private carService: CarService) {}
 
+  @Use(ModifyResultInterceptor)
   @Get('/')
   async getCars() {
     return this.carService.getCars()
