@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/access-control",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -60,8 +60,8 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@kodexo/common": "^0.18.0",
-    "@kodexo/config": "^0.7.0",
+    "@kodexo/common": "^0.18.1",
+    "@kodexo/config": "^0.7.1",
     "@kodexo/injection": "^0.7.0"
   },
   "gitHead": "3341d44d2cc6d1a4e6b993d4df43a23a0df3175a"
