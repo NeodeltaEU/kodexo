@@ -1,15 +1,16 @@
 import { Class } from 'type-fest'
 import { MiddlewareBuilder } from '../../main/middlewares'
-import { ValidationMiddleware } from '../../main/middlewares/ValidationMiddleware'
+import { SerializerInterceptor } from '../../main/middlewares/SerializerInterceptor'
 import { isClass } from '../../utils'
 
-export function UseValidation(options: UseValidationOptions): MethodDecorator {
+export function UseSerialization(options: UseValidationOptions): MethodDecorator {
   const parsedOptions = parseUseOptions(options)
 
   return (target: any, propertyKey: string | symbol) => {
     MiddlewareBuilder.startFromController(target)
       .forMethod(propertyKey as string)
-      .fromInstanciedMiddleware(new ValidationMiddleware(parsedOptions.dtoToken))
+      .fromInstanciedMiddleware(new SerializerInterceptor(parsedOptions.dtoToken))
+      .isInterceptor()
       .build()
   }
 }

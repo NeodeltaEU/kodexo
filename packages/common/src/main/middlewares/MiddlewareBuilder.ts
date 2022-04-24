@@ -10,6 +10,7 @@ export class MiddlewareBuilder {
   private middlewareInstance?: MiddlewareHandling
   private args: any
   private middlewareToken: Class<MiddlewareHandling>
+  private interceptor = false
 
   constructor(private target: any) {}
 
@@ -19,6 +20,15 @@ export class MiddlewareBuilder {
    */
   forMethod(methodName: string) {
     this.methodName = methodName
+    return this
+  }
+
+  /**
+   *
+   * @returns
+   */
+  isInterceptor() {
+    this.interceptor = true
     return this
   }
 
@@ -54,7 +64,7 @@ export class MiddlewareBuilder {
    * @returns
    */
   build() {
-    const { target, methodName, middlewareInstance, args, middlewareToken } = this
+    const { target, methodName, middlewareInstance, args, middlewareToken, interceptor } = this
 
     const classStore = Store.from(getClass(target))
 
@@ -81,7 +91,10 @@ export class MiddlewareBuilder {
       )
 
     if (middlewareInstance) {
-      currentEndpoint.addInstanciedMiddleware(middlewareInstance, args)
+      interceptor
+        ? currentEndpoint.addInstanciedInterceptor(middlewareInstance, args)
+        : currentEndpoint.addInstanciedMiddleware(middlewareInstance, args)
+
       return
     }
 

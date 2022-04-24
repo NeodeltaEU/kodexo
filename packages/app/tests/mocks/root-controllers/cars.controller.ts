@@ -1,4 +1,4 @@
-import { RouteParams } from '@kodexo/common'
+import { RouteParams, UseSerialization } from '@kodexo/common'
 import {
   BodyParams,
   Controller,
@@ -16,6 +16,7 @@ import { CarDto } from '../car.dto'
 import { CarService } from '../CarService'
 import { LogMiddleware } from '../log.middleware'
 import { ModifyResultInterceptor } from '../modify-result.interceptor'
+import { CarModel } from './serialization/car'
 
 @Controller('/cars')
 export class CarsController {
@@ -23,7 +24,7 @@ export class CarsController {
 
   constructor(@Inject private carService: CarService) {}
 
-  @Use(ModifyResultInterceptor)
+  @UseSerialization(CarModel)
   @Get('/')
   async getCars() {
     return this.carService.getCars()

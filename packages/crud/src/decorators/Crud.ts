@@ -26,15 +26,16 @@ export type CrudOptionsType<M, C, U> = {
   }
   limitDeepPopulate?: number
   middlewares?: MiddlewareCrudOptionsType
+  interceptors?: MiddlewareCrudOptionsType
   decorators?: DecoratorCrudOptions
 }
 
 export type MiddlewareCrudOptionsType = Partial<{
-  getOne: Class<MiddlewareHandling>[]
-  getMany: Class<MiddlewareHandling>[]
-  createOne: Class<MiddlewareHandling>[]
-  updateOne: Class<MiddlewareHandling>[]
-  deleteOne: Class<MiddlewareHandling>[]
+  getOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
+  getMany: Array<Class<MiddlewareHandling> | MiddlewareHandling>
+  createOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
+  updateOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
+  deleteOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
 }>
 
 export type DecoratorCrudOptions = Partial<{

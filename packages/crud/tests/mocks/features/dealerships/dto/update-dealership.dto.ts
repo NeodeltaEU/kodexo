@@ -1,6 +1,6 @@
 import { Transform } from 'class-transformer'
 import { IsArray, IsOptional } from 'class-validator'
-import { isObject } from '../../../../../../common/src'
+import { isObject } from '@kodexo/common'
 import { Association, IsExist } from '../../../../../src'
 import { Car } from '../../cars/entities/car.entity'
 import { User } from '../../users/entities/user.entity'

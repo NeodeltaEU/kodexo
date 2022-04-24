@@ -104,7 +104,7 @@ export abstract class CrudService<E extends AnyEntity> {
       })
 
       return {
-        entities, //this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
+        entities: this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
         count
       }
     } catch (err) {
@@ -157,9 +157,12 @@ export abstract class CrudService<E extends AnyEntity> {
    * @param id
    */
   async deleteOne(id: any) {
-    const entity: any = await this.retrieve(id)
-
-    await this.repository.removeAndFlush(entity)
+    try {
+      const entity = await this.repository.findOneOrFail(id)
+      await this.repository.removeAndFlush(entity)
+    } catch (err) {
+      throw HttpError.NotFound()
+    }
 
     return {
       id,
@@ -238,11 +241,11 @@ export abstract class CrudService<E extends AnyEntity> {
         fields
       })
 
-      return entity
+      //return entity
 
-      /*return identifiers
+      return identifiers
         ? this.applyCollectionsIdentifiersForEntity(entity, { selectedFields: fields })
-        : entity*/
+        : entity
     } catch (err) {
       if (err instanceof NotFoundError) {
         throw HttpError.NotFound()

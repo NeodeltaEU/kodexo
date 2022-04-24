@@ -60,10 +60,15 @@ export class CrudRouteFactory<M, C, U> {
       let descriptor,
         action,
         statusCode,
-        middlewares: Class<MiddlewareHandling>[] = []
+        middlewares: Array<Class<MiddlewareHandling | MiddlewareHandling>> = [],
+        interceptors: Array<Class<MiddlewareHandling | MiddlewareHandling>> = []
 
       if (this.options?.middlewares?.hasOwnProperty(name)) {
         middlewares = (this.options.middlewares as any)[name] as Class<MiddlewareHandling>[]
+      }
+
+      if (this.options?.interceptors?.hasOwnProperty(name)) {
+        interceptors = (this.options.interceptors as any)[name] as Class<MiddlewareHandling>[]
       }
 
       if (this.options?.decorators?.hasOwnProperty(name)) {
@@ -96,7 +101,15 @@ export class CrudRouteFactory<M, C, U> {
       }
 
       //
-      return this.buildRoute(path, method, name, descriptor as Function, middlewares, statusCode)
+      return this.buildRoute(
+        path,
+        method,
+        name,
+        descriptor as Function,
+        middlewares,
+        interceptors,
+        statusCode
+      )
     })
   }
 
@@ -295,7 +308,8 @@ export class CrudRouteFactory<M, C, U> {
     method: RouteMethods,
     propertyName: string,
     descriptor: Function,
-    middlewares: Class<MiddlewareHandling>[],
+    middlewares: Array<Class<MiddlewareHandling> | MiddlewareHandling>,
+    interceptors: Array<Class<MiddlewareHandling> | MiddlewareHandling>,
     statusCode?: number
   ) {
     return EndpointBuilder.startWithController(this.target)
@@ -306,6 +320,7 @@ export class CrudRouteFactory<M, C, U> {
       .withStatusCode(statusCode)
       .fromExternalDecorator()
       .withMiddlewares(middlewares)
+      .withInterceptors(interceptors)
       .build()
   }
 }

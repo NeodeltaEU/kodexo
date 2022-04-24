@@ -6,6 +6,12 @@ import { getClass } from '../../utils/class'
 import { isFunction } from '../../utils/functions/isFunction'
 import { MiddlewareHandler } from '.'
 
+function isMiddlewareInstance(
+  token: Class<MiddlewareHandling> | MiddlewareHandling
+): token is MiddlewareHandling {
+  return !!(token as any).use
+}
+
 export type MethodDecoratorOptions = Partial<{
   action: string
 }>
@@ -74,11 +80,15 @@ export class EndpointBuilder {
    * @param interceptors
    * @returns
    */
-  withInterceptors(interceptors: Array<Class<MiddlewareHandling>>) {
-    this.interceptors = interceptors.map(middlewareToken => {
-      return {
-        middlewareToken
-      }
+  withInterceptors(interceptors: Array<Class<MiddlewareHandling> | MiddlewareHandling>) {
+    this.interceptors = interceptors.map(interceptor => {
+      return isMiddlewareInstance(interceptor)
+        ? {
+            instance: interceptor
+          }
+        : {
+            middlewareToken: interceptor
+          }
     })
 
     return this
@@ -87,11 +97,15 @@ export class EndpointBuilder {
   /**
    *
    */
-  withMiddlewares(middlewareTokens: Array<Class<MiddlewareHandling>>) {
-    this.middlewares = middlewareTokens.map(middlewareToken => {
-      return {
-        middlewareToken
-      }
+  withMiddlewares(middlewares: Array<Class<MiddlewareHandling> | MiddlewareHandling>) {
+    this.middlewares = middlewares.map(middleware => {
+      return isMiddlewareInstance(middleware)
+        ? {
+            instance: middleware
+          }
+        : {
+            middlewareToken: middleware
+          }
     })
 
     return this

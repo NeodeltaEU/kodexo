@@ -1,10 +1,11 @@
-import { AsyncHandler, Handler } from '@tinyhttp/app'
+import { Handler } from '@tinyhttp/app'
 import {
   ControllerProvider,
   Endpoint,
   MiddlewareHandler,
   NextFunction,
   Request,
+  RequestWithResult,
   Response,
   Service
 } from '@kodexo/common'
@@ -15,10 +16,6 @@ export type RouteEndpoint = {
   endpoint: Endpoint
   handler: Handler
   middlewares: Array<Handler>
-}
-
-export type RequestWithResult = Request & {
-  result?: any
 }
 
 @Service()

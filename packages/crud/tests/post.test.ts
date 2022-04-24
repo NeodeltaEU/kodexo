@@ -190,10 +190,8 @@ describe('[Method]: POST', () => {
 
         expect(result.title).toBe('My first Dealership')
 
-        expect(result.customers).toBeUndefined()
-        expect(result.cars).toBeUndefined()
-        //expect(result.customers).toHaveLength(3)
-        //expect(result.cars).toHaveLength(0)
+        expect(result.customers).toHaveLength(3)
+        expect(result.cars).toHaveLength(0)
 
         const user1Updated = await connection.orm.em.findOneOrFail(User, userIds[0], {
           populate: ['favoriteDealerships'],
@@ -239,12 +237,8 @@ describe('[Method]: POST', () => {
           .json()
 
         expect(result.title).toBe('My first Dealership')
-
-        expect(result.customer).toBeUndefined()
-        expect(result.cars).toBeUndefined()
-
-        //expect(result.customers).toHaveLength(0)
-        //expect(result.cars).toHaveLength(0)
+        expect(result.customers).toHaveLength(0)
+        expect(result.cars).toHaveLength(0)
       })
 
       it('should return an error when a customer does not exist', async () => {
@@ -301,8 +295,6 @@ describe('[Method]: POST', () => {
         const result = await fetch('/customers', { method: 'POST', body, headers })
           .expect(201)
           .json()
-
-        console.log(result)
       })
     })
   })

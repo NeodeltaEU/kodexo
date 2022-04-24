@@ -133,11 +133,11 @@ describe('[Method]: GET', () => {
 
         expect(result.title).toBe('My first Dealership')
 
-        expect(result.customers).toBeUndefined()
-        expect(result.cars).toBeUndefined()
+        //expect(result.customers).toBeUndefined()
+        //expect(result.cars).toBeUndefined()
 
-        //expect(result.customers).toHaveLength(2)
-        //expect(result.cars).toHaveLength(3)
+        expect(result.customers).toHaveLength(2)
+        expect(result.cars).toHaveLength(3)
       })
 
       it('should return one dealership with populated cars', async () => {
@@ -362,7 +362,7 @@ describe('[Method]: GET', () => {
           .json()
 
         expect(result.email).toBe('john.doe.the.two@acme.com')
-        expect(result.favoriteDealerships).toBeUndefined()
+        expect(result.favoriteDealerships).toHaveLength(1)
         expect(result.password).toBeUndefined()
       })
     })
@@ -435,6 +435,8 @@ describe('[Method]: GET', () => {
           .expect('content-type', 'application/json')
           .expect('x-total-count', 1)
           .json()
+
+        //console.log(result[0].cars)
 
         expect(result).toHaveLength(1)
         expect(result[0].title).toBe('My first Dealership')
@@ -541,9 +543,9 @@ describe('[Method]: GET', () => {
 
         expect(result[0].title).toBe('My first Dealership')
 
-        expect(result[0].customers).not.toBeDefined()
-        //expect(result[0].customers).toHaveLength(2)
-        //expect(result[0].customers[0]).toBe(userId1)
+        //expect(result[0].customers).not.toBeDefined()
+        expect(result[0].customers).toHaveLength(2)
+        expect(result[0].customers[0]).toBe(userId1)
       })
 
       it('should return one dealership with populated customers', async () => {
@@ -556,10 +558,10 @@ describe('[Method]: GET', () => {
         expect(result[0].customers).toHaveLength(2)
         expect(result[0].customers[0].email).toBe('john.doe@acme.com')
 
-        expect(result[0].cars).toBeUndefined()
+        //expect(result[0].cars).toBeUndefined()
 
-        //expect(result[0].cars).toHaveLength(3)
-        //expect(typeof result[0].cars[0]).toBe('string')
+        expect(result[0].cars).toHaveLength(3)
+        expect(typeof result[0].cars[0]).toBe('string')
       })
     })
 
