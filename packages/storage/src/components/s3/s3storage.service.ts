@@ -28,11 +28,11 @@ export class S3StorageService extends StorageService {
     this.client = new S3Client({
       forcePathStyle: true,
       credentials: {
-        accessKeyId, //'VK4KJPSULIZZMCDG4XD7',
-        secretAccessKey //'TEGYRzAg6a8VoS/ZoBGefWpPzjGS+VfphJ8h6Au2Lo8'
+        accessKeyId,
+        secretAccessKey
       },
-      region, //: 'fra1'
-      endpoint //: 'https://fra1.digitaloceanspaces.com'
+      region,
+      endpoint
     })
 
     if (this.config.get('upload.providers.s3.cdn.enabled') === true)
