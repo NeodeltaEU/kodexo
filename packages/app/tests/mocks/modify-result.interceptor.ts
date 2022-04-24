@@ -1,5 +1,10 @@
-import { MiddlewareHandling, NextFunction, Response, Interceptor } from '@kodexo/common'
-import { RequestWithResult } from '../../src'
+import {
+  MiddlewareHandling,
+  NextFunction,
+  Response,
+  Interceptor,
+  RequestWithResult
+} from '@kodexo/common'
 
 @Interceptor()
 export class ModifyResultInterceptor implements MiddlewareHandling {
