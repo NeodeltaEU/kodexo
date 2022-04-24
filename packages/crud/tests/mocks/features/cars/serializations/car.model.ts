@@ -1,5 +1,5 @@
 import { Expose, Type } from 'class-transformer'
-import { TransformIDToModel } from '../../../decorators/TransformIdToModel'
+import { TransformIDToModel } from '../../../decorators/TransformIDToModel'
 import { DealershipModel } from '../../dealerships/serializations/dealership.model'
 import { UserModel } from '../../users/serializations/user.model'
 
