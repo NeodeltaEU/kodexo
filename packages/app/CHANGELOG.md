@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.18.0...@kodexo/app@0.19.0) (2022-04-24)
+
+
+### Features
+
+* add interceptor & serializer systems ([5032d8d](https://github.com/Uminily/kodexo/commit/5032d8d0c381dd951a309ee7b46bff6d4a45ba64))
+
+
+
+
+
 # [0.18.0](https://github.com/Uminily/kodexo/compare/@kodexo/app@0.17.1...@kodexo/app@0.18.0) (2022-04-23)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/config",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -61,9 +61,9 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
-    "@kodexo/common": "^0.19.0",
+    "@kodexo/common": "^0.20.0",
     "@kodexo/injection": "^0.8.0",
-    "@kodexo/logger": "^0.4.2",
+    "@kodexo/logger": "^0.4.3",
     "object-path": "^0.11.5",
     "type-fest": "^1.2.2"
   },

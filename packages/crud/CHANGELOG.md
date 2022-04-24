@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.15.3...@kodexo/crud@0.16.0) (2022-04-24)
+
+
+### Features
+
+* add interceptor & serializer systems ([5032d8d](https://github.com/Uminily/kodexo/commit/5032d8d0c381dd951a309ee7b46bff6d4a45ba64))
+
+
+
+
+
 ## [0.15.3](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.15.2...@kodexo/crud@0.15.3) (2022-04-23)
 
 **Note:** Version bump only for package @kodexo/crud
