@@ -5,11 +5,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -43,7 +38,6 @@
     "access": "public"
   },
   "scripts": {
-    "commit": "git-cz",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "build": "yarn clean && lerna run build && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
     "test": "lerna run test",
@@ -55,8 +49,6 @@
   "devDependencies": {
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
-    "commitizen": "^4.2.4",
-    "cz-conventional-changelog": "^3.3.0",
     "husky": "^7.0.0",
     "lerna": "^4.0.0"
   }
