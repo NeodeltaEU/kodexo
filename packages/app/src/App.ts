@@ -24,6 +24,7 @@ import { Class } from 'type-fest'
 import { ServerHooks } from './interfaces'
 import { RoutesService } from './components'
 import { AppProvidersService } from './components/AppProvidersService'
+import { OpenApiService } from './components/OpenApiService'
 
 /**
  *
@@ -32,6 +33,7 @@ export class App {
   @Inject configurationService: ConfigurationService
   @Inject logger: LoggerService
   @Inject routesService: RoutesService
+  @Inject openApiService: OpenApiService
 
   public readonly rawApp = new TinyApp({
     onError: (err, req, res) => {
@@ -114,6 +116,26 @@ export class App {
     })
 
     return this
+  }
+
+  public addRoute(path: string, method: string, handler: Handler) {
+    switch (method) {
+      case 'GET':
+        this.rawApp.get(path, handler)
+        break
+      case 'POST':
+        this.rawApp.post(path, handler)
+        break
+      case 'DELETE':
+        this.rawApp.delete(path, handler)
+        break
+      case 'PUT':
+        this.rawApp.put(path, handler)
+        break
+      case 'PATCH':
+        this.rawApp.patch(path, handler)
+        break
+    }
   }
 
   /**
@@ -223,7 +245,13 @@ export class App {
     // TODO: Move all of that into domain to register module & start rootModule
     const RootModule = class {}
 
-    const moduleProvider = new ModuleProvider(RootModule, [appModule, LoggerService, RoutesService])
+    const moduleProvider = new ModuleProvider(RootModule, [
+      appModule,
+      LoggerService,
+      RoutesService,
+      OpenApiService
+    ])
+
     providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
 
     const providers = await importProviders([RootModule])
@@ -278,6 +306,14 @@ export class App {
     if (server.afterInit) await server.afterInit()
 
     const app = new App(routing)
+
+    const yaml = app.openApiService.processToYaml()
+
+    app.addRoute('/api-doc', 'GET', (req, res) => {
+      res.setHeader('Content-Type', 'text/yaml')
+      res.send(yaml)
+    })
+
     return app.listenForRequests()
   }
 }

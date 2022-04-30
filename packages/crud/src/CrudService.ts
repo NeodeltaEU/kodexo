@@ -235,7 +235,7 @@ export abstract class CrudService<E extends AnyEntity> {
 
     try {
       // TODO: when select subchild property, include relation-key in field, unless hydration wont work
-
+      // TODO: remove eagered relations if not selected in fields
       const entity = await this.repository.findOneOrFail(filterQuery, {
         populate,
         fields

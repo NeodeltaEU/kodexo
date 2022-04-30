@@ -23,6 +23,4 @@ import { AppModule } from './app.module'
 })
 export class Server implements ServerHooks {
   constructor(@Inject private logger: LoggerService) {}
-
-  //async afterInit() {}
 }

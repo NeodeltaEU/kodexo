@@ -27,8 +27,7 @@ export class Endpoint {
   public headers: Record<string, string> = {}
 
   public descriptor: any
-
-  public store: Store
+  private rawDescriptor: any
 
   public middlewares: MiddlewareHandler[] = []
 
@@ -55,10 +54,9 @@ export class Endpoint {
     interceptors,
     action
   }: EndpointOptions) {
-    this.store = Store.from(target, propertyKey, descriptor)
-
     this.externalDecorating = !!externalDecorating
 
+    this.rawDescriptor = descriptor
     this.descriptor = descriptor.value
     this.method = method
     this.path = path
@@ -71,6 +69,13 @@ export class Endpoint {
     if (headers && Object.keys(headers).length) this.headers = headers
 
     this.prepareStatusCode(statusCode)
+  }
+
+  /**
+   *
+   */
+  get store() {
+    return Store.from(this.target, this.propertyKey, this.rawDescriptor)
   }
 
   /**
