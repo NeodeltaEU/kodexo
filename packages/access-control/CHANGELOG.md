@@ -19,6 +19,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [0.6.4](https://github.com/Uminily/kodexo/compare/@kodexo/access-control@0.6.3...@kodexo/access-control@0.6.4) (2022-04-30)
+
+**Note:** Version bump only for package @kodexo/access-control
+
+
+
+
 
 ## [0.6.3](https://github.com/Uminily/kodexo/compare/@kodexo/access-control@0.6.2...@kodexo/access-control@0.6.3) (2022-04-24)
 
