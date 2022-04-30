@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/Uminily/kodexo/compare/@kodexo/common@0.20.0...@kodexo/common@0.21.0) (2022-04-30)
+
+
+### Features
+
+* **common:** add query params decorator ([0595f48](https://github.com/Uminily/kodexo/commit/0595f48a1f0dc3707d1a6b4e65d5ceecdf8d07bf))
+
+
+
+
+
 # [0.20.0](https://github.com/Uminily/kodexo/compare/@kodexo/common@0.19.0...@kodexo/common@0.20.0) (2022-04-24)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://github.com/Uminily/kodexo/compare/@kodexo/config@0.7.3...@kodexo/config@0.7.4) (2022-04-30)
+
+**Note:** Version bump only for package @kodexo/config
+
+
+
+
+
 ## [0.7.3](https://github.com/Uminily/kodexo/compare/@kodexo/config@0.7.2...@kodexo/config@0.7.3) (2022-04-24)
 
 **Note:** Version bump only for package @kodexo/config
