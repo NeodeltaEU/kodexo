@@ -1,5 +1,6 @@
 export * from './RouteParams'
 export * from './BodyParams'
 export * from './CookieParams'
+export * from './QueryParams'
 export * from './Req'
 export * from './Res'
