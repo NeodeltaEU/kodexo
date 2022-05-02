@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.16.1...@kodexo/crud@0.17.0) (2022-05-02)
+
+
+### Features
+
+* **crud:** handle soft deleting on service ([3739a1c](https://github.com/Uminily/kodexo/commit/3739a1c9efdcd2f303ef4c87903b3c3a5c475ae7))
+
+
+
+
+
 ## [0.16.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.16.0...@kodexo/crud@0.16.1) (2022-04-30)
 
 **Note:** Version bump only for package @kodexo/crud
