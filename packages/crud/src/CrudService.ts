@@ -160,7 +160,17 @@ export abstract class CrudService<E extends AnyEntity> {
   async deleteOne(id: any) {
     try {
       const entity = await this.repository.findOneOrFail(id)
-      await this.repository.removeAndFlush(entity)
+
+      if (this.entityProperties.includes(this.options?.deletedAtField || 'deletedAt')) {
+        await this.repository.nativeUpdate(
+          { id } as any,
+          {
+            [this.options?.deletedAtField || 'deletedAt']: new Date()
+          } as any
+        )
+      } else {
+        await this.repository.removeAndFlush(entity)
+      }
     } catch (err) {
       throw HttpError.NotFound()
     }
@@ -322,4 +332,5 @@ type QueryParsedResultForOneResult = Except<QueryParsedResult, 'limit' | 'offset
 
 type CrudServiceOptions = {
   collectionIdentifierFields: { [key: string]: string }
+  deletedAtField?: string
 }
