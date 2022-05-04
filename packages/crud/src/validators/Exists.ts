@@ -43,7 +43,7 @@ class Exists implements ValidatorConstraintInterface {
   }
 
   defaultMessage() {
-    return 'specified id not exist or not available for this context'
+    return 'specified id not exists or not available for this context'
   }
 }
 
