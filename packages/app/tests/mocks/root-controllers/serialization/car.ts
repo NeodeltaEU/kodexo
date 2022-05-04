@@ -14,7 +14,8 @@ export class CarModel {
   model: string
 
   @ApiProperty({
-    description: 'Registration number of the car'
+    description: 'Registration number of the car',
+    example: 'EX-0090-EE'
   })
   @Expose()
   registration: string

@@ -6,12 +6,16 @@ import { cleanObject } from '../utils/cleanObject'
 type DtoProperty = {
   type: Function | string
   description: string
+  example?: any
+  required?: boolean
 }
 
 export class OpenApiPathItem {
   public readonly method: OpenAPIV3_1.HttpMethods
 
   private responseProperties: Record<string, any> = {}
+  private bodyProperties?: Record<string, any>
+  private requiredBodyProperties: Array<string> = []
   private summary: string = 'A route'
   private apiGroup?: string
 
@@ -19,7 +23,8 @@ export class OpenApiPathItem {
     const method = metadata.method as unknown
     this.method = method as OpenAPIV3_1.HttpMethods
 
-    this.extractResultSchema()
+    this.extractValidation()
+    this.extractSerialization()
     this.extractSummary()
     this.extractApiGroup()
   }
@@ -34,12 +39,23 @@ export class OpenApiPathItem {
   /**
    *
    */
-  private extractResultSchema() {
-    if (!this.metadata.store.has('resultSchema')) return
-
-    const dtoStore = Store.from(this.metadata.store.get('resultSchema'))
+  private extractSerialization() {
+    if (!this.metadata.store.has('openapi:serialization')) return
+    const dtoStore = Store.from(this.metadata.store.get('openapi:serialization'))
 
     this.responseProperties = this.extractProperties(dtoStore)
+  }
+
+  /**
+   *
+   */
+  private extractValidation() {
+    if (!this.metadata.store.has('openapi:validation')) return
+    const dtoStore = Store.from(this.metadata.store.get('openapi:validation'))
+
+    console.log(dtoStore)
+
+    this.bodyProperties = this.extractProperties(dtoStore, false)
   }
 
   /**
@@ -54,34 +70,37 @@ export class OpenApiPathItem {
   /**
    *
    */
-  private extractProperties(dtoStore: Store) {
+  private extractProperties(dtoStore: Store, isResponse = true) {
     if (!dtoStore.has('properties')) return {}
 
     const properties = dtoStore.get<DtoProperty[]>('properties')
 
     return Object.entries(properties).reduce((result, [key, value]) => {
-      const { type, description } = value
+      const { type, description, example, required } = value
 
-      const properties = this.getSubProperties(type)
+      const properties = this.getSubProperties(type, isResponse)
 
       const formattedType = this.convertTypeToOpenApiTypes(type)
+
+      if (!isResponse && required) this.requiredBodyProperties.push(key)
 
       result[key] = cleanObject({
         description,
         type: formattedType.type,
         format: formattedType.format,
-        properties
+        properties,
+        example
       })
 
       return result
     }, {} as Record<string, any>)
   }
 
-  private getSubProperties(propertyType: Function | string) {
+  private getSubProperties(propertyType: Function | string, isResponse: boolean) {
     if (!this.isClass(propertyType)) return undefined
 
     const store = Store.from(getClass(propertyType))
-    return this.extractProperties(store)
+    return this.extractProperties(store, isResponse)
   }
 
   /**
@@ -133,18 +152,9 @@ export class OpenApiPathItem {
   toObject(): OpenAPIV3_1.OperationObject {
     const tags = this.apiGroup ? [this.apiGroup] : []
 
-    return {
+    const builtObject: OpenAPIV3_1.OperationObject = {
       tags,
       summary: this.summary,
-      /*requestBody: {
-        content: {
-          'application/json': {
-            schema: {
-              type: 'object'
-            }
-          }
-        }
-      },*/
       responses: {
         [this.metadata.statusCode]: {
           description: 'Success',
@@ -159,5 +169,20 @@ export class OpenApiPathItem {
         }
       }
     }
+
+    if (this.bodyProperties)
+      builtObject.requestBody = {
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+              properties: this.bodyProperties,
+              required: this.requiredBodyProperties
+            }
+          }
+        }
+      }
+
+    return builtObject
   }
 }

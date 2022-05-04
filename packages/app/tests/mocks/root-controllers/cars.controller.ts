@@ -44,6 +44,7 @@ export class CarsController {
 
   @Summary('Add new car')
   @UseValidation(CarDto)
+  @UseSerialization(CarDto)
   @Post('/newcar')
   async newCar(@BodyParams() body: CarDto) {
     return body

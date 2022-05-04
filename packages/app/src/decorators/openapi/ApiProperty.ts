@@ -2,7 +2,7 @@ import { getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
 
 export function ApiProperty(options: ApiPropertyOptions = {}) {
-  const { type, description } = options
+  const { type, description, required, example } = options
 
   return (target: any, propertyKey: string | symbol) => {
     const store = Store.from(getClass(target))
@@ -15,7 +15,9 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
 
     properties[propertyKey] = {
       type: type || resumedType,
-      description
+      description,
+      required: required ?? undefined,
+      example
     }
   }
 }
@@ -23,4 +25,6 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
 export type ApiPropertyOptions = {
   type?: Function | string
   description?: string
+  required?: boolean
+  example?: any
 }
