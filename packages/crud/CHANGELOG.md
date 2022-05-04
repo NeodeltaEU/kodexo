@@ -7,6 +7,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
 
 
+## [0.17.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.17.0...@kodexo/crud@0.17.1) (2022-05-04)
+
+
+### Bug Fixes
+
+* **crud:** unique decorator on update dto ([0387646](https://github.com/Uminily/kodexo/commit/038764667e700cd806e4a25e4829b7131a8fea92))
+
+
+
+
+
 # [0.17.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.16.1...@kodexo/crud@0.17.0) (2022-05-02)
 
 
