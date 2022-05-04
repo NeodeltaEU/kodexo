@@ -10,7 +10,7 @@ export function UseSerialization(options: UseValidationOptions): MethodDecorator
   return (target: any, propertyKey: string | symbol, descriptor: any) => {
     const store = Store.from(target, propertyKey, descriptor)
 
-    store.set('schema', parsedOptions.dtoToken)
+    store.set('resultSchema', parsedOptions.dtoToken)
 
     MiddlewareBuilder.startFromController(target)
       .forMethod(propertyKey as string)

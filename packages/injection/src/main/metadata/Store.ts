@@ -68,8 +68,8 @@ export class Store {
    *
    * @param key
    */
-  get(key: string) {
-    return this.content.get(key)
+  get<T = any>(key: string) {
+    return this.content.get(key) as T
   }
 
   /**
