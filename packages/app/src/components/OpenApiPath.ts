@@ -53,8 +53,6 @@ export class OpenApiPathItem {
     if (!this.metadata.store.has('openapi:validation')) return
     const dtoStore = Store.from(this.metadata.store.get('openapi:validation'))
 
-    console.log(dtoStore)
-
     this.bodyProperties = this.extractProperties(dtoStore, false)
   }
 
