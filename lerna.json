@@ -3,7 +3,7 @@
   "ignoreChanges": ["**/tests/**", "**/*.md"],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "independent",
+  "version": "1.0.0-dev.1",
   "command": {
     "publish": {
       "conventionalCommits": true,
