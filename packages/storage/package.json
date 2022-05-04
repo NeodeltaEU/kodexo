@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/storage",
-  "version": "1.0.0-dev.0",
+  "version": "1.0.0-dev.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -70,11 +70,11 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.44.0",
     "@aws-sdk/lib-storage": "^3.44.0",
-    "@kodexo/app": "^1.0.0-dev.0",
-    "@kodexo/common": "^1.0.0-dev.0",
-    "@kodexo/config": "^1.0.0-dev.0",
+    "@kodexo/app": "^1.0.0-dev.1",
+    "@kodexo/common": "^1.0.0-dev.1",
+    "@kodexo/config": "^1.0.0-dev.1",
     "@kodexo/errors": "^0.1.2",
-    "@kodexo/injection": "^1.0.0-dev.0",
+    "@kodexo/injection": "^1.0.0-dev.1",
     "busboy": "^0.3.1",
     "bytes": "^3.1.1",
     "mime-types": "^2.1.34",
