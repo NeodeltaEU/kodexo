@@ -268,6 +268,7 @@ describe('[Method]: POST', () => {
       it('should return an error when embedded entity is not valid', async () => {
         const body = JSON.stringify({
           name: 'Customer',
+          email: 'customer@acme.com',
           address: {
             city: 'Paris',
             postalCode: 75000
@@ -285,6 +286,7 @@ describe('[Method]: POST', () => {
       it('should be good with embedded full entity', async () => {
         const body = JSON.stringify({
           name: 'Customer',
+          email: 'customer@acme.com',
           address: {
             city: 'Paris',
             postalCode: '75000',

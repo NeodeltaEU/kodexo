@@ -10,6 +10,9 @@ export class Customer {
   @Property()
   name!: string
 
+  @Property()
+  email: string
+
   @Embedded(() => Address)
   address!: Address
 }

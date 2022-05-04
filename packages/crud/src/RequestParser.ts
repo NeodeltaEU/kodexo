@@ -1,4 +1,5 @@
 import { plainToInstance } from 'class-transformer'
+import { Allow } from 'class-validator'
 import { REQUEST_CONTEXT } from './constants'
 import {
   QueryParsedResult,
@@ -69,6 +70,7 @@ export class RequestParser {
 
     // Overload DTO with request property for customs validators via class-validator
     this.updateDto[REQUEST_CONTEXT] = { id: this.req.params?.id }
+    Allow()(this.updateDto, REQUEST_CONTEXT)
   }
 
   /**

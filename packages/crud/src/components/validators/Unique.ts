@@ -46,7 +46,7 @@ class Unique implements ValidatorConstraintInterface {
 
   defaultMessage(validationArguments: ValidationArguments) {
     const { property } = validationArguments
-    return `specified ${property} already exit in database or not available for this context`
+    return `specified ${property} already exists in database or not available for this context`
   }
 }
 
