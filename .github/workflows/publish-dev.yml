@@ -1,0 +1,68 @@
+name: Publish packages
+
+on:
+  push:
+    branches:
+      - next
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    container: node:latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_DB: kodex
+          POSTGRES_USER: kodex
+          POSTGRES_PASSWORD: kodex
+          POSTGRES_PORT: 5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@kodexo'
+
+      - name: Config git user
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Bootstrap with Lerna
+        run: yarn bootstrap
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Testing packages
+        run: yarn test
+        env:
+          POSTGRES_HOST: postgres
+          POSTGRES_PORT: 5432
+
+      - name: Publish to repo
+        run: |
+          yarn publish:ci:next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

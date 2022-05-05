@@ -43,7 +43,7 @@
     "test": "lerna run test",
     "clean": "rimraf -rf packages/**/dist && rimraf -rf packages/**/tsconfig.build.tsbuildinfo",
     "version:ci": "lerna version --yes --conventional-commits --create-release github --message 'chore(release): publish'",
-    "version:ci:next": "lerna publish --preid dev --conventional-commits --message 'chore: publish new dev version' --no-changelog --dist-tag next",
+    "publish:ci:next": "lerna publish from-package --yes --preid dev --conventional-commits --message 'chore: publish new dev version' --no-changelog --dist-tag next",
     "publish:ci": "lerna publish from-package --yes",
     "prepare": "husky install"
   },
