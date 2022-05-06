@@ -53,8 +53,6 @@ export abstract class StorageService {
     const key = `${uniqid()}.${extension}`
     const path = this.cleanPath(subfolder, key)
 
-    console.log(path)
-
     return { path, stream, mime, sizeStream, key, extension }
   }
 
