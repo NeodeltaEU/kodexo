@@ -6,6 +6,20 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
 
 
+## [0.2.5](https://github.com/Uminily/kodexo/compare/@kodexo/storage@0.2.4...@kodexo/storage@0.2.5) (2022-05-06)
+
+
+### Bug Fixes
+
+* **storage:** clean console.log ([154001a](https://github.com/Uminily/kodexo/commit/154001a1393c9b230bf31f3e07e341ed782380d8))
+
+
+
+
+
+## [0.2.4](https://github.com/Uminily/kodexo/compare/@kodexo/storage@0.2.3...@kodexo/storage@0.2.4) (2022-04-30)
+
+
 ### Features
 
 * **storage:** new storage module ([7723ec9](https://github.com/Uminily/kodexo/commit/7723ec90f7c0c1e4b31eb300edf1b152ef0ccfbf))
