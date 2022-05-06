@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/Uminily/kodexo/compare/@kodexo/storage@0.2.4...@kodexo/storage@0.2.5) (2022-05-06)
+
+
+### Bug Fixes
+
+* **storage:** clean console.log ([154001a](https://github.com/Uminily/kodexo/commit/154001a1393c9b230bf31f3e07e341ed782380d8))
+
+
+
+
+
 ## [0.2.4](https://github.com/Uminily/kodexo/compare/@kodexo/storage@0.2.3...@kodexo/storage@0.2.4) (2022-04-30)
 
 **Note:** Version bump only for package @kodexo/storage
