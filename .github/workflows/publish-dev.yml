@@ -62,6 +62,7 @@ jobs:
 
       - name: Publish to repo
         run: |
+          yarn version:ci:next
           yarn publish:ci:next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
