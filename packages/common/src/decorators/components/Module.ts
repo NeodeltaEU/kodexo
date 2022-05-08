@@ -1,8 +1,7 @@
-import { Provider, providerRegistry, Registries } from '@kodexo/injection'
-import { Class } from 'type-fest'
+import { providerRegistry, Registries } from '@kodexo/injection'
 import { ModuleProvider } from '../../main/modules/ModuleProvider'
 
-export function Module(options: ModuleDecoratorOptions) {
+export function Module(options: ModuleDecoratorOptions = {}) {
   return (target: any) => {
     const provider = new ModuleProvider(
       target,

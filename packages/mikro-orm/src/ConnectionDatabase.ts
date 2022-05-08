@@ -1,15 +1,15 @@
-import { EntityMetadata, MikroORM, Options as MikroOptions } from '@mikro-orm/core'
 import { ModuleProvider, Service } from '@kodexo/common'
+import { ConfigurationService } from '@kodexo/config'
 import {
+  ensureProvider,
   Init,
   Inject,
   Provider,
   providerRegistry,
-  ProviderType,
-  ensureProvider
+  ProviderType
 } from '@kodexo/injection'
-import { ConfigurationService } from '@kodexo/config'
 import { LoggerService } from '@kodexo/logger'
+import { EntityMetadata, MikroORM, Options as MikroOptions } from '@mikro-orm/core'
 import { EntityManager } from '@mikro-orm/postgresql'
 
 @Service()
@@ -101,7 +101,11 @@ export class ConnectionDatabase {
     this.logger.info(`[MIKRO-ORM] ${this.settings.entities.length} entities loaded`)
     this.logger.info(`[MIKRO-ORM] ${this.settings.subscribers.length} subscribers loaded`)
 
-    this.orm = await MikroORM.init(this.settings)
+    try {
+      this.orm = await MikroORM.init(this.settings)
+    } catch (e) {
+      throw new Error('onche')
+    }
 
     const metadata = this.orm.em.getMetadata().getAll()
 

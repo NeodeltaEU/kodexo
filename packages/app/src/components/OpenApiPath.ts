@@ -1,6 +1,6 @@
 import { Endpoint, getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
-import { OpenAPIV3_1 } from 'openapi-types'
+import type { OpenAPIV3_1 } from 'openapi-types'
 import { cleanObject } from '../utils/cleanObject'
 
 type DtoProperty = {

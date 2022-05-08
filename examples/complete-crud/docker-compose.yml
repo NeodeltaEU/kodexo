@@ -1,0 +1,13 @@
+services:
+  db:
+    image: postgres
+    container_name: 'postgres-complete-crud'
+    expose:
+      - '5400'
+    ports:
+      - '5400:5432'
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: complete-crud
+      POSTGRES_USER: complete-crud
+      POSTGRES_DB: complete-crud

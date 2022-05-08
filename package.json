@@ -3,7 +3,8 @@
   "private": true,
   "repository": "https://github.com/Uminily/kodexo",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "commitlint": {
     "extends": [
