@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
+
+
+### Bug Fixes
+
+* **config:** add getOrFail to config ([c711ec0](https://github.com/Uminily/kodexo/commit/c711ec0f1fb935a135b1bc92f4b5ad3d240aa538))
+* **config:** return value on getOrFail method ([18cb31e](https://github.com/Uminily/kodexo/commit/18cb31e893f552c8a09cc59561e57923fffe89cb))
+
+
+### Features
+
+* add cookies params & options ([ff4e3e1](https://github.com/Uminily/kodexo/commit/ff4e3e17e7e95952c09b65f7c24f7dbc0d3be484))
+* add entities modules & logs ([8d35799](https://github.com/Uminily/kodexo/commit/8d357992000e9ef93c105aeaee28afc5a5c27709))
+* change everything with modules ([f9a8972](https://github.com/Uminily/kodexo/commit/f9a89725a2db6b039e1179b606452ec85cbbb239))
+* **mikro-orm:** modular mikro components loading ([bcd86ef](https://github.com/Uminily/kodexo/commit/bcd86ef0547121928d91a6ca4f44be656dba71ff))
+
+
+
+
+
 ## [0.7.3](https://github.com/Uminily/kodexo/compare/@kodexo/config@0.7.2...@kodexo/config@0.7.3) (2022-04-24)
 
 **Note:** Version bump only for package @kodexo/config

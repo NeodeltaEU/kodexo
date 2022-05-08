@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
+
+
+### Bug Fixes
+
+* **errors:** dev version ([ac326dd](https://github.com/Uminily/kodexo/commit/ac326ddd9a464d773ca1fd3c195db421ce209258))
+
+
+
+
+
 ## 0.1.2 (2022-03-22)
 
 

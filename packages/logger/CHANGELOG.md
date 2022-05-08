@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
+
+
+### Bug Fixes
+
+* change pino pretty to dev ([af576e2](https://github.com/Uminily/kodexo/commit/af576e28e902a560cb82896d3107ba81b375e497))
+
+
+### Features
+
+* add entities modules & logs ([8d35799](https://github.com/Uminily/kodexo/commit/8d357992000e9ef93c105aeaee28afc5a5c27709))
+
+
+
+
+
 ## [0.4.3](https://github.com/Uminily/kodexo/compare/@kodexo/logger@0.4.2...@kodexo/logger@0.4.3) (2022-04-24)
 
 **Note:** Version bump only for package @kodexo/logger

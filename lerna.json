@@ -1,9 +1,15 @@
 {
-  "packages": ["packages/*", "examples/*"],
-  "ignoreChanges": ["**/tests/**", "**/*.md"],
+  "packages": [
+    "packages/*",
+    "examples/*"
+  ],
+  "ignoreChanges": [
+    "**/tests/**",
+    "**/*.md"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "1.0.0-dev.1",
+  "version": "1.0.0-dev.2",
   "command": {
     "publish": {
       "conventionalCommits": true,
