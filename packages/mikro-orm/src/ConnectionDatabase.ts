@@ -38,6 +38,9 @@ export class ConnectionDatabase {
     this.extractMetadataFromEntities()
   }
 
+  /**
+   *
+   */
   private async connect() {
     this.logger.info(`[MIKRO-ORM] Connecting to database...`)
     this.orm = await MikroORM.init(this.settings)
