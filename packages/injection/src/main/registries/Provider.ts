@@ -35,6 +35,11 @@ export class Provider<T = any> implements IProvider {
   /**
    *
    */
+  public readonly hasPingCallback: boolean
+
+  /**
+   *
+   */
   public singleton: T
 
   /**
@@ -84,6 +89,7 @@ export class Provider<T = any> implements IProvider {
 
     this.isAsync = this.store.has('on:init')
     this.hasCloseCallback = this.store.has('on:close')
+    this.hasPingCallback = this.store.has('on:ping')
 
     this.imports = this.options.imports || []
 
@@ -143,11 +149,23 @@ export class Provider<T = any> implements IProvider {
    *
    */
   public async close() {
-    if (!this.isInitialized) return
+    if (!this.hasCloseCallback) return
 
     const closeMethod: string = this.store.get('on:close')
 
     await (this.singleton as any)[closeMethod]()
+  }
+
+  /**
+   *
+   * @returns
+   */
+  public async ping() {
+    if (!this.hasPingCallback) return
+
+    const pingMethod: string = this.store.get('on:ping')
+
+    return (this.singleton as any)[pingMethod]()
   }
 
   /**

@@ -153,8 +153,9 @@ export class ConnectionDatabase {
    */
   @OnClose()
   async close() {
-    console.log('close database')
+    this.logger.info('[MIKRO-ORM] Closing...')
     await this.orm.close()
+    this.logger.info('[MIKRO-ORM] Databse connection closed')
   }
 
   /**

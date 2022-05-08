@@ -201,10 +201,11 @@ export class App {
       healthChecks: {
         '/healthcheck': async () => {
           return 'ok'
-        }
+        },
+        verbatim: true
       },
 
-      signal: 'SIGINT',
+      signals: ['SIGINT', 'SIGTERM'],
 
       onShutdown: async () => {
         this.logger.info('[APP] Shutting down...')
