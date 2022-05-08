@@ -15,9 +15,8 @@ import { EntityManager } from '@mikro-orm/postgresql'
 @Service()
 export class ConnectionDatabase {
   public orm: MikroORM
-  protected settings: MikroOptions
-
   public entitiesMetadata: EntityMetadata[]
+  protected settings: MikroOptions
 
   constructor(
     @Inject private configurationService: ConfigurationService,
@@ -33,6 +32,23 @@ export class ConnectionDatabase {
    */
   @Init()
   async init() {
+    this.extractFromModules()
+    await this.connect()
+    this.extractMetadataFromEntities()
+  }
+
+  private async connect() {
+    this.logger.info(`[MIKRO-ORM] Connecting to database...`)
+    this.orm = await MikroORM.init(this.settings)
+    this.logger.info(`[MIKRO-ORM] Connected!`)
+  }
+
+  /**
+   *
+   */
+  private extractFromModules() {
+    this.logger.info(`[MIKRO-ORM] Initializing...`)
+
     const rawEntities: any[] = []
     const rawSubscribers: any[] = []
     const rawMigrations: any[] = []
@@ -100,18 +116,21 @@ export class ConnectionDatabase {
 
     this.logger.info(`[MIKRO-ORM] ${this.settings.entities.length} entities loaded`)
     this.logger.info(`[MIKRO-ORM] ${this.settings.subscribers.length} subscribers loaded`)
+  }
 
-    try {
-      this.orm = await MikroORM.init(this.settings)
-    } catch (e) {
-      throw new Error('onche')
-    }
-
+  /**
+   *
+   */
+  private extractMetadataFromEntities() {
     const metadata = this.orm.em.getMetadata().getAll()
+
+    this.logger.info(`[MIKRO-ORM] Extract models metadata...`)
 
     this.entitiesMetadata = Object.values(metadata).filter(
       entityMetadata => !entityMetadata.pivotTable
     )
+
+    this.logger.info(`[MIKRO-ORM] Metadata loaded!`)
   }
 
   /**
