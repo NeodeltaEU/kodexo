@@ -1,14 +1,14 @@
 import { Endpoint, EndpointBuilder, MiddlewareHandling, RouteMethods } from '@kodexo/common'
 import { HttpError } from '@kodexo/errors'
+import { instanceToPlain } from 'class-transformer'
 import { validateOrReject, ValidationError } from 'class-validator'
 import { Class } from 'type-fest'
 import { REQUEST_CONTEXT } from './constants'
 import { CrudService } from './CrudService'
 import { CrudOptionsType } from './decorators'
+import { RequestParsedResult } from './interfaces'
 import { CrudControllerInterface } from './interfaces/CrudControllerInterface'
 import { RequestParser } from './RequestParser'
-import { RequestParsedResult } from './interfaces'
-import { instanceToPlain } from 'class-transformer'
 
 export class CrudRouteFactory<M, C, U> {
   constructor(protected target: any, protected options: CrudOptionsType<M, C, U>) {
