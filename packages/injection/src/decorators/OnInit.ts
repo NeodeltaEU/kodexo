@@ -1,7 +1,7 @@
 import { Store } from '../main'
 import { getClass } from '../utils/class'
 
-export function Init() {
+export function OnInit() {
   return function (target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const classStore = Store.from(getClass(target))
 

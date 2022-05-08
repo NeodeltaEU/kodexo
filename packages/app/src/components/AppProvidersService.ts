@@ -34,6 +34,13 @@ export class AppProvidersService {
 
   /**
    *
+   */
+  public async executeClose() {
+    await Promise.all(Array.from(providerRegistry.values()).map(provider => provider.close()))
+  }
+
+  /**
+   *
    * @returns
    */
   static async startInvokation(Server: Class<ServerHooks>) {

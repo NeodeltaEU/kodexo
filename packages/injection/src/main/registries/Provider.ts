@@ -30,6 +30,11 @@ export class Provider<T = any> implements IProvider {
   /**
    *
    */
+  public readonly hasCloseCallback: boolean
+
+  /**
+   *
+   */
   public singleton: T
 
   /**
@@ -77,7 +82,8 @@ export class Provider<T = any> implements IProvider {
     if (options.factory) this.isFactory = true
     //if (options.callback) this.isCallback = true
 
-    this.isAsync = this.store.has('init')
+    this.isAsync = this.store.has('on:init')
+    this.hasCloseCallback = this.store.has('on:close')
 
     this.imports = this.options.imports || []
 
@@ -124,7 +130,7 @@ export class Provider<T = any> implements IProvider {
       return
     }
 
-    const initMethod: string = this.store.get('init')
+    const initMethod: string = this.store.get('on:init')
 
     this.buildSingleton()
 
@@ -133,6 +139,21 @@ export class Provider<T = any> implements IProvider {
     this.isInitialized = true
   }
 
+  /**
+   *
+   */
+  public async close() {
+    if (!this.isInitialized) return
+
+    const closeMethod: string = this.store.get('on:close')
+
+    await (this.singleton as any)[closeMethod]()
+  }
+
+  /**
+   *
+   * @returns
+   */
   getConstructorParams() {
     const constructorsParams = this.store.has('constructorParams')
       ? this.store.get('constructorParams')

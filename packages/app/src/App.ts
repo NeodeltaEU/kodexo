@@ -1,6 +1,4 @@
 import { createTerminus, TerminusOptions } from '@godaddy/terminus'
-import { App as TinyApp, Handler } from '@tinyhttp/app'
-import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { ModuleProvider, pMap, RouteMethods } from '@kodexo/common'
 import { ConfigurationService } from '@kodexo/config'
 import { HttpError } from '@kodexo/errors'
@@ -12,19 +10,20 @@ import {
   IProvider,
   providerRegistry,
   ProviderType,
-  Registries,
-  Store
+  Registries
 } from '@kodexo/injection'
 import { LoggerService } from '@kodexo/logger'
 import { QueueManager } from '@kodexo/queueing'
+import { App as TinyApp, Handler } from '@tinyhttp/app'
+import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
-import { Server as HttpServer } from 'http'
+import { createServer, Server as HttpServer } from 'http'
 import { Class } from 'type-fest'
-import { ServerHooks } from './interfaces'
 import { RoutesService } from './components'
 import { AppProvidersService } from './components/AppProvidersService'
 import { OpenApiService } from './components/OpenApiService'
+import { ServerHooks } from './interfaces'
 
 /**
  *
@@ -34,6 +33,7 @@ export class App {
   @Inject logger: LoggerService
   @Inject routesService: RoutesService
   @Inject openApiService: OpenApiService
+  @Inject appProvidersService: AppProvidersService
 
   public readonly rawApp = new TinyApp({
     onError: (err, req, res) => {
@@ -204,17 +204,19 @@ export class App {
         }
       },
 
+      signal: 'SIGINT',
+
       onShutdown: async () => {
         this.logger.info('[APP] Shutting down...')
       },
 
       onSignal: async () => {
         this.logger.info(`[APP] Close signal received...`)
-        // Close database or prepare some executions from server instance
+        await this.appProvidersService.executeClose()
       }
     }
 
-    createTerminus(server, readinessLivenessOptions)
+    return createTerminus(server, readinessLivenessOptions)
   }
 
   /**
@@ -224,13 +226,11 @@ export class App {
   public listenForRequests(): HttpServer {
     const port = this.configurationService.get('port') || 3000
 
-    const server = this.rawApp.listen(port, () => {
+    const server = createServer().on('request', this.rawApp.attach)
+
+    return this.prepareReadinessLiveness(server).listen(port, () => {
       this.logger.info(`[APP] SERVER STARTED ON ${port}`)
     })
-
-    this.prepareReadinessLiveness(server)
-
-    return server
   }
 
   /**

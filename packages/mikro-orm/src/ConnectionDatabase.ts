@@ -2,8 +2,9 @@ import { ModuleProvider, Service } from '@kodexo/common'
 import { ConfigurationService } from '@kodexo/config'
 import {
   ensureProvider,
-  Init,
   Inject,
+  OnClose,
+  OnInit,
   Provider,
   providerRegistry,
   ProviderType
@@ -30,7 +31,7 @@ export class ConnectionDatabase {
   /**
    *
    */
-  @Init()
+  @OnInit()
   async init() {
     this.extractFromModules()
     await this.connect()
@@ -150,7 +151,9 @@ export class ConnectionDatabase {
   /**
    *
    */
+  @OnClose()
   async close() {
+    console.log('close database')
     await this.orm.close()
   }
 
