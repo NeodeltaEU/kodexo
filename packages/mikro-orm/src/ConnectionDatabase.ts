@@ -40,7 +40,7 @@ export class ConnectionDatabase {
   private async connect() {
     this.logger.info(`[MIKRO-ORM] Connecting to database...`)
     this.orm = await MikroORM.init(this.settings)
-    this.logger.info(`[MIKRO-ORM] Connected!`)
+    this.logger.info(`[MIKRO-ORM] Database connected`)
   }
 
   /**
@@ -114,8 +114,12 @@ export class ConnectionDatabase {
       migrationsList: [...new Set(rawMigrations)]
     }
 
-    this.logger.info(`[MIKRO-ORM] ${this.settings.entities.length} entities loaded`)
-    this.logger.info(`[MIKRO-ORM] ${this.settings.subscribers.length} subscribers loaded`)
+    this.logger.info(
+      `[MIKRO-ORM] ${this.settings.entities.length} ${
+        this.settings.entities.length > 1 ? 'entities' : 'entity'
+      } loaded`
+    )
+    this.logger.info(`[MIKRO-ORM] ${this.settings.subscribers.length} subscriber(s) loaded`)
   }
 
   /**
@@ -130,7 +134,7 @@ export class ConnectionDatabase {
       entityMetadata => !entityMetadata.pivotTable
     )
 
-    this.logger.info(`[MIKRO-ORM] Metadata loaded!`)
+    this.logger.info(`[MIKRO-ORM] Metadata loaded`)
   }
 
   /**
