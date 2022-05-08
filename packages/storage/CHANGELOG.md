@@ -9,10 +9,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [0.2.5](https://github.com/Uminily/kodexo/compare/@kodexo/storage@0.2.4...@kodexo/storage@0.2.5) (2022-05-06)
 
 
-### Bug Fixes
+### Features
 
 * **storage:** clean console.log ([154001a](https://github.com/Uminily/kodexo/commit/154001a1393c9b230bf31f3e07e341ed782380d8))
-
 
 
 
@@ -23,8 +22,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **storage:** new storage module ([7723ec9](https://github.com/Uminily/kodexo/commit/7723ec90f7c0c1e4b31eb300edf1b152ef0ccfbf))
-
-
 
 
 
