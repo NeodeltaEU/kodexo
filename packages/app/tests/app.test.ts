@@ -1,8 +1,7 @@
 import { Server as HttpServer } from 'http'
-import { Server } from './mocks/Server'
 import * as request from 'supertest'
-
 import { App } from '../src/App'
+import { Server } from './mocks/Server'
 
 let server: HttpServer
 
@@ -10,6 +9,10 @@ describe('App', () => {
   beforeAll(async done => {
     server = await App.bootstrap(Server)
     done()
+  })
+
+  afterAll(() => {
+    server.close()
   })
 
   it('should start a new app', async () => {
