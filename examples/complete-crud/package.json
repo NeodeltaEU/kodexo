@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rm -rf build",
     "build": "rimraf ./dist && tsc -b tsconfig.build.json",
-    "dev": "ts-node-dev ./src/bootstrap.ts --watch '../../packages/**/dist/**/*.js'",
+    "dev": "ts-node-dev ./src/bootstrap.ts --debounce 400 --watch '../../packages/**/dist/**/*.js'",
     "start": "ts-node ./src/bootstrap.ts"
   },
   "devDependencies": {

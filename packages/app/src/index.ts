@@ -1,3 +1,4 @@
 export * from './App'
-export * from './interfaces'
 export * from './components'
+export * from './decorators'
+export * from './interfaces'

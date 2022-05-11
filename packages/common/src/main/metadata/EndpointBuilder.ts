@@ -1,10 +1,10 @@
-import { providerRegistry, Store } from '@kodexo/injection'
+import { Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
+import { MiddlewareHandler } from '.'
 import { Endpoint, RouteMethods } from '..'
 import { Dictionnary, MiddlewareHandling } from '../../interfaces'
 import { getClass } from '../../utils/class'
 import { isFunction } from '../../utils/functions/isFunction'
-import { MiddlewareHandler } from '.'
 
 function isMiddlewareInstance(
   token: Class<MiddlewareHandling> | MiddlewareHandling
