@@ -1,7 +1,15 @@
-import { Endpoint, EndpointBuilder, MiddlewareHandling, RouteMethods } from '@kodexo/common'
+import {
+  Endpoint,
+  EndpointBuilder,
+  MiddlewareBuilder,
+  MiddlewareHandling,
+  RouteMethods,
+  SerializerInterceptor
+} from '@kodexo/common'
 import { HttpError } from '@kodexo/errors'
 import { instanceToPlain } from 'class-transformer'
 import { validateOrReject, ValidationError } from 'class-validator'
+import * as pluralize from 'pluralize'
 import { Class } from 'type-fest'
 import { REQUEST_CONTEXT } from './constants'
 import { CrudService } from './CrudService'
@@ -53,6 +61,7 @@ export class CrudRouteFactory<M, C, U> {
   /**
    *
    */
+  // TODO: REFACTOR ALL OF THIS !!!
   private create() {
     this.defaultRoutes.forEach(route => {
       const { name, path, method } = route
@@ -60,15 +69,20 @@ export class CrudRouteFactory<M, C, U> {
       let descriptor,
         action,
         statusCode,
-        middlewares: Array<Class<MiddlewareHandling | MiddlewareHandling>> = [],
-        interceptors: Array<Class<MiddlewareHandling | MiddlewareHandling>> = []
+        summary,
+        middlewares: Array<Class<MiddlewareHandling> | MiddlewareHandling> = [],
+        interceptors: Array<Class<MiddlewareHandling> | MiddlewareHandling> = []
 
       if (this.options?.middlewares?.hasOwnProperty(name)) {
-        middlewares = (this.options.middlewares as any)[name] as Class<MiddlewareHandling>[]
+        middlewares = (this.options.middlewares as any)[name] as Array<
+          Class<MiddlewareHandling> | MiddlewareHandling
+        >
       }
 
       if (this.options?.interceptors?.hasOwnProperty(name)) {
-        interceptors = (this.options.interceptors as any)[name] as Class<MiddlewareHandling>[]
+        interceptors = (this.options.interceptors as any)[name] as Array<
+          Class<MiddlewareHandling> | MiddlewareHandling
+        >
       }
 
       if (this.options?.decorators?.hasOwnProperty(name)) {
@@ -77,31 +91,38 @@ export class CrudRouteFactory<M, C, U> {
         })
       }
 
+      const entityName = this.options.modelName ? this.options.modelName : this.options.model.name
+
       switch (name) {
         case 'getMany':
           descriptor = this.prepareRoute(this.prepareGetManyRoute())
+          summary = `Get many ${pluralize(entityName)}`
           break
 
         case 'getOne':
           descriptor = this.prepareRoute(this.prepareGetOneRoute())
+          summary = `Get one ${entityName}`
           break
 
         case 'createOne':
           descriptor = this.prepareRoute(this.prepareCreateOneRoute())
+          summary = `Create one ${entityName}`
           statusCode = 201
           break
 
         case 'updateOne':
           descriptor = this.prepareRoute(this.prepareUpdateOneRoute())
+          summary = `Update one ${entityName}`
           break
 
         case 'deleteOne':
           descriptor = this.prepareRoute(this.prepareDeleteOneRoute())
+          summary = `Delete one ${entityName}`
           break
       }
 
       //
-      return this.buildRoute(
+      const endpoint = this.buildRoute(
         path,
         method,
         name,
@@ -110,6 +131,29 @@ export class CrudRouteFactory<M, C, U> {
         interceptors,
         statusCode
       )
+
+      //
+      if (summary) endpoint.store.set('openapi:summary', summary)
+
+      //
+      if (this.options.serialization && name !== 'deleteOne') {
+        endpoint.store.set('openapi:serialization', this.options.serialization)
+
+        if (name === 'getMany') {
+          endpoint.store.set('openapi:serialization:multiple', true)
+        }
+
+        MiddlewareBuilder.startFromController(this.target)
+          .forMethod(name as string)
+          .fromInstanciedMiddleware(
+            SerializerInterceptor.forModel(this.options.serialization, name === 'getMany')
+          )
+          .isInterceptor()
+          .build()
+      }
+
+      if (this.options.openapi) {
+      }
     })
   }
 
@@ -255,7 +299,6 @@ export class CrudRouteFactory<M, C, U> {
       // TODO: return count on an Header (make domain metho & decorator then)
 
       endpoint.setHeader('X-Total-Count', count)
-
       return entities
     }
   }

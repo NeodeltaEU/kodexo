@@ -1,7 +1,7 @@
 import { NextFunction, Response } from '@tinyhttp/app'
-import { MiddlewareHandling, RequestWithResult } from '../../interfaces'
 import { plainToInstance } from 'class-transformer'
 import { Class } from 'type-fest'
+import { MiddlewareHandling, RequestWithResult } from '../../interfaces'
 
 export class SerializerInterceptor<T> implements MiddlewareHandling {
   constructor(private readonly serializeToken: Class<T>, private multiple = false) {}
@@ -15,7 +15,7 @@ export class SerializerInterceptor<T> implements MiddlewareHandling {
    */
   async use(req: RequestWithResult, res: Response, next: NextFunction) {
     if (this.multiple) {
-      req.result = req.result.map(this.serialize)
+      req.result = req.result.map((data: T) => this.serialize(data))
       return next()
     }
 

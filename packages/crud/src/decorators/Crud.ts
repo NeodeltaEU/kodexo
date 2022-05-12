@@ -20,6 +20,7 @@ function parseCrudOptions<M, C, U>(options: CrudOptionsType<M, C, U>): any {
 
 export type CrudOptionsType<M, C, U> = {
   model: Class<M>
+  modelName?: string
   dto?: {
     createDto?: Class<C>
     updateDto?: Class<U>
@@ -29,6 +30,7 @@ export type CrudOptionsType<M, C, U> = {
   interceptors?: MiddlewareCrudOptionsType
   decorators?: DecoratorCrudOptions
   serialization?: Class
+  openapi?: OpenApiOptionsType
 }
 
 export type MiddlewareCrudOptionsType = Partial<{
@@ -46,3 +48,15 @@ export type DecoratorCrudOptions = Partial<{
   updateOne: Function[]
   deleteOne: Function[]
 }>
+
+export type OpenApiOptionsType = Partial<{
+  getOne: OpenApiRouteOptionsType
+  getMany: OpenApiRouteOptionsType
+  createOne: OpenApiRouteOptionsType
+  updateOne: OpenApiRouteOptionsType
+  deleteOne: OpenApiRouteOptionsType
+}>
+
+export type OpenApiRouteOptionsType = {
+  summary?: string
+}

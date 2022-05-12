@@ -18,10 +18,13 @@ export class OpenApiPathItem {
   private requiredBodyProperties: Array<string> = []
   private summary: string = 'A route'
   private apiGroup?: string
+  private multiple = false
 
   constructor(private metadata: Endpoint) {
     const method = metadata.method as unknown
     this.method = method as OpenAPIV3_1.HttpMethods
+
+    this.multiple = this.metadata.store.get('openapi:serialization:multiple') ?? false
 
     this.extractValidation()
     this.extractSerialization()
@@ -42,7 +45,6 @@ export class OpenApiPathItem {
   private extractSerialization() {
     if (!this.metadata.store.has('openapi:serialization')) return
     const dtoStore = Store.from(this.metadata.store.get('openapi:serialization'))
-
     this.responseProperties = this.extractProperties(dtoStore)
   }
 
@@ -61,8 +63,8 @@ export class OpenApiPathItem {
    * @returns
    */
   private extractSummary() {
-    if (!this.metadata.store.has('summary')) return
-    this.summary = this.metadata.store.get('summary')
+    if (!this.metadata.store.has('openapi:summary')) return
+    this.summary = this.metadata.store.get('openapi:summary')
   }
 
   /**
@@ -150,6 +152,19 @@ export class OpenApiPathItem {
   toObject(): OpenAPIV3_1.OperationObject {
     const tags = this.apiGroup ? [this.apiGroup] : []
 
+    const schema: OpenAPIV3_1.SchemaObject = this.multiple
+      ? {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: this.responseProperties
+          }
+        }
+      : {
+          type: 'object',
+          properties: this.responseProperties
+        }
+
     const builtObject: OpenAPIV3_1.OperationObject = {
       tags,
       summary: this.summary,
@@ -158,10 +173,7 @@ export class OpenApiPathItem {
           description: 'Success',
           content: {
             'application/json': {
-              schema: {
-                type: 'object',
-                properties: this.responseProperties
-              }
+              schema
             }
           }
         }

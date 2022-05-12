@@ -6,6 +6,6 @@ export class User extends BaseEntity<User> {
   @Property()
   email: string
 
-  @Property({ hidden: true })
+  @Property()
   password: string
 }

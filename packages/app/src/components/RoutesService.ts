@@ -1,4 +1,3 @@
-import { Handler } from '@tinyhttp/app'
 import {
   ControllerProvider,
   Endpoint,
@@ -10,6 +9,7 @@ import {
   Service
 } from '@kodexo/common'
 import { IProvider, providerRegistry } from '@kodexo/injection'
+import { Handler } from '@tinyhttp/app'
 import { parse } from 'regexparam'
 
 export type RouteEndpoint = {

@@ -8,9 +8,6 @@ export class AuthMiddleware implements MiddlewareHandling {
 
   async use(req: Request, res: Response, next: NextFunction) {
     //console.log(req.body)
-
-    //console.log(this.cityService)
-
     next()
   }
 }
