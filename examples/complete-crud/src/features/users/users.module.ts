@@ -1,4 +1,5 @@
 import { Module } from '@kodexo/common'
+import { MikroModule } from '@kodexo/mikro-orm'
 import { User } from './entities/user.entity'
 import { UsersController } from './users.controller'
 import { UsersService } from './users.service'
@@ -7,6 +8,7 @@ import { UsersService } from './users.service'
   routing: {
     '/': [UsersController]
   },
+  imports: [MikroModule],
   providers: [UsersService],
   entities: [User]
 })
