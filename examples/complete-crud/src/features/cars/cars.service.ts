@@ -11,6 +11,6 @@ export class CarsService extends CrudService<Car> {
   }
 
   getRegistration(id: string) {
-    return 'AA-BBB-CC'
+    return { registration: 'AA-BBB-CC' }
   }
 }

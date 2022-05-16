@@ -1,14 +1,9 @@
 import { Endpoint, getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
 import type { OpenAPIV3_1 } from 'openapi-types'
-import { cleanObject } from '../utils/cleanObject'
-
-type DtoProperty = {
-  type: Function | string
-  description: string
-  example?: any
-  required?: boolean
-}
+import { ApiModelOptions } from '../decorators'
+import { OpenApiExtractor } from './OpenApiExtractor'
+import { OpenApiService } from './OpenApiService'
 
 export class OpenApiPathItem {
   public readonly method: OpenAPIV3_1.HttpMethods
@@ -18,16 +13,16 @@ export class OpenApiPathItem {
   private requiredBodyProperties: Array<string> = []
   private summary: string = 'A route'
   private apiGroup?: string
-  private multiple = false
+  private store: Store
 
-  constructor(private metadata: Endpoint) {
+  constructor(private openApiService: OpenApiService, private metadata: Endpoint) {
     const method = metadata.method as unknown
     this.method = method as OpenAPIV3_1.HttpMethods
 
-    this.multiple = this.metadata.store.get('openapi:serialization:multiple') ?? false
+    this.store = this.metadata.store
 
-    this.extractValidation()
-    this.extractSerialization()
+    //this.extractValidation()
+    //this.extractSerialization()
     this.extractSummary()
     this.extractApiGroup()
   }
@@ -39,24 +34,28 @@ export class OpenApiPathItem {
     this.apiGroup = Store.from(getClass(this.metadata.target)).get('openapi:group')
   }
 
-  /**
-   *
-   */
-  private extractSerialization() {
+  /*  private extractSerialization() {
     if (!this.metadata.store.has('openapi:serialization')) return
-    const dtoStore = Store.from(this.metadata.store.get('openapi:serialization'))
-    this.responseProperties = this.extractProperties(dtoStore)
+
+    const dto = this.metadata.store.get('openapi:serialization')
+
+    const dtoStore = Store.from(dto)
+
+    if (dtoStore.has('openapi:model')) {
+      const modelOptions = dtoStore.get<ApiModelOptions>('openapi:model')
+      this.openApiService.registerModel(dto, modelOptions)
+      this.responseProperties = this.extractSchemaFromDto(dto, modelOptions)
+    } else {
+      this.responseProperties = this.extractProperties(dtoStore)
+    }
   }
 
-  /**
-   *
-   */
   private extractValidation() {
     if (!this.metadata.store.has('openapi:validation')) return
     const dtoStore = Store.from(this.metadata.store.get('openapi:validation'))
 
     this.bodyProperties = this.extractProperties(dtoStore, false)
-  }
+  }*/
 
   /**
    *
@@ -69,80 +68,12 @@ export class OpenApiPathItem {
 
   /**
    *
+   * @param dto
    */
-  private extractProperties(dtoStore: Store, isResponse = true) {
-    if (!dtoStore.has('properties')) return {}
-
-    const properties = dtoStore.get<DtoProperty[]>('properties')
-
-    return Object.entries(properties).reduce((result, [key, value]) => {
-      const { type, description, example, required } = value
-
-      const properties = this.getSubProperties(type, isResponse)
-
-      const formattedType = this.convertTypeToOpenApiTypes(type)
-
-      if (!isResponse && required) this.requiredBodyProperties.push(key)
-
-      result[key] = cleanObject({
-        description,
-        type: formattedType.type,
-        format: formattedType.format,
-        properties,
-        example
-      })
-
-      return result
-    }, {} as Record<string, any>)
-  }
-
-  private getSubProperties(propertyType: Function | string, isResponse: boolean) {
-    if (!this.isClass(propertyType)) return undefined
-
-    const store = Store.from(getClass(propertyType))
-    return this.extractProperties(store, isResponse)
-  }
-
-  /**
-   *
-   * @param propertyType
-   */
-  private convertTypeToOpenApiTypes(propertyType: Function | string) {
-    if (typeof propertyType === 'string') {
-      return propertyType.toLowerCase() === 'integer'
-        ? { type: 'integer' }
-        : { type: 'string', format: propertyType }
+  private extractSchemaFromDto(dto: any, modelOptions: ApiModelOptions) {
+    return {
+      $ref: `#/components/schemas/${modelOptions.title}`
     }
-
-    switch (propertyType.name) {
-      case 'String':
-        return { type: 'string' }
-
-      case 'Number':
-        return { type: 'number' }
-
-      case 'Boolean':
-        return { type: 'boolean' }
-
-      case 'Date':
-        return { type: 'string', format: 'date-time' }
-    }
-
-    return { type: this.isClass(propertyType) ? 'object' : 'string' }
-  }
-
-  private isPrimitive(type: any) {
-    return type?.name === 'String' || type?.name === 'Number' || type?.name === 'Boolean'
-  }
-
-  private isObject(type: any) {
-    return type?.name === 'Date' || type?.name === 'Object'
-  }
-
-  private isClass(type: any) {
-    if (typeof type !== 'function') return false
-
-    return !(this.isPrimitive(type) || this.isObject(type))
   }
 
   /**
@@ -152,18 +83,19 @@ export class OpenApiPathItem {
   toObject(): OpenAPIV3_1.OperationObject {
     const tags = this.apiGroup ? [this.apiGroup] : []
 
-    const schema: OpenAPIV3_1.SchemaObject = this.multiple
-      ? {
-          type: 'array',
-          items: {
-            type: 'object',
-            properties: this.responseProperties
-          }
-        }
-      : {
-          type: 'object',
-          properties: this.responseProperties
-        }
+    const multiple = this.store.get('openapi:serialization:multiple') ?? false
+
+    let schema = {}
+
+    if (this.metadata.store.has('openapi:serialization')) {
+      const dto = this.metadata.store.get('openapi:serialization')
+      const dtoStore = Store.from(dto)
+      schema = OpenApiExtractor.fromStore(dtoStore, this.openApiService)
+        .withDto(dto)
+        .setMultiple(multiple)
+        .extract()
+        .buildSchema()
+    }
 
     const builtObject: OpenAPIV3_1.OperationObject = {
       tags,

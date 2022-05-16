@@ -7,9 +7,9 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
   return (target: any, propertyKey: string | symbol) => {
     const store = Store.from(getClass(target))
 
-    if (!store.has('properties')) store.set('properties', {})
+    if (!store.has('openapi:properties')) store.set('openapi:properties', {})
 
-    const properties = store.get('properties')
+    const properties = store.get('openapi:properties')
 
     const resumedType = Reflect.getMetadata('design:type', target, propertyKey)
 
