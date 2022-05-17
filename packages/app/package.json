@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/app",
-  "version": "1.0.0-dev.5",
+  "version": "1.0.0-dev.6",
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
@@ -70,22 +70,22 @@
     "rollup": "^2.53.0",
     "rollup-plugin-typescript2": "^0.30.0",
     "supertest": "^6.1.3",
+    "supertest-fetch": "^1.4.3",
     "ts-jest": "^26.5.1",
     "ts-node": "^9.1.1",
     "ts-node-dev": "^1.1.1",
     "tslib": "^2.3.0",
-    "typescript": "^4.3.5",
-    "supertest-fetch": "^1.4.3",
-    "type-fest": "^0.20.2"
+    "type-fest": "^0.20.2",
+    "typescript": "^4.3.5"
   },
   "dependencies": {
     "@godaddy/terminus": "^4.9.0",
-    "@kodexo/common": "^1.0.0-dev.5",
-    "@kodexo/config": "^1.0.0-dev.5",
+    "@kodexo/common": "^1.0.0-dev.6",
+    "@kodexo/config": "^1.0.0-dev.6",
     "@kodexo/errors": "^1.0.0-dev.2",
     "@kodexo/injection": "^1.0.0-dev.4",
-    "@kodexo/logger": "^1.0.0-dev.5",
-    "@kodexo/queueing": "^1.0.0-dev.5",
+    "@kodexo/logger": "^1.0.0-dev.6",
+    "@kodexo/queueing": "^1.0.0-dev.6",
     "@tinyhttp/app": "^1.3.11",
     "@tinyhttp/cors": "^1.1.7",
     "body-parser": "^1.19.0",
