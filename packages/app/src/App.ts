@@ -20,6 +20,7 @@ import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
 import { createServer, Server as HttpServer } from 'http'
+import * as PrettyError from 'pretty-error'
 import { Class } from 'type-fest'
 import { RoutesService } from './components'
 import { AppProvidersService } from './components/AppProvidersService'
@@ -261,74 +262,85 @@ export class App {
    * @param tokenServer
    */
   static async bootstrap(Server: Class<ServerHooks>): Promise<HttpServer> {
-    const { logger, configuration, serverStore } = await AppProvidersService.startInvokation(Server)
+    const pe = new PrettyError()
 
-    const appModule = configuration.getOrFail('appModule')
+    try {
+      const { logger, configuration, serverStore } = await AppProvidersService.startInvokation(
+        Server
+      )
 
-    // TODO: Move all of that into domain to register module & start rootModule
-    const RootModule = class {}
+      const appModule = configuration.getOrFail('appModule')
 
-    const moduleProvider = new ModuleProvider(RootModule, [
-      appModule,
-      LoggerService,
-      RoutesService,
-      OpenApiService
-    ])
+      // TODO: Move all of that into domain to register module & start rootModule
+      const RootModule = class {}
 
-    providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
+      const moduleProvider = new ModuleProvider(RootModule, [
+        appModule,
+        LoggerService,
+        RoutesService,
+        OpenApiService
+      ])
 
-    const providers = await importProviders([RootModule])
+      providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
 
-    const routing = providers.filter(provider => provider.route)
+      const providers = await importProviders([RootModule])
 
-    await Injector.invoke(RootModule)
+      const routing = providers.filter(provider => provider.route)
 
-    await pMap(routing, async provider => {
-      await Injector.invoke(provider.token)
-    })
+      await Injector.invoke(RootModule)
 
-    // TODO: Something is weird about loading module declarated providers only
-    // when a @Decorator is found, the provider is created and added to registry, it must be loaded only if
-    // it's declarated into a module
+      await pMap(routing, async provider => {
+        await Injector.invoke(provider.token)
+      })
 
-    const providersLoaded = providerRegistry.providerStates.filter(
-      provider => provider.status === 'loaded'
-    ).length
+      // TODO: Something is weird about loading module declarated providers only
+      // when a @Decorator is found, the provider is created and added to registry, it must be loaded only if
+      // it's declarated into a module
 
-    const providersFound = providerRegistry.providerStates.length
-    const controllersFound = routing.length
-    const queuesFound = providerRegistry.providerStates.filter(
-      provider => provider.status === 'loaded' && provider.type === ProviderType.QUEUE
-    ).length
+      const providersLoaded = providerRegistry.providerStates.filter(
+        provider => provider.status === 'loaded'
+      ).length
 
-    logger.separator()
-    for (const provider of providerRegistry.providerStates) {
-      logger.info(`[INJECTION] Status: ${provider.status} \t ${provider.name}`)
+      const providersFound = providerRegistry.providerStates.length
+      const controllersFound = routing.length
+      const queuesFound = providerRegistry.providerStates.filter(
+        provider => provider.status === 'loaded' && provider.type === ProviderType.QUEUE
+      ).length
+
+      logger.separator()
+      for (const provider of providerRegistry.providerStates) {
+        logger.info(`[INJECTION] Status: ${provider.status} \t ${provider.name}`)
+      }
+      logger.separator()
+      logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} provider(s) found`)
+      logger.info(`[INJECTION] ${controllersFound} controller(s) found`)
+      logger.info(`[INJECTION] ${queuesFound} queue(s) found`)
+      logger.separator()
+
+      const serverConstructorsParams = serverStore.has('constructorParams')
+        ? serverStore.get('constructorParams')
+        : []
+
+      serverConstructorsParams.sort((a: any, b: any) => a.parameterIndex - b.parameterIndex)
+
+      const server = new Server(
+        ...serverConstructorsParams.map((param: ConstructorParam) => param.provider.instance)
+      )
+
+      if (queuesFound) {
+        const queueManager = providerRegistry.getInstanceOf(QueueManager)
+        queueManager.prepareQueues()
+      }
+
+      if (server.afterInit) await server.afterInit()
+
+      const app = new App(routing)
+      return app.listenForRequests()
+    } catch (err: any) {
+      const rendered = pe.render(err)
+      console.error(rendered)
+
+      process.exit(0)
     }
-    logger.separator()
-    logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} provider(s) found`)
-    logger.info(`[INJECTION] ${controllersFound} controller(s) found`)
-    logger.info(`[INJECTION] ${queuesFound} queue(s) found`)
-    logger.separator()
-
-    const serverConstructorsParams = serverStore.has('constructorParams')
-      ? serverStore.get('constructorParams')
-      : []
-
-    serverConstructorsParams.sort((a: any, b: any) => a.parameterIndex - b.parameterIndex)
-
-    const server = new Server(
-      ...serverConstructorsParams.map((param: ConstructorParam) => param.provider.instance)
-    )
-
-    if (queuesFound) {
-      const queueManager = providerRegistry.getInstanceOf(QueueManager)
-      queueManager.prepareQueues()
-    }
-
-    if (server.afterInit) await server.afterInit()
-
-    const app = new App(routing)
-    return app.listenForRequests()
   }
 }

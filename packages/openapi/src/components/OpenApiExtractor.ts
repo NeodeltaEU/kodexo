@@ -118,8 +118,6 @@ export class OpenApiExtractor {
         case 'array':
           const arrayProperties = this.getArrayProperties(items)
 
-          console.log(arrayProperties)
-
           result[key] = {
             type: formattedType.type,
             items: arrayProperties

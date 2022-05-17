@@ -13,6 +13,10 @@ export class CarSerialized extends BaseSerialized {
 
   @ApiProperty()
   @Expose()
+  beforeRegistration: Array<string>
+
+  @ApiProperty()
+  @Expose()
   @Type(() => UserSerialized)
   owner: UserSerialized
 }

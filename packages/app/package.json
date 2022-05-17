@@ -93,6 +93,7 @@
     "globby": "^11.0.2",
     "normalize-path": "^3.0.0",
     "normalize-url": "^7.0.0",
+    "pretty-error": "^4.0.0",
     "regexparam": "^2.0.0"
   },
   "gitHead": "3341d44d2cc6d1a4e6b993d4df43a23a0df3175a"
