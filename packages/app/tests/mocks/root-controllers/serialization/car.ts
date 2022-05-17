@@ -1,5 +1,5 @@
+import { ApiProperty } from '@kodexo/openapi'
 import { Expose } from 'class-transformer'
-import { ApiProperty } from '../../../../src/decorators/openapi/ApiProperty'
 import { Wheel } from './wheel'
 
 export class CarModel {

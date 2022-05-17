@@ -1,5 +1,5 @@
-import { ApiModel, ApiProperty } from '@kodexo/app'
 import { BaseSerialized } from '@kodexo/crud'
+import { ApiModel, ApiProperty } from '@kodexo/openapi'
 import { Expose, Type } from 'class-transformer'
 import { UserSerialized } from '../../users/serializations/user.serialized'
 

@@ -1,4 +1,3 @@
-import { RouteParams, UseSerialization } from '@kodexo/common'
 import {
   BodyParams,
   Controller,
@@ -7,17 +6,17 @@ import {
   Post,
   Res,
   Response,
+  RouteParams,
   Use,
+  UseSerialization,
   UseValidation
 } from '@kodexo/common'
 import { Inject } from '@kodexo/injection'
-import { ApiGroup } from '../../../src/decorators/openapi/ApiGroup'
-import { Summary } from '../../../src/decorators/openapi/Summary'
+import { ApiGroup, Summary } from '@kodexo/openapi'
 import { AuthMiddleware } from '../auth.middleware'
 import { CarDto } from '../car.dto'
 import { CarService } from '../CarService'
 import { LogMiddleware } from '../log.middleware'
-import { ModifyResultInterceptor } from '../modify-result.interceptor'
 import { CarModel } from './serialization/car'
 
 @ApiGroup('Cars')

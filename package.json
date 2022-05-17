@@ -25,6 +25,7 @@
           "logger",
           "mikro-orm",
           "acc",
+          "openapi",
           "storage"
         ]
       ],

@@ -1617,11 +1617,6 @@
     methods "^1.1.2"
     path-to-regexp "^6.1.0"
 
-"@kodexo/errors@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@kodexo/errors/-/errors-0.1.2.tgz#a1b67bcdfc5daab066d5d2782a67c8caca518b3d"
-  integrity sha512-mumBTipfT7od5KBuUnDytUJ30xmxS/tB5oqPbpwE+vVayLEAGdagGuHIOdAGVS0WaR/78D1QFTyP8yirIQ+rbw==
-
 "@lerna/add@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-4.0.0.tgz#c36f57d132502a57b9e7058d1548b7a565ef183f"
@@ -7912,6 +7907,11 @@ openapi-types@^11.0.0:
   resolved "https://registry.yarnpkg.com/openapi-types/-/openapi-types-11.0.0.tgz#766f1ee2de3fa701947e993564e3d0a362fc2026"
   integrity sha512-GB+QO6o1hAtKsb8tP3/FTD5jpkdKrf42L4Gel9UySngMurzr+Q9pO+dtnmySQCzoCEfJr39IH6bveEn71xNcVg==
 
+openapi-types@^11.0.1:
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/openapi-types/-/openapi-types-11.0.1.tgz#7e1cee2c9b8cb16787d14f2b0f433c5ba0e32e96"
+  integrity sha512-P2pGRlHFXgP8z6vrp5P/MtftOXYtlIY1A+V0VmioOoo85NN6RSPgGbEprRAUNMIsbfRjnCPdx/r8mi8QRR7grQ==
+
 optionator@^0.8.1:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/optionator/-/optionator-0.8.3.tgz#84fa1d036fe9d3c7e21d99884b601167ec8fb495"
@@ -10529,10 +10529,10 @@ yaml@^1.10.0:
   resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.10.2.tgz#2301c5ffbf12b467de8da2333a459e29e7920e4b"
   integrity sha512-r3vXyErRCYJ7wg28yvBY5VSoAF8ZvlcW9/BwUzEtUsjvX/DKs24dIkuwjtuprwJJHsbyUbLApepYTR1BN4uHrg==
 
-yaml@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.0.1.tgz#71886d6021f3da28169dbefde78d4dd0f8d83650"
-  integrity sha512-1NpAYQ3wjzIlMs0mgdBmYzLkFgWBIWrzYVDYfrixhoFNNgJ444/jT2kUT2sicRbJES3oQYRZugjB6Ro8SjKeFg==
+yaml@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.1.0.tgz#96ba62ff4dd990c0eb16bd96c6254a085d288b80"
+  integrity sha512-OuAINfTsoJrY5H7CBWnKZhX6nZciXBydrMtTHr1dC4nP40X5jyTIVlogZHxSlVZM8zSgXRfgZGsaHF4+pV+JRw==
 
 yargs-parser@20.2.4:
   version "20.2.4"

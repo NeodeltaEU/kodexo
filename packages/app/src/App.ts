@@ -13,6 +13,7 @@ import {
   Registries
 } from '@kodexo/injection'
 import { LoggerService } from '@kodexo/logger'
+import { OpenApiService } from '@kodexo/openapi'
 import { QueueManager } from '@kodexo/queueing'
 import { App as TinyApp, Handler } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
@@ -22,7 +23,6 @@ import { createServer, Server as HttpServer } from 'http'
 import { Class } from 'type-fest'
 import { RoutesService } from './components'
 import { AppProvidersService } from './components/AppProvidersService'
-import { OpenApiService } from './components/OpenApiService'
 import { ServerHooks } from './interfaces'
 
 /**
@@ -76,6 +76,22 @@ export class App {
       .buildRoutesController()
       .buildFinalMiddlewares()
       .buildMiscRoutes()
+      .buildOpenapiSchemaRoute()
+  }
+
+  /**
+   *
+   * @returns
+   */
+  private buildOpenapiSchemaRoute() {
+    const yaml = this.openApiService.processToYaml(this.routesService.getDetailsRoutes())
+
+    this.addRoute('/api-doc', 'GET', (req, res) => {
+      res.setHeader('Content-Type', 'text/yaml')
+      res.send(yaml)
+    })
+
+    return this
   }
 
   /**
@@ -118,6 +134,12 @@ export class App {
     return this
   }
 
+  /**
+   *
+   * @param path
+   * @param method
+   * @param handler
+   */
   public addRoute(path: string, method: string, handler: Handler) {
     switch (method) {
       case 'GET':
@@ -307,14 +329,6 @@ export class App {
     if (server.afterInit) await server.afterInit()
 
     const app = new App(routing)
-
-    const yaml = app.openApiService.processToYaml()
-
-    app.addRoute('/api-doc', 'GET', (req, res) => {
-      res.setHeader('Content-Type', 'text/yaml')
-      res.send(yaml)
-    })
-
     return app.listenForRequests()
   }
 }

@@ -1,4 +1,4 @@
-import { Service } from '@kodexo/common'
+import { Endpoint, Service } from '@kodexo/common'
 import { ConfigurationService } from '@kodexo/config'
 import { Inject } from '@kodexo/injection'
 import { OpenAPIV3_1 } from 'openapi-types'
@@ -7,17 +7,13 @@ import { stringify } from 'yaml'
 import { ApiModelOptions } from '../decorators'
 import { cleanObject } from '../utils/cleanObject'
 import { OpenApiExtractor } from './OpenApiExtractor'
-import { OpenApiPathItem } from './OpenApiPath'
-import { RoutesService } from './RoutesService'
+import { OpenApiPathItem } from './OpenApiPathItem'
 
 @Service()
 export class OpenApiService {
   private models: Map<Class, ApiModelOptions> = new Map()
 
-  constructor(
-    @Inject private readonly routesService: RoutesService,
-    @Inject private readonly config: ConfigurationService
-  ) {}
+  constructor(@Inject private readonly config: ConfigurationService) {}
 
   /**
    *
@@ -57,9 +53,7 @@ export class OpenApiService {
    *
    * @returns
    */
-  processToYaml(): string {
-    const routes = this.routesService.getDetailsRoutes()
-
+  processToYaml(routes: Map<string, RouteEndpoint[]>): string {
     const paths: OpenAPIV3_1.PathsObject = {}
 
     routes.forEach((routeEndpoints, path) => {
@@ -103,4 +97,8 @@ type ApiModelObject = {
   model: Class
   title: string
   description?: string
+}
+
+type RouteEndpoint = {
+  endpoint: Endpoint
 }

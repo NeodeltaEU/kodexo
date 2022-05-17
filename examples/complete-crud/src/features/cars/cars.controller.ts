@@ -1,7 +1,7 @@
-import { ApiGroup, Summary } from '@kodexo/app'
 import { Controller, Get, RouteParams, UseSerialization } from '@kodexo/common'
 import { Crud, CrudControllerInterface } from '@kodexo/crud'
 import { Inject } from '@kodexo/injection'
+import { ApiGroup, Summary } from '@kodexo/openapi'
 import { CarsService } from './cars.service'
 import { CreateCarDto } from './dto/create-car.dto'
 import { UpdateCarDto } from './dto/update-car.dto'

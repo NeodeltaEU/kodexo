@@ -1,6 +1,6 @@
+import { ApiProperty } from '@kodexo/openapi'
 import { Expose } from 'class-transformer'
 import { IsString } from 'class-validator'
-import { ApiProperty } from '../../src/decorators/openapi/ApiProperty'
 
 export class CarDto {
   @ApiProperty({

@@ -1,7 +1,6 @@
 import { Controller, Get } from '@kodexo/common'
 import { Inject } from '@kodexo/injection'
-import { ApiGroup } from '../../../src/decorators/openapi/ApiGroup'
-import { Summary } from '../../../src/decorators/openapi/Summary'
+import { ApiGroup, Summary } from '@kodexo/openapi'
 import { AsyncService } from './async.service'
 
 @ApiGroup('Submodule')

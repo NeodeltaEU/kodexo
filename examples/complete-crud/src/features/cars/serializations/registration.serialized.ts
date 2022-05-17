@@ -1,4 +1,4 @@
-import { ApiProperty } from '@kodexo/app'
+import { ApiProperty } from '@kodexo/openapi'
 import { Expose } from 'class-transformer'
 
 export class RegistrationSerialized {

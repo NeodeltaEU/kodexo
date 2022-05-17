@@ -1,7 +1,6 @@
 import { BodyParams, Controller, Get, Post, RouteParams, Use } from '@kodexo/common'
-import { Inject } from '../../../../injection/dist'
-import { ApiGroup } from '../../../src/decorators/openapi/ApiGroup'
-import { Summary } from '../../../src/decorators/openapi/Summary'
+import { Inject } from '@kodexo/injection'
+import { ApiGroup, Summary } from '@kodexo/openapi'
 import { ControllerMiddleware } from '../controller.middleware'
 import { AsyncService } from '../submodule/async.service'
 

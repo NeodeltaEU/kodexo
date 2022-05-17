@@ -73,7 +73,7 @@
     "@kodexo/app": "^1.0.0-dev.5",
     "@kodexo/common": "^1.0.0-dev.5",
     "@kodexo/config": "^1.0.0-dev.5",
-    "@kodexo/errors": "^0.1.2",
+    "@kodexo/errors": "^1.0.0-dev.2",
     "@kodexo/injection": "^1.0.0-dev.4",
     "busboy": "^0.3.1",
     "bytes": "^3.1.1",

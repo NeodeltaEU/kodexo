@@ -1,4 +1,4 @@
-import { ApiProperty } from '../../../../src/decorators/openapi/ApiProperty'
+import { ApiProperty } from '@kodexo/openapi'
 
 export class Wheel {
   @ApiProperty({ type: 'integer', example: 4 })

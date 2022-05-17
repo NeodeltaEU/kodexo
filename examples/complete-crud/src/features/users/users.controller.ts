@@ -1,7 +1,7 @@
-import { ApiGroup } from '@kodexo/app'
 import { Controller } from '@kodexo/common'
 import { Crud, CrudControllerInterface } from '@kodexo/crud'
 import { Inject } from '@kodexo/injection'
+import { ApiGroup } from '@kodexo/openapi'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { User } from './entities/user.entity'

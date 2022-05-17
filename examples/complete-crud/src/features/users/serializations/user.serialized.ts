@@ -1,4 +1,4 @@
-import { ApiModel, ApiProperty } from '@kodexo/app'
+import { ApiModel, ApiProperty } from '@kodexo/openapi'
 import { Expose } from 'class-transformer'
 
 @ApiModel({
