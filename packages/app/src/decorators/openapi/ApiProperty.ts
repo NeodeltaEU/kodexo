@@ -1,8 +1,9 @@
 import { getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
+import { Class } from 'type-fest'
 
 export function ApiProperty(options: ApiPropertyOptions = {}) {
-  const { type, description, required, example } = options
+  const { type, description, required, example, items } = options
 
   return (target: any, propertyKey: string | symbol) => {
     const store = Store.from(getClass(target))
@@ -16,6 +17,7 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
     properties[propertyKey] = {
       type: type || resumedType,
       description,
+      items,
       required: required ?? undefined,
       example
     }
@@ -25,6 +27,7 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
 export type ApiPropertyOptions = {
   type?: Function | string
   description?: string
+  items?: Array<Function | Class | string>
   required?: boolean
   example?: any
 }

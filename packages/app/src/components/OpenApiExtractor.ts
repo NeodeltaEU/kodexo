@@ -101,32 +101,68 @@ export class OpenApiExtractor {
     const properties = this.store.get<DtoProperty[]>('openapi:properties')
 
     return Object.entries(properties).reduce((result, [key, value]) => {
-      const { type, description, example, required } = value
+      const { type, description, example, required, items } = value
 
       const properties = this.getSubProperties(type)
-
       const formattedType = this.convertTypeToOpenApiTypes(type)
 
       if (required) this.requiredProperties.push(key)
 
-      if (formattedType.type === 'ref') {
-        result[key] = cleanObject({
-          description,
-          example,
-          ...properties // contains $ref
-        })
-      } else {
-        result[key] = cleanObject({
-          description,
-          type: formattedType.type,
-          format: formattedType.format,
-          properties,
-          example
-        })
+      switch (formattedType.type) {
+        case 'ref':
+          result[key] = {
+            ...properties // contains $ref
+          }
+          break
+
+        case 'array':
+          const arrayProperties = this.getArrayProperties(items)
+
+          console.log(arrayProperties)
+
+          result[key] = {
+            type: formattedType.type,
+            items: arrayProperties
+          }
+          break
+
+        default:
+          result[key] = {
+            type: formattedType.type,
+            format: formattedType.format,
+            properties
+          }
+          break
       }
+
+      result[key] = cleanObject({
+        ...result[key],
+        description,
+        example
+      })
 
       return result
     }, {} as Record<string, any>)
+  }
+
+  /**
+   *
+   */
+  private getArrayProperties(items?: Array<Class | Function | string>) {
+    if (!items) throw new Error('Dev: An @ApiProperty with type Array must have an items property')
+
+    if (items.length === 0)
+      throw new Error('Dev: An @ApiProperty with type Array must have at least one item')
+
+    if (items.length === 1) {
+      const item = items[0]
+
+      if (this.isClass(item)) {
+        return { type: 'ref', ...this.getSubProperties(item) }
+      }
+
+      return this.convertTypeToOpenApiTypes(item)
+    }
   }
 
   /**
@@ -197,7 +233,16 @@ export class OpenApiExtractor {
    * @returns
    */
   private isObject(type: any) {
-    return type?.name === 'Date' || type?.name === 'Object'
+    return type?.name === 'Date' || type?.name === 'Object' || type?.name === 'Array'
+  }
+
+  /**
+   *
+   * @param type
+   * @returns
+   */
+  private isArray(type: any) {
+    return type?.name === 'Array'
   }
 
   /**
@@ -208,7 +253,7 @@ export class OpenApiExtractor {
   private isClass(type: any) {
     if (typeof type !== 'function') return false
 
-    return !(this.isPrimitive(type) || this.isObject(type))
+    return !(this.isPrimitive(type) || this.isObject(type) || this.isArray(type))
   }
 
   /**
@@ -235,5 +280,6 @@ type DtoProperty = {
   type: Function | string
   description: string
   example?: any
+  items?: Array<Function | Class | string>
   required?: boolean
 }

@@ -5,11 +5,16 @@ import { Expose } from 'class-transformer'
   title: 'User'
 })
 export class UserSerialized {
-  @ApiProperty()
+  @ApiProperty({
+    description: "User's email address",
+    example: 'john.doe@acme.com'
+  })
   @Expose()
   email: string
 
-  @ApiProperty()
+  @ApiProperty({
+    items: [UserSerialized]
+  })
   @Expose()
   partner: UserSerialized[]
 }
