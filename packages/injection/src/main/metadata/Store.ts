@@ -1,5 +1,7 @@
 import 'reflect-metadata'
 import { DecoratorTypes, getDecoratorType } from '../../utils'
+import { mergeDeepLeft } from 'ramda'
+import { DevError } from '@kodexo/errors'
 
 function getAncestors(target: Function): Function[] {
   const ancestors: Function[] = []
@@ -75,14 +77,12 @@ export class Store {
    * @param target
    * @returns
    */
-  static fromClass(target: Function, herited?: boolean) {
+  static fromClass(target: Function) {
     const stores = getAncestors(target).map(ancestor => Store.from(ancestor))
 
     const store = new Store([target])
 
     store.addHeritedStores(stores)
-
-    //store.merge()
 
     return store
   }
@@ -122,20 +122,26 @@ export class Store {
   /**
    *
    */
-  mergeFromHerited(key: string) {
-    if (!this.has(key)) return
+  mergeFromHerited(key: string): this {
+    if (!this.has(key)) return this
 
     const value = this.get(key)
 
-    this.heritedStores.forEach(store => {
-      if (!store.has(key)) return
-
-      if (value) {
-        if (Array.isArray(value)) {
-          value.push(...store.get(key))
-        }
+    const herited = this.heritedStores.reverse().reduce((result: any, store) => {
+      if (!result) {
+        return { ...store.get(key) }
       }
-    })
+      if (!store.has(key)) return result
+
+      if (Array.isArray(result) || typeof result !== 'object') {
+        throw new DevError(`Cannot merge a non object value on key store ${key}`)
+      }
+      return mergeDeepLeft(result, store.get(key))
+    }, null)
+
+    this.set(key, mergeDeepLeft(value ?? {}, herited ?? {}))
+
+    return this
   }
 
   /**

@@ -47,6 +47,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/normalize-path": "^3.0.0",
+    "@types/ramda": "^0.28.12",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
     "eslint": "^7.19.0",
@@ -62,7 +63,9 @@
     "typescript": "^4.1.4"
   },
   "dependencies": {
+    "@kodexo/errors": "^1.0.0-dev.2",
     "normalize-path": "^3.0.0",
+    "ramda": "^0.28.0",
     "type-fest": "^0.20.2"
   },
   "gitHead": "3341d44d2cc6d1a4e6b993d4df43a23a0df3175a"
