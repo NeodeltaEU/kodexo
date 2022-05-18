@@ -1,17 +1,11 @@
 import { ApiModel, ApiProperty } from '@kodexo/openapi'
 import { Expose } from 'class-transformer'
+import { AbstractUser } from './abstract-user.serialized'
 
 @ApiModel({
   title: 'User'
 })
-export class UserSerialized {
-  @ApiProperty({
-    description: "User's email address",
-    example: 'john.doe@acme.com'
-  })
-  @Expose()
-  email: string
-
+export class UserSerialized extends AbstractUser {
   @ApiProperty({
     items: [UserSerialized]
   })

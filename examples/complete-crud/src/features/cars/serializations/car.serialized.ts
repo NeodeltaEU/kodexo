@@ -11,7 +11,9 @@ export class CarSerialized extends BaseSerialized {
   @Expose()
   name: string
 
-  @ApiProperty()
+  @ApiProperty({
+    items: [String]
+  })
   @Expose()
   beforeRegistration: Array<string>
 

@@ -71,6 +71,7 @@
     "@kodexo/common": "^1.0.0-dev.6",
     "@kodexo/errors": "^1.0.0-dev.2",
     "@kodexo/mikro-orm": "^1.0.0-dev.6",
+    "@kodexo/openapi": "^1.0.0-dev.6",
     "@mikro-orm/core": "^5.0.0",
     "@mikro-orm/postgresql": "^5.0.0",
     "class-transformer": "^0.5.0",

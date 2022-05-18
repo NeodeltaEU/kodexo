@@ -1,11 +1,24 @@
 import 'reflect-metadata'
 import { DecoratorTypes, getDecoratorType } from '../../utils'
 
+function getAncestors(target: Function): Function[] {
+  const ancestors: Function[] = []
+  for (
+    let baseClass = Object.getPrototypeOf(target.prototype.constructor);
+    typeof baseClass.prototype !== 'undefined';
+    baseClass = Object.getPrototypeOf(baseClass.prototype.constructor)
+  ) {
+    ancestors.push(baseClass)
+  }
+  return ancestors
+}
+
 /**
  *
  */
 export class Store {
   private content = new Map<string, any>()
+  private heritedStores: Store[] = []
 
   constructor(args: any[]) {
     this.content = this.getMetadataFromArgs(args)
@@ -59,6 +72,23 @@ export class Store {
 
   /**
    *
+   * @param target
+   * @returns
+   */
+  static fromClass(target: Function, herited?: boolean) {
+    const stores = getAncestors(target).map(ancestor => Store.from(ancestor))
+
+    const store = new Store([target])
+
+    store.addHeritedStores(stores)
+
+    //store.merge()
+
+    return store
+  }
+
+  /**
+   *
    */
   get size() {
     return this.content.size
@@ -87,5 +117,32 @@ export class Store {
    */
   has(key: string): boolean {
     return this.content.has(key)
+  }
+
+  /**
+   *
+   */
+  mergeFromHerited(key: string) {
+    if (!this.has(key)) return
+
+    const value = this.get(key)
+
+    this.heritedStores.forEach(store => {
+      if (!store.has(key)) return
+
+      if (value) {
+        if (Array.isArray(value)) {
+          value.push(...store.get(key))
+        }
+      }
+    })
+  }
+
+  /**
+   *
+   * @param store
+   */
+  addHeritedStores(store: Store[]) {
+    this.heritedStores.push(...store)
   }
 }

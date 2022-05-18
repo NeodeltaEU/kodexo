@@ -8,6 +8,7 @@
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
     "clean": "rm -rf build",
+    "watch": "tsc -b tsconfig.build.json --watch",
     "build": "rimraf ./dist && tsc --project tsconfig.build.json",
     "test": "jest --runInBand --colors --forceExit",
     "test:watch": "jest --runInBand --colors --forceExit --watch"

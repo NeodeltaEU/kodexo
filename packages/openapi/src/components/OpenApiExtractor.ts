@@ -178,7 +178,7 @@ export class OpenApiExtractor {
   private getSubProperties(propertyType: Function | string) {
     if (!this.isClass(propertyType)) return undefined
 
-    const store = Store.from(getClass(propertyType))
+    const store = Store.fromClass(getClass(propertyType))
 
     let extractor = OpenApiExtractor.fromStore(store, this.openapiService)
 
@@ -276,7 +276,7 @@ export class OpenApiExtractor {
    * @param service
    */
   static fromModel(model: Class, service: OpenApiService) {
-    const store = Store.from(model)
+    const store = Store.fromClass(model)
     return OpenApiExtractor.fromStore(store, service)
   }
 }
