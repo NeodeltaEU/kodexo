@@ -178,7 +178,7 @@ export class OpenApiExtractor {
   private getSubProperties(propertyType: Function | string) {
     if (!this.isClass(propertyType)) return undefined
 
-    const store = Store.fromClass(getClass(propertyType))
+    const store = Store.fromClass(getClass(propertyType)).mergeFromHerited('openapi:properties')
 
     let extractor = OpenApiExtractor.fromStore(store, this.openapiService)
 
@@ -276,7 +276,7 @@ export class OpenApiExtractor {
    * @param service
    */
   static fromModel(model: Class, service: OpenApiService) {
-    const store = Store.fromClass(model)
+    const store = Store.fromClass(model).mergeFromHerited('openapi:properties')
     return OpenApiExtractor.fromStore(store, service)
   }
 }

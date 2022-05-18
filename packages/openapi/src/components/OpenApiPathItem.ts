@@ -89,7 +89,7 @@ export class OpenApiPathItem {
 
     if (this.metadata.store.has('openapi:serialization')) {
       const dto = this.metadata.store.get('openapi:serialization')
-      const dtoStore = Store.fromClass(dto)
+      const dtoStore = Store.fromClass(dto).mergeFromHerited('openapi:properties')
       schema = OpenApiExtractor.fromStore(dtoStore, this.openApiService)
         .withDto(dto)
         .setMultiple(multiple)
