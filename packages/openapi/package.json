@@ -65,6 +65,7 @@
   "dependencies": {
     "@kodexo/common": "^1.0.0-dev.6",
     "@kodexo/config": "^1.0.0-dev.6",
+    "@kodexo/errors": "^1.0.0-dev.2",
     "@kodexo/injection": "^1.0.0-dev.4",
     "yaml": "^2.1.0"
   }

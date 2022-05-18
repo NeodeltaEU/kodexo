@@ -1,4 +1,5 @@
 import { getClass } from '@kodexo/common'
+import { DevError } from '@kodexo/errors'
 import { Store } from '@kodexo/injection'
 import type { OpenAPIV3_1 } from 'openapi-types'
 import { Class } from 'type-fest'
@@ -11,7 +12,6 @@ export class OpenApiExtractor {
   private properties: Record<string, any> = {}
   private multiple: boolean = false
   private ref?: string
-
   constructor(private readonly store: Store, private readonly openapiService: OpenApiService) {}
 
   /**
@@ -116,7 +116,7 @@ export class OpenApiExtractor {
           break
 
         case 'array':
-          const arrayProperties = this.getArrayProperties(items)
+          const arrayProperties = this.getArrayProperties(key, items)
 
           result[key] = {
             type: formattedType.type,
@@ -146,11 +146,18 @@ export class OpenApiExtractor {
   /**
    *
    */
-  private getArrayProperties(items?: Array<Class | Function | string>) {
-    if (!items) throw new Error('Dev: An @ApiProperty with type Array must have an items property')
+  private getArrayProperties(key: string, items?: Array<Class | Function | string>) {
+    // TODO: get information about concerned DTO
+    if (!items)
+      throw new DevError(
+        `An @ApiProperty with type Array must have an items property on ******:${key}`,
+        false
+      )
 
     if (items.length === 0)
-      throw new Error('Dev: An @ApiProperty with type Array must have at least one item')
+      throw new Error(
+        `An @ApiProperty with type Array must have at least one item on ******:${key}`
+      )
 
     if (items.length === 1) {
       const item = items[0]

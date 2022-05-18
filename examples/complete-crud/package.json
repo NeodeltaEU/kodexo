@@ -10,8 +10,8 @@
   "scripts": {
     "clean": "rm -rf build",
     "build": "rimraf ./dist && tsc -b tsconfig.build.json",
-    "dev": "ts-node-dev ./src/bootstrap.ts --debounce 400 --watch '../../packages/**/dist/**/*.js'",
-    "start": "ts-node ./src/bootstrap.ts"
+    "dev": "ts-node-dev ./src/index.ts --exit-child --respawn --debounce 400 --watch '../../packages/**/dist/**/*.js'",
+    "start": "ts-node ./src/index.ts"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.15.0",
