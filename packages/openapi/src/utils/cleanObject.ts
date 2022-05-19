@@ -1,10 +1,23 @@
-export function cleanObject(obj: any) {
-  let newObj: any = {}
+export function cleanObject(obj: any, mutate = false, recursive: Number | Boolean = 0) {
+  const returnObj: any = {}
 
-  Object.keys(obj).forEach(key => {
-    if (obj[key] === Object(obj[key])) newObj[key] = cleanObject(obj[key])
-    else if (obj[key] !== undefined) newObj[key] = obj[key]
+  Object.entries(obj).forEach(([key, val]) => {
+    if (val === undefined) {
+      if (mutate) delete obj[key]
+    } else {
+      let recursiveVal
+
+      if (recursive > 0 && val !== null && typeof val === 'object') {
+        recursiveVal = cleanObject(
+          val,
+          mutate,
+          typeof recursive === 'number' ? recursive - 1 : true
+        )
+      }
+
+      if (!mutate) returnObj[key] = recursiveVal || val
+    }
   })
 
-  return newObj
+  return mutate ? obj : returnObj
 }

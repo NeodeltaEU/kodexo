@@ -1,7 +1,7 @@
+import { DevError } from '@kodexo/errors'
+import { mergeDeepLeft } from 'ramda'
 import 'reflect-metadata'
 import { DecoratorTypes, getDecoratorType } from '../../utils'
-import { mergeDeepLeft } from 'ramda'
-import { DevError } from '@kodexo/errors'
 
 function getAncestors(target: Function): Function[] {
   const ancestors: Function[] = []
@@ -123,7 +123,7 @@ export class Store {
    *
    */
   mergeFromHerited(key: string): this {
-    if (!this.has(key)) return this
+    //if (!this.has(key)) return this
 
     const value = this.get(key)
 

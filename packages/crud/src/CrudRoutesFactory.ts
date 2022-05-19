@@ -67,7 +67,7 @@ export class CrudRouteFactory<M, C, U> {
       const { name, path, method } = route
 
       let descriptor,
-        action,
+        validation,
         statusCode,
         summary,
         middlewares: Array<Class<MiddlewareHandling> | MiddlewareHandling> = [],
@@ -107,12 +107,14 @@ export class CrudRouteFactory<M, C, U> {
         case 'createOne':
           descriptor = this.prepareRoute(this.prepareCreateOneRoute())
           summary = `Create one ${entityName}`
+          validation = this.options.dto?.createDto
           statusCode = 201
           break
 
         case 'updateOne':
           descriptor = this.prepareRoute(this.prepareUpdateOneRoute())
           summary = `Update one ${entityName}`
+          validation = this.options.dto?.updateDto
           break
 
         case 'deleteOne':
@@ -134,6 +136,9 @@ export class CrudRouteFactory<M, C, U> {
 
       //
       if (summary) endpoint.store.set('openapi:summary', summary)
+
+      //
+      if (validation) endpoint.store.set('openapi:validation', validation)
 
       //
       if (this.options.serialization && name !== 'deleteOne') {

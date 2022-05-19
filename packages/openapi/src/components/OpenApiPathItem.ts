@@ -1,7 +1,6 @@
 import { Endpoint, getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
 import type { OpenAPIV3_1 } from 'openapi-types'
-import { ApiModelOptions } from '../decorators'
 import { OpenApiExtractor } from './OpenApiExtractor'
 import { OpenApiService } from './OpenApiService'
 
@@ -68,31 +67,37 @@ export class OpenApiPathItem {
 
   /**
    *
-   * @param dto
-   */
-  private extractSchemaFromDto(dto: any, modelOptions: ApiModelOptions) {
-    return {
-      $ref: `#/components/schemas/${modelOptions.title}`
-    }
-  }
-
-  /**
-   *
    * @returns
    */
   toObject(): OpenAPIV3_1.OperationObject {
     const tags = this.apiGroup ? [this.apiGroup] : []
 
-    const multiple = this.store.get('openapi:serialization:multiple') ?? false
+    let responseSchema = {},
+      bodySchema
 
-    let schema = {}
-
+    // Response Schema
     if (this.metadata.store.has('openapi:serialization')) {
-      const dto = this.metadata.store.get('openapi:serialization')
-      const dtoStore = Store.fromClass(dto).mergeFromHerited('openapi:properties')
-      schema = OpenApiExtractor.fromStore(dtoStore, this.openApiService)
-        .withDto(dto)
+      const dtoSerialized = this.metadata.store.get('openapi:serialization')
+
+      const dtoSerializedStore =
+        Store.fromClass(dtoSerialized).mergeFromHerited('openapi:properties')
+
+      const multiple = this.store.get('openapi:serialization:multiple') ?? false
+
+      responseSchema = OpenApiExtractor.fromStore(dtoSerializedStore, this.openApiService)
+        .withDto(dtoSerialized)
         .setMultiple(multiple)
+        .extract()
+        .buildSchema()
+    }
+
+    // Body Schema
+    if (this.metadata.store.has('openapi:validation')) {
+      const dtoValidation = this.metadata.store.get('openapi:validation')
+      const dtoValidationStore =
+        Store.fromClass(dtoValidation).mergeFromHerited('openapi:properties')
+
+      bodySchema = OpenApiExtractor.fromStore(dtoValidationStore, this.openApiService)
         .extract()
         .buildSchema()
     }
@@ -105,22 +110,18 @@ export class OpenApiPathItem {
           description: 'Success',
           content: {
             'application/json': {
-              schema
+              schema: responseSchema
             }
           }
         }
       }
     }
 
-    if (this.bodyProperties)
+    if (bodySchema)
       builtObject.requestBody = {
         content: {
           'application/json': {
-            schema: {
-              type: 'object',
-              properties: this.bodyProperties,
-              required: this.requiredBodyProperties
-            }
+            schema: bodySchema
           }
         }
       }
