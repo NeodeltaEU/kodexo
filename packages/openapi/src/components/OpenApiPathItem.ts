@@ -2,14 +2,12 @@ import { Endpoint, getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
 import type { OpenAPIV3_1 } from 'openapi-types'
 import { OpenApiExtractor } from './OpenApiExtractor'
+import { PathParam } from './OpenApiPathParam'
 import { OpenApiService } from './OpenApiService'
 
 export class OpenApiPathItem {
   public readonly method: OpenAPIV3_1.HttpMethods
 
-  private responseProperties: Record<string, any> = {}
-  private bodyProperties?: Record<string, any>
-  private requiredBodyProperties: Array<string> = []
   private summary: string = 'A route'
   private apiGroup?: string
   private store: Store
@@ -20,8 +18,6 @@ export class OpenApiPathItem {
 
     this.store = this.metadata.store
 
-    //this.extractValidation()
-    //this.extractSerialization()
     this.extractSummary()
     this.extractApiGroup()
   }
@@ -33,36 +29,91 @@ export class OpenApiPathItem {
     this.apiGroup = Store.from(getClass(this.metadata.target)).get('openapi:group')
   }
 
-  /*  private extractSerialization() {
-    if (!this.metadata.store.has('openapi:serialization')) return
-
-    const dto = this.metadata.store.get('openapi:serialization')
-
-    const dtoStore = Store.from(dto)
-
-    if (dtoStore.has('openapi:model')) {
-      const modelOptions = dtoStore.get<ApiModelOptions>('openapi:model')
-      this.openApiService.registerModel(dto, modelOptions)
-      this.responseProperties = this.extractSchemaFromDto(dto, modelOptions)
-    } else {
-      this.responseProperties = this.extractProperties(dtoStore)
-    }
-  }
-
-  private extractValidation() {
-    if (!this.metadata.store.has('openapi:validation')) return
-    const dtoStore = Store.from(this.metadata.store.get('openapi:validation'))
-
-    this.bodyProperties = this.extractProperties(dtoStore, false)
-  }*/
-
   /**
    *
    * @returns
    */
   private extractSummary() {
-    if (!this.metadata.store.has('openapi:summary')) return
+    if (!this.store.has('openapi:summary')) return
     this.summary = this.metadata.store.get('openapi:summary')
+  }
+
+  /**
+   *
+   * @returns
+   */
+  private getResponseSchema() {
+    if (!this.store.has('openapi:serialization')) return {}
+
+    const dtoSerialized = this.store.get('openapi:serialization')
+
+    const dtoSerializedStore = Store.fromClass(dtoSerialized).mergeFromHerited('openapi:properties')
+
+    const multiple = this.store.get('openapi:serialization:multiple') ?? false
+
+    return OpenApiExtractor.fromStore(dtoSerializedStore, this.openApiService)
+      .withDto(dtoSerialized)
+      .setMultiple(multiple)
+      .extract()
+      .buildSchema()
+  }
+
+  /**
+   *
+   */
+  private getBodySchema() {
+    if (!this.store.has('openapi:validation')) return
+
+    const dtoValidation = this.store.get('openapi:validation')
+    const dtoValidationStore = Store.fromClass(dtoValidation).mergeFromHerited('openapi:properties')
+
+    return OpenApiExtractor.fromStore(dtoValidationStore, this.openApiService)
+      .extract()
+      .buildSchema()
+  }
+
+  /**
+   *
+   */
+  private getPathParamaters(): OpenAPIV3_1.ParameterObject[] {
+    // When params decorators are bypass
+    if (this.store.has('openapi:pathParams')) {
+      return this.store.get<PathParam[]>('openapi:pathParams').map(parameter => {
+        return {
+          name: parameter.name,
+          schema: {
+            type: 'string',
+            format: 'uuid'
+          },
+          description: parameter.description,
+          required: parameter.required || true,
+          in: 'path'
+        }
+      })
+    }
+
+    // When params decorators are used
+    const { paramsStores } = this.metadata
+
+    if (paramsStores.length > 0) {
+      return paramsStores
+        .filter(paramsStore => paramsStore.has('openapi:pathParam'))
+        .map(paramsStore => {
+          const pathParam = paramsStore.get('openapi:pathParam')
+
+          return {
+            name: paramsStore.get<string>('paramName'),
+            schema: {
+              type: 'string'
+            },
+            description: pathParam.description,
+            required: true,
+            in: 'path'
+          }
+        })
+    }
+
+    return []
   }
 
   /**
@@ -72,35 +123,9 @@ export class OpenApiPathItem {
   toObject(): OpenAPIV3_1.OperationObject {
     const tags = this.apiGroup ? [this.apiGroup] : []
 
-    let responseSchema = {},
-      bodySchema
-
-    // Response Schema
-    if (this.metadata.store.has('openapi:serialization')) {
-      const dtoSerialized = this.metadata.store.get('openapi:serialization')
-
-      const dtoSerializedStore =
-        Store.fromClass(dtoSerialized).mergeFromHerited('openapi:properties')
-
-      const multiple = this.store.get('openapi:serialization:multiple') ?? false
-
-      responseSchema = OpenApiExtractor.fromStore(dtoSerializedStore, this.openApiService)
-        .withDto(dtoSerialized)
-        .setMultiple(multiple)
-        .extract()
-        .buildSchema()
-    }
-
-    // Body Schema
-    if (this.metadata.store.has('openapi:validation')) {
-      const dtoValidation = this.metadata.store.get('openapi:validation')
-      const dtoValidationStore =
-        Store.fromClass(dtoValidation).mergeFromHerited('openapi:properties')
-
-      bodySchema = OpenApiExtractor.fromStore(dtoValidationStore, this.openApiService)
-        .extract()
-        .buildSchema()
-    }
+    const responseSchema = this.getResponseSchema()
+    const bodySchema = this.getBodySchema()
+    const paramaters = this.getPathParamaters()
 
     const builtObject: OpenAPIV3_1.OperationObject = {
       tags,
@@ -117,6 +142,12 @@ export class OpenApiPathItem {
       }
     }
 
+    //
+    if (paramaters?.length > 0) {
+      builtObject.parameters = paramaters
+    }
+
+    //
     if (bodySchema)
       builtObject.requestBody = {
         content: {

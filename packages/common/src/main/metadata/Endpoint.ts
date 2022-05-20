@@ -1,10 +1,10 @@
-import { Handler } from '@tinyhttp/app'
 import { Store } from '@kodexo/injection'
+import { Handler } from '@tinyhttp/app'
 import { Class } from 'type-fest'
+import { getClass } from '../..'
 import { MiddlewareHandling } from '../../interfaces'
 import { RouteMethods } from '../methods'
 import kebabCase = require('lodash.kebabcase')
-import { getClass } from '../..'
 
 export enum MethodsParams {
   BODY_PARAMS = 'BodyParams',
@@ -76,6 +76,18 @@ export class Endpoint {
    */
   get store() {
     return Store.from(this.target, this.propertyKey, this.rawDescriptor)
+  }
+
+  /**
+   *
+   */
+  get paramsStores() {
+    const paramTypes: any[] =
+      Reflect.getMetadata('design:paramtypes', this.target, this.propertyKey) || []
+
+    return paramTypes.map((type: any, index: number) => {
+      return Store.from(this.target, this.propertyKey, index)
+    })
   }
 
   /**

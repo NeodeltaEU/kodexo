@@ -7,6 +7,7 @@ import {
   SerializerInterceptor
 } from '@kodexo/common'
 import { HttpError } from '@kodexo/errors'
+import { PathParam } from '@kodexo/openapi'
 import { instanceToPlain } from 'class-transformer'
 import { validateOrReject, ValidationError } from 'class-validator'
 import * as pluralize from 'pluralize'
@@ -70,6 +71,7 @@ export class CrudRouteFactory<M, C, U> {
         validation,
         statusCode,
         summary,
+        pathParam: PathParam | null = null,
         middlewares: Array<Class<MiddlewareHandling> | MiddlewareHandling> = [],
         interceptors: Array<Class<MiddlewareHandling> | MiddlewareHandling> = []
 
@@ -102,6 +104,11 @@ export class CrudRouteFactory<M, C, U> {
         case 'getOne':
           descriptor = this.prepareRoute(this.prepareGetOneRoute())
           summary = `Get one ${entityName}`
+          pathParam = {
+            schema: { type: 'string' },
+            name: 'id',
+            description: `The id of the ${entityName}`
+          }
           break
 
         case 'createOne':
@@ -115,11 +122,21 @@ export class CrudRouteFactory<M, C, U> {
           descriptor = this.prepareRoute(this.prepareUpdateOneRoute())
           summary = `Update one ${entityName}`
           validation = this.options.dto?.updateDto
+          pathParam = {
+            schema: { type: 'string' },
+            name: 'id',
+            description: `The id of the ${entityName}`
+          }
           break
 
         case 'deleteOne':
           descriptor = this.prepareRoute(this.prepareDeleteOneRoute())
           summary = `Delete one ${entityName}`
+          pathParam = {
+            schema: { type: 'string' },
+            name: 'id',
+            description: `The id of the ${entityName}`
+          }
           break
       }
 
@@ -133,6 +150,8 @@ export class CrudRouteFactory<M, C, U> {
         interceptors,
         statusCode
       )
+
+      if (pathParam) endpoint.store.set('openapi:pathParams', [pathParam])
 
       //
       if (summary) endpoint.store.set('openapi:summary', summary)
