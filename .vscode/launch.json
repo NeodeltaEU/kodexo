@@ -8,10 +8,10 @@
       "runtimeExecutable": "node",
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
       "env": {
-        "TS_NODE_PROJECT": "packages/app/tsconfig.build.json"
+        "TS_NODE_PROJECT": "examples/complete-crud/tsconfig.build.json"
       },
 
-      "args": ["packages/app/tests/mocks/start.ts"],
+      "args": ["examples/complete-crud/src/start.ts"],
 
       "cwd": "${workspaceRoot}",
       "internalConsoleOptions": "openOnSessionStart",
