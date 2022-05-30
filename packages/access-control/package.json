@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/access-control",
-  "version": "1.0.0-dev.9",
+  "version": "1.0.0-dev.12",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",

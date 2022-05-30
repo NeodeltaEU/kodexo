@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/crud",
-  "version": "1.0.0-dev.9",
+  "version": "1.0.0-dev.12",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -70,7 +70,7 @@
   "dependencies": {
     "@kodexo/common": "^1.0.0-dev.9",
     "@kodexo/errors": "^1.0.0-dev.7",
-    "@kodexo/mikro-orm": "^1.0.0-dev.9",
+    "@kodexo/mikro-orm": "^1.0.0-dev.12",
     "@kodexo/openapi": "^1.0.0-dev.9",
     "@mikro-orm/core": "^5.0.0",
     "@mikro-orm/postgresql": "^5.0.0",
