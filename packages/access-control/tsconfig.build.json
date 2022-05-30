@@ -6,7 +6,20 @@
     "rootDir": "src"
   },
 
-  "references": [],
+  "references": [
+    {
+      "path": "../injection/tsconfig.build.json"
+    },
+    {
+      "path": "../config/tsconfig.build.json"
+    },
+    {
+      "path": "../common/tsconfig.build.json"
+    },
+    {
+      "path": "../app/tsconfig.build.json"
+    }
+  ],
 
   "exclude": ["node_modules", "dist"]
 }
