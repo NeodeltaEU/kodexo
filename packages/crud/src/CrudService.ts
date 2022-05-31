@@ -1,6 +1,6 @@
 import { pMap, Request } from '@kodexo/common'
-import { HttpError } from '@kodexo/errors'
-import { Store } from '@kodexo/injection'
+import { DevError, HttpError } from '@kodexo/errors'
+import { providerRegistry, Store } from '@kodexo/injection'
 import { ConnectionDatabase, RepositoryBuilder } from '@kodexo/mikro-orm'
 import {
   AnyEntity,
@@ -13,6 +13,7 @@ import {
   ValidationError
 } from '@mikro-orm/core'
 import { Class, Except } from 'type-fest'
+import { PopulateLimiter } from './components'
 import { QueryParsedResult } from './interfaces'
 
 /**
@@ -186,10 +187,18 @@ export abstract class CrudService<E extends AnyEntity> {
     ): Promise<boolean> => {
       if (currentIndex === fields.length) return true
 
-      const callback = Store.from(currentEntity, fields[currentIndex]).get('limitPopulate')
+      const populateLimiterToken = Store.from(currentEntity, fields[currentIndex]).get(
+        'crud:limitPopulate'
+      )
 
-      if (callback) {
-        const isValid = await callback(req)
+      if (populateLimiterToken) {
+        const populateLimiter =
+          providerRegistry.getInstanceOf<PopulateLimiter>(populateLimiterToken)
+
+        if (!populateLimiter)
+          throw new DevError(`Populate limiter ${populateLimiterToken} not found in Registry`)
+
+        const isValid = await populateLimiter.use(req, fields, fields[currentIndex], currentEntity)
         if (!isValid) throw new Error('Invalid populate')
       }
 

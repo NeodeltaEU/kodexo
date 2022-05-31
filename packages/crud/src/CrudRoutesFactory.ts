@@ -151,6 +151,7 @@ export class CrudRouteFactory<M, C, U> {
         statusCode
       )
 
+      //
       if (pathParam) endpoint.store.set('openapi:pathParams', [pathParam])
 
       //
@@ -174,9 +175,6 @@ export class CrudRouteFactory<M, C, U> {
           )
           .isInterceptor()
           .build()
-      }
-
-      if (this.options.openapi) {
       }
     })
   }

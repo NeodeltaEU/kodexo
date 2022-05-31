@@ -1,10 +1,10 @@
-import { getClass, Request } from '@kodexo/common'
+import { getClass } from '@kodexo/common'
 import { Store } from '@kodexo/injection'
+import { Class } from 'type-fest'
+import { PopulateLimiter } from '../components'
 
-export type LimitPopulateCallback = (req: Request) => Promise<boolean>
-
-export function LimitPopulate(callback: LimitPopulateCallback) {
+export function LimitPopulate(populateLimiterToken: Class<PopulateLimiter>) {
   return (target: any, propertyKey: string) => {
-    Store.from(getClass(target), propertyKey).set('limitPopulate', callback)
+    Store.from(getClass(target), propertyKey).set('crud:limitPopulate', populateLimiterToken)
   }
 }

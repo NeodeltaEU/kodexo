@@ -1,15 +1,10 @@
 import { Collection, Entity, ManyToMany, OneToMany, PrimaryKey, Property } from '@mikro-orm/core'
-import { Request } from '@kodexo/common'
-
 import { v4 } from 'uuid'
 import { LimitPopulate } from '../../../../../src/decorators/LimitPopulate'
 import { Car } from '../../cars/entities/car.entity'
 import { Dealership } from '../../dealerships/entities/dealership.entity'
+import { LimitInvoicePopulateLimiter } from '../populates/limit-invoice.populate'
 import { Invoice } from './invoice.entity'
-
-const limitInvoice = async (req: Request) => {
-  return false
-}
 
 @Entity()
 export class User {
@@ -32,6 +27,6 @@ export class User {
   favoriteDealerships = new Collection<Dealership>(this)
 
   @OneToMany(() => Invoice, invoice => invoice.user)
-  @LimitPopulate(limitInvoice)
+  @LimitPopulate(LimitInvoicePopulateLimiter)
   invoices = new Collection<Invoice>(this)
 }
