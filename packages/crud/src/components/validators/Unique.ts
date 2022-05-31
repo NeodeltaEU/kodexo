@@ -1,3 +1,5 @@
+import { Inject } from '@kodexo/injection'
+import { ConnectionDatabase } from '@kodexo/mikro-orm'
 import { EntityRepository } from '@mikro-orm/core'
 import {
   registerDecorator,
@@ -7,9 +9,7 @@ import {
   ValidatorConstraintInterface
 } from 'class-validator'
 import { Class } from 'type-fest'
-import { Inject } from '@kodexo/injection'
-import { ConnectionDatabase } from '@kodexo/mikro-orm'
-import { REQUEST_CONTEXT } from '../constants'
+import { REQUEST_CONTEXT } from '../../constants'
 
 interface UniqueValidationArguments<E> extends ValidationArguments {
   constraints: [Class<E>]
