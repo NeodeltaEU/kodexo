@@ -1,20 +1,10 @@
 import { createTerminus, TerminusOptions } from '@godaddy/terminus'
-import { ModuleProvider, pMap, RouteMethods } from '@kodexo/common'
+import { RouteMethods } from '@kodexo/common'
 import { ConfigurationService } from '@kodexo/config'
 import { HttpError } from '@kodexo/errors'
-import {
-  ConstructorParam,
-  importProviders,
-  Inject,
-  Injector,
-  IProvider,
-  providerRegistry,
-  ProviderType,
-  Registries
-} from '@kodexo/injection'
+import { Inject } from '@kodexo/injection'
 import { LoggerService } from '@kodexo/logger'
 import { OpenApiService } from '@kodexo/openapi'
-import { QueueManager } from '@kodexo/queueing'
 import { App as TinyApp, Handler } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { json, urlencoded } from 'body-parser'
@@ -29,11 +19,11 @@ import { ServerHooks } from './interfaces'
  *
  */
 export class App {
-  @Inject configurationService: ConfigurationService
-  @Inject logger: LoggerService
-  @Inject routesService: RoutesService
-  @Inject openApiService: OpenApiService
-  @Inject appProvidersService: AppProvidersService
+  @Inject private configurationService: ConfigurationService
+  @Inject private logger: LoggerService
+  @Inject private routesService: RoutesService
+  @Inject private openApiService: OpenApiService
+  @Inject private appProvidersService: AppProvidersService
 
   public readonly rawApp = new TinyApp({
     onError: (err, req, res) => {
@@ -70,7 +60,7 @@ export class App {
   /**
    *
    */
-  constructor(public routing: IProvider[] = []) {
+  constructor() {
     this.buildMandatoryMiddlewares()
       .buildBeforeCustomMiddleware()
       .buildRoutesController()
@@ -180,7 +170,7 @@ export class App {
    *
    */
   private buildRoutesController() {
-    const paths = this.routesService.updateRouting(this.routing).getDetailsRoutes()
+    const paths = this.routesService.getDetailsRoutes()
 
     Array.from(paths.entries()).forEach(([path, routeEndpoints]) => {
       routeEndpoints.forEach(({ endpoint, middlewares, handler }) => {
@@ -257,78 +247,12 @@ export class App {
   }
 
   /**
-   * TODO: REFACTOR ALL OF THIS OMG OMG
    * @param tokenServer
    */
   static async bootstrap(Server: Class<ServerHooks>): Promise<HttpServer> {
-    const { logger, configuration, serverStore } = await AppProvidersService.startInvokation(Server)
+    await AppProvidersService.startServer(Server)
 
-    const appModule = configuration.getOrFail('appModule')
-
-    // TODO: Move all of that into domain to register module & start rootModule
-    const RootModule = class {}
-
-    const moduleProvider = new ModuleProvider(RootModule, [
-      appModule,
-      LoggerService,
-      RoutesService,
-      OpenApiService
-    ])
-
-    providerRegistry.registerProvider(Registries.MODULE, moduleProvider)
-
-    const providers = await importProviders([RootModule])
-
-    const routing = providers.filter(provider => provider.route)
-
-    await Injector.invoke(RootModule)
-
-    await pMap(routing, async provider => {
-      await Injector.invoke(provider.token)
-    })
-
-    // TODO: Something is weird about loading module declarated providers only
-    // when a @Decorator is found, the provider is created and added to registry, it must be loaded only if
-    // it's declarated into a module
-
-    const providersLoaded = providerRegistry.providerStates.filter(
-      provider => provider.status === 'loaded'
-    ).length
-
-    const providersFound = providerRegistry.providerStates.length
-    const controllersFound = routing.length
-    const queuesFound = providerRegistry.providerStates.filter(
-      provider => provider.status === 'loaded' && provider.type === ProviderType.QUEUE
-    ).length
-
-    logger.separator()
-    for (const provider of providerRegistry.providerStates) {
-      logger.info(`[INJECTION] Status: ${provider.status} \t ${provider.name}`)
-    }
-    logger.separator()
-    logger.info(`[INJECTION] ${providersLoaded} loaded / ${providersFound} provider(s) found`)
-    logger.info(`[INJECTION] ${controllersFound} controller(s) found`)
-    logger.info(`[INJECTION] ${queuesFound} queue(s) found`)
-    logger.separator()
-
-    const serverConstructorsParams = serverStore.has('constructorParams')
-      ? serverStore.get('constructorParams')
-      : []
-
-    serverConstructorsParams.sort((a: any, b: any) => a.parameterIndex - b.parameterIndex)
-
-    const server = new Server(
-      ...serverConstructorsParams.map((param: ConstructorParam) => param.provider.instance)
-    )
-
-    if (queuesFound) {
-      const queueManager = providerRegistry.getInstanceOf(QueueManager)
-      queueManager.prepareQueues()
-    }
-
-    if (server.afterInit) await server.afterInit()
-
-    const app = new App(routing)
+    const app = new App()
     return app.listenForRequests()
   }
 }

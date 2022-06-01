@@ -8,9 +8,10 @@ import {
   Response,
   Service
 } from '@kodexo/common'
-import { IProvider, providerRegistry } from '@kodexo/injection'
+import { IProvider, OnProviderInit, providerRegistry, Registry } from '@kodexo/injection'
 import { Handler } from '@tinyhttp/app'
 import { parse } from 'regexparam'
+import { AppProvidersService } from './AppProvidersService'
 
 export type RouteEndpoint = {
   endpoint: Endpoint
@@ -19,10 +20,19 @@ export type RouteEndpoint = {
 }
 
 @Service()
-export class RoutesService {
+export class RoutesService implements OnProviderInit {
   private currentRouting: IProvider[] = []
   private routes: Map<string, RouteEndpoint[]> = new Map()
   private registeredCount = 0
+
+  /**
+   * Hook
+   * @param providerRegistry
+   */
+  async onProviderInit(providerRegistry: Registry) {
+    const provider = providerRegistry.getInstanceOf(AppProvidersService)
+    this.updateRouting(provider.routing)
+  }
 
   /**
    *
@@ -132,6 +142,9 @@ export class RoutesService {
     return routes
   }
 
+  /**
+   *
+   */
   public get routesCount() {
     return this.registeredCount
   }

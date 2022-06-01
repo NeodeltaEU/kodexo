@@ -1,6 +1,7 @@
 import { Class } from 'type-fest'
-import { ConstructorParam, IProvider } from '../../interfaces'
+import { ConstructorParam, IProvider, OnProviderInit } from '../../interfaces'
 import { Store } from '../metadata/Store'
+import { providerRegistry } from './Registry'
 
 export enum ProviderType {
   PROVIDER = 'provider',
@@ -94,8 +95,6 @@ export class Provider<T = any> implements IProvider {
     this.imports = this.options.imports || []
 
     this.dependencies = this.getConstructorParams().map((param: ConstructorParam) => param.provider)
-
-    //console.log(this.name, this.dependencies)
   }
 
   /**
@@ -166,6 +165,19 @@ export class Provider<T = any> implements IProvider {
     const pingMethod: string = this.store.get('on:ping')
 
     return (this.singleton as any)[pingMethod]()
+  }
+
+  /**
+   *
+   */
+  public async onProviderInit() {
+    if (!this.isInitialized) return
+
+    if (this.token.prototype.onProviderInit) {
+      await (this.instance as unknown as OnProviderInit).onProviderInit(providerRegistry)
+    }
+
+    return
   }
 
   /**

@@ -53,6 +53,7 @@ export class Registry extends Map<RegistryKey, Provider> {
    */
   public resolve<T>(token: RegistryKey<T>): Provider<T> {
     if (!this.has(token)) throw new Error(`Missing token ${token.name} on global registry!`)
+
     return this.get(token) as Provider<T>
   }
 

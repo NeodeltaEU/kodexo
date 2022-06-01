@@ -1,6 +1,6 @@
-export async function pMap(
-  iterable: any[],
-  mapper: (element: any, index?: number) => Promise<any>,
+export async function pMap<T>(
+  iterable: T[],
+  mapper: (element: T, index?: number) => Promise<any>,
   options: Partial<pMapOptions> = {}
 ) {
   return new Promise((resolve, reject) => {
