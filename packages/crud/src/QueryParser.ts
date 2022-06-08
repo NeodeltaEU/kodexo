@@ -1,9 +1,9 @@
-import { EntityMetadata } from '@mikro-orm/core'
 import { isObject } from '@kodexo/common'
 import { HttpError } from '@kodexo/errors'
 import { Inject } from '@kodexo/injection'
 import { ConnectionDatabase } from '@kodexo/mikro-orm'
-import { QueryParsedResult, OverrideQuery, MergeQuery, RequestCrud } from './interfaces'
+import { EntityMetadata } from '@mikro-orm/core'
+import { MergeQuery, OverrideQuery, QueryParsedResult, RequestCrud } from './interfaces'
 import { mergeArrays } from './utils/mergeArrays'
 
 const authorizedOperators: { [key: string]: string } = {
@@ -38,6 +38,7 @@ export class QueryParser implements QueryParsedResult {
   public orderBy: any
   public limit: number = 100
   public offset?: number
+  public deleted: string = 'false'
 
   private currentEntityMetadata: EntityMetadata
 
@@ -66,8 +67,8 @@ export class QueryParser implements QueryParsedResult {
     this.parseLimit(rawQuery.$limit)
     this.parseOffset(rawQuery.$offset)
     this.parseOrder(rawQuery.$order)
+    this.parseDeleted(rawQuery.$deleted)
   }
-
   /**
    *
    * @returns
@@ -89,6 +90,7 @@ export class QueryParser implements QueryParsedResult {
   private override<K extends keyof OverrideQuery>(param: K) {
     if (!this.req.override || this.req.override[param] === undefined) return
 
+    // ts-ignore
     this[param] = this.req.override[param]
   }
 
@@ -128,7 +130,7 @@ export class QueryParser implements QueryParsedResult {
    */
   private setCurrentEntityMetadata() {
     const currentEntityMetadata = this.connection.entitiesMetadata.find(
-      entityMetadata => entityMetadata.name === this.currentEntity
+      (entityMetadata: any) => entityMetadata.name === this.currentEntity
     )
 
     if (!currentEntityMetadata) throw new Error('Current entity not found with this connection')
@@ -170,6 +172,24 @@ export class QueryParser implements QueryParsedResult {
     })
 
     this.populate = splitted
+  }
+
+  /**
+   *
+   * @param rawDeleted
+   */
+  private parseDeleted(rawDeleted: any) {
+    if (!rawDeleted) return
+
+    switch (rawDeleted) {
+      case 'true':
+        this.deleted = 'true'
+        break
+
+      case 'all':
+        this.deleted = 'all'
+        break
+    }
   }
 
   /**
@@ -323,7 +343,7 @@ export class QueryParser implements QueryParsedResult {
    * @returns
    */
   private render(): QueryParsedResult {
-    const { populate, fields, filter, limit, offset, orderBy, req } = this
+    const { populate, fields, filter, limit, offset, orderBy, deleted, req } = this
 
     return {
       filter,
@@ -332,6 +352,7 @@ export class QueryParser implements QueryParsedResult {
       orderBy,
       limit,
       offset,
+      deleted,
       req
     }
   }

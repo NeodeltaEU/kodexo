@@ -8,6 +8,7 @@ import {
   EntityMetadata,
   EntityProperty,
   EntityRepository,
+  FindOptions,
   NotFoundError,
   ReferenceType,
   ValidationError
@@ -89,20 +90,32 @@ export abstract class CrudService<E extends AnyEntity> {
    * @returns
    */
   async getMany(queryParams: QueryParsedResult) {
-    let { populate, fields, filter = {}, limit, offset, orderBy, req } = queryParams
+    let { populate, fields, filter = {}, deleted, limit, offset, orderBy, req } = queryParams
 
     this.removeCache()
 
     if (populate) await this.populateChecking(populate, req)
 
+    const findParams: FindOptions<E> = {
+      populate: populate as any,
+      fields,
+      limit,
+      offset,
+      orderBy
+    }
+
+    if (deleted !== 'false') {
+      const isDeleted = deleted === 'all' ? null : true
+
+      findParams.filters = {
+        softDelete: {
+          isDeleted
+        }
+      }
+    }
+
     try {
-      const [entities, count] = await this.repository.findAndCount(filter, {
-        populate: populate as any,
-        fields,
-        limit,
-        offset,
-        orderBy
-      })
+      const [entities, count] = await this.repository.findAndCount(filter, findParams)
 
       return {
         entities: this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
