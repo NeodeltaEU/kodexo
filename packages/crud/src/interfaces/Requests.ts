@@ -31,8 +31,11 @@ export type QueryParsedResult = {
   orderBy?: string
   limit?: number
   offset?: number
+  deleted: string
   populate?: Array<string>
 }
 
-export type OverrideQuery = Partial<Omit<QueryParsedResult, 'req'>>
-export type MergeQuery = Partial<Omit<QueryParsedResult, 'req' | 'orderBy' | 'limit' | 'offset'>>
+export type OverrideQuery = Partial<Omit<QueryParsedResult, 'req' | 'deleted'>>
+export type MergeQuery = Partial<
+  Omit<QueryParsedResult, 'req' | 'orderBy' | 'limit' | 'offset' | 'deleted'>
+>

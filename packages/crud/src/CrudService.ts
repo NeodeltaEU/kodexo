@@ -1,17 +1,18 @@
+import { pMap, Request } from '@kodexo/common'
+import { HttpError } from '@kodexo/errors'
+import { Store } from '@kodexo/injection'
+import { ConnectionDatabase, RepositoryBuilder } from '@kodexo/mikro-orm'
 import {
   AnyEntity,
   Collection,
   EntityMetadata,
   EntityProperty,
   EntityRepository,
+  FindOptions,
   NotFoundError,
   ReferenceType,
   ValidationError
 } from '@mikro-orm/core'
-import { pMap, Request } from '@kodexo/common'
-import { HttpError } from '@kodexo/errors'
-import { Store } from '@kodexo/injection'
-import { ConnectionDatabase, RepositoryBuilder } from '@kodexo/mikro-orm'
 import { Class, Except } from 'type-fest'
 import { QueryParsedResult } from './interfaces'
 
@@ -88,20 +89,32 @@ export abstract class CrudService<E extends AnyEntity> {
    * @returns
    */
   async getMany(queryParams: QueryParsedResult) {
-    let { populate, fields, filter = {}, limit, offset, orderBy, req } = queryParams
+    let { populate, fields, filter = {}, deleted, limit, offset, orderBy, req } = queryParams
 
     this.removeCache()
 
     if (populate) await this.populateChecking(populate, req)
 
+    const findParams: FindOptions<E> = {
+      populate: populate as any,
+      fields,
+      limit,
+      offset,
+      orderBy
+    }
+
+    if (deleted !== 'false') {
+      const isDeleted = deleted === 'all' ? null : true
+
+      findParams.filters = {
+        softDelete: {
+          isDeleted
+        }
+      }
+    }
+
     try {
-      const [entities, count] = await this.repository.findAndCount(filter, {
-        populate: populate as any,
-        fields,
-        limit,
-        offset,
-        orderBy
-      })
+      const [entities, count] = await this.repository.findAndCount(filter, findParams)
 
       return {
         entities: this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
