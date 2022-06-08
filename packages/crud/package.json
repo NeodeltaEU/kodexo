@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/crud",
-  "version": "1.0.0-dev.15",
+  "version": "1.0.0-dev.16",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -47,7 +47,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@kodexo/app": "^1.0.0-dev.15",
+    "@kodexo/app": "^1.0.0-dev.16",
     "@types/faker": "^5.5.7",
     "@types/jest": "^26.0.24",
     "@types/pluralize": "^0.0.29",
