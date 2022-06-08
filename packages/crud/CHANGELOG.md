@@ -6,6 +6,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
 
+## [0.18.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.18.0...@kodexo/crud@0.18.1) (2022-06-08)
+
+
+### Bug Fixes
+
+* **crud:** miss type ([4d71af5](https://github.com/Uminily/kodexo/commit/4d71af589fb5a6a1b2206d16d4dcd5ee818c5a9e))
+
+
 
 
 # [0.18.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.17.1...@kodexo/crud@0.18.0) (2022-06-08)
