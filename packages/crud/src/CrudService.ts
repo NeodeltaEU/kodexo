@@ -332,7 +332,10 @@ type applyCollectionIdentifierForEntityOptions = {
   selectedFields?: string[]
 }
 
-type QueryParsedResultForOneResult = Except<QueryParsedResult, 'limit' | 'offset' | 'orderBy'>
+type QueryParsedResultForOneResult = Except<
+  QueryParsedResult,
+  'limit' | 'offset' | 'orderBy' | 'deleted'
+>
 
 type CrudServiceOptions = {
   collectionIdentifierFields: { [key: string]: string }
