@@ -36,8 +36,16 @@ export class App {
         this.configurationService.get('debug.displayErrorsOnClientResponse') ?? true
       const skipClientError = this.configurationService.get('debug.skipClientRequestError') ?? false
 
-      if (debugServer && ((!skipClientError && statusCode < 500) || statusCode >= 500))
+      if (debugServer && ((!skipClientError && statusCode < 500) || statusCode >= 500)) {
+        if (statusCode === 404) {
+          delete err.stack
+        }
+
+        err.route = req.url
+        err.method = req.method?.toUpperCase() ?? 'UNKNOWN'
+
         this.logger.error(err)
+      }
 
       if (statusCode === 500) err = HttpError.InternalServerError()
 
