@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.18.0...@kodexo/crud@0.18.1) (2022-06-08)
+
+
+### Bug Fixes
+
+* **crud:** miss type ([4d71af5](https://github.com/Uminily/kodexo/commit/4d71af589fb5a6a1b2206d16d4dcd5ee818c5a9e))
+
+
+
+
+
 # [0.18.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.17.1...@kodexo/crud@0.18.0) (2022-06-08)
 
 
