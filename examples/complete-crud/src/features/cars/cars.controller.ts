@@ -11,11 +11,11 @@ import { RegistrationSerialized } from './serializations/registration.serialized
 
 @Crud({
   model: Car,
-  serialization: CarSerialized,
   dto: {
     createDto: CreateCarDto,
     updateDto: UpdateCarDto
-  }
+  },
+  serialization: CarSerialized
 })
 @ApiGroup('Cars')
 @Controller('/cars')

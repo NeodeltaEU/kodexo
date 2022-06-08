@@ -1,4 +1,5 @@
 import { ApiProperty } from '@kodexo/openapi'
+import { IsString } from 'class-validator'
 
 export class CommonCarDto {
   @ApiProperty({
@@ -6,5 +7,6 @@ export class CommonCarDto {
     example: 'A name for example',
     required: true
   })
+  @IsString()
   name: string
 }
