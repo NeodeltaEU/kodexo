@@ -7,6 +7,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 # [1.0.0-dev.2](https://github.com/Uminily/kodexo/compare/v0.1.2...v1.0.0-dev.2) (2022-05-08)
 
 
+
+# [0.18.0](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.17.1...@kodexo/crud@0.18.0) (2022-06-08)
+
+
+### Features
+
+* **crud:** add $deleted query params ([e8adb99](https://github.com/Uminily/kodexo/commit/e8adb999430d18e092dacf22119c0c1b36431336))
+
+
+
+
+
 ## [0.17.1](https://github.com/Uminily/kodexo/compare/@kodexo/crud@0.17.0...@kodexo/crud@0.17.1) (2022-05-04)
 
 
