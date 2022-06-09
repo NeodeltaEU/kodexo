@@ -1,7 +1,7 @@
+import { faker } from '@faker-js/faker'
 import { App } from '@kodexo/app'
 import { providerRegistry } from '@kodexo/injection'
 import { ConnectionDatabase } from '@kodexo/mikro-orm'
-import * as faker from 'faker'
 import { Server as HttpServer } from 'http'
 import { FetchFunction, makeFetch } from 'supertest-fetch'
 import { Car } from './mocks/features/cars/entities/car.entity'
