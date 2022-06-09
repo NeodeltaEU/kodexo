@@ -6,9 +6,8 @@ import { Server } from './mocks/Server'
 let server: HttpServer
 
 describe('App', () => {
-  beforeAll(async done => {
+  beforeAll(async () => {
     server = await App.bootstrap(Server)
-    done()
   })
 
   afterAll(() => {

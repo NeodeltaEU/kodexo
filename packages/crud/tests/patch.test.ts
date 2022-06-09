@@ -5,7 +5,6 @@ import { Server as HttpServer } from 'http'
 import { FetchFunction, makeFetch } from 'supertest-fetch'
 import { Car } from './mocks/features/cars/entities/car.entity'
 import { Dealership } from './mocks/features/dealerships/entities/dealership.entity'
-import { User } from './mocks/features/users/entities/user.entity'
 import { Server } from './mocks/Server'
 
 const headers = {
@@ -17,23 +16,19 @@ describe('[Method]: PATCH', () => {
   let connection: ConnectionDatabase
   let server: HttpServer
 
-  beforeAll(async done => {
+  beforeAll(async () => {
     server = await App.bootstrap(Server)
 
     fetch = makeFetch(server)
 
     connection = providerRegistry.resolve<ConnectionDatabase>(ConnectionDatabase).instance
     await connection.init()
-
-    done()
   })
 
-  afterAll(async done => {
+  afterAll(async () => {
     await connection.close()
 
-    server.close(() => {
-      done()
-    })
+    server.close()
   })
 
   describe('UpdateOne', () => {

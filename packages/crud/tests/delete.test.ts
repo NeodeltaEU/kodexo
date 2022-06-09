@@ -12,7 +12,7 @@ describe('[Method]: DELETE', () => {
   let connection: ConnectionDatabase
   let server: HttpServer
 
-  beforeAll(async done => {
+  beforeAll(async () => {
     server = await App.bootstrap(Server)
 
     fetch = makeFetch(server)
@@ -20,16 +20,12 @@ describe('[Method]: DELETE', () => {
     connection = providerRegistry.resolve<ConnectionDatabase>(ConnectionDatabase).instance
     await connection.init()
     await connection.syncSchema()
-
-    done()
   })
 
-  afterAll(async done => {
+  afterAll(async () => {
     await connection.close()
 
-    server.close(() => {
-      done()
-    })
+    server.close()
   })
 
   describe('DeleteOne', () => {
