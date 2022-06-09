@@ -129,5 +129,13 @@ describe('[Method]: DELETE', () => {
       expect(resultGetMany.length).toBe(1)
       expect(resultGetMany[0].id).toBe(dealership2Id)
     })
+
+    it('should recovery a soft deleted dealership', async () => {
+      const result = await fetch(`/dealerships/${dealership1Id}/recovery`, { method: 'GET' })
+        .expect(200)
+        .json()
+
+      expect(result.id).toBe(dealership1Id)
+    })
   })
 })

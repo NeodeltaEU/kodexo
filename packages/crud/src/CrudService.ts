@@ -196,6 +196,40 @@ export abstract class CrudService<E extends AnyEntity> {
 
   /**
    *
+   * @param id
+   */
+  async recovery(id: any, queryParams?: QueryParsedResultForOneResult) {
+    const filters = {
+      softDelete: {
+        isDeleted: true
+      }
+    }
+
+    const entity = await this.repository.findOne(id, {
+      filters
+    })
+
+    if (!entity) throw HttpError.NotFound()
+
+    if (this.entityProperties.includes(this.options?.deletedAtField || 'deletedAt')) {
+      await this.repository.nativeUpdate(
+        { id } as any,
+        {
+          [this.options?.deletedAtField || 'deletedAt']: null
+        } as any,
+        {
+          filters
+        }
+      )
+
+      return this.retrieve(id, queryParams)
+    } else {
+      throw new DevError('You must define a deletedAt field to use this method')
+    }
+  }
+
+  /**
+   *
    * @param populate
    */
   private async populateChecking(populate: string[], req?: Request) {
@@ -272,8 +306,6 @@ export abstract class CrudService<E extends AnyEntity> {
         populate,
         fields
       })
-
-      //return entity
 
       return identifiers
         ? this.applyCollectionsIdentifiersForEntity(entity, { selectedFields: fields })

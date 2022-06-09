@@ -39,6 +39,7 @@ export type MiddlewareCrudOptionsType = Partial<{
   createOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
   updateOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
   deleteOne: Array<Class<MiddlewareHandling> | MiddlewareHandling>
+  recovery: Array<Class<MiddlewareHandling> | MiddlewareHandling>
 }>
 
 export type DecoratorCrudOptions = Partial<{
@@ -47,6 +48,7 @@ export type DecoratorCrudOptions = Partial<{
   createOne: Function[]
   updateOne: Function[]
   deleteOne: Function[]
+  recovery: Function[]
 }>
 
 export type OpenApiOptionsType = Partial<{
@@ -55,6 +57,7 @@ export type OpenApiOptionsType = Partial<{
   createOne: OpenApiRouteOptionsType
   updateOne: OpenApiRouteOptionsType
   deleteOne: OpenApiRouteOptionsType
+  recovery: OpenApiRouteOptionsType
 }>
 
 export type OpenApiRouteOptionsType = {

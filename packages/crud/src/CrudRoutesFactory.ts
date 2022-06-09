@@ -39,6 +39,11 @@ export class CrudRouteFactory<M, C, U> {
     },
     {
       method: RouteMethods.GET,
+      path: '/:id/recovery',
+      name: 'recovery'
+    },
+    {
+      method: RouteMethods.GET,
       path: '/:id',
       name: 'getOne'
     },
@@ -132,6 +137,16 @@ export class CrudRouteFactory<M, C, U> {
         case 'deleteOne':
           descriptor = this.prepareRoute(this.prepareDeleteOneRoute())
           summary = `Delete one ${entityName}`
+          pathParam = {
+            schema: { type: 'string' },
+            name: 'id',
+            description: `The id of the ${entityName}`
+          }
+          break
+
+        case 'recovery':
+          descriptor = this.prepareRoute(this.prepareRecoveryRoute())
+          summary = `Recovery one ${entityName}`
           pathParam = {
             schema: { type: 'string' },
             name: 'id',
@@ -303,6 +318,21 @@ export class CrudRouteFactory<M, C, U> {
       } = parsedParams
 
       return service.deleteOne(id)
+    }
+  }
+
+  /**
+   *
+   * @returns
+   */
+  private prepareRecoveryRoute() {
+    return (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+      const {
+        pathParams: { id },
+        queryParams
+      } = parsedParams
+
+      return service.recovery(id, queryParams)
     }
   }
 
