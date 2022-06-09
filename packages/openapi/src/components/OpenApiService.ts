@@ -11,7 +11,7 @@ import { OpenApiPathItem } from './OpenApiPathItem'
 
 @Service()
 export class OpenApiService {
-  private models: Map<Class, ApiModelOptions> = new Map()
+  private models: Map<Class<any>, ApiModelOptions> = new Map()
 
   constructor(@Inject private readonly config: ConfigurationService) {}
 
@@ -20,7 +20,7 @@ export class OpenApiService {
    * @param model
    * @returns
    */
-  public hasModel(model: Class): boolean {
+  public hasModel(model: Class<any>): boolean {
     return this.models.has(model)
   }
 
@@ -29,7 +29,7 @@ export class OpenApiService {
    * @param model
    * @param options
    */
-  public registerModel(model: Class, options: ApiModelOptions) {
+  public registerModel(model: Class<any>, options: ApiModelOptions) {
     this.models.set(model, options)
   }
 
@@ -94,7 +94,7 @@ export class OpenApiService {
 }
 
 type ApiModelObject = {
-  model: Class
+  model: Class<any>
   title: string
   description?: string
 }

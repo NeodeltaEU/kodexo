@@ -50,7 +50,7 @@ class Unique implements ValidatorConstraintInterface {
   }
 }
 
-export function IsUnique(token: Class, validationOptions?: ValidationOptions) {
+export function IsUnique(token: Class<any>, validationOptions?: ValidationOptions) {
   return function (object: Object, propertyName: string) {
     registerDecorator({
       name: 'isUnique',

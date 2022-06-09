@@ -255,7 +255,7 @@ export class Endpoint {
 }
 
 export type EndpointOptions = {
-  target: Class
+  target: Class<any>
   propertyKey: string
   externalDecorating?: boolean
   descriptor: any

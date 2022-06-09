@@ -1,5 +1,5 @@
 import { Class } from 'type-fest'
-import { providerRegistry, Provider } from '../main'
+import { Provider, providerRegistry } from '../main'
 
 export function ensureProvider(provider: Class<any> | Provider): Provider {
   // FIXME: very bad hack
@@ -10,5 +10,5 @@ export function ensureProvider(provider: Class<any> | Provider): Provider {
   )
     return provider as Provider
 
-  return providerRegistry.resolve(provider as Class)
+  return providerRegistry.resolve(provider as Class<any>)
 }

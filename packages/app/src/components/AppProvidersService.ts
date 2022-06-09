@@ -101,7 +101,7 @@ export class AppProvidersService {
    *
    */
   private createRootModule() {
-    const AppModule = this.configuration.getOrFail<Class>('appModule')
+    const AppModule = this.configuration.getOrFail<Class<any>>('appModule')
 
     const RootModule = class {}
 

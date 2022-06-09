@@ -28,4 +28,4 @@ function parseUseOptions(options: UseValidationOptions): any {
   return options
 }
 
-type UseValidationOptions = Class
+type UseValidationOptions = Class<any>

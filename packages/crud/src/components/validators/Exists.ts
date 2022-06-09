@@ -1,7 +1,7 @@
-import { EntityRepository } from '@mikro-orm/core'
 import { isObject } from '@kodexo/common'
 import { Inject } from '@kodexo/injection'
 import { ConnectionDatabase } from '@kodexo/mikro-orm'
+import { EntityRepository } from '@mikro-orm/core'
 import {
   registerDecorator,
   ValidationArguments,
@@ -47,7 +47,7 @@ class Exists implements ValidatorConstraintInterface {
   }
 }
 
-export function IsExist(token: Class, validationOptions?: ValidationOptions) {
+export function IsExist(token: Class<any>, validationOptions?: ValidationOptions) {
   return function (object: Object, propertyName: string) {
     registerDecorator({
       name: 'isExist',

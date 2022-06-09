@@ -2,13 +2,13 @@ import { Handler } from '@tinyhttp/app'
 import { Class } from 'type-fest'
 
 export * from './decorators'
-export * from './main'
 export * from './interfaces'
+export * from './main'
 
 declare global {
   namespace Kodexo {
     interface Configuration {
-      appModule: Class
+      appModule: Class<any>
 
       /**
        *

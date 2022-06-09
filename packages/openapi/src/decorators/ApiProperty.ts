@@ -27,7 +27,7 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
 export type ApiPropertyOptions = {
   type?: Function | string
   description?: string
-  items?: Array<Function | Class | string>
+  items?: Array<Function | Class<any> | string>
   required?: boolean
   example?: any
 }

@@ -2,7 +2,7 @@ import { Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 
 export function ApiModel(options: ApiModelOptions) {
-  return (target: Class) => {
+  return (target: Class<any>) => {
     Store.from(target).set('openapi:model', options)
   }
 }

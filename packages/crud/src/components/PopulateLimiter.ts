@@ -6,6 +6,6 @@ export abstract class PopulateLimiter {
     req: Request,
     fields: Array<string>,
     currentField: string,
-    entityToken: Class
+    entityToken: Class<any>
   ): Promise<Boolean>
 }

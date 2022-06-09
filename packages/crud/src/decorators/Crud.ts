@@ -29,7 +29,7 @@ export type CrudOptionsType<M, C, U> = {
   middlewares?: MiddlewareCrudOptionsType
   interceptors?: MiddlewareCrudOptionsType
   decorators?: DecoratorCrudOptions
-  serialization?: Class
+  serialization?: Class<any>
   openapi?: OpenApiOptionsType
 }
 

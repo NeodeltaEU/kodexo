@@ -18,7 +18,7 @@ export class OpenApiExtractor {
    *
    * @returns
    */
-  public withDto(dto: Class) {
+  public withDto(dto: Class<any>) {
     const modelOptions = this.registerModel(dto)
 
     if (!modelOptions) return this
@@ -33,7 +33,7 @@ export class OpenApiExtractor {
    * @param dto
    * @returns
    */
-  private registerModel(dto: Class) {
+  private registerModel(dto: Class<any>) {
     if (!this.store.has('openapi:model')) return
 
     const modelOptions = this.store.get<ApiModelOptions>('openapi:model')
@@ -146,7 +146,7 @@ export class OpenApiExtractor {
   /**
    *
    */
-  private getArrayProperties(key: string, items?: Array<Class | Function | string>) {
+  private getArrayProperties(key: string, items?: Array<Class<any> | Function | string>) {
     // TODO: get information about concerned DTO
     if (!items)
       throw new DevError(
@@ -182,7 +182,7 @@ export class OpenApiExtractor {
 
     let extractor = OpenApiExtractor.fromStore(store, this.openapiService)
 
-    if (store.has('openapi:model')) extractor.withDto(propertyType as Class)
+    if (store.has('openapi:model')) extractor.withDto(propertyType as Class<any>)
 
     return extractor.extract().buildSchema()
   }
@@ -191,7 +191,7 @@ export class OpenApiExtractor {
    *
    * @param propertyType
    */
-  private convertTypeToOpenApiTypes(propertyType: Function | Class | string) {
+  private convertTypeToOpenApiTypes(propertyType: Function | Class<any> | string) {
     if (typeof propertyType === 'string') {
       return propertyType.toLowerCase() === 'integer'
         ? { type: 'integer' }
@@ -216,7 +216,7 @@ export class OpenApiExtractor {
     }
 
     if (this.isClass(propertyType)) {
-      const modelOptions = this.registerModel(propertyType as Class)
+      const modelOptions = this.registerModel(propertyType as Class<any>)
       return modelOptions ? { type: 'ref' } : { type: 'object' }
     }
 
@@ -275,7 +275,7 @@ export class OpenApiExtractor {
    * @param model
    * @param service
    */
-  static fromModel(model: Class, service: OpenApiService) {
+  static fromModel(model: Class<any>, service: OpenApiService) {
     const store = Store.fromClass(model).mergeFromHerited('openapi:properties')
     return OpenApiExtractor.fromStore(store, service)
   }
@@ -285,6 +285,6 @@ type DtoProperty = {
   type: Function | string
   description: string
   example?: any
-  items?: Array<Function | Class | string>
+  items?: Array<Function | Class<any> | string>
   required?: boolean
 }

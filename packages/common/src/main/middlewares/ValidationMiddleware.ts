@@ -1,10 +1,9 @@
-import { NextFunction, Request, Response } from '@tinyhttp/app'
 import { HttpError } from '@kodexo/errors'
-import { MiddlewareHandling } from '../../interfaces'
-
-import { validateOrReject, ValidationError } from 'class-validator'
+import { NextFunction, Request, Response } from '@tinyhttp/app'
 import { plainToInstance } from 'class-transformer'
+import { validateOrReject, ValidationError } from 'class-validator'
 import { Class } from 'type-fest'
+import { MiddlewareHandling } from '../../interfaces'
 
 function handleChildrenErrors(
   result: Array<any>,
@@ -37,7 +36,7 @@ function handleChildrenErrors(
 }
 
 export class ValidationMiddleware implements MiddlewareHandling {
-  constructor(private dtoToken: Class) {}
+  constructor(private dtoToken: Class<any>) {}
 
   async use(req: Request, res: Response, next: NextFunction) {
     const dto: any = plainToInstance(this.dtoToken, req.body)
