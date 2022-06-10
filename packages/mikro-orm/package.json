@@ -66,8 +66,8 @@
     "@kodexo/config": "^1.0.0-dev.15",
     "@kodexo/injection": "^1.0.0-dev.15",
     "@kodexo/logger": "^1.0.0-dev.15",
-    "@mikro-orm/core": "^5.0.0",
-    "@mikro-orm/postgresql": "^5.0.0"
+    "@mikro-orm/core": "^5.2.0",
+    "@mikro-orm/postgresql": "^5.2.0"
   },
   "gitHead": "3341d44d2cc6d1a4e6b993d4df43a23a0df3175a"
 }

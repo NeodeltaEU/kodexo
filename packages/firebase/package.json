@@ -66,6 +66,6 @@
     "@kodexo/config": "^1.0.0-dev.15",
     "@kodexo/errors": "^1.0.0-dev.15",
     "@kodexo/injection": "^1.0.0-dev.15",
-    "firebase-admin": "^10.2.0"
+    "firebase-admin": "^10.3.0"
   }
 }
