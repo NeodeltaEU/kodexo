@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/logger",
-  "version": "1.0.0-dev.15",
+  "version": "1.0.0-dev.18",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -61,8 +61,8 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/common": "^1.0.0-dev.15",
-    "@kodexo/injection": "^1.0.0-dev.15",
+    "@kodexo/common": "^1.0.0-dev.18",
+    "@kodexo/injection": "^1.0.0-dev.18",
     "@types/pino": "^6.3.9",
     "pino": "^6.12.0",
     "pino-http": "^5.5.0",
