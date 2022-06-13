@@ -15,7 +15,7 @@ export class LimitInvoicePopulateLimiter extends PopulateLimiter {
    * @param req
    * @returns
    */
-  async use(req: Request, fields: Array<string>, currentField: string, entityToken: Class) {
+  async use(req: Request, fields: Array<string>, currentField: string, entityToken: Class<any>) {
     return false
   }
 }
