@@ -37,9 +37,6 @@
       ]
     }
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "bootstrap": "lerna bootstrap --use-workspaces",
     "watch": "lerna run watch --parallel --stream",
@@ -56,6 +53,6 @@
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
     "husky": "^7.0.0",
-    "lerna": "^5.1.1"
+    "lerna": "4"
   }
 }
