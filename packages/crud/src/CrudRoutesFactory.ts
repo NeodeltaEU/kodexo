@@ -6,7 +6,7 @@ import {
   RouteMethods,
   SerializerInterceptor
 } from '@kodexo/common'
-import { HttpError } from '@kodexo/errors'
+import { DevError, HttpError } from '@kodexo/errors'
 import { PathParam } from '@kodexo/openapi'
 import { instanceToPlain } from 'class-transformer'
 import { validateOrReject, ValidationError } from 'class-validator'
@@ -382,6 +382,11 @@ export class CrudRouteFactory<M, C, U> {
     }
 
     return function (this: CrudControllerInterface<M>, req: any, res: any, endpoint: Endpoint) {
+      if (!this.service)
+        throw new DevError(
+          `Controller ${this.constructor.name}: service is not defined, please define through CrudControllerInterface.`
+        )
+
       return handler(
         this.service,
         RequestParser.parse(req, parserOptions, this.service.entityName),
