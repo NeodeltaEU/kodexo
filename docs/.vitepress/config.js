@@ -7,6 +7,11 @@ export default defineConfig({
     nav: nav(),
 
     sidebar: sidebar(),
+  },
+  vite: {
+    server: {
+      port: 4500
+    }
   }
 })
 
@@ -23,7 +28,7 @@ function sidebar() {
       collapsible: true,
       items: [
         {text: 'What is Kodexo?', link: '/introduction/what-is-kodexo'},
-        {text: 'Getting started', link: '/getting-started'},
+        {text: 'Getting started', link: '/introduction/getting-started'},
       ]
     }
   ]
