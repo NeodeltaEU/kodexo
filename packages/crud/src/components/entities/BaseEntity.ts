@@ -18,6 +18,6 @@ export abstract class BaseEntity<T extends AnyEntity> extends MikroORMBaseEntity
   @Property({ defaultRaw: 'now()', onUpdate: () => new Date() })
   updatedAt: Date = new Date()
 
-  @Property({ nullable: true, hidden: true })
+  @Property({ nullable: true, hidden: true, index: true })
   deletedAt?: Date
 }
