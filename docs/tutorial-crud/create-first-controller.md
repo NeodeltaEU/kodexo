@@ -23,8 +23,8 @@ import { Controller, Get } from '@kodexo/common'
 @Controller('/cars')
 export class CarsController {
 
-  @Get('/models')
-  async getModels() {
+  @Get('/brands')
+  async getBrands() {
     return [
       'Mercedes',
       'Ford',
@@ -38,7 +38,7 @@ export class CarsController {
 }
 ```
 
-If your development server is started, you should be able to test the `/cars/models` route and see the JSON return. Congratulations, you have created your first controller and your first route!
+If your development server is started, you should be able to test the `/cars/brands` route and see the JSON return. Congratulations, you have created your first controller and your first route!
 
 :::info
 Reminder: to start your development server, just use the command `npm run dev` or `yarn dev`.

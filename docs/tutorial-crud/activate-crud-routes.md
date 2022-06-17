@@ -9,15 +9,16 @@ import { Inject } from '@kodexo/injection'
 import { Car } from './entities/car.entity'
 import { CarsService } from './services/cars.service'
 
+// Add here the decorator
 @Crud({
   model: Car
 })
 @Controller('/cars')
-export class CarsController implements CrudControllerInterface<Car> {
-  constructor(@Inject public service: CarsService) {}
+export class CarsController implements CrudControllerInterface<Car> { // Add here the interface
+  constructor(@Inject public service: CarsService) {} // And here the service injected
 
-  @Get('/models')
-  async getModels() {
+  @Get('/brands')
+  async getBrands() {
     return [
       'Mercedes',
       'Ford',
@@ -36,3 +37,5 @@ So we apply the `@Crud` decorator on the controller with the MikroORM model as p
 To fully enable CRUD functionality, we need the service we created earlier and to standardize the code and its usage, we use the `CrudControllerInterface`. This interface forces the controller to have a `service` property, which coupled with the dependency injection system allows access to the CRUD methods previously presented.
 
 As we can see, it is quite possible to couple automatic CRUD routes and hand-made routes.
+
+At this point, you should be able to test the `/cars` route which should return an empty array `[]`. If everything is ok, let's move on to creating and securing our first database entries.
