@@ -19,7 +19,7 @@ export class CarSerialized extends BaseSerialized {
   mileage: number
 
   @Expose()
-  get kilometerage() { // yes english neologisms is possible xD
+  get kilometerage() { // yes english neologisms are possible xD
     return this.mileage * 1.609344
   }
 }
@@ -40,6 +40,7 @@ We just need to add this serialization class to the `@Crud` decorator of our con
 ```typescript
 @Crud({
   model: Car,
+  // Add serialization here
   serialization: CarSerialized,
   dto: {
     createDto: CreateCarDto,
