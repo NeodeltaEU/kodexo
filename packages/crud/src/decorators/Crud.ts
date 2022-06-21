@@ -3,27 +3,27 @@ import { MiddlewareHandling } from '../../../common/dist'
 import { CrudRouteFactory } from '../CrudRoutesFactory'
 
 /**
- *
- * @param options
+ * @depracated Use CrudController decorator instead
+ * @param options {import('@kodexo/crud').CrudOptionsType}
  */
-export function Crud<M, C, U>(options: CrudOptionsType<M, C, U>): ClassDecorator {
+export function Crud(options: CrudOptionsType): ClassDecorator {
   const parsedOptions = parseCrudOptions(options)
 
   return (target: any) => {
-    CrudRouteFactory.create<M, C, U>(target, parsedOptions)
+    CrudRouteFactory.create(target, parsedOptions)
   }
 }
 
-function parseCrudOptions<M, C, U>(options: CrudOptionsType<M, C, U>): any {
+function parseCrudOptions(options: CrudOptionsType): any {
   return options
 }
 
-export type CrudOptionsType<M, C, U> = {
-  model: Class<M>
+export type CrudOptionsType = {
+  model: Class<any>
   modelName?: string
   dto?: {
-    createDto?: Class<C>
-    updateDto?: Class<U>
+    createDto?: Class<any>
+    updateDto?: Class<any>
   }
   limitDeepPopulate?: number
   middlewares?: MiddlewareCrudOptionsType

@@ -1,5 +1,5 @@
-import { Controller, Get, RouteParams, UseSerialization } from '@kodexo/common'
-import { Crud, CrudControllerInterface } from '@kodexo/crud'
+import { Get, RouteParams, UseSerialization } from '@kodexo/common'
+import { CrudController, CrudControllerInterface } from '@kodexo/crud'
 import { Inject } from '@kodexo/injection'
 import { ApiGroup, ApiPathParam, Summary } from '@kodexo/openapi'
 import { CarsService } from './cars.service'
@@ -9,7 +9,8 @@ import { Car } from './entities/car.entity'
 import { CarSerialized } from './serializations/car.serialized'
 import { RegistrationSerialized } from './serializations/registration.serialized'
 
-@Crud({
+@ApiGroup('Cars')
+@CrudController('/cars', {
   model: Car,
   dto: {
     createDto: CreateCarDto,
@@ -17,8 +18,6 @@ import { RegistrationSerialized } from './serializations/registration.serialized
   },
   serialization: CarSerialized
 })
-@ApiGroup('Cars')
-@Controller('/cars')
 export class CarsController implements CrudControllerInterface<Car> {
   constructor(@Inject public service: CarsService) {}
 

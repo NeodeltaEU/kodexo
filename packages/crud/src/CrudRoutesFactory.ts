@@ -19,16 +19,13 @@ import { RequestParsedResult } from './interfaces'
 import { CrudControllerInterface } from './interfaces/CrudControllerInterface'
 import { RequestParser } from './RequestParser'
 
-export class CrudRouteFactory<M, C, U> {
-  constructor(protected target: any, protected options: CrudOptionsType<M, C, U>) {
+export class CrudRouteFactory {
+  constructor(protected target: any, protected options: CrudOptionsType) {
     this.create()
   }
 
-  static create<M, C, U>(
-    target: any,
-    options: CrudOptionsType<M, C, U>
-  ): CrudRouteFactory<M, C, U> {
-    return new CrudRouteFactory<M, C, U>(target, options)
+  static create(target: any, options: CrudOptionsType): CrudRouteFactory {
+    return new CrudRouteFactory(target, options)
   }
 
   private defaultRoutes = [
@@ -198,7 +195,7 @@ export class CrudRouteFactory<M, C, U> {
    *
    */
   private prepareCreateOneRoute() {
-    return async (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+    return async (service: CrudService<any>, parsedParams: RequestParsedResult) => {
       const { createDto, assign, queryParams } = parsedParams
 
       try {
@@ -254,7 +251,7 @@ export class CrudRouteFactory<M, C, U> {
    * @returns
    */
   private prepareUpdateOneRoute() {
-    return async (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+    return async (service: CrudService<any>, parsedParams: RequestParsedResult) => {
       const {
         updateDto,
         queryParams,
@@ -312,7 +309,7 @@ export class CrudRouteFactory<M, C, U> {
    * @returns
    */
   private prepareDeleteOneRoute() {
-    return (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+    return (service: CrudService<any>, parsedParams: RequestParsedResult) => {
       const {
         pathParams: { id }
       } = parsedParams
@@ -326,7 +323,7 @@ export class CrudRouteFactory<M, C, U> {
    * @returns
    */
   private prepareRecoveryRoute() {
-    return (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+    return (service: CrudService<any>, parsedParams: RequestParsedResult) => {
       const {
         pathParams: { id },
         queryParams
@@ -342,7 +339,7 @@ export class CrudRouteFactory<M, C, U> {
    */
   private prepareGetManyRoute() {
     return async (
-      service: CrudService<M>,
+      service: CrudService<any>,
       parsedParams: RequestParsedResult,
       endpoint: Endpoint
     ) => {
@@ -360,7 +357,7 @@ export class CrudRouteFactory<M, C, U> {
    * @returns
    */
   private prepareGetOneRoute() {
-    return (service: CrudService<M>, parsedParams: RequestParsedResult) => {
+    return (service: CrudService<any>, parsedParams: RequestParsedResult) => {
       const {
         pathParams: { id },
         queryParams
@@ -381,7 +378,7 @@ export class CrudRouteFactory<M, C, U> {
       limitDeepPopulate: this.options.limitDeepPopulate || 6
     }
 
-    return function (this: CrudControllerInterface<M>, req: any, res: any, endpoint: Endpoint) {
+    return function (this: CrudControllerInterface<any>, req: any, res: any, endpoint: Endpoint) {
       if (!this.service)
         throw new DevError(
           `Controller ${this.constructor.name}: service is not defined, please define through CrudControllerInterface.`
