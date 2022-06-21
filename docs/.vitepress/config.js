@@ -51,7 +51,7 @@ function sidebar() {
     },
 
     {
-      text: "Common Project Architecture",
+      text: "Common",
       collapsible: true,
       items: [
         { text: "Global architecture", link: "/project-architecture/global-architecture" },
