@@ -79,3 +79,7 @@ Remember that we have the `X-Total-Count` header that only returns the total num
 :::info
 We are looking to offer **Cursor-based pagination** in the future.
 :::
+
+---
+
+Congratulations, you have completed the tutorial. Don't hesitate to browse the documentation to go further, there are many other principles to understand, to master Kodexo and simplify your developments.
