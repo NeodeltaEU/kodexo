@@ -35,7 +35,7 @@ my-crud-project
 |   |   └── my-feature
 |   |       ├── dto
 |   |       |   ├── common-my-feature.dto.ts
-|   |       |   └── create-my-feature.dto.ts
+|   |       |   ├── create-my-feature.dto.ts
 |   |       |   └── update-my-feature.dto.ts
 |   |       ├── entities
 |   |       |   └── my-feature.entity.ts
