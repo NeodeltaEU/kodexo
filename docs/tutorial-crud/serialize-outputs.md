@@ -38,7 +38,7 @@ Note that if you do not want to apply any modification to a field, you must use 
 We just need to add this serialization class to the `@Crud` decorator of our controller. Here we go:
 
 ```typescript
-@Crud({
+@CrudController('/cars', {
   model: Car,
   // Add serialization here
   serialization: CarSerialized,

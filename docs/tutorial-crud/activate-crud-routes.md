@@ -3,17 +3,15 @@
 We have previously created our first controller, now let's work on adding the CRUD routes to this controller. We have a second decorator that is applied to the controller: the `@Crud` decorator. See how it works and how we enable routes on the controller:
 
 ```typescript
-import { Controller } from '@kodexo/common'
-import { Crud, CrudControllerInterface } from '@kodexo/crud'
+import { CrudController, CrudControllerInterface } from '@kodexo/crud'
 import { Inject } from '@kodexo/injection'
 import { Car } from './entities/car.entity'
 import { CarsService } from './services/cars.service'
 
-// Add here the decorator
-@Crud({
+// Change here the decorator
+@CrudController('/cars', {
   model: Car
 })
-@Controller('/cars')
 export class CarsController implements CrudControllerInterface<Car> { // Add here the interface
   constructor(@Inject public service: CarsService) {} // And here the service injected
 

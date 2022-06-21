@@ -50,14 +50,13 @@ That's it. You have an object-oriented representation of your input data with va
 Now let's go secure our Create route. Let's take our controller and add a parameter to the `@Crud` decorator:
 
 ```typescript
-import { Controller } from '@kodexo/common'
-import { Crud, CrudControllerInterface } from '@kodexo/crud'
+import { CrudController, CrudControllerInterface } from '@kodexo/crud'
 import { Inject } from '@kodexo/injection'
 import { Car } from './entities/car.entity'
 import { CarsService } from './services/cars.service'
 import { CreateCarDto } from './dto/create-car.dto'
 
-@Crud({
+@CrudController('/cars', {
   model: Car,
   // Add dto param here
   dto: {
@@ -90,20 +89,7 @@ And here is the create route is now secured. We will test it at the end.
 We know how to make a DTO, making a second one will be a breeze, so let's go. We create a new file `src/features/cars/dto/update-car.dto.ts`:
 
 ```typescript
-import { IsString, IsIn, IsInt } from 'class-validator'
-
-// We could use this in a service to share this kind 
-// of information between the controller and our validations.
-// Go to Dependency Injection / Validations & Sanitizations.
-const brands = [
-  'Mercedes',
-  'Ford',
-  'Toyota',
-  'Volkswagen',
-  'Renault',
-  'Fiat',
-  'Nissan'
-]
+import { IsString, IsInt } from 'class-validator'
 
 export class UpdateCarDto {
   @IsString()
@@ -125,7 +111,7 @@ You can do inheritance between your DTOs, validation/sanitization will still app
 As we did before, we just add our DTO to the `@Crud` decorator of our controller as a parameter:
 
 ```typescript
-@Crud({
+@CrudController('/cars', {
   model: Car,
   dto: {
     createDto: CreateCarDto,
