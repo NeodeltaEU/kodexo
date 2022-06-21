@@ -9,7 +9,7 @@ Let's make a first call to our API, through [Postman](https://www.postman.com) o
 ![IMAGE POSTMAN GET /cars => tableau vide](https://via.placeholder.com/800x450)
 
 :::tip
-If you analyze the response headers, you may see an `X-Total-Count` header that contains the total number of entities that match your search (regardless of your pagination etc).
+If you analyze the response headers, you may see a `X-Total-Count` header that contains the total number of entities that match your search (regardless of your pagination etc).
 :::
 
 The result is an empty table. This is normal, we have not yet created a single car in the database. So here we go, let's create it.

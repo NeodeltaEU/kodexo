@@ -19,7 +19,7 @@ export class CarSerialized extends BaseSerialized {
   mileage: number
 
   @Expose()
-  get kilometerage() { // yes english neologisms are possible xD
+  get kilometerage() { // english neologisms are possible
     return this.mileage * 1.609344
   }
 }
