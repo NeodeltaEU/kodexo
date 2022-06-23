@@ -1,4 +1,5 @@
 import { ServerConfiguration } from '@kodexo/config'
+import { RequestContextMiddleware } from '@kodexo/mikro-orm'
 import { LoadStrategy } from '@mikro-orm/core'
 import { CompleteCrudModule } from './complete-crud.module'
 
@@ -14,7 +15,7 @@ export const config: ServerConfiguration = {
     type: 'postgresql',
     debug: false,
     loadStrategy: LoadStrategy.JOINED,
-    allowGlobalContext: true,
+    allowGlobalContext: false,
     migrations: {
       tableName: 'migrations',
       path: './migrations',
@@ -29,5 +30,7 @@ export const config: ServerConfiguration = {
         ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
       }
     }
-  }
+  },
+
+  middlewares: [RequestContextMiddleware()]
 }

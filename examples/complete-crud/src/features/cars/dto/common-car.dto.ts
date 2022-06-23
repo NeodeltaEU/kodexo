@@ -9,4 +9,7 @@ export class CommonCarDto {
   })
   @IsString()
   name: string
+
+  @IsString()
+  owner: string
 }
