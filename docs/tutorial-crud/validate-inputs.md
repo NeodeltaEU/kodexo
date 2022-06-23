@@ -4,7 +4,7 @@ We want to create and update new database entries to register cars.
 
 ## Create our first DTO
 
-To prevent end users from sending wrong data, we will add an input data format. To do this, we will create what is called a DTO.
+To prevent end users from sending wrong data, we will add an input data format. To do this, we will create what is called a DTO ([Data Transfert Object](https://en.wikipedia.org/wiki/Data_transfer_object)).
 
 A DTO is an object that contains the input data of a route, it is the source of truth about the sent data. Together with validation & sanitization decorators, our DTO will transport the validated or modified data to the inspector who will check if the data sent is in accordance with the initial declaration of the DTO.
 
@@ -93,10 +93,10 @@ import { IsString, IsInt } from 'class-validator'
 
 export class UpdateCarDto {
   @IsString()
-  label: string
+  label?: string
 
   @IsInt()
-  mileage: number
+  mileage?: number
 }
 ```
 

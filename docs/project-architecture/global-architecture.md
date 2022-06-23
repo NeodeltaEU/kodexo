@@ -1,6 +1,6 @@
 # Global Architecture
 
-A Kodexo application is composed of two types of elements: controllers and services. After that we add some other dependencies (eg. Models, Subscribers...) on which we rely to build robust and powerful applications, but the base remains the controllers and the services.
+A Kodexo application is globally composed of injectable classes. The injectable side is indeed common to controllers, services, middleware, modules etc. After that we add some other dependencies (eg. Models, Subscribers...) on which we rely to build robust and powerful applications, but the base remains the controllers and the services.
 
 ## Differents packages
 

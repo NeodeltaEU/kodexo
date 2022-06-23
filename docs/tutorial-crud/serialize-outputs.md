@@ -2,6 +2,10 @@
 
 As such, our feature has the minimum required to run properly. But it is strongly recommended to apply serialization to output objects. This is how you can clean up output data, modify it, hide some of it depending on the context, etc. It is also at the serialization level that we can declare our OpenAPI specifications.
 
+:::info
+Like DTOs, serialized outgoing objects are handled by [class-transformer](https://github.com/typestack/class-transformer).
+:::
+
 Let's create our first serialization class together. Start by creating a `serializations` folder in your feature. Next we create the file `src/features/cars/serializations/car.serialized.ts`:
 
 ```typescript
