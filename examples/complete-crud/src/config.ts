@@ -3,6 +3,8 @@ import { RequestContextMiddleware } from '@kodexo/mikro-orm'
 import { LoadStrategy } from '@mikro-orm/core'
 import { CompleteCrudModule } from './complete-crud.module'
 
+import '@kodexo/mikro-orm'
+
 export const config: ServerConfiguration = {
   appModule: CompleteCrudModule,
 
