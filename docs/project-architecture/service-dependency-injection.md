@@ -21,7 +21,7 @@ We must remember to register our service in our feature module. Don't forget tha
 
 Next, let's see how to use a service (and more generally an injectable) in another service, a controller or in a class external to the IoC system.
 
-## Injection
+## Dependency Injection
 
 In a controller or a service, it is quite similar:
 
@@ -51,3 +51,9 @@ class MyExternalClass {
 :::warning
 But remember that potentially the provider building system can take a long time when starting the app. Make sure that your external class is called after your app's providers are resolved.
 :::
+
+## Accessing Providers Service
+
+You may need to access the providers of your application. To do this, we have a Service that is provided: `AppProviderService`.
+
+It allows to retrieve the instance linked to a provider via the `getInstanceProvider` method.
