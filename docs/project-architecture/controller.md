@@ -121,3 +121,11 @@ export class CarsController {
   }
 }
 ```
+
+## Responses
+
+As you can see, the methods of the controllers can be synchronous or asynchronous. Ideally, remember to always return a javascript object.
+
+:::tip
+You can also change the HTTP code of your return using the `@Status(xxx)` decorator, xxx being your code, in addition to your HTTP method decorator.
+:::
