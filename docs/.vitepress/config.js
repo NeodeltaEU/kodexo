@@ -63,6 +63,7 @@ function sidebar() {
         { text: "Module", link: "/project-architecture/module" },
         { text: "Controller", link: "/project-architecture/controller" },
         { text: "Service & Dependency Injection", link: "/project-architecture/service-dependency-injection" },
+        { text: "Middlewares & Interceptors", link: "/project-architecture/middlewares-interceptors" },
         { text: "Hooks", link: "/project-architecture/hooks" },
         { text: "Error handling", link: "/project-architecture/error-handling" },
       ],
@@ -71,10 +72,10 @@ function sidebar() {
     {
       text: "Thematic Guides",
       collapsible: true,
+      collapsed: true,
       items: [
         { text: "Validations & Sanitizations", link: "/thematic-guides/validation-sanitization" },
         { text: "Serialization", link: "/thematic-guides/serialization" },
-        { text: "Middlewares & Interceptors", link: "/thematic-guides/middlewares-interceptors" },
         { text: "CRUD & MikroORM", link: "/thematic-guides/crud-mikro-orm" },
         { text: "ACL", link: "/thematic-guides/acl" },
         { text: "OpenAPI", link: "/thematic-guides/open-api" },
@@ -86,6 +87,7 @@ function sidebar() {
     {
       text: "Usage Guides",
       collapsible: true,
+      collapsed: true,
       items: [
         { text: "CRUD Endpoints", link: "/usages-guides/crud-endpoints" },
         { text: "Filtering", link: "/usages-guides/filtering" },
