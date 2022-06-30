@@ -74,7 +74,7 @@ function sidebar() {
       collapsible: true,
       collapsed: true,
       items: [
-        { text: "Validations & Sanitizations", link: "/thematic-guides/validation-sanitization" },
+        { text: "Validations & Sanitizations", link: "/thematic-guides/validations-sanitization" },
         { text: "Serialization", link: "/thematic-guides/serialization" },
         { text: "CRUD & MikroORM", link: "/thematic-guides/crud-mikro-orm" },
         { text: "ACL", link: "/thematic-guides/acl" },

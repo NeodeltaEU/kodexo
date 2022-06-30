@@ -84,3 +84,5 @@ export class MyInterceptor implements MiddlewareHandling {
   }
 }
 ```
+
+To override the result, simply rewrite the req.result variable and voilà, your Interceptor works.
