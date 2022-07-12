@@ -14,6 +14,7 @@ function isMiddlewareInstance(
 
 export type MethodDecoratorOptions = Partial<{
   action: string
+  stream: boolean
 }>
 
 export class EndpointBuilder {
@@ -34,6 +35,8 @@ export class EndpointBuilder {
   private interceptors: MiddlewareHandler[]
 
   private headers: Dictionnary = {}
+
+  private isStream = false
 
   private action?: string
 
@@ -180,6 +183,7 @@ export class EndpointBuilder {
       statusCode,
       middlewares,
       interceptors,
+      isStream,
       action
     } = this
 
@@ -195,6 +199,7 @@ export class EndpointBuilder {
       statusCode,
       middlewares,
       interceptors,
+      isStream,
       action: action || propertyKey
     })
 

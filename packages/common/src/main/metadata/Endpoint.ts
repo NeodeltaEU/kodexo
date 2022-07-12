@@ -27,6 +27,9 @@ export class Endpoint {
   public headers: Record<string, string> = {}
 
   public descriptor: any
+
+  public isStream: boolean = false
+
   private rawDescriptor: any
 
   public middlewares: MiddlewareHandler[] = []
@@ -52,6 +55,7 @@ export class Endpoint {
     headers,
     middlewares,
     interceptors,
+    isStream,
     action
   }: EndpointOptions) {
     this.externalDecorating = !!externalDecorating
@@ -63,6 +67,8 @@ export class Endpoint {
     this.target = target
     this.propertyKey = propertyKey
     this.action = action
+
+    this.isStream = isStream ?? false
 
     if (middlewares?.length) this.middlewares = middlewares
     if (interceptors?.length) this.interceptors = interceptors
@@ -265,6 +271,7 @@ export type EndpointOptions = {
   interceptors?: MiddlewareHandler[]
   headers?: Record<string, string>
   statusCode?: number
+  isStream?: boolean
   action: string
 }
 

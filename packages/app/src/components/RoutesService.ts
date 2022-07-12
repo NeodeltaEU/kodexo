@@ -8,10 +8,12 @@ import {
   Response,
   Service
 } from '@kodexo/common'
+import { Readable } from 'stream'
 import { IProvider, OnProviderInit, providerRegistry, Registry } from '@kodexo/injection'
 import { Handler } from '@tinyhttp/app'
 import { parse } from 'regexparam'
 import { AppProvidersService } from './AppProvidersService'
+import { HttpError } from '@kodexo/errors'
 
 export type RouteEndpoint = {
   endpoint: Endpoint
@@ -46,17 +48,29 @@ export class RoutesService implements OnProviderInit {
         .map(provider => provider.route)
         .forEach(mountEndpoint =>
           controllerProvider.endpoints.forEach(endpoint => {
-            /**
-             *
-             * @param req
-             * @param res
-             */
-            const resultHandler = (req: RequestWithResult, res: Response) => {
-              const { statusCode, headers } = endpoint
+            let resultHandler
 
-              res.set(headers)
-              res.status(statusCode)
-              res.json(req.result)
+            const { statusCode, headers } = endpoint
+
+            if (endpoint.isStream) {
+              resultHandler = (req: RequestWithResult, res: Response) => {
+                res.set(headers)
+                res.status(statusCode)
+
+                const stream = req.result as Readable
+
+                stream.pipe(res)
+
+                stream.on('error', error => {
+                  throw HttpError.InternalServerError({ error })
+                })
+              }
+            } else {
+              resultHandler = (req: RequestWithResult, res: Response) => {
+                res.set(headers)
+                res.status(statusCode)
+                res.json(req.result)
+              }
             }
 
             /**
@@ -91,8 +105,8 @@ export class RoutesService implements OnProviderInit {
               ...endpoint.interceptors
             )
 
-            //
-            middlewares.push(...interceptors)
+            // Disable interceptors for streams (actually)
+            if (!endpoint.isStream) middlewares.push(...interceptors)
 
             const routeEndpoint = {
               endpoint,
