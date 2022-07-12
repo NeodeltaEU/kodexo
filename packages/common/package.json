@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/common",
-  "version": "1.0.0-dev.24",
+  "version": "1.0.0-dev.25",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
