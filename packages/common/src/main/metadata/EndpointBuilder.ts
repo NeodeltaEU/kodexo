@@ -157,6 +157,16 @@ export class EndpointBuilder {
 
   /**
    *
+   * @param isStream
+   * @returns
+   */
+  asStream(isStream?: boolean) {
+    this.isStream = isStream ?? false
+    return this
+  }
+
+  /**
+   *
    */
   addHeader(key: string, value: string) {
     this.headers[key] = value
@@ -230,6 +240,7 @@ export class EndpointBuilder {
           .withMethod(method)
           .withAction(options?.action)
           .withDescriptor(descriptor)
+          .asStream(options?.stream)
           .build()
       }
   }
