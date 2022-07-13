@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/app",
-  "version": "1.0.0-dev.25",
+  "version": "1.0.0-dev.26",
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
@@ -83,7 +83,7 @@
     "@kodexo/errors": "^1.0.0-dev.18",
     "@kodexo/injection": "^1.0.0-dev.18",
     "@kodexo/logger": "^1.0.0-dev.25",
-    "@kodexo/openapi": "^1.0.0-dev.25",
+    "@kodexo/openapi": "^1.0.0-dev.26",
     "@kodexo/queueing": "^1.0.0-dev.25",
     "@tinyhttp/app": "^1.3.11",
     "@tinyhttp/cors": "^1.1.7",
