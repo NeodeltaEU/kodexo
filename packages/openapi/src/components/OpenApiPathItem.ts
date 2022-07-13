@@ -78,18 +78,21 @@ export class OpenApiPathItem {
   private getPathParamaters(): OpenAPIV3_1.ParameterObject[] {
     // When params decorators are bypass
     if (this.store.has('openapi:pathParams')) {
+      const isUuid = this.openApiService.pathIdType === 'uuid'
+
+      const schema: OpenAPIV3_1.NonArraySchemaObject = isUuid
+        ? { type: 'string', format: 'uuid' }
+        : { type: this.openApiService.pathIdType as PathIdType }
+
       return this.store.get<PathParam[]>('openapi:pathParams').map(parameter => {
         return {
           name: parameter.name,
-          schema: {
-            type: 'string',
-            format: 'uuid'
-          },
+          schema,
           description: parameter.description,
           required: parameter.required || true,
           in: 'path'
         }
-      })
+      }) as any // TODO: fix this
     }
 
     // When params decorators are used
@@ -160,3 +163,5 @@ export class OpenApiPathItem {
     return builtObject
   }
 }
+
+type PathIdType = 'string' | 'integer'

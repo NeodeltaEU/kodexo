@@ -12,8 +12,11 @@ import { OpenApiPathItem } from './OpenApiPathItem'
 @Service()
 export class OpenApiService {
   private models: Map<Class<any>, ApiModelOptions> = new Map()
+  public readonly pathIdType: string
 
-  constructor(@Inject private readonly config: ConfigurationService) {}
+  constructor(@Inject private readonly config: ConfigurationService) {
+    this.pathIdType = this.config.get('openapi.pathIdType') || 'uuid'
+  }
 
   /**
    *
