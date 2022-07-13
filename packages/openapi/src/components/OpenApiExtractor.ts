@@ -12,6 +12,7 @@ export class OpenApiExtractor {
   private properties: Record<string, any> = {}
   private multiple: boolean = false
   private ref?: string
+
   constructor(private readonly store: Store, private readonly openapiService: OpenApiService) {}
 
   /**
@@ -101,7 +102,7 @@ export class OpenApiExtractor {
     const properties = this.store.get<DtoProperty[]>('openapi:properties')
 
     return Object.entries(properties).reduce((result, [key, value]) => {
-      const { type, description, example, required, items } = value
+      const { type, description, example, required, items, nullable } = value
 
       const properties = this.getSubProperties(type)
       const formattedType = this.convertTypeToOpenApiTypes(type)
@@ -119,14 +120,14 @@ export class OpenApiExtractor {
           const arrayProperties = this.getArrayProperties(key, items)
 
           result[key] = {
-            type: formattedType.type,
+            type: nullable ? ['null', formattedType.type] : formattedType.type,
             items: arrayProperties
           }
           break
 
         default:
           result[key] = {
-            type: formattedType.type,
+            type: nullable ? ['null', formattedType.type] : formattedType.type,
             format: formattedType.format,
             properties
           }
@@ -287,4 +288,5 @@ type DtoProperty = {
   example?: any
   items?: Array<Function | Class<any> | string>
   required?: boolean
+  nullable?: boolean
 }

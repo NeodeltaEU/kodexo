@@ -3,7 +3,7 @@ import { Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 
 export function ApiProperty(options: ApiPropertyOptions = {}) {
-  const { type, description, required, example, items } = options
+  const { type, description, required, example, items, nullable } = options
 
   return (target: any, propertyKey: string | symbol) => {
     const store = Store.from(getClass(target))
@@ -19,7 +19,8 @@ export function ApiProperty(options: ApiPropertyOptions = {}) {
       description,
       items,
       required: required ?? undefined,
-      example
+      example,
+      nullable: nullable ?? undefined
     }
   }
 }
@@ -30,4 +31,5 @@ export type ApiPropertyOptions = {
   items?: Array<Function | Class<any> | string>
   required?: boolean
   example?: any
+  nullable?: boolean
 }
