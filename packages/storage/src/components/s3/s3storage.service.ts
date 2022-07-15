@@ -63,7 +63,7 @@ export class S3StorageService extends StorageService {
 
       if (!currentField) throw new Error('Field not found')
 
-      subfolder = currentField.subfolder || ''
+      subfolder = (await Promise.resolve(currentField.subfolder)) || ''
     }
 
     const { path, stream, sizeStream, mime, key, extension } = await this.processFile(

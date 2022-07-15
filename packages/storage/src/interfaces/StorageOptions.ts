@@ -6,7 +6,7 @@ export type UploadFileStorageOptions = {
 
 export type StorageFieldOptions = {
   name: string
-  subfolder?: string
+  subfolder?: string | Promise<string>
 }
 
 export type GetFileStreamStorageOptions = {}
