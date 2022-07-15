@@ -1,9 +1,10 @@
 import { AppProvidersService } from '@kodexo/app'
-import { Request, Service } from '@kodexo/common'
-import { Inject } from '@kodexo/injection'
+import { getClass, Request, Service } from '@kodexo/common'
+import { Inject, OnProviderInit, Registry, Store } from '@kodexo/injection'
 import { Class } from 'type-fest'
 import { UserRole } from '../interfaces/UserRole'
 import { AccessResolver, OrmFilterParams } from '../main/AccessResolver'
+import { kebabCase } from '../utils/kebab-case'
 
 export interface Acl {
   resource: string
@@ -11,10 +12,31 @@ export interface Acl {
 }
 
 @Service()
-export class AclService {
+export class AclService implements OnProviderInit {
+  private registeredAcls: Array<Acl> = []
+
   constructor(@Inject private providersService: AppProvidersService) {}
 
-  private registeredAcls: Array<Acl> = []
+  /**
+   *
+   * @param providerRegistry
+   */
+  async onProviderInit(providerRegistry: Registry): Promise<void> {
+    Array.from(providerRegistry.controllers.values()).forEach(controllerProvider => {
+      const controllerStore = Store.from(controllerProvider.token)
+
+      const resolver = controllerStore.get('acl:resolver')
+
+      if (!resolver) return
+
+      const resource = kebabCase(getClass(controllerProvider.token).name).slice(0, -11)
+
+      this.registerAcl({
+        resource,
+        resolver
+      })
+    })
+  }
 
   /**
    *
