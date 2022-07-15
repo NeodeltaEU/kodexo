@@ -1,4 +1,9 @@
-import { DeleteObjectCommand, GetObjectCommand, S3Client } from '@aws-sdk/client-s3'
+import {
+  CopyObjectCommand,
+  DeleteObjectCommand,
+  GetObjectCommand,
+  S3Client
+} from '@aws-sdk/client-s3'
 import { Upload } from '@aws-sdk/lib-storage'
 import { Service } from '@kodexo/common'
 import { ConfigurationService } from '@kodexo/config'
@@ -130,6 +135,35 @@ export class S3StorageService extends StorageService {
    */
   async removeFile(path: string, args: S3RemoveFileStorageOptions): Promise<void> {
     const command = new DeleteObjectCommand({ Key: path, Bucket: this.bucket })
+    await this.client.send(command)
+  }
+
+  /**
+   *
+   */
+  async moveFile(originalPath: string, newPath: string) {
+    const copyCommand = new CopyObjectCommand({
+      Key: newPath,
+      Bucket: this.bucket,
+      CopySource: `/${this.bucket}/${originalPath}`
+    })
+
+    await this.client.send(copyCommand)
+
+    await this.deleteFile(originalPath)
+
+    return {
+      path: newPath
+    }
+  }
+
+  /**
+   *
+   * @param path
+   */
+  async deleteFile(path: string) {
+    const command = new DeleteObjectCommand({ Key: path, Bucket: this.bucket })
+
     await this.client.send(command)
   }
 }
