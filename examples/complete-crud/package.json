@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@kodexo/examples-complete-crud",
-  "version": "1.0.0-dev.29",
+  "version": "1.0.0-dev.30",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -26,7 +26,7 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/access-control": "^1.0.0-dev.26",
+    "@kodexo/access-control": "^1.0.0-dev.30",
     "@kodexo/app": "^1.0.0-dev.26",
     "@kodexo/common": "^1.0.0-dev.25",
     "@kodexo/config": "^1.0.0-dev.25",
