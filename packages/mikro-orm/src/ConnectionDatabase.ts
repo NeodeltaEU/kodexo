@@ -134,9 +134,7 @@ export class ConnectionDatabase {
 
     this.logger.info(`[MIKRO-ORM] Extract models metadata...`)
 
-    this.entitiesMetadata = Object.values(metadata).filter(
-      entityMetadata => !entityMetadata.pivotTable
-    )
+    this.entitiesMetadata = Object.values(metadata) //.filter(entityMetadata => !entityMetadata.pivotTable) // FIXME: it was here for good reason :shrug:
 
     this.logger.info(`[MIKRO-ORM] Metadata loaded`)
   }
