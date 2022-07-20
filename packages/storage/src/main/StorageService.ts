@@ -8,6 +8,7 @@ import {
   UploadFileStorageOptions
 } from '../interfaces'
 
+import { HttpError } from '@kodexo/errors'
 import * as mimetypes from 'mime-types'
 import * as Path from 'path'
 import * as meter from 'stream-meter'
@@ -57,7 +58,7 @@ export abstract class StorageService {
     if (!mime) mime = mimetypes.lookup(filename) || 'application/octet-stream'
 
     if (options?.authorizedMimetypes?.length && !options.authorizedMimetypes.includes(mime))
-      throw new Error(`Not authorized mimetype for file: ${filename}`)
+      throw HttpError.NotAcceptable(`Not authorized mimetype for file: ${filename}`)
 
     const extension = mimetypes.extension(mime)
     const key = `${uniqid()}.${extension}`
