@@ -73,7 +73,9 @@ export class S3StorageService extends StorageService {
 
     const { path, stream, sizeStream, mime, key, extension } = await this.processFile(
       file,
-      subfolder
+      filename,
+      subfolder,
+      options
     )
 
     const upload = new Upload({

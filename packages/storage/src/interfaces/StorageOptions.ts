@@ -1,5 +1,6 @@
 export type UploadFileStorageOptions = {
   sizeLimit?: number | string
+  authorizedMimetypes?: string[]
   maxFiles?: number
   fields?: StorageFieldOptions[]
 }

@@ -42,13 +42,18 @@ export abstract class StorageService {
    *
    * @param file
    */
-  protected async processFile(file: Readable, subfolder: string) {
-    let { stream, mime } = await getMimeType(file)
+  protected async processFile(file: Readable, filename: string, subfolder: string, options: UploadFileStorageOptions) {
+    let { stream, mime } = await getMimeType(file, { strict: true, filename })
 
     const sizeStream = meter()
 
     stream = stream.pipe(sizeStream)
 
+    if(!mime) mime = mimetypes.lookup(filename) || 'application/octet-stream'
+
+    if(options?.authorizedMimetypes.length && !options.authorizedMimetypes.includes(mime))
+      throw new Error(`Not authorized mimetype for file: ${filename}`)
+    
     const extension = mimetypes.extension(mime)
     const key = `${uniqid()}.${extension}`
     const path = this.cleanPath(subfolder, key)
