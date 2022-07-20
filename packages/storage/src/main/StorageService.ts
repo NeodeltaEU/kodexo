@@ -3,16 +3,16 @@ import { ConfigurationService } from '@kodexo/config'
 import { Readable } from 'stream'
 import {
   FileResult,
-  UploadFileStorageOptions,
   GetFileStreamStorageOptions,
-  RemoveFileStorageOptions
+  RemoveFileStorageOptions,
+  UploadFileStorageOptions
 } from '../interfaces'
 
-import { getMimeType } from 'stream-mime-type'
-import * as uniqid from 'uniqid'
-import * as meter from 'stream-meter'
 import * as mimetypes from 'mime-types'
 import * as Path from 'path'
+import * as meter from 'stream-meter'
+import { getMimeType } from 'stream-mime-type'
+import * as uniqid from 'uniqid'
 
 export abstract class StorageService {
   protected mainFolder: string = ''
@@ -42,18 +42,23 @@ export abstract class StorageService {
    *
    * @param file
    */
-  protected async processFile(file: Readable, filename: string, subfolder: string, options: UploadFileStorageOptions) {
+  protected async processFile(
+    file: Readable,
+    filename: string,
+    subfolder: string,
+    options: UploadFileStorageOptions
+  ) {
     let { stream, mime } = await getMimeType(file, { strict: true, filename })
 
     const sizeStream = meter()
 
     stream = stream.pipe(sizeStream)
 
-    if(!mime) mime = mimetypes.lookup(filename) || 'application/octet-stream'
+    if (!mime) mime = mimetypes.lookup(filename) || 'application/octet-stream'
 
-    if(options?.authorizedMimetypes.length && !options.authorizedMimetypes.includes(mime))
+    if (options?.authorizedMimetypes?.length && !options.authorizedMimetypes.includes(mime))
       throw new Error(`Not authorized mimetype for file: ${filename}`)
-    
+
     const extension = mimetypes.extension(mime)
     const key = `${uniqid()}.${extension}`
     const path = this.cleanPath(subfolder, key)
