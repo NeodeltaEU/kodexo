@@ -390,7 +390,7 @@ export abstract class CrudService<E extends AnyEntity> {
 
         let identifierField
 
-        if (this.options?.collectionIdentifierFields.hasOwnProperty(firstLevel)) {
+        if (this.options?.collectionIdentifierFields?.hasOwnProperty(firstLevel)) {
           identifierField = this.options.collectionIdentifierFields[firstLevel]
         }
 
