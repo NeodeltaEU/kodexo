@@ -174,6 +174,23 @@ export abstract class CrudService<E extends AnyEntity> {
     try {
       const entity = await this.repository.findOneOrFail(id)
 
+      if (
+        this.options?.softDelete?.field &&
+        this.entityProperties.includes(this.options.softDelete.field)
+      ) {
+        await this.repository.nativeUpdate(
+          { id } as any,
+          {
+            [this.options.softDelete.field || 'deletedAt']:
+              this.options.softDelete.deletedDefaultValue()
+          } as any
+        )
+
+        return this.retrieve(id)
+      }
+
+      // OLD SYSTEM
+      // TODO: REFACTOR THIS
       if (this.entityProperties.includes(this.options?.deletedAtField || 'deletedAt')) {
         await this.repository.nativeUpdate(
           { id } as any,
@@ -211,6 +228,25 @@ export abstract class CrudService<E extends AnyEntity> {
 
     if (!entity) throw HttpError.NotFound()
 
+    if (
+      this.options?.softDelete?.field &&
+      this.entityProperties.includes(this.options.softDelete.field)
+    ) {
+      await this.repository.nativeUpdate(
+        { id } as any,
+        {
+          [this.options.softDelete.field || 'deletedAt']: this.options.softDelete.defaultValue()
+        } as any,
+        {
+          filters
+        }
+      )
+
+      return this.retrieve(id, queryParams)
+    }
+
+    // OLD SYSTEM
+    // TODO: REFACTOR THIS
     if (this.entityProperties.includes(this.options?.deletedAtField || 'deletedAt')) {
       await this.repository.nativeUpdate(
         { id } as any,
@@ -381,4 +417,9 @@ type QueryParsedResultForOneResult = Except<
 type CrudServiceOptions = {
   collectionIdentifierFields: { [key: string]: string }
   deletedAtField?: string
+  softDelete?: {
+    field: string
+    deletedDefaultValue: () => any
+    defaultValue: () => any
+  }
 }
