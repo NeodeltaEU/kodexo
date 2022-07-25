@@ -414,12 +414,12 @@ type QueryParsedResultForOneResult = Except<
   'limit' | 'offset' | 'orderBy' | 'deleted'
 >
 
-type CrudServiceOptions = {
-  collectionIdentifierFields: { [key: string]: string }
+export type CrudServiceOptions = {
+  collectionIdentifierFields?: { [key: string]: string }
   deletedAtField?: string
   softDelete?: {
     field: string
-    deletedDefaultValue: () => any
-    defaultValue: () => any
+    deletedDefaultValue(): any
+    defaultValue(): any
   }
 }
