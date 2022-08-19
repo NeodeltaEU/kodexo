@@ -17,8 +17,9 @@ const authorizedOperators: { [key: string]: string } = {
   $nin: '$nin',
   $like: '$like',
   $ilike: '$ilike',
-  //$overlap: '$overlap',
-  //$contains: '$contains',
+  $overlap: '$overlap',
+  $contains: '$contains',
+  $fulltext: '$fulltext',
   $and: '$and',
   $not: '$not',
   $or: '$or'

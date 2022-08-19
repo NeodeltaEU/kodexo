@@ -16,7 +16,8 @@ const { POSTGRES_HOST, POSTGRES_PORT } = process.env
     user: 'kodex',
     password: 'kodex',
     port: parseInt(POSTGRES_PORT as string, 10) || 5433,
-    debug: false
+    debug: false,
+    allowGlobalContext: true
   },
   middlewares: [RequestContextMiddleware()],
 
