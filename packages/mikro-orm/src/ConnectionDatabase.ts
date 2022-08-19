@@ -115,6 +115,7 @@ export class ConnectionDatabase {
     })
 
     this.settings.migrations = {
+      ...(this.settings.migrations || {}),
       migrationsList: [...new Set(rawMigrations)]
     }
 
