@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/crud",
-  "version": "1.0.0-dev.36",
+  "version": "1.0.0-dev.37",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -48,7 +48,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.2.0",
-    "@kodexo/app": "^1.0.0-dev.26",
+    "@kodexo/app": "^1.0.0-dev.37",
     "@types/jest": "^28.1.1",
     "@types/pluralize": "^0.0.29",
     "@types/uuid": "^8.3.0",

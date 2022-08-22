@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@kodexo/examples-complete-crud",
-  "version": "1.0.0-dev.36",
+  "version": "1.0.0-dev.37",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -26,15 +26,15 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/access-control": "^1.0.0-dev.30",
-    "@kodexo/app": "^1.0.0-dev.26",
+    "@kodexo/access-control": "^1.0.0-dev.37",
+    "@kodexo/app": "^1.0.0-dev.37",
     "@kodexo/common": "^1.0.0-dev.25",
     "@kodexo/config": "^1.0.0-dev.25",
-    "@kodexo/crud": "^1.0.0-dev.36",
+    "@kodexo/crud": "^1.0.0-dev.37",
     "@kodexo/errors": "^1.0.0-dev.18",
     "@kodexo/injection": "^1.0.0-dev.18",
     "@kodexo/mikro-orm": "^1.0.0-dev.36",
-    "@kodexo/storage": "^1.0.0-dev.32",
+    "@kodexo/storage": "^1.0.0-dev.37",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2"
   },
