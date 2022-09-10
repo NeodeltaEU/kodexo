@@ -22,7 +22,7 @@ describe('Global', () => {
   })
 
   it('should true to be true', async () => {
-    //const value = await client.greeting.query()
-    //console.log({ value })
+    const value = await client.users.greeting.query()
+    console.log({ value })
   })
 })

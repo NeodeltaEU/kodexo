@@ -1,7 +1,8 @@
-import { t } from './trpc'
+import { TRPCService } from '../../src'
+import { usersTRPCRouter } from './routers/users.trpc-router'
 
-export const appRouter = t.router({
-  //users: usersTRPCRouter
+export const appRouter = TRPCService.t.router({
+  users: usersTRPCRouter
 })
 
 export type AppRouter = typeof appRouter
