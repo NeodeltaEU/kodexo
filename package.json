@@ -27,7 +27,8 @@
           "acc",
           "firebase",
           "openapi",
-          "storage"
+          "storage",
+          "trpc"
         ]
       ],
       "header-max-length": [

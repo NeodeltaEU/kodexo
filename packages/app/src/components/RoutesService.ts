@@ -8,12 +8,12 @@ import {
   Response,
   Service
 } from '@kodexo/common'
-import { Readable } from 'stream'
+import { HttpError } from '@kodexo/errors'
 import { IProvider, OnProviderInit, providerRegistry, Registry } from '@kodexo/injection'
 import { Handler } from '@tinyhttp/app'
 import { parse } from 'regexparam'
+import { Readable } from 'stream'
 import { AppProvidersService } from './AppProvidersService'
-import { HttpError } from '@kodexo/errors'
 
 export type RouteEndpoint = {
   endpoint: Endpoint
@@ -26,6 +26,8 @@ export class RoutesService implements OnProviderInit {
   private currentRouting: IProvider[] = []
   private routes: Map<string, RouteEndpoint[]> = new Map()
   private registeredCount = 0
+
+  public readonly customHandlers: Map<string, Handler> = new Map()
 
   /**
    * Hook
@@ -186,6 +188,15 @@ export class RoutesService implements OnProviderInit {
     return routeEndpoints?.find(
       routeEndpoint => routeEndpoint.endpoint.method === method.toLowerCase()
     )
+  }
+
+  /**
+   *
+   * @param path
+   * @param handler
+   */
+  public addCustomHandler(path: string, handler: Handler) {
+    this.customHandlers.set(path, handler)
   }
 
   /**

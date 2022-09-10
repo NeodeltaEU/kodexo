@@ -72,6 +72,7 @@ export class App {
     this.buildMandatoryMiddlewares()
       .buildBeforeCustomMiddleware()
       .buildRoutesController()
+      .buildCustomHandlers()
       .buildFinalMiddlewares()
       .buildMiscRoutes()
       .buildOpenapiSchemaRoute()
@@ -171,6 +172,18 @@ export class App {
   private buildMiscRoutes() {
     // Avoiding 404 error on favicon when browsers hit the API
     this.rawApp.get('/favicon.ico', (req, res) => res.status(204).end())
+    return this
+  }
+
+  /**
+   *
+   * @returns
+   */
+  private buildCustomHandlers() {
+    Array.from(this.routesService.customHandlers.entries()).forEach(([path, handler]) => {
+      this.rawApp.use(path, handler)
+    })
+
     return this
   }
 
