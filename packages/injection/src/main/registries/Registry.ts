@@ -15,7 +15,8 @@ export enum Registries {
   INTERCEPTOR = 'interceptor',
   PARAM = 'param',
   MODULE = 'modules',
-  QUEUES = 'queues'
+  QUEUES = 'queues',
+  TRPC_ROUTER = 'trpc_routers'
 }
 
 /**

@@ -23,6 +23,11 @@ describe('Global', () => {
 
   it('should true to be true', async () => {
     const value = await client.users.greeting.query()
+
     console.log({ value })
+
+    const result = await client.users.onche.query(123)
+
+    console.log({ result })
   })
 })
