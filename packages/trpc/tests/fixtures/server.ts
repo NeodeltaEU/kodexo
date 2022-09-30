@@ -1,14 +1,13 @@
 import { Configuration } from '@kodexo/config'
-import { appRouter } from './app.trpc-router'
 import { TestTRPCModule } from './test-trpc.module'
 
 import '../../src/index'
+import { TRPCAppRouterService } from './app.trpc-router'
 
 @Configuration({
   appModule: TestTRPCModule,
-
   trpc: {
-    appRouter
+    appRouter: TRPCAppRouterService
   }
 })
 export class Server {}

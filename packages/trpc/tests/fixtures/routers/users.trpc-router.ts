@@ -7,22 +7,19 @@ import { UsersService } from '../users.service'
 export class UsersTRPCRouter {
   public router = TRPCService.t.router({
     greeting: TRPCService.t.procedure.query(this.greeting),
-    onche: TRPCService.t.procedure.input(this.oncheValidation).query(req => {
-      this.onche(req.input)
-    })
+    onche: TRPCService.t.procedure.input(this.oncheValidation).query(req => this.onche(req.input))
   })
 
   constructor(@Inject private service: UsersService) {}
 
-  greeting() {
-    return this.service.onche()
+  greeting(): string {
+    return 'onche'
   }
 
-  onche(input: number) {
-    console.log({ input })
+  async onche(input: number) {
     return {
       obj: true,
-      onche: 'lol'
+      onche: await this.service.onche()
     }
   }
 

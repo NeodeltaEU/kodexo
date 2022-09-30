@@ -2,7 +2,7 @@ import { Service } from '@kodexo/common'
 
 @Service()
 export class UsersService {
-  onche() {
+  async onche() {
     return 'coucou'
   }
 }

@@ -1,10 +1,10 @@
 import { Module } from '@kodexo/common'
 import { TRPCModule } from '../../src/components/trpc.module'
-import { UsersTRPCRouter } from './routers/users.trpc-router'
-import { UsersService } from './users.service'
+import { TRPCAppRouterService } from './app.trpc-router'
+import { UsersModule } from './routers/users.module'
 
 @Module({
-  imports: [TRPCModule],
-  providers: [UsersService, UsersTRPCRouter]
+  imports: [TRPCModule, UsersModule],
+  providers: [TRPCAppRouterService]
 })
 export class TestTRPCModule {}

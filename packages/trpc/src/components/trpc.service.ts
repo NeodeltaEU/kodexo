@@ -1,21 +1,26 @@
 import { RoutesService } from '@kodexo/app'
 import { Service } from '@kodexo/common'
 import { ConfigurationService } from '@kodexo/config'
-import { Inject } from '@kodexo/injection'
-import { AnyRouter, initTRPC } from '@trpc/server'
+import { Inject, OnProviderInit, Registry } from '@kodexo/injection'
+import { initTRPC } from '@trpc/server'
 import { createTinyHttpMiddleware } from '../main/adapters/tinyhttp'
 
 @Service()
-export class TRPCService {
+export class TRPCService implements OnProviderInit {
   public static t = initTRPC.create()
 
-  constructor(@Inject $routes: RoutesService, @Inject $config: ConfigurationService) {
-    const appRouter = $config.getOrFail<AnyRouter>('trpc.appRouter')
+  constructor(
+    @Inject private readonly $routes: RoutesService,
+    @Inject private readonly $config: ConfigurationService
+  ) {}
 
-    $routes.addCustomHandler(
+  async onProviderInit(providerRegistry: Registry) {
+    const appRouter = this.$config.getOrFail<any>('trpc.appRouter')
+
+    this.$routes.addCustomHandler(
       '/trpc',
       createTinyHttpMiddleware({
-        router: appRouter
+        router: providerRegistry.getInstanceOf(appRouter).appRouter
       })
     )
   }
