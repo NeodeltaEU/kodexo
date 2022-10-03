@@ -65,6 +65,7 @@
     "@kodexo/common": "^1.0.0-dev.25",
     "@kodexo/injection": "^1.0.0-dev.18",
     "@trpc/server": "^10.0.0-proxy-alpha.74",
+    "superjson": "^1.10.0",
     "zod": "^3.19.0"
   }
 }
