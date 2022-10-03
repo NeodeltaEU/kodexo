@@ -1,0 +1,70 @@
+{
+  "name": "@kodexo/trpc",
+  "version": "1.0.0-dev.32",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "license": "MIT",
+  "repository": "https://github.com/Uminily/kodexo",
+  "scripts": {
+    "clean": "rm -rf build",
+    "build": "rimraf ./dist && tsc -b tsconfig.build.json",
+    "test": "jest --runInBand --colors --forceExit",
+    "test:watch": "jest --runInBand --colors --verbose --forceExit --watch",
+    "test:start": "ts-node-dev ./tests/fixtures/start.ts"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "ts-jest"
+    },
+    "testTimeout": 7000,
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/tests/"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 60,
+        "functions": 60,
+        "lines": 60,
+        "statements": 60
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**/*.{js,ts}"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@trpc/client": "^10.0.0-proxy-alpha.74",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.17.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.1",
+    "node-fetch": "2",
+    "prettier": "^2.2.1",
+    "reflect-metadata": "^0.1.13",
+    "ts-jest": "^28.0.4",
+    "ts-node": "^10.8.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {
+    "@kodexo/app": "^1.0.0-dev.26",
+    "@kodexo/common": "^1.0.0-dev.25",
+    "@kodexo/injection": "^1.0.0-dev.18",
+    "@trpc/server": "^10.0.0-proxy-alpha.74",
+    "zod": "^3.19.0"
+  }
+}
