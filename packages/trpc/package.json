@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/trpc",
-  "version": "1.0.0-dev.32",
+  "version": "1.0.0-dev.38",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -61,9 +61,9 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/app": "^1.0.0-dev.26",
-    "@kodexo/common": "^1.0.0-dev.25",
-    "@kodexo/injection": "^1.0.0-dev.18",
+    "@kodexo/app": "^1.0.0-dev.38",
+    "@kodexo/common": "^1.0.0-dev.38",
+    "@kodexo/injection": "^1.0.0-dev.38",
     "@trpc/server": "^10.0.0-proxy-alpha.74",
     "zod": "^3.19.0"
   }
