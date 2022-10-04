@@ -106,6 +106,12 @@ export class App {
       credentials: true
     }
 
+    const origin = this.configurationService.get('cors.origin')
+
+    if (origin) {
+      corsOptions.origin = origin
+    }
+
     const cookieSecret = this.configurationService.get('cookies.secret')
 
     if (cookieSecret) {
