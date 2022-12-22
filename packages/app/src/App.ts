@@ -118,9 +118,15 @@ export class App {
       this.rawApp.use(cookieParser(cookieSecret) as any)
     }
 
+    const jsonLimit = this.configurationService.get('limits.json.body') || '100kb'
+
     this.rawApp
       .use(cors(corsOptions))
-      .use(json())
+      .use(
+        json({
+          limit: jsonLimit
+        })
+      )
       .use(urlencoded({ extended: true }))
 
     return this
