@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/trpc",
-  "version": "1.0.0-dev.41",
+  "version": "1.0.0-dev.42",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -61,7 +61,7 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/app": "^1.0.0-dev.41",
+    "@kodexo/app": "^1.0.0-dev.42",
     "@kodexo/common": "^1.0.0-dev.38",
     "@kodexo/injection": "^1.0.0-dev.38",
     "@trpc/server": "^10.0.0-proxy-alpha.74",

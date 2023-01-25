@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/openapi",
-  "version": "1.0.0-dev.38",
+  "version": "1.0.0-dev.42",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@kodexo/common": "^1.0.0-dev.38",
-    "@kodexo/config": "^1.0.0-dev.38",
+    "@kodexo/config": "^1.0.0-dev.42",
     "@kodexo/errors": "^1.0.0-dev.18",
     "@kodexo/injection": "^1.0.0-dev.38",
     "yaml": "^2.1.0"
