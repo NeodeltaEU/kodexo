@@ -1,4 +1,4 @@
-import { Handler } from '@tinyhttp/app'
+import { ErrorHandler, Handler } from '@tinyhttp/app'
 import { Class } from 'type-fest'
 
 export * from './decorators'
@@ -45,6 +45,11 @@ declare global {
          *
          */
         skipClientRequestError: boolean
+
+        /**
+         *
+         */
+        callbackOnInternalServerError?: (err: any, req: any, res: any) => void
       }
 
       logs: {

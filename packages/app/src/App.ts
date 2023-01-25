@@ -26,7 +26,7 @@ export class App {
   @Inject private appProvidersService: AppProvidersService
 
   public readonly rawApp = new TinyApp({
-    onError: (err, req, res) => {
+    onError: (err, req, res, next) => {
       if (err.code === 404) err = HttpError.NotFound()
 
       const statusCode = err.statusCode || 500
@@ -47,7 +47,15 @@ export class App {
         this.logger.error(err)
       }
 
-      if (statusCode === 500) err = HttpError.InternalServerError()
+      if (statusCode === 500) {
+        const callbackOnInternalServerError = this.configurationService.get(
+          'debug.callbackOnInternalServerError'
+        )
+
+        if (callbackOnInternalServerError) callbackOnInternalServerError(err, req, res, next)
+
+        err = HttpError.InternalServerError()
+      }
 
       const { message } = err
 
