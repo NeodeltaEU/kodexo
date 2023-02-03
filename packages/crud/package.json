@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/crud",
-  "version": "1.0.0-dev.42",
+  "version": "1.0.0-dev.43",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
