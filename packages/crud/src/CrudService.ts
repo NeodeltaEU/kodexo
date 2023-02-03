@@ -118,7 +118,9 @@ export abstract class CrudService<E extends AnyEntity> {
       const [entities, count] = await this.repository.findAndCount(filter, findParams)
 
       return {
-        entities: this.applyCollectionsIdentifiersForEntity(entities, { selectedFields: fields }),
+        entities: await this.applyCollectionsIdentifiersForEntity(entities, {
+          selectedFields: fields
+        }),
         count
       }
     } catch (err) {
@@ -344,7 +346,7 @@ export abstract class CrudService<E extends AnyEntity> {
       })
 
       return identifiers
-        ? this.applyCollectionsIdentifiersForEntity(entity, { selectedFields: fields })
+        ? await this.applyCollectionsIdentifiersForEntity(entity, { selectedFields: fields })
         : entity
     } catch (err) {
       if (err instanceof NotFoundError) {
