@@ -9,7 +9,7 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
-    container: node:18.4.4
+    container: node:16
 
     services:
       postgres:
