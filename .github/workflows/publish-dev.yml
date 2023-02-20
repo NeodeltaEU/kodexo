@@ -64,7 +64,6 @@ jobs:
       # yarn publish:ci:next
       - name: Publish to repo
         run: |
-          git -v
           ls -la
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
