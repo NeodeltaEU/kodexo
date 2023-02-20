@@ -60,11 +60,10 @@ jobs:
           POSTGRES_HOST: postgres
           POSTGRES_PORT: 5432
 
-      #yarn version:ci:next
-      # yarn publish:ci:next
       - name: Publish to repo
         run: |
-          ls -la
+          yarn version:ci:next
+          yarn publish:ci:next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
