@@ -13,6 +13,7 @@ export interface RequestCrud extends RequestWithOverride, RequestWithMerge {}
 export type RequestParserOptions = {
   createDto?: any
   updateDto?: any
+  parseIntId?: boolean
   limitDeepPopulate: number
 }
 

@@ -31,6 +31,7 @@ export type CrudOptionsType = {
   decorators?: DecoratorCrudOptions
   serialization?: Class<any>
   openapi?: OpenApiOptionsType
+  isIdInt?: boolean
 }
 
 export type MiddlewareCrudOptionsType = Partial<{

@@ -1,3 +1,4 @@
+import { HttpError } from '@kodexo/errors'
 import { plainToInstance } from 'class-transformer'
 import { Allow } from 'class-validator'
 import { REQUEST_CONTEXT } from './constants'
@@ -13,7 +14,7 @@ export class RequestParser {
   private createDto: { [key: string]: any } = {}
   private updateDto: { [key: string]: any } = {}
   private assign: any = {}
-  private pathParams = {}
+  private pathParams: any = {}
   private queryParams: QueryParsedResult
 
   constructor(
@@ -25,8 +26,20 @@ export class RequestParser {
     this.parseUpdateDto()
     this.parseQuery()
     this.parseAssign()
+    this.parsePathParams()
+  }
 
+  /**
+   *
+   */
+  parsePathParams() {
     this.pathParams = this.req.params || {}
+
+    if (this.options.parseIntId && this.pathParams.id) {
+      this.pathParams.id = parseInt(this.pathParams.id, 10)
+
+      if (Number.isNaN(this.pathParams.id)) throw HttpError.BadRequest('Invalid id')
+    }
   }
 
   /**

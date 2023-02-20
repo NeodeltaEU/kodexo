@@ -375,6 +375,7 @@ export class CrudRouteFactory {
   private prepareRoute(handler: Function) {
     const parserOptions = {
       ...this.options.dto,
+      parseIntId: this.options.isIdInt,
       limitDeepPopulate: this.options.limitDeepPopulate || 6
     }
 
