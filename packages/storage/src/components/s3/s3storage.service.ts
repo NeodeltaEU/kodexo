@@ -14,7 +14,7 @@ import { StorageService } from '../../main'
 
 @Service()
 export class S3StorageService extends StorageService {
-  private client: S3Client
+  public readonly client: S3Client
   private cdnRootUrl?: string
   private bucket: string
 
