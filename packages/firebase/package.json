@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/firebase",
-  "version": "1.0.0-dev.44",
+  "version": "1.0.0-dev.45",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -62,10 +62,10 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/common": "^1.0.0-dev.44",
-    "@kodexo/config": "^1.0.0-dev.44",
-    "@kodexo/errors": "^1.0.0-dev.44",
-    "@kodexo/injection": "^1.0.0-dev.44",
+    "@kodexo/common": "^1.0.0-dev.45",
+    "@kodexo/config": "^1.0.0-dev.45",
+    "@kodexo/errors": "^1.0.0-dev.45",
+    "@kodexo/injection": "^1.0.0-dev.45",
     "firebase-admin": "^10.3.0"
   }
 }
