@@ -9,7 +9,7 @@
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "1.0.0-dev.45",
+  "version": "1.0.0-dev.46",
   "command": {
     "publish": {
       "conventionalCommits": true,
