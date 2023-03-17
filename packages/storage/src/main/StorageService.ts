@@ -41,6 +41,16 @@ export abstract class StorageService {
 
   /**
    *
+   * @param readable
+   * @param filename
+   * @returns
+   */
+  protected getMimeTypeFromReadable(readable: Readable, filename: string) {
+    return getMimeType(readable, { strict: true, filename })
+  }
+
+  /**
+   *
    * @param file
    */
   protected async processFile(
@@ -49,7 +59,7 @@ export abstract class StorageService {
     subfolder: string,
     options: UploadFileStorageOptions
   ) {
-    let { stream, mime } = await getMimeType(file, { strict: true, filename })
+    let { stream, mime } = await this.getMimeTypeFromReadable(file, filename)
 
     const sizeStream = meter()
 
