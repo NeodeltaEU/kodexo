@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/errors",
-  "version": "1.0.0-dev.46",
+  "version": "1.0.0-dev.47",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
