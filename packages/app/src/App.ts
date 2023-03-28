@@ -91,6 +91,10 @@ export class App {
    * @returns
    */
   private buildOpenapiSchemaRoute() {
+    const openApiEnabled = this.configurationService.get('openapi.enabled') ?? true
+
+    if (!openApiEnabled) return this
+
     const yaml = this.openApiService.processToYaml(this.routesService.getDetailsRoutes())
 
     this.addRoute('/api-doc', 'GET', (req, res) => {
