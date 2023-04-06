@@ -374,7 +374,12 @@ export class QueryParser implements QueryParsedResult {
 
       if (querySchema) {
         stringify = false
-        return JSON.parse(Buffer.from(querySchema as string, 'base64').toString())
+
+        try {
+          return JSON.parse(Buffer.from(querySchema as string, 'base64').toString())
+        } catch (err) {
+          throw HttpError.BadRequest(`Malformed X-query-schema`)
+        }
       }
 
       if (fromBody) stringify = false
