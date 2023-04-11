@@ -25,6 +25,7 @@ export enum Registries {
 export class Registry extends Map<RegistryKey, Provider> {
   private registries: Map<string, Map<RegistryKey, Provider>> = new Map()
   private namedMap: Map<string, Provider> = new Map()
+  private overridenProviders = new Map<RegistryKey, RegistryKey>()
 
   /**
    *
@@ -32,6 +33,8 @@ export class Registry extends Map<RegistryKey, Provider> {
    * @param target
    */
   public register(registry: Registries, target: any, providerOptions?: any) {
+    if (this.overridenProviders.has(target)) target = this.overridenProviders.get(target)
+
     const provider = new Provider(target, providerOptions)
     this.registerProvider(registry, provider)
   }
@@ -76,6 +79,24 @@ export class Registry extends Map<RegistryKey, Provider> {
   public getInstanceOf<T = any>(token: string | RegistryKey<T>): T {
     const provider = isString(token) ? this.resolveByName<T>(token) : this.resolve(token)
     return provider.instance
+  }
+
+  /**
+   *
+   * @param token
+   * @param overrideToken
+   */
+  public overrideProvider(token: RegistryKey, overrideToken: RegistryKey) {
+    let isAlreadyResolve = false
+
+    try {
+      isAlreadyResolve = !!this.resolve(token)
+    } catch (error) {}
+
+    if (isAlreadyResolve)
+      throw new Error(`Cannot override ${token.name} because it is already registered!`)
+
+    this.overridenProviders.set(token, overrideToken)
   }
 
   /**
