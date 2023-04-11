@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/app",
-  "version": "1.0.0-dev.48",
+  "version": "1.0.0-dev.49",
   "license": "MIT",
   "repository": "https://github.com/Uminily/kodexo",
   "scripts": {
@@ -78,13 +78,13 @@
   },
   "dependencies": {
     "@godaddy/terminus": "^4.9.0",
-    "@kodexo/common": "^1.0.0-dev.48",
-    "@kodexo/config": "^1.0.0-dev.48",
-    "@kodexo/errors": "^1.0.0-dev.48",
-    "@kodexo/injection": "^1.0.0-dev.48",
-    "@kodexo/logger": "^1.0.0-dev.48",
-    "@kodexo/openapi": "^1.0.0-dev.48",
-    "@kodexo/queueing": "^1.0.0-dev.48",
+    "@kodexo/common": "^1.0.0-dev.49",
+    "@kodexo/config": "^1.0.0-dev.49",
+    "@kodexo/errors": "^1.0.0-dev.49",
+    "@kodexo/injection": "^1.0.0-dev.49",
+    "@kodexo/logger": "^1.0.0-dev.49",
+    "@kodexo/openapi": "^1.0.0-dev.49",
+    "@kodexo/queueing": "^1.0.0-dev.49",
     "@tinyhttp/app": "^1.3.11",
     "@tinyhttp/cors": "^1.1.7",
     "body-parser": "^1.19.0",
