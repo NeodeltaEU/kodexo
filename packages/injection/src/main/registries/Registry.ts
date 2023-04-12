@@ -36,6 +36,12 @@ export class Registry extends Map<RegistryKey, Provider> {
     if (this.overridenProviders.has(target)) target = this.overridenProviders.get(target)
 
     const provider = new Provider(target, providerOptions)
+
+    if (this.overridenProviders.has(target)) {
+      const overrideToken = this.overridenProviders.get(target)
+      provider.overrideToken(overrideToken)
+    }
+
     this.registerProvider(registry, provider)
   }
 
@@ -87,15 +93,6 @@ export class Registry extends Map<RegistryKey, Provider> {
    * @param overrideToken
    */
   public overrideProvider(token: RegistryKey, overrideToken: RegistryKey) {
-    let isAlreadyResolve = false
-
-    try {
-      isAlreadyResolve = !!this.resolve(token)
-    } catch (error) {}
-
-    if (isAlreadyResolve)
-      throw new Error(`Cannot override ${token.name} because it is already registered!`)
-
     this.overridenProviders.set(token, overrideToken)
   }
 

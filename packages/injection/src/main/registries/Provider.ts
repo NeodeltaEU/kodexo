@@ -16,27 +16,27 @@ export class Provider<T = any> implements IProvider {
   /**
    *
    */
-  public readonly injectable = true
+  public injectable = true
 
   /**
    *
    */
-  public readonly name: string
+  public name: string
 
   /**
    *
    */
-  public readonly isAsync: boolean
+  public isAsync: boolean
 
   /**
    *
    */
-  public readonly hasCloseCallback: boolean
+  public hasCloseCallback: boolean
 
   /**
    *
    */
-  public readonly hasPingCallback: boolean
+  public hasPingCallback: boolean
 
   /**
    *
@@ -95,6 +95,22 @@ export class Provider<T = any> implements IProvider {
     this.imports = this.options.imports || []
 
     this.dependencies = this.getConstructorParams().map((param: ConstructorParam) => param.provider)
+  }
+
+  /**
+   *
+   * @param token
+   */
+  public overrideToken(token: any) {
+    this.token = token
+    this.store = Store.from(token)
+
+    this.isAsync = false
+    this.hasCloseCallback = false
+    this.hasPingCallback = false
+
+    this.imports = []
+    this.dependencies = []
   }
 
   /**
