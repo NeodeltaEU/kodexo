@@ -33,15 +33,7 @@ export class Registry extends Map<RegistryKey, Provider> {
    * @param target
    */
   public register(registry: Registries, target: any, providerOptions?: any) {
-    if (this.overridenProviders.has(target)) target = this.overridenProviders.get(target)
-
     const provider = new Provider(target, providerOptions)
-
-    if (this.overridenProviders.has(target)) {
-      const overrideToken = this.overridenProviders.get(target)
-      provider.overrideToken(overrideToken)
-    }
-
     this.registerProvider(registry, provider)
   }
 
@@ -93,7 +85,8 @@ export class Registry extends Map<RegistryKey, Provider> {
    * @param overrideToken
    */
   public overrideProvider(token: RegistryKey, overrideToken: RegistryKey) {
-    this.overridenProviders.set(token, overrideToken)
+    const provider = this.resolve(token)
+    provider.overrideToken(overrideToken)
   }
 
   /**
