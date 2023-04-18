@@ -9,15 +9,15 @@ import {
 import { DevError, HttpError } from '@kodexo/errors'
 import { PathParam } from '@kodexo/openapi'
 import { instanceToPlain } from 'class-transformer'
-import { validateOrReject, ValidationError } from 'class-validator'
+import { ValidationError, validateOrReject } from 'class-validator'
 import * as pluralize from 'pluralize'
 import { Class } from 'type-fest'
-import { REQUEST_CONTEXT } from './constants'
 import { CrudService } from './CrudService'
+import { RequestParser } from './RequestParser'
+import { REQUEST_CONTEXT } from './constants'
 import { CrudOptionsType } from './decorators'
 import { RequestParsedResult } from './interfaces'
 import { CrudControllerInterface } from './interfaces/CrudControllerInterface'
-import { RequestParser } from './RequestParser'
 
 export class CrudRouteFactory {
   constructor(protected target: any, protected options: CrudOptionsType) {
@@ -198,8 +198,17 @@ export class CrudRouteFactory {
     return async (service: CrudService<any>, parsedParams: RequestParsedResult) => {
       const { createDto, assign, queryParams } = parsedParams
 
+      const { req } = queryParams
+
+      const groups = (req as any)?.groups || []
+
       try {
-        await validateOrReject(createDto, { whitelist: true, forbidUnknownValues: true })
+        await validateOrReject(createDto, {
+          whitelist: true,
+          groups,
+          always: true,
+          forbidUnknownValues: true
+        })
 
         // TODO: handle assign with validator, today override property from req.assign
         Object.entries(assign).forEach(([key, value]) => {
@@ -261,13 +270,19 @@ export class CrudRouteFactory {
 
       // TODO: Throw error & handle them with custom catch,
 
+      const { req } = queryParams
+
+      const groups = (req as any)?.groups || []
+
       try {
         //console.log('amont', updateDto)
 
         await validateOrReject(updateDto, {
           whitelist: true,
+          always: true,
           skipMissingProperties: true,
-          forbidUnknownValues: true
+          forbidUnknownValues: true,
+          groups
         })
 
         // TODO: handle assign with validator, today override property from req.assign

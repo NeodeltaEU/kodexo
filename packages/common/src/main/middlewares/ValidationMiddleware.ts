@@ -1,7 +1,7 @@
 import { HttpError } from '@kodexo/errors'
 import { NextFunction, Request, Response } from '@tinyhttp/app'
 import { plainToInstance } from 'class-transformer'
-import { validateOrReject, ValidationError } from 'class-validator'
+import { ValidationError, validateOrReject } from 'class-validator'
 import { Class } from 'type-fest'
 import { MiddlewareHandling } from '../../interfaces'
 
@@ -41,8 +41,15 @@ export class ValidationMiddleware implements MiddlewareHandling {
   async use(req: Request, res: Response, next: NextFunction) {
     const dto: any = plainToInstance(this.dtoToken, req.body)
 
+    const groups = (req as any).groups || []
+
     try {
-      await validateOrReject(dto, { whitelist: true, forbidUnknownValues: true })
+      await validateOrReject(dto, {
+        whitelist: true,
+        forbidUnknownValues: true,
+        groups,
+        always: true
+      })
 
       req.body = dto
 

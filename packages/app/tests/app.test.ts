@@ -81,4 +81,35 @@ describe('App', () => {
 
     expect(body.async).toBe(true)
   })
+
+  it('should pass with admin group', async () => {
+    const payload = {
+      tires: 3
+    }
+
+    const { body } = await request(server)
+      .post('/controls/cars/group?admin=true')
+      .send(payload)
+      .expect(200)
+
+    const payload2 = {
+      name: true,
+      tires: 4
+    }
+
+    const { body: body2 } = await request(server)
+      .post('/controls/cars/group?admin=true')
+      .send(payload2)
+      .expect(422)
+
+    const payload3 = {
+      name: true,
+      tires: 3
+    }
+
+    const { body: body3 } = await request(server)
+      .post('/controls/cars/group')
+      .send(payload3)
+      .expect(200)
+  })
 })

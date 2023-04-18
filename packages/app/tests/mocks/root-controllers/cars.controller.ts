@@ -13,9 +13,10 @@ import {
 } from '@kodexo/common'
 import { Inject } from '@kodexo/injection'
 import { ApiGroup, Summary } from '@kodexo/openapi'
-import { AuthMiddleware } from '../auth.middleware'
-import { CarDto } from '../car.dto'
 import { CarService } from '../CarService'
+import { AuthMiddleware } from '../auth.middleware'
+import { CarGroupDto } from '../car-group.dto'
+import { CarDto } from '../car.dto'
 import { LogMiddleware } from '../log.middleware'
 import { CarModel } from './serialization/car'
 
@@ -71,5 +72,12 @@ export class CarsController {
   @Get('/cookies')
   async getCookies(@CookieParams('thecookie') cookie: string) {
     return { cookie }
+  }
+
+  @UseValidation(CarGroupDto)
+  @Use(AuthMiddleware)
+  @Post('/group')
+  async group(@BodyParams() body: CarGroupDto) {
+    return body
   }
 }
