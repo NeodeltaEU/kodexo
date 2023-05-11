@@ -5,7 +5,7 @@ import { HttpError } from '@kodexo/errors'
 import { Inject } from '@kodexo/injection'
 import { LoggerService } from '@kodexo/logger'
 import { OpenApiService } from '@kodexo/openapi'
-import { App as TinyApp, Handler } from '@tinyhttp/app'
+import { Handler, App as TinyApp } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
@@ -113,7 +113,7 @@ export class App {
       this.rawApp.use(this.logger.getLoggerMiddleware())
 
     const corsOptions: AccessControlOptions = {
-      allowedHeaders: ['content-type', 'x-query-schema', 'authorization'],
+      allowedHeaders: ['content-type', 'x-query-schema', 'authorization', 'x-timezone'],
       exposedHeaders: ['content-length', 'content-type', 'x-total-count', 'set-cookie'],
       credentials: true
     }
