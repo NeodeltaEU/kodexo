@@ -1,6 +1,6 @@
 import { Inject } from '@kodexo/injection'
 import { ConnectionDatabase } from '@kodexo/mikro-orm'
-import { EntityRepository } from '@mikro-orm/core'
+import { AnyEntity, EntityRepository } from '@mikro-orm/core'
 import {
   registerDecorator,
   ValidationArguments,
@@ -19,7 +19,7 @@ interface UniqueValidationArguments<E> extends ValidationArguments {
 class Unique implements ValidatorConstraintInterface {
   @Inject private connection: ConnectionDatabase
 
-  async validate<E>(
+  async validate<E extends AnyEntity>(
     value: any,
     validationArguments: UniqueValidationArguments<E>
   ): Promise<boolean> {

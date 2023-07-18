@@ -1,7 +1,7 @@
 import { isObject } from '@kodexo/common'
 import { Inject } from '@kodexo/injection'
 import { ConnectionDatabase } from '@kodexo/mikro-orm'
-import { EntityRepository } from '@mikro-orm/core'
+import { AnyEntity, EntityRepository } from '@mikro-orm/core'
 import {
   registerDecorator,
   ValidationArguments,
@@ -19,7 +19,7 @@ interface ExistsValidationArguments<E> extends ValidationArguments {
 class Exists implements ValidatorConstraintInterface {
   @Inject private connection: ConnectionDatabase
 
-  async validate<E>(
+  async validate<E extends AnyEntity>(
     value: any,
     validationArguments: ExistsValidationArguments<E>
   ): Promise<boolean> {

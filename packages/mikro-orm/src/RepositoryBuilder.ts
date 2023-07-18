@@ -1,3 +1,4 @@
+import { AnyEntity } from '@mikro-orm/core'
 import { Class } from 'type-fest'
 import { ConnectionDatabase } from './ConnectionDatabase'
 
@@ -17,7 +18,7 @@ export class RepositoryBuilder {
   /**
    *
    */
-  getRepository<T>() {
+  getRepository<T extends AnyEntity>() {
     return this.connection.orm.em.getRepository<T>(this.model)
   }
 
