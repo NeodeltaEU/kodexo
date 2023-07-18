@@ -143,8 +143,9 @@ export class S3StorageService extends StorageService {
   /**
    *
    */
-  async moveFile(originalPath: string, newPath: string) {
+  async moveFile(originalPath: string, newPath: string, acl: 'private' | 'public-read' = 'public-read') {
     const copyCommand = new CopyObjectCommand({
+      ACL: acl,
       Key: newPath,
       Bucket: this.bucket,
       CopySource: `/${this.bucket}/${originalPath}`
