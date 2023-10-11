@@ -5,7 +5,7 @@ import { HttpError } from '@kodexo/errors'
 import { Inject } from '@kodexo/injection'
 import { LoggerService } from '@kodexo/logger'
 import { OpenApiService } from '@kodexo/openapi'
-import { Handler, App as TinyApp } from '@tinyhttp/app'
+import { App as TinyApp, Handler } from '@tinyhttp/app'
 import { AccessControlOptions, cors } from '@tinyhttp/cors'
 import { json, urlencoded } from 'body-parser'
 import * as cookieParser from 'cookie-parser'
@@ -112,16 +112,22 @@ export class App {
     if (this.configurationService.get('logs.request'))
       this.rawApp.use(this.logger.getLoggerMiddleware())
 
-    const corsOptions: AccessControlOptions = {
-      allowedHeaders: ['content-type', 'x-query-schema', 'authorization', 'x-timezone'],
-      exposedHeaders: ['content-length', 'content-type', 'x-total-count', 'set-cookie'],
-      credentials: true
-    }
+    const corsEnabled = this.configurationService.get('cors.enabled') ?? true
 
-    const origin = this.configurationService.get('cors.origin')
+    if (corsEnabled) {
+      const corsOptions: AccessControlOptions = {
+        allowedHeaders: ['content-type', 'x-query-schema', 'authorization', 'x-timezone'],
+        exposedHeaders: ['content-length', 'content-type', 'x-total-count', 'set-cookie'],
+        credentials: true
+      }
 
-    if (origin) {
-      corsOptions.origin = origin
+      const origin = this.configurationService.get('cors.origin')
+
+      if (origin) {
+        corsOptions.origin = origin
+      }
+
+      this.rawApp.use(cors(corsOptions))
     }
 
     const cookieSecret = this.configurationService.get('cookies.secret')
@@ -133,7 +139,6 @@ export class App {
     const jsonLimit = this.configurationService.get('limits.json.body') || '100kb'
 
     this.rawApp
-      .use(cors(corsOptions))
       .use(
         json({
           limit: jsonLimit
