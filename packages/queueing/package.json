@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/queueing",
-  "version": "1.0.0-dev.58",
+  "version": "1.0.0-dev.59",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -62,10 +62,10 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/common": "^1.0.0-dev.58",
-    "@kodexo/config": "^1.0.0-dev.58",
-    "@kodexo/injection": "^1.0.0-dev.58",
-    "@kodexo/logger": "^1.0.0-dev.58",
+    "@kodexo/common": "^1.0.0-dev.59",
+    "@kodexo/config": "^1.0.0-dev.59",
+    "@kodexo/injection": "^1.0.0-dev.59",
+    "@kodexo/logger": "^1.0.0-dev.59",
     "bullmq": "^1.44.2"
   },
   "gitHead": "3341d44d2cc6d1a4e6b993d4df43a23a0df3175a"
