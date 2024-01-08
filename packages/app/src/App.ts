@@ -116,7 +116,7 @@ export class App {
 
     if (corsEnabled) {
       const corsOptions: AccessControlOptions = {
-        allowedHeaders: ['content-type', 'x-query-schema', 'authorization', 'x-timezone'],
+        allowedHeaders: ['content-type', 'x-query-schema', 'authorization', 'x-timezone', 'sentry-trace', 'baggage'],
         exposedHeaders: ['content-length', 'content-type', 'x-total-count', 'set-cookie'],
         credentials: true
       }
