@@ -1,6 +1,6 @@
 {
   "name": "@kodexo/mikro-orm",
-  "version": "1.0.0-dev.59",
+  "version": "1.0.0-dev.60",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -62,10 +62,10 @@
     "typescript": "^4.7.3"
   },
   "dependencies": {
-    "@kodexo/common": "^1.0.0-dev.59",
-    "@kodexo/config": "^1.0.0-dev.59",
-    "@kodexo/injection": "^1.0.0-dev.59",
-    "@kodexo/logger": "^1.0.0-dev.59",
+    "@kodexo/common": "^1.0.0-dev.60",
+    "@kodexo/config": "^1.0.0-dev.60",
+    "@kodexo/injection": "^1.0.0-dev.60",
+    "@kodexo/logger": "^1.0.0-dev.60",
     "@mikro-orm/core": "^5.2.0",
     "@mikro-orm/postgresql": "^5.2.0"
   },
