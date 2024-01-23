@@ -1,6 +1,0 @@
-export * from './components'
-export * from './CrudRoutesFactory'
-export * from './CrudService'
-export * from './decorators'
-export * from './interfaces'
-export * from './QueryParser'
