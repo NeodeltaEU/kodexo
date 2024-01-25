@@ -201,6 +201,11 @@ export class App {
   private buildMiscRoutes() {
     // Avoiding 404 error on favicon when browsers hit the API
     this.rawApp.get('/favicon.ico', (req, res) => res.status(204).end())
+    this.rawApp.get('/robots.txt', (req, res) => {
+      res.type('text/plain');
+      res.send("User-agent: *\nDisallow: /");
+    })
+    
     return this
   }
 
